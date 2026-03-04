@@ -3,9 +3,8 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    public int enemyCount;
     public GameObject enemyUnitPrefab;
-    public Transform[] spawnPositions;
+    [Tooltip("Also determines the enemy count")] public Transform[] spawnPositions;
     
     private List<GameObject> Enemies;
     
@@ -19,8 +18,8 @@ public class EnemyManager : MonoBehaviour
             int j = Random.Range(0, i + 1);
             (spawnPositions[i], spawnPositions[j]) = (spawnPositions[j], spawnPositions[i]);
         }
-        
-        int spawnCount = Mathf.Min(enemyCount, spawnPositions.Length);
+
+        int spawnCount = spawnPositions.Length;
         for (int i = 0; i < spawnCount; i++)
         {
             GameObject enemy = Instantiate(enemyUnitPrefab, spawnPositions[i].position, spawnPositions[i].rotation);
