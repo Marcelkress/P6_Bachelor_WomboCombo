@@ -25,8 +25,8 @@ public class Enemy : MonoBehaviour
     public float attackCooldown = 1f; // Example cooldown time between attacks
 
     
-
-
+    public MeshRenderer enemyMeshRenderer; // Reference to the enemy's material for visual feedback (e.g., flashing when hit)
+ 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -39,6 +39,10 @@ public class Enemy : MonoBehaviour
         InitializeUI();
         // Set the destination to the player's position
         agent.SetDestination(player.position);
+
+        enemyMeshRenderer = GetComponent<MeshRenderer>();
+        // assign random color to the enemy material for visual variety (optional)
+        enemyMeshRenderer.material.color = new Color(Random.value, Random.value, Random.value); // Assign a random color to the enemy material
     }
 
     void Update()

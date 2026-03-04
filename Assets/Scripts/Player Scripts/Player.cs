@@ -38,6 +38,10 @@ public class Player : MonoBehaviour
         // Example of checking for input to trigger the healing spell (you can customize this as needed)
         if (playerInput.actions["Heal"].triggered) // Assuming you have an input action named "Heal"
         {
+            if (currentHealth == health) // Only heal if the player's current health is below the maximum health
+            {
+                return; // Exit the method without healing if the player's health is already full
+            }
             HealingSpell(); // Call the HealingSpell method when the input action is triggered
         }
     }
@@ -92,10 +96,7 @@ public class Player : MonoBehaviour
         // if fully complete heal player for 1 health and reset combo
         if (comboStep * 2 >= healingComboArray.Length)
         {
-            if (currentHealth == health) // Only heal if the player's current health is below the maximum health
-            {
-                return; // Exit the method without healing if the player's health is already full
-            }
+            
             currentHealth += 1; // Heal the player for
             Debug.Log("Player healed! Current health: " + currentHealth);
 
