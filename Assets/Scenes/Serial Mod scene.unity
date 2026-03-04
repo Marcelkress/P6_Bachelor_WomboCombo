@@ -336,7 +336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de3723acc3eb479c8b070b3f6d94f4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MacSerialReceiver
-  portName: /dev/cu.usbserial-110
+  portName: /dev/cu.usbserial-10
   baudRate: 115200
   autoCalibrateOnStart: 1
   spaceToRecalibrate: 1
