@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Player : MonoBehaviour
     private int currentHealth;  
 
     public Image healthBar; // Reference to the health bar UI element
+    public TMP_Text healthText; // Reference to the health text UI element (optional)
 
     private int[] healingComboArray = new int[] {  1, 3, 1, 2 ,1, 1 };
     private int comboStep = 0; // keeps track of the current step in the combo sequence
@@ -51,7 +53,10 @@ public class Player : MonoBehaviour
         if (healthBar != null)
         {
             healthBar.fillAmount = (float)currentHealth / health; // Set the initial fill amount of the health bar
+            healthText.text = currentHealth.ToString(); // Set the initial health text (optional)
         }
+
+
 
         contentSprite = new Image[healingComboArray.Length]; // Initialize the contentSprite array to match the length of healingComboArray
 
@@ -97,9 +102,10 @@ public class Player : MonoBehaviour
         if (comboStep * 2 >= healingComboArray.Length)
         {
             
-            currentHealth += 1; // Heal the player for
+            currentHealth += 1; // Heal the player for 1 health
             Debug.Log("Player healed! Current health: " + currentHealth);
 
+            healthText.text = currentHealth.ToString(); // Update the health text (optional)
             // Update the health bar UI element
             if (healthBar != null)
             {
@@ -108,6 +114,7 @@ public class Player : MonoBehaviour
                 rightIndex = 0; // Reset the right index for the next combo
                 leftIndex = 0; // Reset the left index for the next combo
                 comboStep = 0; // Reset the combo step for the next combo
+
 
                 foreach (Image img in contentSprite)
                 {
@@ -126,6 +133,7 @@ public class Player : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage; // Reduce the player's health by the damage amount
+        healthText.text = currentHealth.ToString(); // Update the health text (optional)
         Debug.Log("Player took damage! Current health: " + currentHealth);
 
         // Update the health bar UI element
@@ -135,6 +143,7 @@ public class Player : MonoBehaviour
             if (currentHealth < health/2)
             {
                 healthBar.fillAmount = (float)currentHealth / health;
+                
                  // Optional: Add a tweening effect to the health bar for smoother transitions
                 AnimateHealthBar();
                 ShakeHealthBar();

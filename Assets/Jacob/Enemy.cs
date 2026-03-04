@@ -27,23 +27,24 @@ public class Enemy : MonoBehaviour
     
     public MeshRenderer enemyMeshRenderer; // Reference to the enemy's material for visual feedback (e.g., flashing when hit)
  
-
+    public Material enemyMaterial; // Reference to the enemy's material for visual feedback (e.g., flashing when hit)  
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
-        agent = GetComponent<NavMeshAgent>();
-        
-        player = GameObject.FindGameObjectWithTag("Player").transform; // Find the player by tag and get its transform
-        playerScript = player.GetComponent<Player>(); // Get the Player script component from the player game object
+{
+    agent = GetComponent<NavMeshAgent>();
+    player = GameObject.FindGameObjectWithTag("Player").transform;
+    playerScript = player.GetComponent<Player>();
+    InitializeUI();
+    agent.SetDestination(player.position);
 
-        InitializeUI();
-        // Set the destination to the player's position
-        agent.SetDestination(player.position);
+    // Clone the material so each enemy has its own instance
+    enemyMaterial = new Material(enemyMaterial);
+    enemyMeshRenderer.material = enemyMaterial;
 
-        enemyMeshRenderer = GetComponent<MeshRenderer>();
-        // assign random color to the enemy material for visual variety (optional)
-        enemyMeshRenderer.material.color = new Color(Random.value, Random.value, Random.value); // Assign a random color to the enemy material
-    }
+    enemyMaterial.SetColor("_LitColor", Random.ColorHSV(0f, 1f, 0.7f, 1f, 0.8f, 1f));
+    Color color = enemyMaterial.GetColor("_LitColor");
+    enemyMaterial.SetColor("_ShadowColor", color * 0.5f);
+}
 
     void Update()
     {
