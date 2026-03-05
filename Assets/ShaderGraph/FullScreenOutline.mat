@@ -37,10 +37,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DepthThreshold: 25
+    - _DepthThreshold: 0.28
     - _DistanceBoost: 0.02
     - _MaxThickness: 1
-    - _NormalThreshold: 1
+    - _NormalThreshold: 0.5
     - _OutlineThickness: 1
     m_Colors:
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
