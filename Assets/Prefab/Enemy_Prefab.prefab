@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3608603056928829360}
   - component: {fileID: 8936223561246467823}
   - component: {fileID: 665545610698595468}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,8 @@ GameObject:
   - component: {fileID: 3698622087772872502}
   - component: {fileID: 3978854120457980880}
   - component: {fileID: 5481022119457079816}
-  m_Layer: 0
+  - component: {fileID: 6442590508942113201}
+  m_Layer: 6
   m_Name: EnemyVisuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,6 +188,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6442590508942113201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372894522435791615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51b3d7a7610ed4714976e8021b4449d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MouseClickEnemy
+  ClickEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1144782781851350160}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: PlayerOneUpdate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5295275466164488721
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,7 +227,7 @@ GameObject:
   - component: {fileID: 2441610860295572939}
   - component: {fileID: 1459335025270801882}
   - component: {fileID: 1016996817348973610}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Viewport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -288,7 +316,7 @@ GameObject:
   - component: {fileID: 1851377460641377669}
   - component: {fileID: 9141816732835135255}
   - component: {fileID: 13583507371461158}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -363,7 +391,6 @@ GameObject:
   - component: {fileID: 1293578875019957475}
   - component: {fileID: 1144782781851350160}
   - component: {fileID: 6469125551190941629}
-  - component: {fileID: 4028697154236312730}
   m_Layer: 0
   m_Name: Enemy_Prefab
   m_TagString: Untagged
@@ -433,33 +460,6 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &4028697154236312730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5637198596201364861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51b3d7a7610ed4714976e8021b4449d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MouseClickEnemy
-  ClickEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1144782781851350160}
-        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
-        m_MethodName: PlayerOneUpdate
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &7023681703319869120
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,7 +473,7 @@ GameObject:
   - component: {fileID: 1202368628652372170}
   - component: {fileID: 6925611932779412119}
   - component: {fileID: 8050274080959976704}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -588,7 +588,7 @@ GameObject:
   - component: {fileID: 8629435533349993138}
   - component: {fileID: 7891710019248542004}
   - component: {fileID: 4018644521311112070}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Scroll View
   m_TagString: Untagged
   m_Icon: {fileID: 0}

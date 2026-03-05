@@ -16,6 +16,9 @@ public class Enemy : MonoBehaviour
 
     public Sprite SquareImage, CircleImage, TriangleImage; // references to the UI images for each button (Square, Circle, Triangle)
     public Transform player;
+
+    private Vector3 targetPoint; // variable to store the closest point on the player's collider
+    private BoxCollider playerCollider;
     private Player playerScript; // reference to the Player script to call the TakeDamage method
 
     private GridLayoutGroup gridLayoutGroup; // reference to the GridLayoutGroup component
@@ -32,10 +35,14 @@ public class Enemy : MonoBehaviour
     void Start()
 {
     agent = GetComponent<NavMeshAgent>();
-    player = GameObject.FindGameObjectWithTag("Player").transform;
+    player = GameObject.FindGameObjectWithTag("Player").transform; // Find the player by tag
     playerScript = player.GetComponent<Player>();
     InitializeUI();
-    agent.SetDestination(player.position);
+
+    // find the closest point on the player's collider to the enemy's position and set it as the destination for the NavMeshAgent
+    playerCollider = player.GetComponent<BoxCollider>();
+    targetPoint = playerCollider.ClosestPoint(transform.position);
+    agent.SetDestination(targetPoint);
 
     // Clone the material so each enemy has its own instance
     enemyMaterial = new Material(enemyMaterial);
@@ -146,7 +153,7 @@ public class Enemy : MonoBehaviour
 
     private void DamagePlayer()
     {
-        if (Vector3.Distance(transform.position, player.position) < agent.stoppingDistance)
+        if (Vector3.Distance(transform.position, targetPoint) < agent.stoppingDistance)
         {
              currentattackCooldown -= Time.deltaTime; // Decrease the cooldown timer by the time elapsed since the last frame
             if (currentattackCooldown <= 0f)
