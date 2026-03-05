@@ -1619,7 +1619,7 @@ Transform:
   m_GameObject: {fileID: 89973696}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.0000008493661, z: -0, w: 1}
-  m_LocalPosition: {x: 4.08329, y: 0, z: -44.809196}
+  m_LocalPosition: {x: -1.95, y: 0, z: -36.38}
   m_LocalScale: {x: 0.451385, y: 2.70831, z: 0.451385}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4897,7 +4897,7 @@ Transform:
   m_GameObject: {fileID: 505306780}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.70710707, z: -0, w: 0.7071066}
-  m_LocalPosition: {x: 2.8044252, y: 0, z: -40.230946}
+  m_LocalPosition: {x: -0.53, y: 0, z: -43.59}
   m_LocalScale: {x: 0.451385, y: 2.70831, z: 0.451385}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7061,7 +7061,7 @@ Transform:
   m_GameObject: {fileID: 714299561}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -54.709198, y: 6.2, z: 122}
+  m_LocalPosition: {x: -54.709198, y: 9.3, z: 122}
   m_LocalScale: {x: 50.301598, y: 20.12064, z: 5.03016}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7397,7 +7397,7 @@ Transform:
   m_GameObject: {fileID: 728417058}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.1532898, y: 0, z: -43.069195}
+  m_LocalPosition: {x: -3.52, y: 0, z: -39.54}
   m_LocalScale: {x: 0.451385, y: 2.70831, z: 0.451385}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8413,7 +8413,7 @@ Transform:
   m_GameObject: {fileID: 867925497}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.363, y: 12.236, z: 122}
+  m_LocalPosition: {x: -20.363, y: 15.336, z: 122}
   m_LocalScale: {x: 2.51508, y: 2.51508, z: 2.51508}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9365,7 +9365,7 @@ Transform:
   m_GameObject: {fileID: 926596306}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.908, y: 12.236, z: 122}
+  m_LocalPosition: {x: 24.908, y: 15.336, z: 122}
   m_LocalScale: {x: 2.51508, y: 2.51508, z: 2.51508}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10756,7 +10756,7 @@ Transform:
   m_GameObject: {fileID: 1068556212}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.2727, y: 2.4274, z: 119.35683}
+  m_LocalPosition: {x: 2.2727, y: 5.5274005, z: 119.35683}
   m_LocalScale: {x: 7.54524, y: 12.575399, z: 3.77262}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18976,7 +18976,7 @@ Transform:
   m_GameObject: {fileID: 1734747619}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.2908, y: 6.2, z: 122}
+  m_LocalPosition: {x: 5.2908, y: 9.3, z: 122}
   m_LocalScale: {x: 50.301598, y: 20.12064, z: 5.03016}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18998,6 +18998,8 @@ GameObject:
   - component: {fileID: 1749411209}
   - component: {fileID: 1749411208}
   - component: {fileID: 1749411207}
+  - component: {fileID: 1749411212}
+  - component: {fileID: 1749411211}
   m_Layer: 0
   m_Name: NavMeshSurface
   m_TagString: Untagged
@@ -19129,8 +19131,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshModifierVolume
   m_SerializedVersion: 0
-  m_Size: {x: 2, y: 0.1, z: 2}
-  m_Center: {x: -1.26, y: 0, z: 0}
+  m_Size: {x: 0.7, y: 0.1, z: 2}
+  m_Center: {x: -0.66, y: 0, z: 0}
   m_Area: 3
   m_AffectedAgents: ffffffff
 --- !u!114 &1749411209
@@ -19180,8 +19182,42 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 2d289084cb888af52834fcddb04b826c, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 9a9c194842aaa9262b8a433cd8b03344, type: 2}
   m_BuildHeightMesh: 0
+--- !u!114 &1749411211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749411202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshModifierVolume
+  m_SerializedVersion: 0
+  m_Size: {x: 1, y: 0.1, z: 2}
+  m_Center: {x: -2.13, y: 0, z: 0}
+  m_Area: 3
+  m_AffectedAgents: ffffffff
+--- !u!114 &1749411212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749411202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshModifierVolume
+  m_SerializedVersion: 0
+  m_Size: {x: 0.5, y: 0.1, z: 2}
+  m_Center: {x: -1.32, y: 0, z: 0}
+  m_Area: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1758218296
 GameObject:
   m_ObjectHideFlags: 0
@@ -20403,7 +20439,7 @@ Transform:
   m_GameObject: {fileID: 1896533410}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 55.690804, y: 6.2, z: 122}
+  m_LocalPosition: {x: 55.690804, y: 9.3, z: 122}
   m_LocalScale: {x: 50.301598, y: 20.12064, z: 5.03016}
   m_ConstrainProportionsScale: 0
   m_Children: []
