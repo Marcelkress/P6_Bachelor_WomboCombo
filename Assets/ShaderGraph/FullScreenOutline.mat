@@ -38,10 +38,10 @@ Material:
     m_Ints: []
     m_Floats:
     - _DepthThreshold: 0.1
-    - _DistanceBoost: 1
+    - _DistanceBoost: 0.01
     - _MaxThickness: 1
     - _NormalThreshold: 0.1
-    - _OutlineThickness: 1
+    - _OutlineThickness: 0.5
     m_Colors:
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

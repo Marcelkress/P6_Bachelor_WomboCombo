@@ -1949,7 +1949,7 @@
         "m_Guid": ""
     },
     "isMainTexture": false,
-    "useTilingAndOffset": false,
+    "useTilingAndOffset": true,
     "useTexelSize": true,
     "m_Modifiable": true,
     "m_DefaultType": 0
@@ -2770,10 +2770,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -585.4976806640625,
-            "y": 207.34605407714845,
-            "width": 0.0,
-            "height": 0.0
+            "x": -730.0,
+            "y": 230.0,
+            "width": 132.0,
+            "height": 34.0
         }
     },
     "m_Slots": [
