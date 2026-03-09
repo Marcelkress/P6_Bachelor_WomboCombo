@@ -37,15 +37,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        // Example of checking for input to trigger the healing spell (you can customize this as needed)
-        if (playerInput.actions["Heal"].triggered) // Assuming you have an input action named "Heal"
-        {
-            if (currentHealth == health) // Only heal if the player's current health is below the maximum health
-            {
-                return; // Exit the method without healing if the player's health is already full
-            }
-            HealingSpell(); // Call the HealingSpell method when the input action is triggered
-        }
+        
     }
 
     private void InitializeUI()

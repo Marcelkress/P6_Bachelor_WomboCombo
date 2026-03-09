@@ -392,7 +392,7 @@ MonoBehaviour:
   shakeRandomness: 10
   shakeVibrato: 10
   minLength: 2
-  maxLength: 6
+  maxLength: 3
 --- !u!195 &6469125551190941629
 NavMeshAgent:
   m_ObjectHideFlags: 0

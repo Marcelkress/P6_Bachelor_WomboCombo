@@ -1,6 +1,7 @@
+using System;
 using UnityEngine;
 
-public struct PlayerInfo
+public struct PlayerInfoStruct
 {
     public int symbOne;
     public int symbTwo;
@@ -9,22 +10,65 @@ public struct PlayerInfo
 
 public class InputManager : MonoBehaviour
 {
-    public PlayerInfo playerOneCurrent, playerTwoCurrent;
+    public static InputManager instance;
+    public bool debug = false;
+        
+    private PlayerInfoStruct playerOneCurrent, playerTwoCurrent;
     private bool newInfoPOne, newInfoPTwo;
-    
-    void Update()
-    {
-        playerOneCurrent.newData = newInfoPOne;
-        playerTwoCurrent.newData = newInfoPTwo;
 
-        if (playerOneCurrent.newData)
+    private void Awake()
+    {
+        if (instance == null)
         {
-            playerOneCurrent.newData = false;
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
         }
     }
 
-    void CheckInput()
+    void Update()
     {
-        
+        if (playerOneCurrent.newData)
+        {
+            playerOneCurrent.newData = false;
+
+            if (debug)
+            {
+                Debug.Log("new data from p1:");
+                Debug.Log("Top Symbol: " + playerOneCurrent.symbOne.ToString());
+                Debug.Log("Bottom Symbol: " + playerOneCurrent.symbTwo.ToString());
+            }
+        }
+
+        if (playerTwoCurrent.newData)
+        {
+            playerTwoCurrent.newData = false;
+
+            if (debug)
+            {
+                Debug.Log("new data from p2");
+                Debug.Log("Top Symbol: " + playerTwoCurrent.symbOne.ToString());
+                Debug.Log("Bottom Symbol: " + playerTwoCurrent.symbTwo.ToString());
+            }
+        }
+    }
+
+    public void UpdatePlayerInfo(int id, PlayerInfoStruct playerInfoStruct)
+    {
+        if (id == 1)
+        {
+            playerOneCurrent.newData = true;
+            playerOneCurrent.symbOne = playerInfoStruct.symbOne;
+            playerOneCurrent.symbTwo = playerInfoStruct.symbTwo;
+        }
+
+        if (id == 2)
+        {
+            playerTwoCurrent.newData = true;
+            playerTwoCurrent.symbOne = playerInfoStruct.symbOne;
+            playerTwoCurrent.symbTwo = playerInfoStruct.symbTwo;
+        }
     }
 }

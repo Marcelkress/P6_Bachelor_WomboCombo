@@ -1,13 +1,13 @@
 {
     "version": 1,
-    "name": "ComboActions",
+    "name": "PlayerOne",
     "maps": [
         {
-            "name": "Map",
+            "name": "Player one",
             "id": "c91e694b-6b80-45dc-9f78-4324e35ccd4a",
             "actions": [
                 {
-                    "name": "Player one fire",
+                    "name": "Fire",
                     "type": "Button",
                     "id": "cba3b6f9-3a0a-4e65-a6da-db7800f58e38",
                     "expectedControlType": "",
@@ -16,7 +16,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Player one top Circle",
+                    "name": "Top Circle",
                     "type": "Button",
                     "id": "aaf274d6-d9eb-4379-821e-889558f8e68a",
                     "expectedControlType": "",
@@ -25,7 +25,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Player one top Square",
+                    "name": "Top Square",
                     "type": "Button",
                     "id": "919e21e2-7b26-4522-b97f-7f94e6ceada7",
                     "expectedControlType": "",
@@ -34,7 +34,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Player one bottom Circle",
+                    "name": "Bottom Circle",
                     "type": "Button",
                     "id": "db61e7fe-815a-43bf-bd8c-956e534a548a",
                     "expectedControlType": "",
@@ -43,7 +43,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Player one bottom square",
+                    "name": "Bottom Square",
                     "type": "Button",
                     "id": "c081226d-521d-44f7-ad74-d9f506b2e650",
                     "expectedControlType": "",
@@ -52,7 +52,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Player one bottom Triangle",
+                    "name": "Bottom Triangle",
                     "type": "Button",
                     "id": "8a305bbe-0822-467f-80ea-f64fac1422e9",
                     "expectedControlType": "",
@@ -69,7 +69,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Player one fire",
+                    "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -80,7 +80,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Player one top Circle",
+                    "action": "Top Circle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -91,7 +91,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Player one top Square",
+                    "action": "Top Square",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -102,7 +102,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Player one bottom Circle",
+                    "action": "Bottom Circle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -113,7 +113,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Player one bottom square",
+                    "action": "Bottom Square",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -124,7 +124,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Player one bottom Triangle",
+                    "action": "Bottom Triangle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -1,15 +1,15 @@
-using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Events;
 using UnityEngine.UI;
 using DG.Tweening;
 using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
-    private int[] comboArray; // a combo would be 1 and 2, then 3 and 1 would be another combo. 
-    private int comboStep = 0; // keeps track of the current step in the combo sequence
+    private int[] comboArray;
+    private static HashSet<int> comboStarters;
+    private int comboStep = 0; 
     [HideInInspector] public int comboLength;
     private NavMeshAgent agent;
     private float currentattackCooldown = 0f; // Initialize the cooldown timer
@@ -193,7 +193,17 @@ public class Enemy : MonoBehaviour
         for (int i = 0; i < randArray.Length; i++)
         {
             // Generate 1, 2 or 3 (Random.Range upper bound is exclusive for ints)
-            randArray[i] = Random.Range(1, 4);
+            int randNumber = Random.Range(1, 4);
+
+            if (i == 1)
+            {
+                if (!comboStarters.Contains(randNumber))
+                {
+                    comboStarters.Add(randNumber);
+                }
+            }
+            
+            randArray[i] = randNumber;
         }
 
         return randArray;
