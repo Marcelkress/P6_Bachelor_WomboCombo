@@ -55,9 +55,7 @@ public class Player : MonoBehaviour
             healthBar.fillAmount = (float)currentHealth / health; // Set the initial fill amount of the health bar
             healthText.text = currentHealth.ToString(); // Set the initial health text (optional)
         }
-
-
-
+        
         contentSprite = new Image[healingComboArray.Length]; // Initialize the contentSprite array to match the length of healingComboArray
 
         for (int i = 0; i < healingComboArray.Length; i++)
@@ -89,7 +87,6 @@ public class Player : MonoBehaviour
         private int leftIndex = 0;
     private void HealingSpell()
     {
-
         rightIndex = comboStep * 2 + 1;
         leftIndex = comboStep * 2;
 
@@ -101,7 +98,6 @@ public class Player : MonoBehaviour
         // if fully complete heal player for 1 health and reset combo
         if (comboStep * 2 >= healingComboArray.Length)
         {
-            
             currentHealth += 1; // Heal the player for 1 health
             Debug.Log("Player healed! Current health: " + currentHealth);
 
@@ -114,8 +110,7 @@ public class Player : MonoBehaviour
                 rightIndex = 0; // Reset the right index for the next combo
                 leftIndex = 0; // Reset the left index for the next combo
                 comboStep = 0; // Reset the combo step for the next combo
-
-
+                
                 foreach (Image img in contentSprite)
                 {
                     img.enabled = true; // Re-enable all combo step UI elements for the next combo
@@ -126,10 +121,7 @@ public class Player : MonoBehaviour
 
 
     }
-
     
-
-
     public void TakeDamage(int damage)
     {
         currentHealth -= damage; // Reduce the player's health by the damage amount

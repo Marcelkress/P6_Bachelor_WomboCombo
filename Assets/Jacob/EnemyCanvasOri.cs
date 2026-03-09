@@ -5,8 +5,7 @@ public class EnemyCanvasOri : MonoBehaviour
     private Transform MainCamera; // Reference to the main camera
 
     private RectTransform rectTransform; // Reference to the RectTransform component of the enemy canvas
-
-
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,6 +20,5 @@ public class EnemyCanvasOri : MonoBehaviour
         directionToPlayer.y = 0; // Keep the enemy upright by ignoring the y-axis
 
         rectTransform.rotation = Quaternion.LookRotation(directionToPlayer); // Rotate the enemy canvas to face the player
-
     }
 }

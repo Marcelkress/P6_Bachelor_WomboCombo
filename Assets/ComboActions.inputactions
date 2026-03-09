@@ -1,0 +1,135 @@
+{
+    "version": 1,
+    "name": "ComboActions",
+    "maps": [
+        {
+            "name": "Map",
+            "id": "c91e694b-6b80-45dc-9f78-4324e35ccd4a",
+            "actions": [
+                {
+                    "name": "Player one fire",
+                    "type": "Button",
+                    "id": "cba3b6f9-3a0a-4e65-a6da-db7800f58e38",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Player one top Circle",
+                    "type": "Button",
+                    "id": "aaf274d6-d9eb-4379-821e-889558f8e68a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Player one top Square",
+                    "type": "Button",
+                    "id": "919e21e2-7b26-4522-b97f-7f94e6ceada7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Player one bottom Circle",
+                    "type": "Button",
+                    "id": "db61e7fe-815a-43bf-bd8c-956e534a548a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Player one bottom square",
+                    "type": "Button",
+                    "id": "c081226d-521d-44f7-ad74-d9f506b2e650",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Player one bottom Triangle",
+                    "type": "Button",
+                    "id": "8a305bbe-0822-467f-80ea-f64fac1422e9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e16b78d1-53c9-4a65-8b1b-20556e584f01",
+                    "path": "<Keyboard>/rightShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Player one fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b0d3cae7-301a-4887-ab3a-ec3d8996440e",
+                    "path": "<Keyboard>/o",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Player one top Circle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e57cb1df-294d-45f1-a9e4-2ea5551ea3e8",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Player one top Square",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "02e8985f-a152-436c-bf31-a6d8cc4b7c39",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Player one bottom Circle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "791fcac5-04cc-4fe4-8a41-7d25f83b6dcb",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Player one bottom square",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d9959304-d06c-4764-8557-43d68bfc7935",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Player one bottom Triangle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

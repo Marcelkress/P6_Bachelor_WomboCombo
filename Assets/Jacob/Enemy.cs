@@ -1,71 +1,79 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using DG.Tweening;
+using Random = UnityEngine.Random;
+
 public class Enemy : MonoBehaviour
 {
-   
-    private int[] comboArray = new int[] {  2, 3, 2, 1 ,3, 1 }; // a combo would be 1 and 2, then 3 and 1 would be another combo. 
-    [SerializeField] private int comboStep = 0; // keeps track of the current step in the combo sequence
+    private int[] comboArray; // a combo would be 1 and 2, then 3 and 1 would be another combo. 
+    private int comboStep = 0; // keeps track of the current step in the combo sequence
+    [HideInInspector] public int comboLength;
     private NavMeshAgent agent;
-
-    public GameObject inputUIImage; // reference UI image which should be updated to show the combo array (Should spawn multiple)
-    [SerializeField] private Transform content;
+    private float currentattackCooldown = 0f; // Initialize the cooldown timer
     private Image[] contentSprite;
-
-    public Sprite SquareImage, CircleImage, TriangleImage; // references to the UI images for each button (Square, Circle, Triangle)
-    public Transform player;
-
+    private Transform player;
     private Vector3 targetPoint; // variable to store the closest point on the player's collider
     private BoxCollider playerCollider;
     private Player playerScript; // reference to the Player script to call the TakeDamage method
-
     private GridLayoutGroup gridLayoutGroup; // reference to the GridLayoutGroup component
-
-    // Attack range and damage variables can be added here as needed
-    public int damageAmount = 1; // Example damage amount
-    public float attackCooldown = 1f; // Example cooldown time between attacks
-
-    
-    public MeshRenderer enemyMeshRenderer; // Reference to the enemy's material for visual feedback (e.g., flashing when hit)
- 
     public Material enemyMaterial; // Reference to the enemy's material for visual feedback (e.g., flashing when hit)  
+    public MeshRenderer enemyMeshRenderer; // Reference to the enemy's material for visual feedback (e.g., flashing when hit)
+
+    [Header("Attack")]
+    public int damageAmount = 1; 
+    public float attackCooldown = 1f; 
+    
+    [Header("UI")] 
+    [SerializeField] private Transform content;
+    public Sprite SquareImage, CircleImage, TriangleImage; // references to the UI images for each button (Square, Circle, Triangle)
+    public GameObject inputUIImage; // reference UI image which should be updated to show the combo array (Should spawn multiple)
+    public float shakeDuration;
+    public Vector3 shakeStrength;
+    public float shakeRandomness;
+    public int shakeVibrato;
+
+    private void Awake()
+    {
+        comboArray = RandomArray();
+        InitializeUI();
+        comboLength = comboArray.Length / 2;
+    }
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-{
-    agent = GetComponent<NavMeshAgent>();
-    player = GameObject.FindGameObjectWithTag("Player").transform; // Find the player by tag
-    playerScript = player.GetComponent<Player>();
-    InitializeUI();
+    {
+        agent = GetComponent<NavMeshAgent>();
+        player = GameObject.FindGameObjectWithTag("Player").transform; // Find the player by tag
+        playerScript = player.GetComponent<Player>();
 
-    // find the closest point on the player's collider to the enemy's position and set it as the destination for the NavMeshAgent
-    playerCollider = player.GetComponent<BoxCollider>();
-    targetPoint = playerCollider.ClosestPoint(transform.position);
-    agent.SetDestination(targetPoint);
+        
 
-    // Clone the material so each enemy has its own instance
-    enemyMaterial = new Material(enemyMaterial);
-    enemyMeshRenderer.material = enemyMaterial;
+        // find the closest point on the player's collider to the enemy's position and set it as the destination for the NavMeshAgent
+        playerCollider = player.GetComponent<BoxCollider>();
+        targetPoint = playerCollider.ClosestPoint(transform.position);
+        agent.SetDestination(targetPoint);
 
-    enemyMaterial.SetColor("_LitColor", Random.ColorHSV(0f, 1f, 0.7f, 1f, 0.8f, 1f));
-    Color color = enemyMaterial.GetColor("_LitColor");
-    enemyMaterial.SetColor("_ShadowColor", color * 0.5f);
-}
+        // Clone the material so each enemy has its own instance
+        enemyMaterial = new Material(enemyMaterial);
+        enemyMeshRenderer.material = enemyMaterial;
+
+        enemyMaterial.SetColor("_LitColor", Random.ColorHSV(0f, 1f, 0.7f, 1f, 0.8f, 1f));
+        Color color = enemyMaterial.GetColor("_LitColor");
+        enemyMaterial.SetColor("_ShadowColor", color * 0.5f);
+    }
 
     void Update()
     {
-        DamagePlayer(); // Check if the player is within attack range and apply damage if necessary
+        DamagePlayer();
     }
 
     public void PlayerOneUpdate()
     {
-        
-       
         // Epic Effects
         UpdateUI();
-       
-       
     }
 
     private void InitializeUI()
@@ -78,25 +86,20 @@ public class Enemy : MonoBehaviour
             GameObject uiImage = Instantiate(inputUIImage, content);
 
             // 1 = Square, 2 = Circle, 3 = Triangle (you can customize this mapping as needed)
-
-                switch (comboArray[i])
-                {
-                    case 1:
-                        uiImage.GetComponent<Image>().sprite = SquareImage; // Set the sprite to the Square image
-                        break;
-                    case 2:
-                        uiImage.GetComponent<Image>().sprite = CircleImage; // Set the sprite     to the Circle image
-                        break;
-                    case 3:
-                        uiImage.GetComponent<Image>().sprite = TriangleImage; // Set the sprite to the Triangle image
-                        break;
-
-                }
-
+            switch (comboArray[i])
+            {
+                case 1: 
+                    uiImage.GetComponent<Image>().sprite = SquareImage; // Set the sprite to the Square image
+                    break;
+                case 2:
+                    uiImage.GetComponent<Image>().sprite = CircleImage; // Set the sprite     to the Circle image
+                    break;
+                case 3:
+                    uiImage.GetComponent<Image>().sprite = TriangleImage; // Set the sprite to the Triangle image
+                    break;
+            }
             contentSprite[i] = uiImage.GetComponent<Image>(); // Store the Image component in the contentSprite array
         }
-
-        
     }
 
     private void UpdateUI()
@@ -118,27 +121,26 @@ public class Enemy : MonoBehaviour
         }
 
         Sequence comboStepSequence = DOTween.Sequence();
-
         comboStepSequence.Join(
             contentSprite[leftIndex].transform
-                .DOShakePosition(0.5f, new Vector3(10f, 10f, 10f), 10, 90, false)
+                .DOShakePosition(shakeDuration, shakeStrength, shakeVibrato, shakeRandomness, false)
         );
-
+        
         comboStepSequence.Join(
             contentSprite[rightIndex].transform
-                .DOShakePosition(0.5f, new Vector3(10f, 10f, 10f), 10, 90, false)
+                .DOShakePosition(shakeDuration, shakeStrength, shakeVibrato, shakeRandomness, false)
         );
 
         comboStepSequence.OnComplete(() =>
         {
+            
             contentSprite[leftIndex].enabled = false;
             contentSprite[rightIndex].enabled = false;
 
             comboStep++; // Move to the next step in the combo sequence
             CheckComboCompletion();
+            comboStepSequence.Kill();
         });
-
-        
     }
 
     private void CheckComboCompletion()
@@ -149,20 +151,18 @@ public class Enemy : MonoBehaviour
             Die();
         }
     }
-    float currentattackCooldown = 0f; // Initialize the cooldown timer
 
     private void DamagePlayer()
     {
         if (Vector3.Distance(transform.position, targetPoint) < agent.stoppingDistance)
         {
-             currentattackCooldown -= Time.deltaTime; // Decrease the cooldown timer by the time elapsed since the last frame
+            currentattackCooldown -= Time.deltaTime; // Decrease the cooldown timer by the time elapsed since the last frame
+            
             if (currentattackCooldown <= 0f)
             {
-            
-            Debug.Log("Player Damaged!"); // Player is damaged
-            playerScript.TakeDamage(damageAmount); // Call the TakeDamage method on the player script
-
-            currentattackCooldown = attackCooldown; // Reset the cooldown timer
+                Debug.Log("Player Damaged!"); // Player is damaged
+                playerScript.TakeDamage(damageAmount); // Call the TakeDamage method on the player script
+                currentattackCooldown = attackCooldown; // Reset the cooldown timer
             }
 
         }
@@ -171,7 +171,31 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         Debug.Log("Enemy Defeated!"); // Enemy is defeated
-        // Add any additional logic for enemy defeat here (e.g., play animation, drop loot, etc.)
         Destroy(gameObject); // Destroy the enemy game object
+    }
+
+    [Header("Random Combo Settings")] 
+    [Tooltip("Must be even numbers")]
+    public int minLength;
+    public int maxLength;
+
+    private int[] RandomArray()
+    {
+        int lenght = Random.Range(minLength * 2, maxLength * 2);
+
+        if (lenght % 2 != 0)
+        {
+            lenght += 1;
+        }
+
+        int[] randArray = new int[lenght];
+
+        for (int i = 0; i < randArray.Length; i++)
+        {
+            // Generate 1, 2 or 3 (Random.Range upper bound is exclusive for ints)
+            randArray[i] = Random.Range(1, 4);
+        }
+
+        return randArray;
     }
 }
