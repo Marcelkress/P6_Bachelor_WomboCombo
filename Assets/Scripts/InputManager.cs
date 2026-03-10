@@ -17,8 +17,9 @@ public class InputManager : MonoBehaviour
     private PlayerInfoStruct playerOneCurrent, playerTwoCurrent;
     private bool newInfoPOne, newInfoPTwo;
 
-    public UnityEvent PlayerOneEvent;
-
+    public UnityEvent PlayerOneEvent, PlayerTwoEvent;
+    
+    
     private void Awake()
     {
         if (instance == null)
@@ -61,6 +62,11 @@ public class InputManager : MonoBehaviour
         // Update combo
     }
 
+    public PlayerInfoStruct GetPlayerSymbols(int id)
+    {
+        return id == 1 ? playerOneCurrent : playerTwoCurrent;
+    }
+    
     public void UpdatePlayerInfo(int id, PlayerInfoStruct playerInfoStruct)
     {
         if (id == 1)
