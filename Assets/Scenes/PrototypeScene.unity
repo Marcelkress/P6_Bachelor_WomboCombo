@@ -3644,6 +3644,7 @@ MonoBehaviour:
   - {fileID: 2105295928}
   - {fileID: 20602828}
   - {fileID: 2070347275}
+  theFirstUniqueComboStartStep: 
 --- !u!4 &355277046
 Transform:
   m_ObjectHideFlags: 0
@@ -9555,6 +9556,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
   debug: 0
+  PlayerOneEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &942850527
 Transform:
   m_ObjectHideFlags: 0

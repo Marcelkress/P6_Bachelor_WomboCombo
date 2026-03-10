@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public struct PlayerInfoStruct
 {
@@ -12,9 +13,11 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager instance;
     public bool debug = false;
-        
+    
     private PlayerInfoStruct playerOneCurrent, playerTwoCurrent;
     private bool newInfoPOne, newInfoPTwo;
+
+    public UnityEvent PlayerOneEvent;
 
     private void Awake()
     {
@@ -39,6 +42,7 @@ public class InputManager : MonoBehaviour
                 Debug.Log("new data from p1:");
                 Debug.Log("Top Symbol: " + playerOneCurrent.symbOne.ToString());
                 Debug.Log("Bottom Symbol: " + playerOneCurrent.symbTwo.ToString());
+                PlayerOneEvent.Invoke();
             }
         }
 
@@ -53,6 +57,8 @@ public class InputManager : MonoBehaviour
                 Debug.Log("Bottom Symbol: " + playerTwoCurrent.symbTwo.ToString());
             }
         }
+        
+        // Update combo
     }
 
     public void UpdatePlayerInfo(int id, PlayerInfoStruct playerInfoStruct)

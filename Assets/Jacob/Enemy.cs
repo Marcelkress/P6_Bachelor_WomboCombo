@@ -20,7 +20,9 @@ public class Enemy : MonoBehaviour
     private Player playerScript; // reference to the Player script to call the TakeDamage method
     private GridLayoutGroup gridLayoutGroup; // reference to the GridLayoutGroup component
     public Material enemyMaterial; // Reference to the enemy's material for visual feedback (e.g., flashing when hit)  
-    public MeshRenderer enemyMeshRenderer; // Reference to the enemy's material for visual feedback (e.g., flashing when hit)
+    public MeshRenderer enemyMeshRenderer;
+    private static bool globalComboStarted;
+    private bool localComboStarted;
 
     [Header("Attack")]
     public int damageAmount = 1; 
@@ -74,6 +76,11 @@ public class Enemy : MonoBehaviour
     {
         // Epic Effects
         UpdateUI();
+    }
+
+    public void UpdateCombo()
+    {
+        
     }
 
     private void InitializeUI()
