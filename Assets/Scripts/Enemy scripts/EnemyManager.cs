@@ -5,6 +5,7 @@ public class EnemyManager : MonoBehaviour
 {
     public GameObject enemyUnitPrefab;
     [Tooltip("Also determines the enemy count")] public Transform[] spawnPositions;
+    public int[] theFirstUniqueComboStartStep;
     
     private List<GameObject> Enemies;
     
@@ -23,6 +24,7 @@ public class EnemyManager : MonoBehaviour
         for (int i = 0; i < spawnCount; i++)
         {
             GameObject enemy = Instantiate(enemyUnitPrefab, spawnPositions[i].position, spawnPositions[i].rotation);
+
             Enemies.Add(enemy);
         }
     }
