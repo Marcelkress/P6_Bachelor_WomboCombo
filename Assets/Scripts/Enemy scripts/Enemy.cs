@@ -8,7 +8,6 @@ using Random = UnityEngine.Random;
 public class Enemy : MonoBehaviour
 {
     public int[] comboArray;
-    private static HashSet<int> comboStarters;
     private int comboStep = 0; 
     [HideInInspector] public int comboLength;
     private NavMeshAgent agent;
@@ -44,8 +43,6 @@ public class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform; // Find the player by tag
         playerScript = player.GetComponent<Player>();
-
-        
 
         // find the closest point on the player's collider to the enemy's position and set it as the destination for the NavMeshAgent
         playerCollider = player.GetComponent<BoxCollider>();
