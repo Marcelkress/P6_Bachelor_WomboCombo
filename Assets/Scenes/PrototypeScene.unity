@@ -9575,7 +9575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fb2a53cdf0814fcab5d2ba15b316a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
-  debug: 0
+  debug: 1
   PlayerOneEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -14810,27 +14810,99 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1393209277}
+        m_TargetAssemblyTypeName: PlayerComboInput, Assembly-CSharp
+        m_MethodName: OnFire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: d9725019-1fd9-48e3-b1fe-5dc4205d6f2b
     m_ActionName: 'Player two/Fire[/Keyboard/leftShift]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1393209277}
+        m_TargetAssemblyTypeName: PlayerComboInput, Assembly-CSharp
+        m_MethodName: OnTopTriangle
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: e72d8ca8-a182-4d86-bed6-9e98b87dd534
     m_ActionName: 'Player two/Top Triangle[/Keyboard/e]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1393209277}
+        m_TargetAssemblyTypeName: PlayerComboInput, Assembly-CSharp
+        m_MethodName: OnTopSquare
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: a938a81d-6b24-40a2-8db9-8a9146c4f4fe
     m_ActionName: 'Player two/Top Square[/Keyboard/r]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1393209277}
+        m_TargetAssemblyTypeName: PlayerComboInput, Assembly-CSharp
+        m_MethodName: OnBottomCircle
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: a6b6de45-7f12-4716-a586-58d2f14e817e
     m_ActionName: 'Player two/Bottom Circle[/Keyboard/s]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1393209277}
+        m_TargetAssemblyTypeName: PlayerComboInput, Assembly-CSharp
+        m_MethodName: OnBottomSquare
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 5da97158-5214-47b8-8491-193dca4829ff
     m_ActionName: 'Player two/Bottom Square[/Keyboard/d]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1393209277}
+        m_TargetAssemblyTypeName: PlayerComboInput, Assembly-CSharp
+        m_MethodName: OnBottomTriangle
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: f1448588-d4b3-4753-bfc2-45bf0a153620
     m_ActionName: 'Player two/Bottom Triangle[/Keyboard/f]'
   m_NeverAutoSwitchControlSchemes: 0

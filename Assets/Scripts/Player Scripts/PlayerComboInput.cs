@@ -10,10 +10,8 @@ public class PlayerComboInput : MonoBehaviour
         Player2 = 2
     }
     
-
     public Player playerID;
     private PlayerInfoStruct playerInfoStruct;
-    
 
     [Header("Symbol values")] public int triangle = 1;
     public int square = 2, circle = 3;
