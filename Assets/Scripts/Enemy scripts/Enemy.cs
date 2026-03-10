@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
-    public int[] comboArray;
+    [HideInInspector] public int[] comboArray;
     private int comboStep = 0; 
     [HideInInspector] public int comboLength;
     private NavMeshAgent agent;
