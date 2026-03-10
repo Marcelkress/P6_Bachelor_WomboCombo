@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public struct PlayerInfoStruct
 {
@@ -8,7 +9,6 @@ public struct PlayerInfoStruct
     public int symbTwo;
     public bool newData;
 }
-
 public class InputManager : MonoBehaviour
 {
     public static InputManager instance;
@@ -18,7 +18,6 @@ public class InputManager : MonoBehaviour
     private bool newInfoPOne, newInfoPTwo;
 
     public UnityEvent PlayerOneEvent, PlayerTwoEvent;
-    
     
     private void Awake()
     {
@@ -37,19 +36,20 @@ public class InputManager : MonoBehaviour
         if (playerOneCurrent.newData)
         {
             playerOneCurrent.newData = false;
+            PlayerOneEvent.Invoke();
 
             if (debug)
             {
                 Debug.Log("new data from p1:");
                 Debug.Log("Top Symbol: " + playerOneCurrent.symbOne.ToString());
                 Debug.Log("Bottom Symbol: " + playerOneCurrent.symbTwo.ToString());
-                PlayerOneEvent.Invoke();
             }
         }
 
         if (playerTwoCurrent.newData)
         {
             playerTwoCurrent.newData = false;
+            PlayerTwoEvent.Invoke();
 
             if (debug)
             {

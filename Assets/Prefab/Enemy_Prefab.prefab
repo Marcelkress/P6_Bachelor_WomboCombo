@@ -245,7 +245,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7699476655380780971}
         m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
-        m_MethodName: PlayerOneUpdate
+        m_MethodName: CheatComboStep
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

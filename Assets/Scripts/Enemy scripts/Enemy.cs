@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -8,7 +7,7 @@ using Random = UnityEngine.Random;
 public class Enemy : MonoBehaviour
 {
     public int[] comboArray;
-    private int comboStep = 0; 
+    [SerializeField] private int comboStep = 0; 
     [HideInInspector] public int comboLength;
     private NavMeshAgent agent;
     private float currentattackCooldown = 0f; // Initialize the cooldown timer
@@ -20,6 +19,8 @@ public class Enemy : MonoBehaviour
     private GridLayoutGroup gridLayoutGroup; // reference to the GridLayoutGroup component
     public Material enemyMaterial; // Reference to the enemy's material for visual feedback (e.g., flashing when hit)  
     public MeshRenderer enemyMeshRenderer;
+    
+    // ComboCheck
     private static bool globalComboStarted;
     private bool localComboStarted;
 
@@ -36,6 +37,7 @@ public class Enemy : MonoBehaviour
     public float shakeRandomness;
     public int shakeVibrato;
 
+    private PlayerInfoStruct info;
  
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -59,8 +61,10 @@ public class Enemy : MonoBehaviour
 
         comboLength = comboArray.Length / 2;
         InitializeUI(); 
+        
+        InputManager.instance.PlayerOneEvent.AddListener(PlayerOneUpdate);
+        InputManager.instance.PlayerTwoEvent.AddListener(PlayerTwoUpdate);
     }
-
     void Update()
     {
         DamagePlayer();
@@ -68,14 +72,49 @@ public class Enemy : MonoBehaviour
 
     public void PlayerOneUpdate()
     {
-        // Epic Effects
-        UpdateUI();
+        info = InputManager.instance.GetPlayerSymbols(1);
+        CompareCombo();
+    }
+    public void PlayerTwoUpdate()
+    {
+        info = InputManager.instance.GetPlayerSymbols(2);
+        CompareCombo();
     }
 
-    public void UpdateCombo()
+    private void CompareCombo()
     {
+        if (localComboStarted == false)
+        {
+            if (globalComboStarted)
+            {
+                return;
+            }
+        }
         
+        Debug.Log("ComboStep: " + comboStep);
+        Debug.Log("Array symb one: " + comboArray[comboStep]);
+        Debug.Log("Array symb two: " + comboArray[comboStep + 1]);
+        
+        if (info.symbOne == comboArray[comboStep] && info.symbTwo == comboArray[comboStep + 1])
+        {
+            localComboStarted = true;
+            globalComboStarted = true;
+            UpdateUI();
+            comboStep += 2;
+
+            GetComponentInChildren<Canvas>().sortingOrder = 100;
+            
+            // Epic effects
+            
+            if (comboStep >= comboArray.Length)
+            {
+                Die();
+                localComboStarted = false;
+                globalComboStarted = false;
+            }
+        }
     }
+    
 
     private void InitializeUI()
     {
@@ -90,55 +129,61 @@ public class Enemy : MonoBehaviour
             switch (comboArray[i])
             {
                 case 1: 
-                    uiImage.GetComponent<Image>().sprite = SquareImage; // Set the sprite to the Square image
+                    uiImage.GetComponent<Image>().sprite = TriangleImage; // Set the sprite to the Square image
                     break;
                 case 2:
-                    uiImage.GetComponent<Image>().sprite = CircleImage; // Set the sprite     to the Circle image
+                    uiImage.GetComponent<Image>().sprite = SquareImage; // Set the sprite     to the Circle image
                     break;
                 case 3:
-                    uiImage.GetComponent<Image>().sprite = TriangleImage; // Set the sprite to the Triangle image
+                    uiImage.GetComponent<Image>().sprite = CircleImage; // Set the sprite to the Triangle image
                     break;
             }
             contentSprite[i] = uiImage.GetComponent<Image>(); // Store the Image component in the contentSprite array
         }
     }
 
+    public void CheatComboStep()
+    {
+        UpdateUI();
+        comboStep += 2;
+    }
+
     private void UpdateUI()
     {
        // animate the UI elements with shake effect and then disable the current combo step's UI elements
-        int rightIndex = comboStep * 2 + 1;
-        int leftIndex = comboStep * 2;
+        int top = comboStep;
+        int bottom = comboStep + 1;
 
         // If we've already consumed all combo inputs, complete immediately.
-        if (leftIndex >= comboArray.Length)
+        if (bottom >= comboArray.Length)
         {
             CheckComboCompletion();
             return;
         }
 
-        if (leftIndex >= contentSprite.Length || rightIndex >= contentSprite.Length)
+        if (bottom >= contentSprite.Length || top >= contentSprite.Length)
         {
             return;
         }
 
         Sequence comboStepSequence = DOTween.Sequence();
         comboStepSequence.Join(
-            contentSprite[leftIndex].transform
+            contentSprite[bottom].transform
                 .DOShakePosition(shakeDuration, shakeStrength, shakeVibrato, shakeRandomness, false)
         );
         
         comboStepSequence.Join(
-            contentSprite[rightIndex].transform
+            contentSprite[top].transform
                 .DOShakePosition(shakeDuration, shakeStrength, shakeVibrato, shakeRandomness, false)
         );
 
         comboStepSequence.OnComplete(() =>
         {
             
-            contentSprite[leftIndex].enabled = false;
-            contentSprite[rightIndex].enabled = false;
+            contentSprite[bottom].enabled = false;
+            contentSprite[top].enabled = false;
 
-            comboStep++; // Move to the next step in the combo sequence
+            //comboStep++; // Move to the next step in the combo sequence
             CheckComboCompletion();
             comboStepSequence.Kill();
         });
@@ -146,7 +191,7 @@ public class Enemy : MonoBehaviour
 
     private void CheckComboCompletion()
     {
-        int totalSteps = comboArray.Length / 2;
+        int totalSteps = comboArray.Length;
         if (comboStep >= totalSteps)
         {
             Die();

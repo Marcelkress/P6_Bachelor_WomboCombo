@@ -12,63 +12,78 @@ public class PlayerComboInput : MonoBehaviour
     
     public Player playerID;
     private PlayerInfoStruct playerInfoStruct;
-
+    private PlayerInput input;
+    
     [Header("Symbol values")] public int triangle = 1;
     public int square = 2, circle = 3;
+
+    private static bool taken;
     
-    public void OnFire(InputAction.CallbackContext context)
+    private void Awake()
     {
-        if (context.canceled)
+        input = GetComponent<PlayerInput>();
+        if (taken)
         {
-            InputManager.instance.UpdatePlayerInfo((int)playerID, playerInfoStruct);
+            playerID = Player.Player2;
+            gameObject.tag = "PlayerTwo";
+            input.SwitchCurrentActionMap("Player two");
+            //Debug.Log(GetComponent<PlayerInput>().currentActionMap.name);
+        }
+        else
+        {
+            playerID = Player.Player1;
+            gameObject.tag = "PlayerOne";
+            taken = true;
         }
     }
 
-    public void OnTopCircle(InputAction.CallbackContext context)
+    public PlayerInfoStruct GetSymbolUpdate()
     {
-        if (context.started)
-        {
-            playerInfoStruct.symbOne = circle;
-        }
+        return playerInfoStruct;
+    }
+    
+    public void OnFire()
+    {
+        InputManager.instance.UpdatePlayerInfo((int)playerID, playerInfoStruct);
+    }
+    
+    public void OnTopCircle()
+    {
+        playerInfoStruct.symbOne = circle;
     }
 
-    public void OnTopSquare(InputAction.CallbackContext context)
+    public void OnTopSquare()
     {
-        if (context.started)
-        {
+        
             playerInfoStruct.symbOne = square;
-        }
+        
     }
 
-    public void OnTopTriangle(InputAction.CallbackContext context)
+    public void OnTopTriangle()
     {
-        if (context.started)
-        {
+        
             playerInfoStruct.symbOne = triangle;
-        }
+        
     }
 
-    public void OnBottomCircle(InputAction.CallbackContext context)
+    public void OnBottomCircle()
     {
-        if (context.started)
-        {
+        
             playerInfoStruct.symbTwo = circle;
-        }
+        
     }
 
-    public void OnBottomSquare(InputAction.CallbackContext context)
+    public void OnBottomSquare()
     {
-        if (context.started)
-        {
+        
             playerInfoStruct.symbTwo = square;
-        }
+        
     }
 
-    public void OnBottomTriangle(InputAction.CallbackContext context)
+    public void OnBottomTriangle()
     {
-        if (context.started)
-        {
+        
             playerInfoStruct.symbTwo = triangle;
-        }
+        
     }
 }

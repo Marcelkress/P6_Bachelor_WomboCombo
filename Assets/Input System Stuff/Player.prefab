@@ -1,0 +1,129 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6106739392811833873
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3211729422563611321}
+  - component: {fileID: 2160536446892046927}
+  - component: {fileID: 3437328400859991661}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3211729422563611321
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6106739392811833873}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2160536446892046927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6106739392811833873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: e4799b43c41704288be9e50ba03b9ff4, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: cba3b6f9-3a0a-4e65-a6da-db7800f58e38
+    m_ActionName: 'Player one/Fire[/Keyboard/rightShift,/DualShock4GamepadHID/rightTrigger,/DualSenseGamepadHID/rightTrigger]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: aaf274d6-d9eb-4379-821e-889558f8e68a
+    m_ActionName: 'Player one/Top Circle[/Keyboard/o,/DualShock4GamepadHID/dpad/up,/DualSenseGamepadHID/dpad/up]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 919e21e2-7b26-4522-b97f-7f94e6ceada7
+    m_ActionName: 'Player one/Top Square[/Keyboard/i,/DualShock4GamepadHID/dpad/left,/DualSenseGamepadHID/dpad/left]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: db61e7fe-815a-43bf-bd8c-956e534a548a
+    m_ActionName: 'Player one/Bottom Circle[/Keyboard/l,/DualShock4GamepadHID/buttonEast,/DualSenseGamepadHID/buttonEast]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c081226d-521d-44f7-ad74-d9f506b2e650
+    m_ActionName: 'Player one/Bottom Square[/Keyboard/k,/DualShock4GamepadHID/buttonWest,/DualSenseGamepadHID/buttonWest]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8a305bbe-0822-467f-80ea-f64fac1422e9
+    m_ActionName: 'Player one/Bottom Triangle[/Keyboard/j,/DualShock4GamepadHID/buttonNorth,/DualSenseGamepadHID/buttonNorth]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 300fded3-7402-4047-b65e-1bb586a51d18
+    m_ActionName: 'Player two/Fire[/Keyboard/leftShift,/DualShock4GamepadHID/rightTrigger,/DualSenseGamepadHID/rightTrigger]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2a370a6b-a388-4d56-8436-b991572277b5
+    m_ActionName: 'Player two/Top Triangle[/Keyboard/e,/DualShock4GamepadHID/dpad/up,/DualSenseGamepadHID/dpad/up]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c8878793-3acc-47c6-bfd2-cf397e195627
+    m_ActionName: 'Player two/Top Square[/Keyboard/r,/DualShock4GamepadHID/dpad/left,/DualSenseGamepadHID/dpad/left]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 46938d75-af7f-4b6a-b568-5eb67a8ced5e
+    m_ActionName: 'Player two/Bottom Circle[/Keyboard/s,/DualShock4GamepadHID/buttonEast,/DualSenseGamepadHID/buttonEast]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0cc65dad-c8e9-4bfa-ba99-cb40814c6a32
+    m_ActionName: 'Player two/Bottom Square[/Keyboard/d,/DualShock4GamepadHID/buttonWest,/DualSenseGamepadHID/buttonWest]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c1449e4f-89c4-4803-aac7-2958ee480e89
+    m_ActionName: 'Player two/Bottom Triangle[/Keyboard/f,/DualShock4GamepadHID/buttonNorth,/DualSenseGamepadHID/buttonNorth]'
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player one
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &3437328400859991661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6106739392811833873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb465e22c58f4905a509673119f34e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerComboInput
+  playerID: 1
+  triangle: 1
+  square: 2
+  circle: 3
