@@ -67,5 +67,12 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "P6_Bachelor_WomboCombo.slnx"
+    "dotnet.defaultSolution": "P6_Bachelor_WomboCombo.slnx",
+    "editor.codeActionWidget.includeNearbyQuickFixes": false,
+    "editor.quickSuggestions": {
+        
+        "other": "off",
+        "comments": "off",
+        "strings": "off"
+    }
 }

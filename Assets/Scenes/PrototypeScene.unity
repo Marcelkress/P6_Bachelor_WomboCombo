@@ -3644,7 +3644,8 @@ MonoBehaviour:
   - {fileID: 2105295928}
   - {fileID: 20602828}
   - {fileID: 2070347275}
-  theFirstUniqueComboStartStep: 
+  minLength: 2
+  maxLength: 6
 --- !u!4 &355277046
 Transform:
   m_ObjectHideFlags: 0

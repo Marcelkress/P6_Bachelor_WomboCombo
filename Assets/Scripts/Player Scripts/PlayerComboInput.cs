@@ -5,13 +5,15 @@ using UnityEngine.InputSystem;
 public class PlayerComboInput : MonoBehaviour
 {
     public enum Player
-    {
+    {   
         Player1 = 1,
         Player2 = 2
     }
+    
 
     public Player playerID;
     private PlayerInfoStruct playerInfoStruct;
+    
 
     [Header("Symbol values")] public int triangle = 1;
     public int square = 2, circle = 3;

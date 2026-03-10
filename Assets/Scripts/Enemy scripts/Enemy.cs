@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
-    private int[] comboArray;
+    public int[] comboArray;
     private static HashSet<int> comboStarters;
     private int comboStep = 0; 
     [HideInInspector] public int comboLength;
@@ -37,13 +37,7 @@ public class Enemy : MonoBehaviour
     public float shakeRandomness;
     public int shakeVibrato;
 
-    private void Awake()
-    {
-        comboArray = RandomArray();
-        InitializeUI();
-        comboLength = comboArray.Length / 2;
-    }
-    
+ 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -65,6 +59,9 @@ public class Enemy : MonoBehaviour
         enemyMaterial.SetColor("_LitColor", Random.ColorHSV(0f, 1f, 0.7f, 1f, 0.8f, 1f));
         Color color = enemyMaterial.GetColor("_LitColor");
         enemyMaterial.SetColor("_ShadowColor", color * 0.5f);
+
+        comboLength = comboArray.Length / 2;
+        InitializeUI(); 
     }
 
     void Update()
@@ -156,6 +153,7 @@ public class Enemy : MonoBehaviour
         if (comboStep >= totalSteps)
         {
             Die();
+            
         }
     }
 
@@ -181,38 +179,5 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject); // Destroy the enemy game object
     }
 
-    [Header("Random Combo Settings")] 
-    [Tooltip("Must be even numbers")]
-    public int minLength;
-    public int maxLength;
-
-    private int[] RandomArray()
-    {
-        int lenght = Random.Range(minLength * 2, maxLength * 2);
-
-        if (lenght % 2 != 0)
-        {
-            lenght += 1;
-        }
-
-        int[] randArray = new int[lenght];
-
-        for (int i = 0; i < randArray.Length; i++)
-        {
-            // Generate 1, 2 or 3 (Random.Range upper bound is exclusive for ints)
-            int randNumber = Random.Range(1, 4);
-
-            if (i == 1)
-            {
-                if (!comboStarters.Contains(randNumber))
-                {
-                    comboStarters.Add(randNumber);
-                }
-            }
-            
-            randArray[i] = randNumber;
-        }
-
-        return randArray;
-    }
+    
 }
