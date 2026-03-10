@@ -3646,10 +3646,22 @@ MonoBehaviour:
   - {fileID: 2070347275}
   theFirstUniqueComboStartSteps:
   - symbOne: 1
-    symbTwo: 2
-  - symbOne: 1
     symbTwo: 1
   - symbOne: 1
+    symbTwo: 2
+  - symbOne: 1
+    symbTwo: 3
+  - symbOne: 2
+    symbTwo: 1
+  - symbOne: 2
+    symbTwo: 2
+  - symbOne: 2
+    symbTwo: 3
+  - symbOne: 3
+    symbTwo: 1
+  - symbOne: 3
+    symbTwo: 2
+  - symbOne: 3
     symbTwo: 3
   minLength: 2
   maxLength: 6

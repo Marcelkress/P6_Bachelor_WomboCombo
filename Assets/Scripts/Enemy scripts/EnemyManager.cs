@@ -37,15 +37,13 @@ public class EnemyManager : MonoBehaviour
             
             // Først helt random Combo Array for hver enemy
             enemyScript.comboArray = RandomArray();
+            
+            int randNum = Random.Range(1, theFirstUniqueComboStartSteps.Count);
 
-            // Derefter sikre at de første 2 symboler er unikke for hver enemy
-            enemyScript.comboArray[0] = theFirstUniqueComboStartSteps[i].symbOne;
-            enemyScript.comboArray[1] = theFirstUniqueComboStartSteps[i].symbTwo;
-            
-            
-            enemyScript.comboArray[0] = theFirstUniqueComboStartSteps[i].symbOne;
-            enemyScript.comboArray[1] = theFirstUniqueComboStartSteps[i].symbTwo;
-            
+            enemyScript.comboArray[0] = theFirstUniqueComboStartSteps[randNum].symbOne;
+            enemyScript.comboArray[1] = theFirstUniqueComboStartSteps[randNum].symbTwo;
+
+            theFirstUniqueComboStartSteps.RemoveAt(randNum);
         }
     }
 
@@ -64,6 +62,11 @@ public class EnemyManager : MonoBehaviour
         }
 
         int[] randArray = new int[lenght];
+
+        for (int i = 0; i < randArray.Length; i++)
+        {
+            randArray[i] = Random.Range(1, 3);
+        }
 
         return randArray;
     }

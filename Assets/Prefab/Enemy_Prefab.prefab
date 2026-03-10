@@ -243,7 +243,7 @@ MonoBehaviour:
   ClickEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1144782781851350160}
+      - m_Target: {fileID: 7699476655380780971}
         m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
         m_MethodName: PlayerOneUpdate
         m_Mode: 1
@@ -339,8 +339,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1293578875019957475}
-  - component: {fileID: 1144782781851350160}
   - component: {fileID: 6469125551190941629}
+  - component: {fileID: 7699476655380780971}
   m_Layer: 0
   m_Name: Enemy_Prefab
   m_TagString: Untagged
@@ -365,34 +365,6 @@ Transform:
   - {fileID: 1692956462388031181}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1144782781851350160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5637198596201364861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c17eac77738b102f91f1c181df65ced, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  comboLength: 0
-  enemyMaterial: {fileID: 2100000, guid: 12f0f1e14c2165f478965f1d735e3efa, type: 2}
-  enemyMeshRenderer: {fileID: 3978854120457980880}
-  damageAmount: 1
-  attackCooldown: 1.2
-  content: {fileID: 3608603056928829360}
-  SquareImage: {fileID: -1722939174, guid: d0e4dc33cce174bb0bf5eabc1e1abc01, type: 3}
-  CircleImage: {fileID: -718851729, guid: 57c2c16bbbc044bcd833785db20554eb, type: 3}
-  TriangleImage: {fileID: 141794624, guid: 37a69eea3b5e8499cb8e86513af5f288, type: 3}
-  inputUIImage: {fileID: 2801047422575945081, guid: d3bccf7ea48d814a9826b9aa5fae0db5, type: 3}
-  shakeDuration: 0.5
-  shakeStrength: {x: 25, y: 25, z: 25}
-  shakeRandomness: 10
-  shakeVibrato: 10
-  minLength: 2
-  maxLength: 3
 --- !u!195 &6469125551190941629
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -415,6 +387,33 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &7699476655380780971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5637198596201364861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0745ed36143c4e5bafaa834dc9195fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  comboArray: 
+  comboLength: 0
+  enemyMaterial: {fileID: 2100000, guid: 12f0f1e14c2165f478965f1d735e3efa, type: 2}
+  enemyMeshRenderer: {fileID: 3978854120457980880}
+  damageAmount: 1
+  attackCooldown: 1
+  content: {fileID: 3608603056928829360}
+  SquareImage: {fileID: -1722939174, guid: d0e4dc33cce174bb0bf5eabc1e1abc01, type: 3}
+  CircleImage: {fileID: -718851729, guid: 57c2c16bbbc044bcd833785db20554eb, type: 3}
+  TriangleImage: {fileID: 141794624, guid: 37a69eea3b5e8499cb8e86513af5f288, type: 3}
+  inputUIImage: {fileID: 2801047422575945081, guid: d3bccf7ea48d814a9826b9aa5fae0db5, type: 3}
+  shakeDuration: 0.2
+  shakeStrength: {x: 25, y: 25, z: 25}
+  shakeRandomness: 10
+  shakeVibrato: 10
 --- !u!1 &7023681703319869120
 GameObject:
   m_ObjectHideFlags: 0
