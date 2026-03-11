@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -45,6 +47,32 @@ public class PlayerComboInput : MonoBehaviour
     public void OnFire()
     {
         InputManager.instance.UpdatePlayerInfo((int)playerID, playerInfoStruct);
+    }
+
+    public void OnTopCycle(InputValue value)
+    {
+        var val = value.Get<Vector2>();
+
+        if (val.x == 1 && canChange)
+        {
+            playerInfoStruct.symbOne += 1;
+
+            if (playerInfoStruct.symbOne > 3)
+            {
+                playerInfoStruct.symbOne = 1;
+            }
+
+            canChange = false;
+            StartCoroutine(Wait());
+        }
+    }
+
+    public float waitTime = 0.5f;
+    private bool canChange = true;
+    private IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(waitTime);
+        canChange = true;
     }
     
     public void OnTopCircle()

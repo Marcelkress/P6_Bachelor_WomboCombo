@@ -3811,11 +3811,6 @@ MonoBehaviour:
   enemyUnitPrefab: {fileID: 5637198596201364861, guid: 178cc0fb6666a3cd8991a4e3707ee07b, type: 3}
   spawnPositions:
   - {fileID: 154330655}
-  - {fileID: 1697118731}
-  - {fileID: 541723010}
-  - {fileID: 2105295928}
-  - {fileID: 20602828}
-  - {fileID: 2070347275}
   theFirstUniqueComboStartSteps:
   - symbOne: 1
     symbTwo: 1
@@ -9823,7 +9818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fb2a53cdf0814fcab5d2ba15b316a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
-  debug: 1
+  debug: 0
   PlayerOneEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -10976,7 +10971,7 @@ GameObject:
   - component: {fileID: 1038895978}
   - component: {fileID: 1038895977}
   m_Layer: 5
-  m_Name: Panel P1 (1)
+  m_Name: Panel P2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

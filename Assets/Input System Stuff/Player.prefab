@@ -127,3 +127,4 @@ MonoBehaviour:
   triangle: 1
   square: 2
   circle: 3
+  waitTime: 0.1

@@ -7,7 +7,8 @@ using Random = UnityEngine.Random;
 public class Enemy : MonoBehaviour
 {
     public int[] comboArray;
-    [SerializeField] private int comboStep = 0; 
+    [SerializeField] private int comboStep = 0;
+    private int uiComboStep;
     [HideInInspector] public int comboLength;
     private NavMeshAgent agent;
     private float currentattackCooldown = 0f; // Initialize the cooldown timer
@@ -19,7 +20,8 @@ public class Enemy : MonoBehaviour
     private GridLayoutGroup gridLayoutGroup; // reference to the GridLayoutGroup component
     public Material enemyMaterial; // Reference to the enemy's material for visual feedback (e.g., flashing when hit)  
     public MeshRenderer enemyMeshRenderer;
-    
+
+    public bool debug = false;
     // ComboCheck
     private static bool globalComboStarted;
     private bool localComboStarted;
@@ -37,7 +39,7 @@ public class Enemy : MonoBehaviour
     public float shakeRandomness;
     public int shakeVibrato;
 
-    private PlayerInfoStruct info;
+    private PlayerInfoStruct playerOneInfo, playerTwoInfo;
  
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -65,23 +67,61 @@ public class Enemy : MonoBehaviour
         InputManager.instance.PlayerOneEvent.AddListener(PlayerOneUpdate);
         InputManager.instance.PlayerTwoEvent.AddListener(PlayerTwoUpdate);
     }
-    void Update()
-    {
-        DamagePlayer();
-    }
 
     public void PlayerOneUpdate()
     {
-        info = InputManager.instance.GetPlayerSymbols(1);
-        CompareCombo();
+        playerOneInfo = InputManager.instance.GetPlayerSymbols(1);
+        CompareCombo(1);
     }
     public void PlayerTwoUpdate()
     {
-        info = InputManager.instance.GetPlayerSymbols(2);
-        CompareCombo();
+        playerTwoInfo = InputManager.instance.GetPlayerSymbols(2);
+        CompareCombo(2);
     }
 
-    private void CompareCombo()
+    private float timer;
+    public float squareSuccessWindow = 0.5f;
+    public bool startTimer, pOneSquare, pTwoSquare;
+    
+    
+    void Update()
+    {
+        DamagePlayer();
+
+        if (startTimer)
+        {
+            timer += Time.deltaTime;
+            
+            if (pOneSquare == true && pTwoSquare == true) // both players pressed within the window
+            {
+                if (timer < squareSuccessWindow) // only succeed if still within the time window
+                {
+                    comboStep += 2;
+                    playerScript.ShootFireball(this.transform, this.gameObject);
+                    Debug.Log("Shooting from update");
+                }
+                else
+                {
+                    Debug.Log("Too slow - resetting");
+                }
+                
+                timer = 0;
+                startTimer = false;
+                pOneSquare = false;
+                pTwoSquare = false;
+            }
+            else if (timer >= squareSuccessWindow)
+            {
+                Debug.Log("Resetting after time");
+                timer = 0;
+                startTimer = false;
+                pOneSquare = false;
+                pTwoSquare = false;
+            }
+        }
+    }
+    
+    private void CompareCombo(int id)
     {
         if (localComboStarted == false)
         {
@@ -90,32 +130,57 @@ public class Enemy : MonoBehaviour
                 return;
             }
         }
-        
-        Debug.Log("ComboStep: " + comboStep);
-        Debug.Log("Array symb one: " + comboArray[comboStep]);
-        Debug.Log("Array symb two: " + comboArray[comboStep + 1]);
-        
-        if (info.symbOne == comboArray[comboStep] && info.symbTwo == comboArray[comboStep + 1])
+
+        if (debug)
         {
-            localComboStarted = true;   
+            Debug.Log("ComboStep: " + comboStep);
+            Debug.Log("Array symb one: " + comboArray[comboStep]);
+            Debug.Log("Array symb two: " + comboArray[comboStep + 1]);
+        }
+
+            // If either player one or player two symbols are correct continue
+        if ((playerOneInfo.symbOne == comboArray[comboStep] && playerOneInfo.symbTwo == comboArray[comboStep + 1])
+            || (playerTwoInfo.symbOne == comboArray[comboStep] && playerTwoInfo.symbTwo == comboArray[comboStep + 1]))
+        {
+            Debug.Log(comboStep);
+
+            if (comboArray[comboStep] == 2) // If the top symbol is square
+            {
+                if (playerOneInfo.symbOne == comboArray[comboStep] && id == 1)
+                    pOneSquare = true;
+
+                if(playerTwoInfo.symbOne == comboArray[comboStep] && id == 2)
+                    pTwoSquare = true;
+
+                startTimer = true;
+
+                Debug.Log("returning");
+
+                return;
+            }
+
+            Debug.Log("Shooting from Method");
+
+            localComboStarted = true;
             globalComboStarted = true;
+
             playerScript.ShootFireball(this.transform, this.gameObject); // Enemies are the only one that knows that they can be hit therefor is also the ones telling when the fireball should go off.
             //UpdateUI(); Vi opdatere istedet når fireball rammer enemy
+
             comboStep += 2;
 
             GetComponentInChildren<Canvas>().sortingOrder = 100;
-            
-            // Epic effects
-            
+
             if (comboStep >= comboArray.Length)
             {
-                Die();
                 localComboStarted = false;
                 globalComboStarted = false;
             }
         }
     }
-    
+
+
+
 
     private void InitializeUI()
     {
@@ -152,13 +217,14 @@ public class Enemy : MonoBehaviour
     public void UpdateUI()
     {
        // animate the UI elements with shake effect and then disable the current combo step's UI elements
-        int top = comboStep;
-        int bottom = comboStep + 1;
+        int top = uiComboStep;
+        int bottom = uiComboStep + 1;
+
+        uiComboStep += 2;
 
         // If we've already consumed all combo inputs, complete immediately.
         if (bottom >= comboArray.Length)
         {
-            CheckComboCompletion();
             return;
         }
 
@@ -193,10 +259,9 @@ public class Enemy : MonoBehaviour
     private void CheckComboCompletion()
     {
         int totalSteps = comboArray.Length;
-        if (comboStep >= totalSteps)
+        if (uiComboStep >= totalSteps)
         {
             Die();
-            
         }
     }
 
