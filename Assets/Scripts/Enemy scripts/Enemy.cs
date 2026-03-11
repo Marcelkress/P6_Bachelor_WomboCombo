@@ -97,9 +97,10 @@ public class Enemy : MonoBehaviour
         
         if (info.symbOne == comboArray[comboStep] && info.symbTwo == comboArray[comboStep + 1])
         {
-            localComboStarted = true;
+            localComboStarted = true;   
             globalComboStarted = true;
-            UpdateUI();
+            playerScript.ShootFireball(this.transform, this.gameObject); // Enemies are the only one that knows that they can be hit therefor is also the ones telling when the fireball should go off.
+            //UpdateUI(); Vi opdatere istedet når fireball rammer enemy
             comboStep += 2;
 
             GetComponentInChildren<Canvas>().sortingOrder = 100;
@@ -148,7 +149,7 @@ public class Enemy : MonoBehaviour
         comboStep += 2;
     }
 
-    private void UpdateUI()
+    public void UpdateUI()
     {
        // animate the UI elements with shake effect and then disable the current combo step's UI elements
         int top = comboStep;

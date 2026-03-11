@@ -4859,8 +4859,9 @@ GameObject:
   - component: {fileID: 9055789299210826373}
   - component: {fileID: 2674786836450725474}
   - component: {fileID: 6682850541375421088}
+  - component: {fileID: 7938903294210081007}
   m_Layer: 0
-  m_Name: Magic fire 1
+  m_Name: Fireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4874,7 +4875,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3448580146789135433}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.0260117, y: 0.939, z: -0.21415837}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4883,7 +4884,7 @@ Transform:
   - {fileID: 6396220955644621507}
   - {fileID: 2083626065119745723}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &2674786836450725474
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -9699,6 +9700,54 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
+--- !u!114 &7938903294210081007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3448580146789135433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02dafff22ed942b9bb629fd3e01fe239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  speed: 1
+  projectileCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.002945508
+      outSlope: 0.002945508
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.80833334
+    - serializedVersion: 3
+      time: 0.45498502
+      value: 0.020091087
+      inSlope: 0.032407086
+      outSlope: 0.032407086
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.58257425
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  target: {fileID: 0}
+  fireExplosionPrefab: {fileID: 2432381574491185369, guid: 30e1a06ae381bb9b99b5d0bf5a4bf6cf, type: 3}
 --- !u!1 &4202574238479318935
 GameObject:
   m_ObjectHideFlags: 0

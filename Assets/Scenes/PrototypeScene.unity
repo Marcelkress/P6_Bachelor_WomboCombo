@@ -18384,6 +18384,7 @@ MonoBehaviour:
   inputUIImage: {fileID: 2801047422575945081, guid: d3bccf7ea48d814a9826b9aa5fae0db5, type: 3}
   gameOverScreen: {fileID: 1156613503}
   content: {fileID: 273313317}
+  fireballPrefab: {fileID: 3448580146789135433, guid: 228b40fff3ca99bf883968d068d8b740, type: 3}
 --- !u!1 &1648307772
 GameObject:
   m_ObjectHideFlags: 0

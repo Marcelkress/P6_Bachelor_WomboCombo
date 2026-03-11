@@ -25,6 +25,9 @@ public class Player : MonoBehaviour
 
     private PlayerInput playerInput; // Reference to the PlayerInput component for handling input actions
 
+    [Header("Fire ball")]
+    public GameObject fireballPrefab;
+
     void Start()
     {
         currentHealth = health; // Initialize current health to the maximum health at the start
@@ -34,12 +37,6 @@ public class Player : MonoBehaviour
 
         InitializeUI();
     }
-
-    void Update()
-    {
-        
-    }
-
     private void InitializeUI()
     {
         if (healthBar != null)
@@ -75,8 +72,18 @@ public class Player : MonoBehaviour
         }
     
     }
-        private int rightIndex = 0;
-        private int leftIndex = 0;
+
+    public void ShootFireball(Transform target, GameObject targetedEnemy)
+    {
+        GameObject fireball = Instantiate(fireballPrefab, this.transform.position, this.transform.rotation);
+
+        FireballProjectile fireballScript = fireball.GetComponent<FireballProjectile>();
+
+        fireballScript.SetTargetTransform(target, targetedEnemy);
+
+    }
+    private int rightIndex = 0;
+    private int leftIndex = 0;
     private void HealingSpell()
     {
         rightIndex = comboStep * 2 + 1;
