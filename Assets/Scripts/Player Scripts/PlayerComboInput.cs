@@ -19,24 +19,25 @@ public class PlayerComboInput : MonoBehaviour
     [Header("Symbol values")] public int triangle = 1;
     public int square = 2, circle = 3;
 
-    private static bool taken;
+    private static bool playerOneTaken;
     
     private void Awake()
     {
         input = GetComponent<PlayerInput>();
-        if (taken)
+        if (playerOneTaken)
         {
             playerID = Player.Player2;
             gameObject.tag = "PlayerTwo";
             input.SwitchCurrentActionMap("Player two");
-            //Debug.Log(GetComponent<PlayerInput>().currentActionMap.name);
         }
         else
         {
             playerID = Player.Player1;
             gameObject.tag = "PlayerOne";
-            taken = true;
+            playerOneTaken = true;
         }
+        playerInfoStruct.symbOne = 1;
+        playerInfoStruct.symbTwo = 1;
     }
 
     public PlayerInfoStruct GetSymbolUpdate()
@@ -49,69 +50,71 @@ public class PlayerComboInput : MonoBehaviour
         InputManager.instance.UpdatePlayerInfo((int)playerID, playerInfoStruct);
     }
 
+    private bool topCanChange = true, bottomCanChange = true;
+
     public void OnTopCycle(InputValue value)
     {
         var val = value.Get<Vector2>();
 
-        if (val.x == 1 && canChange)
+        //Debug.Log("Top cycle");
+
+        if ((val.x < -.5 || val.x > .5) && topCanChange)
         {
-            playerInfoStruct.symbOne += 1;
+            topCanChange = false;
+            playerInfoStruct.symbOne += (int)val.x;
 
-            if (playerInfoStruct.symbOne > 3)
+            if (playerID == Player.Player1)
             {
-                playerInfoStruct.symbOne = 1;
+                if (playerInfoStruct.symbOne > 3)
+                {
+                    playerInfoStruct.symbOne = 2;
+                }
+                else if (playerInfoStruct.symbOne < 2)
+                {
+                    playerInfoStruct.symbOne = 3;
+                }
             }
-
-            canChange = false;
-            StartCoroutine(Wait());
+            else if (playerID == Player.Player2)
+            {
+                if (playerInfoStruct.symbOne > 2)
+                {
+                    playerInfoStruct.symbOne = 1;
+                }
+                else if (playerInfoStruct.symbOne < 1)
+                {
+                    playerInfoStruct.symbOne = 2;
+                }
+            }
+        }
+        else if (val.x == 0)
+        {
+            topCanChange = true;
         }
     }
 
-    public float waitTime = 0.5f;
-    private bool canChange = true;
-    private IEnumerator Wait()
+    public void OnBottomCycle(InputValue value)
     {
-        yield return new WaitForSeconds(waitTime);
-        canChange = true;
-    }
-    
-    public void OnTopCircle()
-    {
-        playerInfoStruct.symbOne = circle;
-    }
+        var val = value.Get<Vector2>();
 
-    public void OnTopSquare()
-    {
-        
-            playerInfoStruct.symbOne = square;
-        
-    }
+        //Debug.Log("Bottom cycle");
 
-    public void OnTopTriangle()
-    {
-        
-            playerInfoStruct.symbOne = triangle;
-        
-    }
-
-    public void OnBottomCircle()
-    {
-        
-            playerInfoStruct.symbTwo = circle;
-        
-    }
-
-    public void OnBottomSquare()
-    {
-        
-            playerInfoStruct.symbTwo = square;
-        
-    }
-
-    public void OnBottomTriangle()
-    {
-        
-            playerInfoStruct.symbTwo = triangle;
-        
+        if ((val.x < -.5 || val.x > .5) && bottomCanChange)
+        {
+            bottomCanChange = false;
+            playerInfoStruct.symbTwo += (int)val.x;
+            
+            if (playerInfoStruct.symbTwo > 3)
+            {
+                playerInfoStruct.symbTwo = 1;
+            }
+            else if (playerInfoStruct.symbTwo < 1)
+            {
+                playerInfoStruct.symbTwo = 3;
+            }
+        }
+        else if (val.x == 0)
+        {
+            bottomCanChange = true;
+        }
     }
 }
