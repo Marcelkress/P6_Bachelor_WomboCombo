@@ -13,10 +13,15 @@ public class EnemyManager : MonoBehaviour
     public GameObject enemyUnitPrefab;
     [Tooltip("Also determines the enemy count")] public Transform[] spawnPositions;
     public List<startStruct> theFirstUniqueComboStartSteps = new List<startStruct>();
-    private List<GameObject> Enemies;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
+    public List<GameObject> Enemies;
+
+    /// <summary>
+    /// Spawns enemies within specified count and assigns random combos
+    /// </summary>
+    /// <param name="spawnCount"></param>
+    /// <param name="maxComboLength"></param>
+    /// <param name="minComboLegnth"></param>
+    public void InitializeEncounter(int spawnCount, int maxComboLength, int minComboLegnth, float enemyAggroDelay)
     {
         Enemies = new List<GameObject>();
 
@@ -25,18 +30,20 @@ public class EnemyManager : MonoBehaviour
             int j = Random.Range(0, i + 1);
             (spawnPositions[i], spawnPositions[j]) = (spawnPositions[j], spawnPositions[i]);
         }
-
-        int spawnCount = spawnPositions.Length;
+        
         for (int i = 0; i < spawnCount; i++)
         {
-            GameObject enemy = Instantiate(enemyUnitPrefab, spawnPositions[i].position, spawnPositions[i].rotation);
-
+            if (i > spawnPositions.Length - 1)
+                return;
+            
+            GameObject enemy = Instantiate(enemyUnitPrefab, spawnPositions[i].position, Quaternion.identity);
             Enemies.Add(enemy);
 
             Enemy enemyScript = enemy.GetComponent<Enemy>();
+            enemyScript.manager = this;
             
             // Først helt random Combo Array for hver enemy
-            enemyScript.comboArray = RandomArray();
+            enemyScript.comboArray = RandomArray(minComboLegnth, maxComboLength);
             
             int randNum = Random.Range(1, theFirstUniqueComboStartSteps.Count);
 
@@ -44,32 +51,37 @@ public class EnemyManager : MonoBehaviour
             enemyScript.comboArray[1] = theFirstUniqueComboStartSteps[randNum].symbTwo;
 
             theFirstUniqueComboStartSteps.RemoveAt(randNum);
+            
+            enemyScript.Initialize(enemyAggroDelay);
         }
     }
-
-    [Header("Random Combo Settings")] 
-    [Tooltip("Must be even numbers")]
-    public int minLength;
-    public int maxLength;
-
-    private int[] RandomArray()
+    
+    private int[] RandomArray(int minLength, int maxLength)
     {
-        int lenght = Random.Range(minLength * 2, maxLength * 2); // Ensure the length is even Ganger med 2 for at gøre det mere intuitivt i inspector
-
-        if (lenght % 2 != 0) // Sikrer det er et lige tal
+        int length = Random.Range(minLength * 2, maxLength * 2); // Ensure the length is even Ganger med 2 for at gøre det mere intuitivt i inspector
+        
+        if (length % 2 != 0) // Sikrer det er et lige tal
         {
-            lenght += 1;
+            length += 1;
         }
-
-        int[] randArray = new int[lenght];
-
+        
+        int[] randArray = new int[length];
+        
         for (int i = 0; i < randArray.Length; i++)
         {
             randArray[i] = Random.Range(1, 3);
         }
-
+        
         return randArray;
     }
 
+    public void EnemyDied()
+    {
+
+        if (Enemies.Count <= 0)
+        {
+            EncounterManager.instance.GoToNextEncounter();
+        }
+    }
 
 }

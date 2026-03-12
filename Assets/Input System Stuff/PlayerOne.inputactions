@@ -104,6 +104,17 @@
                 },
                 {
                     "name": "",
+                    "id": "c9827eda-ccd5-4aa5-a876-0ae8f7a07d05",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "b0d3cae7-301a-4887-ab3a-ec3d8996440e",
                     "path": "<Keyboard>/o",
                     "interactions": "",
@@ -247,6 +258,39 @@
                 },
                 {
                     "name": "2D Vector",
+                    "id": "45be6e79-c086-4206-8745-b0d45709a6cb",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Top Cycle",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "left",
+                    "id": "ed911e77-fc39-4795-ac32-1f7bee663f84",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Top Cycle",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "971cea0a-1b32-4ba1-8394-8cb0b7736572",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Top Cycle",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "2D Vector",
                     "id": "ac5e1ccc-6af6-49c6-9b1d-1d372d5f25d7",
                     "path": "2DVector",
                     "interactions": "",
@@ -271,6 +315,39 @@
                     "name": "right",
                     "id": "e8173dab-0580-4567-bf45-ab6d3d12a6f4",
                     "path": "<Gamepad>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Bottom Cycle",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "af2e531c-5a99-425c-8c1b-5a4840fbfd12",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Bottom Cycle",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "left",
+                    "id": "dbc56403-d045-4c43-85cd-6a911ff28688",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Bottom Cycle",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "ec1a7d3f-188b-436e-8ef1-0e90656ac992",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

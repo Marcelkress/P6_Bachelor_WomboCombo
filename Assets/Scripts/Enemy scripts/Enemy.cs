@@ -28,7 +28,8 @@ public class Enemy : MonoBehaviour
 
     [Header("Attack")]
     public int damageAmount = 1; 
-    public float attackCooldown = 1f; 
+    public float attackCooldown = 1f;
+    public float stoppingDistance = 1f;
     
     [Header("UI")] 
     [SerializeField] private Transform content;
@@ -40,19 +41,24 @@ public class Enemy : MonoBehaviour
     public int shakeVibrato;
 
     private PlayerInfoStruct playerOneInfo, playerTwoInfo;
+
+    [HideInInspector] public EnemyManager manager;
  
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindGameObjectWithTag("Player").transform; // Find the player by tag
-        playerScript = player.GetComponent<Player>();
+        comboLength = comboArray.Length / 2;
+        InitializeUI(); 
+        
+        InputManager.instance.PlayerOneEvent.AddListener(PlayerOneUpdate);
+        InputManager.instance.PlayerTwoEvent.AddListener(PlayerTwoUpdate);
+        
+        SetRandomColor();
+    }
 
-        // find the closest point on the player's collider to the enemy's position and set it as the destination for the NavMeshAgent
-        playerCollider = player.GetComponent<BoxCollider>();
-        targetPoint = playerCollider.ClosestPoint(transform.position);
-        agent.SetDestination(targetPoint);
-
+    void SetRandomColor()
+    {
         // Clone the material so each enemy has its own instance
         enemyMaterial = new Material(enemyMaterial);
         enemyMeshRenderer.material = enemyMaterial;
@@ -61,11 +67,20 @@ public class Enemy : MonoBehaviour
         Color color = enemyMaterial.GetColor("_LitColor");
         enemyMaterial.SetColor("_ShadowColor", color * 0.5f);
 
-        comboLength = comboArray.Length / 2;
-        InitializeUI(); 
-        
-        InputManager.instance.PlayerOneEvent.AddListener(PlayerOneUpdate);
-        InputManager.instance.PlayerTwoEvent.AddListener(PlayerTwoUpdate);
+    }
+
+    public void Initialize(float aggroDelay)
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform; // Find the player by tag
+        playerScript = player.GetComponent<Player>();
+        Debug.Log(aggroDelay);
+        Invoke(nameof(AggroPlayer), aggroDelay);
+    }
+
+    public void AggroPlayer()
+    {
+        agent.SetDestination(player.transform.position);
+        agent.stoppingDistance = stoppingDistance;
     }
 
     public void PlayerOneUpdate()
@@ -284,7 +299,10 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         Debug.Log("Enemy Defeated!"); // Enemy is defeated
+        manager.Enemies.Remove(this.gameObject);
+        manager.EnemyDied();
         Destroy(gameObject); // Destroy the enemy game object
+        
     }
 
     
