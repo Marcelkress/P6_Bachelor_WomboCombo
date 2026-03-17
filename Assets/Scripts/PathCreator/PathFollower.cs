@@ -15,8 +15,13 @@ namespace PathCreation.Examples
         [Range(0f, 1f)]
         public float departureStrength = 0.3f;
 
+        [Header("Rotation")]
+        public float rotationSpeed = 5f;
+
         private PathDestinationObject activeDestination;
         private bool isMoving;
+        private bool lookSettleStarted;
+        private Quaternion lookStartRotation;
         private float travelTimer;
         private float startDistance;
         private float targetDistance;
@@ -25,17 +30,8 @@ namespace PathCreation.Examples
 
         void Awake()
         {
-            cam = GetComponent<Camera>();
+            cam = GetComponentInChildren<Camera>();
             if (cam) baseFov = cam.fieldOfView;
-        }
-
-        private IEnumerator Start()
-        {
-            yield return new WaitForSeconds(1f);
-            MoveTo(0);
-
-            yield return new WaitForSeconds(destinations[0].travelDuration + 1f);
-            MoveTo(1);
         }
 
         public void MoveTo(int index)
@@ -44,11 +40,12 @@ namespace PathCreation.Examples
             MoveTo(destinations[index]);
         }
 
-        private int firstBlueGizmoIndex = 1;
-        private int secondBlueGizmoIndex = 2;
+        private int FirstTravelGizmoIndex = 1;
+        private int SecondTravelGizmoIndex = 2;
         public void MoveTo(PathDestinationObject destination)
         {
             activeDestination = destination;
+            lookSettleStarted = false;
 
             // BezierPath works in pathCreator local space
             // sørger for at konvertere destination og start position til local space, så det ikke giver nogle vilde curves, da det er en retning der er vigtig for kameraet at følge.
@@ -59,23 +56,20 @@ namespace PathCreation.Examples
             bezierPath.ControlPointMode = BezierPath.ControlMode.Free;
 
             // Automatic control mode generates unpredictable handles with only 2 points.
-            // Manually place control points at 1/3 and 2/3 for a clean straight path.
             // Så de ikke bliver placeret tilfældigt, da det er en retning der er vigtig for kameraet at følge. Ellers kan det give nogle ret vilde curves. (De blå gizmos i editoren)
-            // Start handle follows the follower's current forward direction,
-            // scaled by departureStrength * path length so it's proportional to the distance travelled
             float pathLength = Vector3.Distance(localStart, localEnd);
             Vector3 localForward = pathCreator.transform.InverseTransformDirection(transform.forward);
-            bezierPath.SetPoint(firstBlueGizmoIndex, localStart + localForward * (pathLength * departureStrength));
+            bezierPath.SetPoint(FirstTravelGizmoIndex, localStart + localForward * (pathLength * departureStrength)); // den blå gizmo bliver placeret i dens nuværende fremadrettede retning, den blå gizmo er scalet pathlength. Men bliver ikke rigtig brugt
 
             // End handle is pulled towards the destination's control point if set, otherwise straight
             if (destination.controlPoint != null)
             {
-                Vector3 localControl = pathCreator.transform.InverseTransformPoint(destination.controlPoint.position);
-                bezierPath.SetPoint(secondBlueGizmoIndex, localControl);
+                Vector3 localControl = pathCreator.transform.InverseTransformPoint(destination.controlPoint.position); // laver til local space 
+                bezierPath.SetPoint(SecondTravelGizmoIndex, localControl); // den blå gizmo bliver placeret i destinationens control point, hvis den er sat
             }
             else
             {
-                bezierPath.SetPoint(secondBlueGizmoIndex, Vector3.Lerp(localStart, localEnd, 2f / 3f)); // får bare default value
+                bezierPath.SetPoint(SecondTravelGizmoIndex, Vector3.Lerp(localStart, localEnd, 2f / 3f)); // får bare default value
             }
            
 
@@ -87,34 +81,72 @@ namespace PathCreation.Examples
             isMoving = true;
         }
 
+        private float dist; 
         void LateUpdate()
         {
             if (!isMoving || activeDestination == null) return;
 
             travelTimer += Time.deltaTime;
-            float t = Mathf.Clamp01(travelTimer / activeDestination.travelDuration);
-            float curved = activeDestination.moveCurve.Evaluate(t);
+            float time = Mathf.Clamp01(travelTimer / activeDestination.travelDuration); // clamp tiden mellem 0 og 1, så den ikke overskrider destinationens travelDuration
+            float curved = activeDestination.moveCurve.Evaluate(time); // bruger destinationens moveCurve til at få en kurvet tid, så bevægelsen ikke er lineær
 
-            float dist = Mathf.Lerp(startDistance, targetDistance, curved);
+            dist = Mathf.Lerp(startDistance, targetDistance, curved);
             transform.position = pathCreator.path.GetPointAtDistance(dist, endOfPathInstruction);
             if (activeDestination.rotateTowardsPath)
             {
-                Vector3 pathDirection = pathCreator.path.GetDirectionAtDistance(dist, endOfPathInstruction);
-                float targetYAngle = Mathf.Atan2(pathDirection.x, pathDirection.z) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.Euler(0f, targetYAngle, 0f);
+                if (activeDestination.lookTarget != null && time >= activeDestination.lookBlendStart)
+                {
+                    if (!lookSettleStarted)
+                    {
+                        lookSettleStarted = true;
+                        lookStartRotation = transform.rotation;
+                    }
+                    RotationBasedOnDestinationObject(time);
+                }
+                else
+                {
+                    RotationBasedOnBezierCurve();
+                }
             }
 
-            if (cam) cam.fieldOfView = baseFov + activeDestination.fovBoost * Mathf.Sin(t * Mathf.PI);
+            if (cam) cam.fieldOfView = baseFov + activeDestination.fovBoost * Mathf.Sin(time * Mathf.PI); // fov boost that peaks at the middle of the trip. Slower at the start and end.
 
-            if (t >= 1f)
-            {
+            if (time >= 1f)
+            {   
                 isMoving = false;
                 if (cam) cam.fieldOfView = baseFov;
                 StartCoroutine(ArrivalShake());
             }
         }
 
-        IEnumerator ArrivalShake()
+        private void RotationBasedOnDestinationObject(float currentTime)
+        {
+            Vector3 directionToLook = activeDestination.lookTarget.position - transform.position;
+            directionToLook.y = 0f; // ignorer forskel for rotation
+
+            Quaternion endRotation = directionToLook != Vector3.zero ? Quaternion.LookRotation(directionToLook) : lookStartRotation;
+
+            // Calculate progress strictly based on the remaining path time
+            float blendRange = 1f - activeDestination.lookBlendStart;
+            float time = blendRange > 0f ? Mathf.Clamp01((currentTime - activeDestination.lookBlendStart) / blendRange) : 1f;
+
+            transform.rotation = Quaternion.Slerp(lookStartRotation, endRotation, time);
+              
+        }
+
+        private void RotationBasedOnBezierCurve()
+        {
+            Vector3 pathDirection = pathCreator.path.GetDirectionAtDistance(dist, endOfPathInstruction);
+            pathDirection.y = 0f; // ingorer forskel for rotation
+            if (pathDirection != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(pathDirection);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            }
+
+        }
+
+        private IEnumerator ArrivalShake()
         {
             Vector3 origin = transform.position;
             float elapsed = 0f;

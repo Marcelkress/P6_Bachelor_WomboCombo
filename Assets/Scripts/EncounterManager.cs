@@ -39,8 +39,8 @@ public class EncounterManager : MonoBehaviour
     {
         Debug.Log("All enemies dead, proceeding to next encounter"); 
         // Trigger player camera trip
-        
-        StartEncounter(defaultEnemyAggroDelay);
+        playerPathFollower.MoveTo(encounterIndex);
+        StartEncounter(playerPathFollower.destinations[encounterIndex].travelDuration + defaultEnemyAggroDelay); // Start next encounter after trip is done, with a little buffer
         
         // jacob i need u
     }

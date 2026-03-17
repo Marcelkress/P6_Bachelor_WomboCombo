@@ -13,4 +13,10 @@ public class PathDestinationObject : MonoBehaviour
     [Header("Curve")]
     public Transform controlPoint;
 
+    [Header("Arrival Look")]
+    public Transform lookTarget;
+    public float lookSettleDuration = 0.5f;
+    [Range(0f, 1f)]
+    public float lookBlendStart = 0.7f;
+
 }
