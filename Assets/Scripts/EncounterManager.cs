@@ -15,6 +15,11 @@ public class EncounterManager : MonoBehaviour
     public PathFollower playerPathFollower;
     public float defaultEnemyAggroDelay = 2f;
 
+    [Header("Dev Tools")]
+    [Tooltip("Set to skip ahead to a specific encounter (0 = normal start)")]
+    public bool useDevTools = false;
+    public int startFromEncounter = 0;
+
     private void Awake()
     {
         if(instance == null)
@@ -31,7 +36,22 @@ public class EncounterManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        encounterIndex = 0;
+        encounterIndex = Mathf.Clamp(startFromEncounter, 0, Encounters.Length - 1);
+
+        // If skipping ahead, teleport the player to the correct position
+        if (encounterIndex > 0 && useDevTools)
+        {
+            var dest = playerPathFollower.destinations[encounterIndex];
+            playerPathFollower.transform.position = dest.transform.position;
+            if (dest.lookTarget != null)
+            {
+                Vector3 dir = dest.lookTarget.position - dest.transform.position;
+                dir.y = 0f;
+                if (dir != Vector3.zero)
+                    playerPathFollower.transform.rotation = Quaternion.LookRotation(dir);
+            }
+        }
+
         StartEncounter(defaultEnemyAggroDelay);
     }
 
