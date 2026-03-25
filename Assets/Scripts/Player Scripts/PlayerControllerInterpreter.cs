@@ -25,15 +25,15 @@ public class PlayerControllerInterpreter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float val = Mathf.Clamp(controllerValue, minVal, maxVal);
+       // float val = Mathf.Clamp(controllerValue, minVal, maxVal);
 
-        if (val < sunMax && val > sunMin)
-        {
-            Debug.Log("SUN!");
-        }
-        else if()
-        {
+       // if (val < sunMax && val > sunMin)
+       // {
+        //    Debug.Log("SUN!");
+       // }
+       // else if () 
+       // {
             
-        }
-    }
+        //}
+   }
 }
