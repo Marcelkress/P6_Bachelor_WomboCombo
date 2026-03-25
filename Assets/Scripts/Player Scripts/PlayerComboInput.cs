@@ -3,16 +3,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+[Serializable]public struct Interval
+    {
+        public int min, max;
+    }
 public class PlayerComboInput : MonoBehaviour
 {
+    
+    [Header("Input stuff")]
+    private PlayerComboInput comboInput;
+    public InputReceiver inputReceiver;
+    public int controllerValue;
+    private int minVal = 0, maxVal = 127;
+
+    public Interval SunMoon;
+    
+    [Header("Sun / Moon interval")] public int sunMin;
+    public int sunMax;
+    [Header("Moon interval")] public int moonMin;
+    public int moonMax;
+    [Header("Star interval")] public int starMin;
+    public int starMax;
+
+    private InputStruct inputData;
+    
+    [Header("Player")]
+    public Player playerID;
     public enum Player
     {   
         Player1 = 1,
         Player2 = 2
     }
     
-    public Player playerID;
     private PlayerInfoStruct playerInfoStruct;
     private PlayerInput input;
     
@@ -24,6 +46,7 @@ public class PlayerComboInput : MonoBehaviour
     private void Awake()
     {
         input = GetComponent<PlayerInput>();
+        
         if (playerOneTaken)
         {
             playerID = Player.Player2;
@@ -38,6 +61,42 @@ public class PlayerComboInput : MonoBehaviour
         }
         playerInfoStruct.symbOne = 1;
         playerInfoStruct.symbTwo = 1;
+    }
+
+    private void Update()
+    {
+        if (playerID == Player.Player1)
+        {
+            inputData = inputReceiver.GetInput(1);
+        }
+        else
+        {
+            inputData = inputReceiver.GetInput(2);
+        }
+
+        controllerValue = inputData.rotationVal;
+        
+        float val = Mathf.Clamp(controllerValue, minVal, maxVal);
+
+        if (val < SunMoon.max && val > SunMoon.min)
+        {
+            Debug.Log("SUN / Moon");
+            // playerInfoStruct.symbOne = 
+        }
+        else if (val < moonMax && val > moonMin)
+        {
+            Debug.Log("MOON!");
+        }
+        else if (val < starMax && val > starMin)
+        {
+            Debug.Log("STAR!");
+        }
+
+
+        if (inputData.pressVal == 1)
+        {
+            OnFire();
+        }
     }
 
     public PlayerInfoStruct GetSymbolUpdate()

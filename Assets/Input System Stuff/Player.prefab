@@ -123,8 +123,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb465e22c58f4905a509673119f34e4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerComboInput
+  inputReceiver: {fileID: 0}
+  controllerValue: 0
+  SunMoon:
+    min: 0
+    max: 15
+  sunMin: 0
+  sunMax: 0
+  moonMin: 0
+  moonMax: 0
+  starMin: 0
+  starMax: 0
   playerID: 1
   triangle: 1
   square: 2
   circle: 3
-  waitTime: 0.1

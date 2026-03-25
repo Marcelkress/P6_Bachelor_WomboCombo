@@ -4,7 +4,7 @@ public struct InputStruct
 {
     public int ID;
     public int rotationVal;
-    public int pressVa;
+    public int pressVal;
 }
 
 public class InputReceiver : MonoBehaviour
@@ -25,5 +25,11 @@ public class InputReceiver : MonoBehaviour
         // if ( no  new serial data)
         //      pressVal = 0; 
         
+    }
+
+    // 
+    public InputStruct GetInput(int ID)
+    {
+        return ID == 1 ? playerOne : playerTwo;
     }
 }

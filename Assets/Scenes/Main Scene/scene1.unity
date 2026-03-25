@@ -3081,6 +3081,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5165939080389971873, guid: 98e6c30c76740414f9c65dbbd2a5dd24, type: 3}
+      propertyPath: m_MaxRayIntersections
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5495424414556807544, guid: 98e6c30c76740414f9c65dbbd2a5dd24, type: 3}
       propertyPath: pathCreator
       value: 
@@ -3149,8 +3153,16 @@ PrefabInstance:
       propertyPath: gameOverScreen
       value: 
       objectReference: {fileID: 1156613503}
+    - target: {fileID: 6749706326885626226, guid: 98e6c30c76740414f9c65dbbd2a5dd24, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6771549058889725302, guid: 98e6c30c76740414f9c65dbbd2a5dd24, type: 3}
       propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616545611840578000, guid: 98e6c30c76740414f9c65dbbd2a5dd24, type: 3}
+      propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7616545611840578000, guid: 98e6c30c76740414f9c65dbbd2a5dd24, type: 3}
