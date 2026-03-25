@@ -7,8 +7,9 @@ public class EnemyProjectile : MonoBehaviour
     private Transform target;
     public int damage = 1;
     public float speedTime;
-
     public float liveTime = 10f;
+    private float timer;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,6 +28,10 @@ public class EnemyProjectile : MonoBehaviour
 
     void Update()
     {
-        
+        timer += Time.deltaTime;
+        if (timer > liveTime)
+        {
+            Destroy(this);
+        }
     }
 }

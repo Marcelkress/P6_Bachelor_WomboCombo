@@ -183,7 +183,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 12f0f1e14c2165f478965f1d735e3efa, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -399,6 +399,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0745ed36143c4e5bafaa834dc9195fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  projectileEnemy: 0
+  projectilePrefab: {fileID: 0}
+  projectileShootPoint: {fileID: 0}
+  shootIntervalMax: 0
+  shootIntervalMin: 0
   comboArray: 
   comboStep: 0
   comboLength: 0
@@ -407,7 +412,9 @@ MonoBehaviour:
   debug: 0
   damageAmount: 1
   attackCooldown: 1
+  stoppingDistance: 1
   content: {fileID: 3608603056928829360}
+  canvas: {fileID: 0}
   SquareImage: {fileID: -1722939174, guid: d0e4dc33cce174bb0bf5eabc1e1abc01, type: 3}
   CircleImage: {fileID: -718851729, guid: 57c2c16bbbc044bcd833785db20554eb, type: 3}
   TriangleImage: {fileID: 141794624, guid: 37a69eea3b5e8499cb8e86513af5f288, type: 3}
@@ -416,6 +423,8 @@ MonoBehaviour:
   shakeStrength: {x: 25, y: 25, z: 25}
   shakeRandomness: 10
   shakeVibrato: 10
+  anim: {fileID: 0}
+  manager: {fileID: 0}
   squareSuccessWindow: 0.5
   startTimer: 0
   pOneSquare: 0
