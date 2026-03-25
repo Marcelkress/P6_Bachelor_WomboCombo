@@ -4,7 +4,7 @@ using UnityEngine;
 public struct EncounterStruct
 {
     public EnemyManager enemyManager;
-    public int enemyCount;
+    public int meleeEnemyCount, projectileEnemyCount;
     public int minComboLength, maxComboLength;
 }
 public class EncounterManager : MonoBehaviour
@@ -73,10 +73,11 @@ public class EncounterManager : MonoBehaviour
         if (encounterIndex > Encounters.Length - 1)
             return;
         
-        int count = Encounters[encounterIndex].enemyCount;
+        int meleeCount = Encounters[encounterIndex].meleeEnemyCount;
+        int projecCount = Encounters[encounterIndex].projectileEnemyCount;
         int minLegnth = Encounters[encounterIndex].minComboLength;
         int maxLength = Encounters[encounterIndex].maxComboLength;
-        Encounters[encounterIndex].enemyManager.InitializeEncounter(count, minLegnth, maxLength, enemyAggroDelay);
+        Encounters[encounterIndex].enemyManager.InitializeEncounter(meleeCount, projecCount, minLegnth, maxLength, enemyAggroDelay);
         
         encounterIndex++;
     }

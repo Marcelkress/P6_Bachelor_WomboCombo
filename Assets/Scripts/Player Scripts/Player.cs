@@ -143,13 +143,8 @@ public class Player : MonoBehaviour
             else
             {
                 healthBar.fillAmount = (float)currentHealth / health;
-            // Optional: Add a tweening effect to the health bar for smoother transitions
-            AnimateHealthBar();
+                AnimateHealthBar();
             }
-
-            
-
-            
         }
 
         if (currentHealth <= 0)

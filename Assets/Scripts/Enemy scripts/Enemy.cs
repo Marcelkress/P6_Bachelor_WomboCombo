@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -6,6 +7,13 @@ using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Enemy type")] 
+    public bool projectileEnemy;
+    public GameObject projectilePrefab;
+    public Transform projectileShootPoint;
+    public float shootIntervalMax, shootIntervalMin;
+    
+    [Header("Combo")]
     public int[] comboArray;
     [SerializeField] private int comboStep = 0;
     private int uiComboStep;
@@ -79,8 +87,28 @@ public class Enemy : MonoBehaviour
 
     public void AggroPlayer()
     {
-        agent.SetDestination(player.transform.position);
-        agent.stoppingDistance = stoppingDistance;
+        if (projectileEnemy)
+        {
+            StartCoroutine(BeginShoot());
+            agent.SetDestination(player.transform.position);
+        }
+        else
+        {
+            agent.SetDestination(player.transform.position);
+            agent.stoppingDistance = stoppingDistance;
+        }
+    }
+
+    private IEnumerator BeginShoot()
+    {
+        while (true)
+        {
+            float waitTime = Random.Range(shootIntervalMin, shootIntervalMax);
+
+            yield return new WaitForSeconds(waitTime);
+            agent.isStopped = true;
+            Instantiate(projectilePrefab, projectileShootPoint, true);
+        }
     }
 
     public void PlayerOneUpdate()
