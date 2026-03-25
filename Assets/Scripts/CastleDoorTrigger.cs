@@ -10,11 +10,12 @@ public class CastleDoorTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            OpenDoor();
+            Invoke(nameof(OpenDoor), 0.6f);
         }
     }
     private void OpenDoor()
     {
+
         doorTransformPivot.DORotate(openRotation, speed);
     }
 }
