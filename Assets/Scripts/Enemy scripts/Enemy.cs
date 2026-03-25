@@ -225,7 +225,7 @@ public class Enemy : MonoBehaviour
 
             comboStep += 2;
 
-            GetComponentInChildren<Canvas>().sortingOrder = 100;
+            
 
             if (comboStep >= comboArray.Length)
             {
@@ -288,7 +288,7 @@ public class Enemy : MonoBehaviour
         {
             return;
         }
-
+        GetComponentInChildren<Canvas>().sortingOrder = 100;
         Sequence comboStepSequence = DOTween.Sequence();
         comboStepSequence.Join(
             contentSprite[bottom].transform
@@ -359,7 +359,7 @@ public class Enemy : MonoBehaviour
     {
         if (isDead) return; // Prevent multiple death triggers
 
-        
+
         isDead = true;
         Debug.Log("Enemy Defeated!"); // Enemy is defeated
         manager.Enemies.Remove(this.gameObject);
