@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -6,6 +7,13 @@ using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Enemy type")] 
+    public bool projectileEnemy;
+    public GameObject projectilePrefab;
+    public Transform projectileShootPoint;
+    public float shootIntervalMax, shootIntervalMin;
+    
+    [Header("Combo")]
     public int[] comboArray;
     [SerializeField] private int comboStep = 0;
     private int uiComboStep;
@@ -33,6 +41,8 @@ public class Enemy : MonoBehaviour
     
     [Header("UI")] 
     [SerializeField] private Transform content;
+
+    public GameObject canvas;
     public Sprite SquareImage, CircleImage, TriangleImage; // references to the UI images for each button (Square, Circle, Triangle)
     public GameObject inputUIImage; // reference UI image which should be updated to show the combo array (Should spawn multiple)
     public float shakeDuration;
@@ -40,15 +50,25 @@ public class Enemy : MonoBehaviour
     public float shakeRandomness;
     public int shakeVibrato;
 
+    private bool isDead = false;
+
+    [Header("Animation")] public Animator anim;
+    
+    
     private PlayerInfoStruct playerOneInfo, playerTwoInfo;
 
     [HideInInspector] public EnemyManager manager;
- 
+
+
+    private float speed;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         comboLength = comboArray.Length / 2;
+        speed = agent.speed;
         InitializeUI(); 
         
         InputManager.instance.PlayerOneEvent.AddListener(PlayerOneUpdate);
@@ -79,8 +99,28 @@ public class Enemy : MonoBehaviour
 
     public void AggroPlayer()
     {
-        agent.SetDestination(player.transform.position);
-        agent.stoppingDistance = stoppingDistance;
+        if (projectileEnemy)
+        {
+            StartCoroutine(BeginShoot());
+            agent.SetDestination(player.transform.position);
+        }
+        else
+        {
+            agent.SetDestination(player.transform.position);
+            agent.stoppingDistance = stoppingDistance;
+        }
+    }
+
+    private IEnumerator BeginShoot()
+    {
+        while (true)
+        {
+            float waitTime = Random.Range(shootIntervalMin, shootIntervalMax);
+
+            yield return new WaitForSeconds(waitTime);
+            agent.isStopped = true;
+            Instantiate(projectilePrefab, projectileShootPoint, true);
+        }
     }
 
     public void PlayerOneUpdate()
@@ -101,7 +141,8 @@ public class Enemy : MonoBehaviour
     
     void Update()
     {
-        DamagePlayer();
+        CheckAttackDist();
+        anim.SetBool("Walk", !agent.isStopped);
 
         if (startTimer)
         {
@@ -258,10 +299,12 @@ public class Enemy : MonoBehaviour
             contentSprite[top].transform
                 .DOShakePosition(shakeDuration, shakeStrength, shakeVibrato, shakeRandomness, false)
         );
+        
+        agent.speed = 0;
+        anim.SetTrigger("Hit");
 
         comboStepSequence.OnComplete(() =>
         {
-            
             contentSprite[bottom].enabled = false;
             contentSprite[top].enabled = false;
 
@@ -269,6 +312,11 @@ public class Enemy : MonoBehaviour
             CheckComboCompletion();
             comboStepSequence.Kill();
         });
+    }
+
+    public void HitRecoverAnimEvent()
+    {
+            agent.speed = speed;
     }
 
     private void CheckComboCompletion()
@@ -280,10 +328,14 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void DamagePlayer()
+    private void CheckAttackDist()
     {
-        if (Vector3.Distance(transform.position, targetPoint) < agent.stoppingDistance)
+        
+        if (Vector3.Distance(transform.position, player.transform.position) <= agent.stoppingDistance + 1)
         {
+            anim.SetBool("Attack", true);
+            
+            /*
             currentattackCooldown -= Time.deltaTime; // Decrease the cooldown timer by the time elapsed since the last frame
             
             if (currentattackCooldown <= 0f)
@@ -292,17 +344,36 @@ public class Enemy : MonoBehaviour
                 playerScript.TakeDamage(damageAmount); // Call the TakeDamage method on the player script
                 currentattackCooldown = attackCooldown; // Reset the cooldown timer
             }
-
+            */
         }
+    }
+
+    public void DamagePlayer()
+    {
+        Debug.Log("Player Damaged!"); // Player is damaged
+        playerScript.TakeDamage(damageAmount); // Call the TakeDamage method on the player script
+        //currentattackCooldown = attackCooldown; // Reset the cooldown timer
     }
 
     private void Die()
     {
+        if (isDead) return; // Prevent multiple death triggers
+
+        
+        isDead = true;
         Debug.Log("Enemy Defeated!"); // Enemy is defeated
         manager.Enemies.Remove(this.gameObject);
         manager.EnemyDied();
-        Destroy(gameObject); // Destroy the enemy game object
-        
+        anim.SetBool("Dead", true);
+        agent.speed = 0;
+        canvas.SetActive(false);
+        //Destroy(gameObject); // Destroy the enemy game object
+        Invoke(nameof(RM), 2f);
+    }
+
+    void RM()
+    {
+        Destroy(this.gameObject);
     }
 
     

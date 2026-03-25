@@ -81,14 +81,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 256fe48069e804f7692c46aa4064cfd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyManager
-  enemyUnitPrefab: {fileID: 5637198596201364861, guid: 178cc0fb6666a3cd8991a4e3707ee07b, type: 3}
-  spawnPositions:
-  - {fileID: 2778449696889007046}
-  - {fileID: 7437090161883455330}
-  - {fileID: 3949050355488794452}
-  - {fileID: 7459725487056678893}
-  - {fileID: 2115005355421534699}
-  - {fileID: 8181313545885335257}
+  enemyUnitPrefab: {fileID: 4414871117303439921, guid: aef9a3e063e740f4d8100584de73ceb4, type: 3}
+  meleeSpawnPositions: []
+  projectileSpawnPositions: []
   theFirstUniqueComboStartSteps:
   - symbOne: 1
     symbTwo: 1
