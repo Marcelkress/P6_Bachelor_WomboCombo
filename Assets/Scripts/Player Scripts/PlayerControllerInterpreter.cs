@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerControllerInterpreter : MonoBehaviour
 {
     private PlayerComboInput comboInput;
+    public InputReceiver inputReceiver;
 
     public int controllerValue;
     
@@ -16,6 +17,9 @@ public class PlayerControllerInterpreter : MonoBehaviour
     
     [Header("Star interval")] public int starMin;
     public int starMax;
+    
+    private static bool playerOneTaken;
+    private InputStruct input;
     
     void Start()
     {
@@ -31,9 +35,13 @@ public class PlayerControllerInterpreter : MonoBehaviour
         {
             Debug.Log("SUN!");
         }
-        else if()
+        else if (val < moonMax && val > moonMin)
         {
-            
+            Debug.Log("MOON!");
+        }
+        else if (val < starMax && val > starMin)
+        {
+            Debug.Log("STAR!");
         }
     }
 }
