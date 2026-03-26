@@ -14,6 +14,7 @@ public class EncounterManager : MonoBehaviour
     public static EncounterManager instance;
     public PathFollower playerPathFollower;
     public float defaultEnemyAggroDelay = 2f;
+    public EpicBossLogic epicBossLogic;
 
     [Header("Dev Tools")]
     [Tooltip("Set to skip ahead to a specific encounter (0 = normal start)")]
@@ -58,11 +59,28 @@ public class EncounterManager : MonoBehaviour
     public void GoToNextEncounter()
     {
         Debug.Log("All enemies dead, proceeding to next encounter"); 
+
+            // Check if we have finished all regular encounters
+            if (encounterIndex >= Encounters.Length)
+            {
+                Debug.Log("Starting Boss Encounter!");
+                if (epicBossLogic != null)
+                {
+                    // Hand over logic to the boss
+                    epicBossLogic.StartBossBattle();
+                }
+                return; 
+            }
         // Trigger player camera trip
         playerPathFollower.MoveTo(encounterIndex);
-        StartEncounter(playerPathFollower.destinations[encounterIndex].travelDuration + defaultEnemyAggroDelay); // Start next encounter after trip is done, with a little buffer
-        
-        // jacob i need u
+        if (encounterIndex < playerPathFollower.destinations.Length)
+        {
+            StartEncounter(playerPathFollower.destinations[encounterIndex].travelDuration + defaultEnemyAggroDelay); // Start next encounter after trip is done, with a little buffer
+        }
+        else
+        {
+            StartEncounter(defaultEnemyAggroDelay); // fallback, should not happen
+        }
     }
 
     /// <summary>
