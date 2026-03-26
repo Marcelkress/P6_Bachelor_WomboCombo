@@ -103,9 +103,13 @@ public class EnemyManager : MonoBehaviour
     public void EnemyDied()
     {
 
-        if (Enemies.Count <= 0)
+        if (Enemies.Count <= 0 && !EncounterManager.instance.bossBattleStarted)
         {
             EncounterManager.instance.GoToNextEncounter();
+        }
+        else if (Enemies.Count <= 0 && EncounterManager.instance.bossBattleStarted)
+        {
+            EncounterManager.instance.epicBossLogic.OnMinionsCleared(); 
         }
     }
 

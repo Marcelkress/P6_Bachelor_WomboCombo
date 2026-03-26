@@ -16,6 +16,8 @@ public class EncounterManager : MonoBehaviour
     public float defaultEnemyAggroDelay = 2f;
     public EpicBossLogic epicBossLogic;
 
+    public bool bossBattleStarted = false;
+
     [Header("Dev Tools")]
     [Tooltip("Set to skip ahead to a specific encounter (0 = normal start)")]
     public bool useDevTools = false;
@@ -58,6 +60,9 @@ public class EncounterManager : MonoBehaviour
 
     public void GoToNextEncounter()
     {
+        if (bossBattleStarted) return;
+            
+            
         Debug.Log("All enemies dead, proceeding to next encounter"); 
 
             // Check if we have finished all regular encounters
@@ -68,9 +73,12 @@ public class EncounterManager : MonoBehaviour
                 {
                     // Hand over logic to the boss
                     epicBossLogic.StartBossBattle();
+                    bossBattleStarted = true;
                 }
-                return; 
+                
             }
+
+
         // Trigger player camera trip
         playerPathFollower.MoveTo(encounterIndex);
         if (encounterIndex < playerPathFollower.destinations.Length)

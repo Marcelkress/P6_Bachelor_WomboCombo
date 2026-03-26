@@ -24,18 +24,31 @@ public class Player : MonoBehaviour
     private Image[] contentSprite;
 
     private PlayerInput playerInput; // Reference to the PlayerInput component for handling input actions
+    private EncounterManager encounterManager; // Reference to the EncounterManager for accessing boss logic and other encounter-related data
 
     [Header("Fire ball")]
     public GameObject fireballPrefab;
+
+    public bool lookAtBoss = false; // whether the player should look at the boss, used for certain encounters and the boss fight
 
     void Start()
     {
         currentHealth = health; // Initialize current health to the maximum health at the start
 
         playerInput = GetComponent<PlayerInput>(); // Get the PlayerInput component attached to the player game object
-
+        encounterManager = EncounterManager.instance; // Get the instance of the EncounterManager
 
         InitializeUI();
+    }
+    private void LateUpdate()
+    {
+        if (lookAtBoss)
+        {
+            Vector3 dir = encounterManager.epicBossLogic.transform.position - transform.position;
+            dir.y = 0f; // Keep the y-axis rotation unchanged
+            if (dir != Vector3.zero)
+                transform.rotation = Quaternion.LookRotation(dir);
+        }
     }
     private void InitializeUI()
     {
