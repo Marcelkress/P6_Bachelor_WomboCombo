@@ -26,8 +26,7 @@ public class InputReceiver : MonoBehaviour
         //      pressVal = 0; 
         
     }
-
-    // 
+    
     public InputStruct GetInput(int ID)
     {
         return ID == 1 ? playerOne : playerTwo;

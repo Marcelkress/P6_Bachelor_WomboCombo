@@ -43,7 +43,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Transform content;
 
     public GameObject canvas;
-    public Sprite SquareImage, CircleImage, TriangleImage; // references to the UI images for each button (Square, Circle, Triangle)
+    public Sprite moonImg, starImg, sunImg; // references to the UI images for each button (Square, Circle, Triangle)
     public GameObject inputUIImage; // reference UI image which should be updated to show the combo array (Should spawn multiple)
     public float shakeDuration;
     public Vector3 shakeStrength;
@@ -251,13 +251,13 @@ public class Enemy : MonoBehaviour
             switch (comboArray[i])
             {
                 case 1: 
-                    uiImage.GetComponent<Image>().sprite = TriangleImage; // Set the sprite to the Square image
+                    uiImage.GetComponent<Image>().sprite = moonImg; // Set the sprite to the Square image
                     break;
                 case 2:
-                    uiImage.GetComponent<Image>().sprite = SquareImage; // Set the sprite     to the Circle image
+                    uiImage.GetComponent<Image>().sprite = starImg; // Set the sprite     to the Circle image
                     break;
                 case 3:
-                    uiImage.GetComponent<Image>().sprite = CircleImage; // Set the sprite to the Triangle image
+                    uiImage.GetComponent<Image>().sprite = sunImg; // Set the sprite to the Triangle image
                     break;
             }
             contentSprite[i] = uiImage.GetComponent<Image>(); // Store the Image component in the contentSprite array

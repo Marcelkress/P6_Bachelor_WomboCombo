@@ -5878,7 +5878,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &307785638
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18975,7 +18975,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1038895976
 RectTransform:
   m_ObjectHideFlags: 0
@@ -38447,6 +38447,8 @@ MonoBehaviour:
     maxComboLength: 8
   playerPathFollower: {fileID: 1646601471}
   defaultEnemyAggroDelay: 0
+  epicBossLogic: {fileID: 0}
+  bossBattleStarted: 0
   useDevTools: 0
   startFromEncounter: 0
 --- !u!4 &2120091611
@@ -38647,7 +38649,7 @@ MonoBehaviour:
       - 0
       globalNormalsAngle: 69
       flipNormals: 0
-    vertexPathUpToDate: 1
+    vertexPathUpToDate: 0
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0
     showTransformTool: 1

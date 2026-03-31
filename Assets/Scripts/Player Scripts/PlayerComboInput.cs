@@ -4,28 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 [Serializable]public struct Interval
-    {
-        public int min, max;
-    }
+{ 
+    public int min, max;
+}  
 public class PlayerComboInput : MonoBehaviour
 {
-    
     [Header("Input stuff")]
-    private PlayerComboInput comboInput;
     public InputReceiver inputReceiver;
     public int controllerValue;
     private int minVal = 0, maxVal = 127;
 
-    public Interval SunMoon;
-    
-    [Header("Sun / Moon interval")] public int sunMin;
-    public int sunMax;
-    [Header("Moon interval")] public int moonMin;
-    public int moonMax;
-    [Header("Star interval")] public int starMin;
-    public int starMax;
-
-    private InputStruct inputData;
+    [Header("Combinations")] public Interval moonStar;
+    public Interval moonMoon, moonSun, starMoon, starStar, starSun, 
+        sunMoon, sunStar, sunSun;
     
     [Header("Player")]
     public Player playerID;
@@ -35,11 +26,12 @@ public class PlayerComboInput : MonoBehaviour
         Player2 = 2
     }
     
+    private InputStruct inputData; 
     private PlayerInfoStruct playerInfoStruct;
     private PlayerInput input;
     
-    [Header("Symbol values")] public int triangle = 1;
-    public int square = 2, circle = 3;
+    [Header("Symbol values")] public int moon = 1;
+    public int star = 2, sun = 3;
 
     private static bool playerOneTaken;
     
@@ -59,43 +51,72 @@ public class PlayerComboInput : MonoBehaviour
             gameObject.tag = "PlayerOne";
             playerOneTaken = true;
         }
+        
         playerInfoStruct.symbOne = 1;
         playerInfoStruct.symbTwo = 1;
     }
 
     private void Update()
     {
-        if (playerID == Player.Player1)
-        {
-            inputData = inputReceiver.GetInput(1);
-        }
-        else
-        {
-            inputData = inputReceiver.GetInput(2);
-        }
+        inputData = inputReceiver.GetInput(playerID == Player.Player1 ? 1 : 2);
 
         controllerValue = inputData.rotationVal;
         
-        float val = Mathf.Clamp(controllerValue, minVal, maxVal);
-
-        if (val < SunMoon.max && val > SunMoon.min)
-        {
-            Debug.Log("SUN / Moon");
-            // playerInfoStruct.symbOne = 
-        }
-        else if (val < moonMax && val > moonMin)
-        {
-            Debug.Log("MOON!");
-        }
-        else if (val < starMax && val > starMin)
-        {
-            Debug.Log("STAR!");
-        }
-
-
+        UpdateSymbolsFromController();
+        
         if (inputData.pressVal == 1)
         {
+            inputData.pressVal = 0;
             OnFire();
+        }
+    }
+
+    private void UpdateSymbolsFromController()
+    {
+        if (controllerValue < moonMoon.max && controllerValue > moonMoon.min)
+        {
+            playerInfoStruct.symbOne = 1;
+            playerInfoStruct.symbTwo = 1;
+        }
+        else if (controllerValue < moonStar.max && controllerValue > moonStar.min)
+        {
+            playerInfoStruct.symbOne = 1;
+            playerInfoStruct.symbTwo = 2;
+        }
+        else if (controllerValue < moonSun.max && controllerValue > moonSun.min)
+        {
+            playerInfoStruct.symbOne = 1;
+            playerInfoStruct.symbTwo = 3;
+        }
+        else if (controllerValue < starMoon.max && controllerValue > starMoon.min)
+        {
+            playerInfoStruct.symbOne = 2;
+            playerInfoStruct.symbTwo = 1;
+        }
+        else if (controllerValue < starStar.max && controllerValue > starStar.min)
+        {
+            playerInfoStruct.symbOne = 2;
+            playerInfoStruct.symbTwo = 2;
+        }
+        else if (controllerValue < starSun.max && controllerValue > starSun.min)
+        {
+            playerInfoStruct.symbOne = 2;
+            playerInfoStruct.symbTwo = 3;
+        }
+        else if (controllerValue < sunMoon.max && controllerValue > sunMoon.min)
+        {
+            playerInfoStruct.symbOne = 3;
+            playerInfoStruct.symbTwo = 1;
+        }
+        else if (controllerValue < sunStar.max && controllerValue > sunStar.min)
+        {
+            playerInfoStruct.symbOne = 3;
+            playerInfoStruct.symbTwo = 2;
+        }
+        else if (controllerValue < sunSun.max && controllerValue > sunSun.min)
+        {
+            playerInfoStruct.symbOne = 3;
+            playerInfoStruct.symbTwo = 3;
         }
     }
 
@@ -114,8 +135,6 @@ public class PlayerComboInput : MonoBehaviour
     public void OnTopCycle(InputValue value)
     {
         var val = value.Get<Vector2>();
-
-        //Debug.Log("Top cycle");
 
         if ((val.x < -.5 || val.x > .5) && topCanChange)
         {
@@ -154,8 +173,6 @@ public class PlayerComboInput : MonoBehaviour
     public void OnBottomCycle(InputValue value)
     {
         var val = value.Get<Vector2>();
-
-        //Debug.Log("Bottom cycle");
 
         if ((val.x < -.5 || val.x > .5) && bottomCanChange)
         {
