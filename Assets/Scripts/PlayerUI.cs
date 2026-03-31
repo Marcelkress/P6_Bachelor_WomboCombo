@@ -7,7 +7,7 @@ public class PlayerUI : MonoBehaviour
 {
     public Image top, bottom;
 
-    public Sprite circle, square, triangle;
+    public Sprite moon, star, sun;
 
     public PlayerComboInput playerInput;
 
@@ -55,26 +55,26 @@ public class PlayerUI : MonoBehaviour
         switch (info.symbOne)
         {
             case 1: 
-                top.GetComponent<Image>().sprite = triangle; // Set the sprite to the Square image
+                top.GetComponent<Image>().sprite = moon; // Set the sprite to the Square image
                 break;
             case 2:
-                top.GetComponent<Image>().sprite = square; // Set the sprite     to the Circle image
+                top.GetComponent<Image>().sprite = star; // Set the sprite     to the Circle image
                 break;
             case 3:
-                top.GetComponent<Image>().sprite = circle; // Set the sprite to the Triangle image
+                top.GetComponent<Image>().sprite = sun; // Set the sprite to the Triangle image
                 break;
         }
         
         switch (info.symbTwo)
         {
             case 1: 
-                bottom.GetComponent<Image>().sprite = triangle; // Set the sprite to the Square image
+                bottom.GetComponent<Image>().sprite = moon; // Set the sprite to the Square image
                 break;
             case 2:
-                bottom.GetComponent<Image>().sprite = square; // Set the sprite     to the Circle image
+                bottom.GetComponent<Image>().sprite = star; // Set the sprite     to the Circle image
                 break;
             case 3:
-                bottom.GetComponent<Image>().sprite = circle; // Set the sprite to the Triangle image
+                bottom.GetComponent<Image>().sprite = sun; // Set the sprite to the Triangle image
                 break;
         }
     }

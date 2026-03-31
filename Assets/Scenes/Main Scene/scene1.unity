@@ -7126,9 +7126,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   top: {fileID: 1622332393}
   bottom: {fileID: 258751262}
-  circle: {fileID: -718851729, guid: 57c2c16bbbc044bcd833785db20554eb, type: 3}
-  square: {fileID: -1722939174, guid: d0e4dc33cce174bb0bf5eabc1e1abc01, type: 3}
-  triangle: {fileID: 141794624, guid: 37a69eea3b5e8499cb8e86513af5f288, type: 3}
+  moon: {fileID: -269033315, guid: 7d84bd30573ee4f53a4a6bff5e75a8d0, type: 3}
+  star: {fileID: 560802353, guid: 0dfbfea56bf784c539419f890bc00bb3, type: 3}
+  sun: {fileID: 1848850449, guid: e9a5e41d881c4416b9c7ec36fb20f900, type: 3}
   playerInput: {fileID: 0}
   enable: 1
 --- !u!1001 &308984516
@@ -7192,7 +7192,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &309611474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7207,7 +7207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EncounterManager
   Encounters:
   - enemyManager: {fileID: 1612380698}
-    meleeEnemyCount: 5
+    meleeEnemyCount: 1
     projectileEnemyCount: 0
     minComboLength: 2
     maxComboLength: 4
@@ -24509,9 +24509,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   top: {fileID: 640353274}
   bottom: {fileID: 1459042528}
-  circle: {fileID: -718851729, guid: 57c2c16bbbc044bcd833785db20554eb, type: 3}
-  square: {fileID: -1722939174, guid: d0e4dc33cce174bb0bf5eabc1e1abc01, type: 3}
-  triangle: {fileID: 141794624, guid: 37a69eea3b5e8499cb8e86513af5f288, type: 3}
+  moon: {fileID: -269033315, guid: 7d84bd30573ee4f53a4a6bff5e75a8d0, type: 3}
+  star: {fileID: 560802353, guid: 0dfbfea56bf784c539419f890bc00bb3, type: 3}
+  sun: {fileID: 1848850449, guid: e9a5e41d881c4416b9c7ec36fb20f900, type: 3}
   playerInput: {fileID: 0}
   enable: 1
 --- !u!114 &1038895978

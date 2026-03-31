@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   valueToAdd: 450
+  useBossLogic: 0
 --- !u!1 &2004318125498620402
 GameObject:
   m_ObjectHideFlags: 0
@@ -4334,7 +4335,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -4374,9 +4375,9 @@ MonoBehaviour:
   stoppingDistance: 1
   content: {fileID: 1687057938005419409}
   canvas: {fileID: 18896443867211933}
-  SquareImage: {fileID: -1722939174, guid: d0e4dc33cce174bb0bf5eabc1e1abc01, type: 3}
-  CircleImage: {fileID: -718851729, guid: 57c2c16bbbc044bcd833785db20554eb, type: 3}
-  TriangleImage: {fileID: 141794624, guid: 37a69eea3b5e8499cb8e86513af5f288, type: 3}
+  moonImg: {fileID: -269033315, guid: 7d84bd30573ee4f53a4a6bff5e75a8d0, type: 3}
+  starImg: {fileID: 560802353, guid: 0dfbfea56bf784c539419f890bc00bb3, type: 3}
+  sunImg: {fileID: 1848850449, guid: e9a5e41d881c4416b9c7ec36fb20f900, type: 3}
   inputUIImage: {fileID: 2801047422575945081, guid: d3bccf7ea48d814a9826b9aa5fae0db5, type: 3}
   shakeDuration: 0.2
   shakeStrength: {x: 25, y: 25, z: 25}

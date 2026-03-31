@@ -56,6 +56,7 @@ public class PlayerComboInput : MonoBehaviour
         playerInfoStruct.symbTwo = 1;
     }
 
+    /*
     private void Update()
     {
         inputData = inputReceiver.GetInput(playerID == Player.Player1 ? 1 : 2);
@@ -70,7 +71,8 @@ public class PlayerComboInput : MonoBehaviour
             OnFire();
         }
     }
-
+    */
+    
     private void UpdateSymbolsFromController()
     {
         if (controllerValue < moonMoon.max && controllerValue > moonMoon.min)

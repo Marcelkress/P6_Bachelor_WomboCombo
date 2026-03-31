@@ -415,9 +415,9 @@ MonoBehaviour:
   stoppingDistance: 1
   content: {fileID: 3608603056928829360}
   canvas: {fileID: 0}
-  SquareImage: {fileID: -1722939174, guid: d0e4dc33cce174bb0bf5eabc1e1abc01, type: 3}
-  CircleImage: {fileID: -718851729, guid: 57c2c16bbbc044bcd833785db20554eb, type: 3}
-  TriangleImage: {fileID: 141794624, guid: 37a69eea3b5e8499cb8e86513af5f288, type: 3}
+  moonImg: {fileID: 0}
+  starImg: {fileID: 0}
+  sunImg: {fileID: 0}
   inputUIImage: {fileID: 2801047422575945081, guid: d3bccf7ea48d814a9826b9aa5fae0db5, type: 3}
   shakeDuration: 0.2
   shakeStrength: {x: 25, y: 25, z: 25}
