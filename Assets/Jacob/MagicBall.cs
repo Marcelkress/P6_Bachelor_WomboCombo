@@ -19,6 +19,7 @@ public class MagicBall : MonoBehaviour
 
     public float animationSpeed = 0.2f;
 
+    
     [Header("Emission Settings")]
     [ColorUsage(true, true)] public Color idleEmission = Color.black;
     [ColorUsage(true, true)] public Color castEmission = Color.white * 10f;
@@ -41,6 +42,9 @@ public class MagicBall : MonoBehaviour
     public int vibrato = 10;
     public float elasticity = 1f;
 
+    private Vector3 topHalfInitialScale;
+    private Vector3 initialCameraPosition;
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -54,7 +58,11 @@ public class MagicBall : MonoBehaviour
         
         emissionTopMaterial.SetColor("_EmissionColor", Color.black); // Set initial emission strength
         emissionBotMaterial.SetColor("_EmissionColor", Color.black); // Set initial emission strength
-        StartCoroutine(InitializeSequence());
+        //StartCoroutine(InitializeSequence());
+
+        topHalfInitialScale = topHalfSphere.transform.localScale; // Store the initial scale of the top half sphere
+
+        initialCameraPosition = Camera.main.transform.position; // Store the initial camera position
 
         
     }
@@ -79,13 +87,13 @@ public class MagicBall : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Open();
         yield return new WaitForSeconds(2f);
-        RecieveSpell(90f); // Example rotation amount, you can adjust this as needed
+        RecieveSpell(); // Example rotation amount, you can adjust this as needed
         yield return new WaitForSeconds(1f);
-        RecieveSpell(90f); // Example rotation amount, you can adjust this as needed
+        RecieveSpell(); // Example rotation amount, you can adjust this as needed
         yield return new WaitForSeconds(1f);
-        RecieveSpell(-180f); // Example rotation amount, you can adjust this as needed
+        RecieveSpell(); // Example rotation amount, you can adjust this as needed
         yield return new WaitForSeconds(1f);
-        RecieveSpell(180f); // Example rotation amount, you can adjust this as needed
+        RecieveSpell(); // Example rotation amount, you can adjust this as needed
         // Wait for 2 seconds before closing the magic ball
         yield return new WaitForSeconds(2f);
         Close();
@@ -110,23 +118,11 @@ public class MagicBall : MonoBehaviour
         emissionTopMaterial.SetColor("_EmissionColor", Color.white * emissionStrength); // Fade in the emission
     }
 
-    public void RecieveSpell(float rotationAmount)
+    public void RecieveSpell()
     {
         var seq = DOTween.Sequence();
 
-        // 1) Anticipation
-        seq.AppendInterval(anticipationTime);
-        seq.Append(topHalfSphere.transform.DOPunchScale(Vector3.one * punchAmount, duration, vibrato, elasticity));
-
-        // 2) Impact + spin
-        seq.Append(topHalfSphere.transform
-            .DOLocalRotate(new Vector3(0f, rotationAmount, 0f), castDuration, RotateMode.LocalAxisAdd)
-            .SetEase(Ease.OutBack)
-            .OnUpdate(() =>
-            {
-                var e = topHalfSphere.transform.localEulerAngles;
-                topHalfSphere.transform.localEulerAngles = new Vector3(initialXRotation, e.y, initialZRotation);
-            }));
+        
 
         // 3) Emission flash
         seq.Join(DOTween.To(
@@ -156,11 +152,18 @@ public class MagicBall : MonoBehaviour
                 animationSpeed
             );
         });
+        topHalfSphere.transform.localScale = topHalfInitialScale; // Reset the scale to prevent cumulative scaling from punch effect
+
 
         // 4) World reaction
         if (Camera.main != null)
-            Camera.main.transform.DOShakePosition(cameraDuration, cameraShakeStrength, cameraVibrato, 90f, false, true);
-        
+            Camera.main.transform.DOShakePosition(cameraDuration, cameraShakeStrength, cameraVibrato, 90f, false, true).OnComplete(() =>
+            {
+                if (Camera.main != null)
+                    Camera.main.transform.position = initialCameraPosition; // Reset camera position after shake
+            })
+            ;
+           
     }
 
     public void SpellCasted()
@@ -180,7 +183,7 @@ public class MagicBall : MonoBehaviour
                 animationSpeed
             );
         
-            StartCoroutine(InitializeSequence()); // Restart the sequence for demonstration purposes, you can remove this if you don't want it to loop
+           // StartCoroutine(InitializeSequence()); // Restart the sequence for demonstration purposes, you can remove this if you don't want it to loop
     }
 
 }
