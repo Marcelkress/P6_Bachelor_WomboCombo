@@ -1,9 +1,6 @@
 using UnityEngine;
 using PathCreation.Examples;
-using DG.Tweening;
 using UnityEngine.AI;
-using UnityEngine.UI;
-
 public enum BossPhase
 {
     Idle,
@@ -149,8 +146,6 @@ public class EpicBossLogic : MonoBehaviour
 
         bossNavMeshAgent.SetDestination(player.position); // move towards player, Cant be hit until minions are cleared.
     }
-
-
 
     public void OnMinionsCleared()
     {
