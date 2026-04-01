@@ -124,25 +124,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerComboInput
   controllerInput: {fileID: 0}
-  controllerValue: 0
+  controllerValue: 6
   moonStar:
-    min: 8
-    max: 10
-  moonMoon:
-    min: 4
-    max: 6
-  moonSun:
-    min: 0
-    max: 2
-  starMoon:
-    min: 11
-    max: 13
-  starStar:
-    min: 16
-    max: 18
-  starSun:
     min: 5
-    max: 7
+    max: 8
+  moonMoon:
+    min: 0
+    max: 4
+  moonSun:
+    min: 26
+    max: 29
+  starMoon:
+    min: 13
+    max: 17
+  starStar:
+    min: 18
+    max: 22
+  starSun:
+    min: 9
+    max: 12
   sunMoon:
     min: 0
     max: 0
