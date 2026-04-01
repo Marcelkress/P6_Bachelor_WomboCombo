@@ -83,4 +83,16 @@ public class InputManager : MonoBehaviour
             playerTwoCurrent.symbTwo = playerInfoStruct.symbTwo;
         }
     }
+
+    private PlayerInputManager playerInputManager;
+    
+    public void JoinPlayer()
+    {
+        playerInputManager = GetComponent<PlayerInputManager>();
+
+        if (playerInputManager.playerCount < 2)
+        {
+            playerInputManager.JoinPlayer();
+        }
+    }
 }
