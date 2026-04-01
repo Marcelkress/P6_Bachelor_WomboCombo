@@ -52,6 +52,8 @@ public class PlayerUI : MonoBehaviour
         
         PlayerInfoStruct info = playerInput.GetSymbolUpdate();
 
+        //Debug.Log(info.symbOne);
+
         switch (info.symbOne)
         {
             case 1: 

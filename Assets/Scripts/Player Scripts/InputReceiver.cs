@@ -1,15 +1,10 @@
 using UnityEngine;
 
-public struct InputStruct
-{
-    public int ID;
-    public int rotationVal;
-    public int pressVal;
-}
+
 
 public class InputReceiver : MonoBehaviour
 {
-    public InputStruct playerOne, playerTwo;
+    //public InputStruct playerOne, playerTwo;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,9 +21,10 @@ public class InputReceiver : MonoBehaviour
         //      pressVal = 0; 
         
     }
-    
+    /*
     public InputStruct GetInput(int ID)
     {
         return ID == 1 ? playerOne : playerTwo;
     }
+    */
 }

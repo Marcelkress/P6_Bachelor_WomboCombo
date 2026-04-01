@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Reads two rotary-encoder controllers over a serial/USB connection.
@@ -35,15 +36,7 @@ public class ControllerInputCrossPlatform : MonoBehaviour
     [Header("Controller IDs")]
     public string player1Id = "Controller 1";
     public string player2Id = "Controller 2";
-
-    [Serializable]
-    public struct ControllerState
-    {
-        public int  rotation;
-        public bool pushed;
-        public bool connected;
-    }
-
+    
     public ControllerState player1;
     public ControllerState player2;
 
@@ -419,6 +412,8 @@ public class ControllerInputCrossPlatform : MonoBehaviour
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
+        
+        inputManager = GetComponent<PlayerInputManager>();
     }
 
     void Start()
@@ -570,6 +565,31 @@ public class ControllerInputCrossPlatform : MonoBehaviour
     void OnDisable()         => Shutdown();
     void OnApplicationQuit() => Shutdown();
 
+    public ControllerState GetInput(int ID)
+    {
+        return ID == 1 ? player1 : player2;
+    }
+
+    private PlayerInputManager inputManager;
+    
+    void Update()
+    {
+        if (inputManager.playerCount == 0)
+        {
+            if (player1.connected == true)
+            {
+                inputManager.JoinPlayer();
+            }
+        }
+        else if(inputManager.playerCount == 1)
+        {
+            if (player2.connected == true)
+            {
+                inputManager.JoinPlayer();
+            }
+        }
+    }
+    
     void Shutdown()
     {
         _running = false;

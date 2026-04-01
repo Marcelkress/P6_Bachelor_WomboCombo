@@ -17,14 +17,6 @@ public class ControllerInputManager : MonoBehaviour
     public string player1Id = "Controller 1";
     public string player2Id = "Controller 2";
 
-    [Serializable]
-    public struct ControllerState
-    {
-        public int rotation;
-        public bool pushed;
-        public bool connected;
-    }
-
     public ControllerState player1;
     public ControllerState player2;
 
@@ -79,6 +71,11 @@ public class ControllerInputManager : MonoBehaviour
         serialThread.Start();
     }
 
+    public ControllerState GetInput(int ID)
+    {
+        return ID == 1 ? player1 : player2;
+    }
+    
     void ReadSerialLoop()
     {
         while (running)

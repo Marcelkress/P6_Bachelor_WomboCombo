@@ -107,7 +107,7 @@ MonoBehaviour:
     m_ActionId: c1449e4f-89c4-4803-aac7-2958ee480e89
     m_ActionName: 'Player two/Bottom Triangle[/Keyboard/f,/DualShock4GamepadHID/buttonNorth,/DualSenseGamepadHID/buttonNorth]'
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Controller scheme
   m_DefaultActionMap: Player one
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -123,18 +123,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb465e22c58f4905a509673119f34e4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerComboInput
-  inputReceiver: {fileID: 0}
+  controllerInput: {fileID: 0}
   controllerValue: 0
-  SunMoon:
+  moonStar:
+    min: 8
+    max: 10
+  moonMoon:
+    min: 4
+    max: 6
+  moonSun:
     min: 0
-    max: 15
-  sunMin: 0
-  sunMax: 0
-  moonMin: 0
-  moonMax: 0
-  starMin: 0
-  starMax: 0
+    max: 2
+  starMoon:
+    min: 11
+    max: 13
+  starStar:
+    min: 16
+    max: 18
+  starSun:
+    min: 5
+    max: 7
+  sunMoon:
+    min: 0
+    max: 0
+  sunStar:
+    min: 0
+    max: 0
+  sunSun:
+    min: 0
+    max: 0
   playerID: 1
-  triangle: 1
-  square: 2
-  circle: 3
+  moon: 1
+  star: 2
+  sun: 3
