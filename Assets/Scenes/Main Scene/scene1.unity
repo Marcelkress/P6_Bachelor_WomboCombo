@@ -7070,9 +7070,9 @@ RectTransform:
   - {fileID: 529837872}
   m_Father: {fileID: 1714762077}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -200, y: -450}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -200, y: 270}
   m_SizeDelta: {x: 400, y: 540}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &307785639
@@ -7193,7 +7193,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &309611474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7213,38 +7213,38 @@ MonoBehaviour:
     minComboLength: 2
     maxComboLength: 4
   - enemyManager: {fileID: 1088628462}
-    meleeEnemyCount: 5
+    meleeEnemyCount: 2
     projectileEnemyCount: 0
     minComboLength: 2
     maxComboLength: 4
   - enemyManager: {fileID: 1030023371}
-    meleeEnemyCount: 5
+    meleeEnemyCount: 2
     projectileEnemyCount: 0
     minComboLength: 2
     maxComboLength: 4
   - enemyManager: {fileID: 385785121}
-    meleeEnemyCount: 5
+    meleeEnemyCount: 2
     projectileEnemyCount: 0
     minComboLength: 2
     maxComboLength: 4
   - enemyManager: {fileID: 1126966903}
-    meleeEnemyCount: 5
+    meleeEnemyCount: 2
     projectileEnemyCount: 0
     minComboLength: 2
     maxComboLength: 4
   - enemyManager: {fileID: 1761839060}
-    meleeEnemyCount: 5
+    meleeEnemyCount: 2
     projectileEnemyCount: 0
     minComboLength: 2
     maxComboLength: 4
   - enemyManager: {fileID: 2102292839}
-    meleeEnemyCount: 0
-    projectileEnemyCount: 2
+    meleeEnemyCount: 2
+    projectileEnemyCount: 0
     minComboLength: 2
     maxComboLength: 4
   - enemyManager: {fileID: 486749952}
-    meleeEnemyCount: 0
-    projectileEnemyCount: 2
+    meleeEnemyCount: 2
+    projectileEnemyCount: 0
     minComboLength: 2
     maxComboLength: 4
   - enemyManager: {fileID: 1441776804}
@@ -7256,8 +7256,8 @@ MonoBehaviour:
   defaultEnemyAggroDelay: 0
   epicBossLogic: {fileID: 0}
   bossBattleStarted: 0
-  useDevTools: 0
-  startFromEncounter: 0
+  useDevTools: 1
+  startFromEncounter: 5
 --- !u!4 &309611475
 Transform:
   m_ObjectHideFlags: 0
@@ -24763,9 +24763,9 @@ RectTransform:
   - {fileID: 1459042527}
   m_Father: {fileID: 1714762077}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -2360, y: -450}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 200, y: 270}
   m_SizeDelta: {x: 400, y: 540}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1038895977
@@ -33676,7 +33676,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419428000}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45cb4a7b3dd211c54b21bfaaee320f5d, type: 3}
   m_Name: 
@@ -50219,7 +50219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c2d4278fa71ade0affee5352179aa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CastleDoorTrigger
-  doorTransformPivot: {fileID: 0}
+  doorTransformPivot: {fileID: 456353427}
   speed: 1
   openRotation: {x: 0, y: 90, z: 0}
 --- !u!4 &2095215433 stripped
@@ -50525,7 +50525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.ProbeVolume
   mode: 1
-  size: {x: 403.01, y: 167.9733, z: 403.01}
+  size: {x: 403.01, y: 167.97327, z: 403.01}
   overrideRendererFilters: 0
   minRendererVolumeSize: 0.1
   objectLayerMask:
@@ -50565,7 +50565,7 @@ Transform:
   m_GameObject: {fileID: 2100707611}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 200, y: 95.13282, z: 200}
+  m_LocalPosition: {x: 200, y: 95.132805, z: 200}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -50621,20 +50621,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: meleeSpawnPositions.Array.size
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: 'meleeSpawnPositions.Array.data[0]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2102292838}
     - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: 'meleeSpawnPositions.Array.data[1]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2102292837}
     - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: 'meleeSpawnPositions.Array.data[2]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2102292836}
     - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: 'meleeSpawnPositions.Array.data[3]'
       value: 
@@ -51437,20 +51437,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: meleeSpawnPositions.Array.size
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: 'meleeSpawnPositions.Array.data[0]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1045773698}
     - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: 'meleeSpawnPositions.Array.data[1]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1798424689}
     - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: 'meleeSpawnPositions.Array.data[2]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1603175830}
     - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: 'meleeSpawnPositions.Array.data[3]'
       value: 
