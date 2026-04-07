@@ -102,7 +102,18 @@ public class Enemy : MonoBehaviour
         if (projectileEnemy)
         {
             StartCoroutine(BeginShoot());
-            agent.SetDestination(player.transform.position);
+
+            // Calculate direction from enemy to player (for facing)
+            Vector3 directionToPlayer = player.position - transform.position;
+
+// Optional: Flatten the direction to avoid vertical tilting (if desired for gameplay)
+            directionToPlayer.y = 0; // Comment this out if you want full 3D facing
+
+// Rotate to face the player
+            transform.LookAt(transform.position + directionToPlayer);
+                
+            
+            agent.isStopped = true;
         }
         else
         {
@@ -116,11 +127,16 @@ public class Enemy : MonoBehaviour
         while (true)
         {
             float waitTime = Random.Range(shootIntervalMin, shootIntervalMax);
-
             yield return new WaitForSeconds(waitTime);
-            agent.isStopped = true;
-            Instantiate(projectilePrefab, projectileShootPoint, true);
+            anim.SetTrigger("Shoot");
         }
+    }
+
+    public void InstantiateProjectile()
+    {
+        GameObject projectile = Instantiate(projectilePrefab, projectileShootPoint.position, Quaternion.identity);
+        manager.Enemies.Add(projectile);
+        projectile.GetComponent<EnemyProjectile>().manager = this.manager;
     }
 
     public void PlayerOneUpdate()
@@ -142,7 +158,9 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         CheckAttackDist();
-        anim.SetBool("Walk", !agent.isStopped);
+        
+        if(!projectileEnemy)
+            anim.SetBool("Walk", !agent.isStopped);
 
         if (startTimer)
         {
@@ -234,10 +252,7 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-
-
-
-
+    
     private void InitializeUI()
     {
         contentSprite = new Image[comboArray.Length]; // Initialize the contentSprite array to match the length of comboArray

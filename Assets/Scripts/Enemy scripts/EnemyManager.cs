@@ -10,7 +10,7 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    public GameObject enemyUnitPrefab;
+    public GameObject enemyUnitPrefab, projectileUnityPrefab;
     [Tooltip("Also determines the enemy count")] public Transform[] meleeSpawnPositions;
     public Transform[] projectileSpawnPositions;
     public List<startStruct> theFirstUniqueComboStartSteps = new List<startStruct>();
@@ -61,7 +61,7 @@ public class EnemyManager : MonoBehaviour
             if (i > projectileSpawnPositions.Length - 1)
                 return;
             
-            GameObject enemy = Instantiate(enemyUnitPrefab, projectileSpawnPositions[i].position, Quaternion.identity);
+            GameObject enemy = Instantiate(projectileUnityPrefab, projectileSpawnPositions[i].position, Quaternion.identity);
             Enemies.Add(enemy);
 
             Enemy enemyScript = enemy.GetComponent<Enemy>();
@@ -102,7 +102,6 @@ public class EnemyManager : MonoBehaviour
 
     public void EnemyDied()
     {
-
         if (Enemies.Count <= 0 && !EncounterManager.instance.bossBattleStarted)
         {
             EncounterManager.instance.GoToNextEncounter();
