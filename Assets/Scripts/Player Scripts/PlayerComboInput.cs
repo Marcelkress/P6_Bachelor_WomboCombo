@@ -77,55 +77,37 @@ public class PlayerComboInput : MonoBehaviour
         }
     }
     
-    
+    private bool IsInInterval(Interval interval)
+    {
+        // Handles wrap-around case (e.g. min=29, max=4)
+        if (interval.min > interval.max)
+            return controllerValue >= interval.min || controllerValue <= interval.max;
+        else
+            return controllerValue >= interval.min && controllerValue <= interval.max;
+    }
+
+    private bool IsMoonMoon() => IsInInterval(moonMoon);
+    private bool IsMoonStar() => IsInInterval(moonStar);
+    private bool IsMoonSun()  => IsInInterval(moonSun);
+    private bool IsStarMoon() => IsInInterval(starMoon);
+    private bool IsStarStar() => IsInInterval(starStar);
+    private bool IsStarSun()  => IsInInterval(starSun);
+    private bool IsSunMoon()  => IsInInterval(sunMoon);
+    private bool IsSunStar()  => IsInInterval(sunStar);
+    private bool IsSunSun()   => IsInInterval(sunSun);
+
     private void UpdateSymbolsFromController()
     {
-        if (controllerValue <= moonMoon.max && controllerValue >= moonMoon.min)
-        {
-            playerInfoStruct.symbOne = 1;
-            playerInfoStruct.symbTwo = 1;
-        }
-        else if (controllerValue <= moonStar.max && controllerValue >= moonStar.min)
-        {
-            playerInfoStruct.symbOne = 1;
-            playerInfoStruct.symbTwo = 2;
-        }
-        else if (controllerValue <= moonSun.max && controllerValue >= moonSun.min)
-        {
-            playerInfoStruct.symbOne = 1;
-            playerInfoStruct.symbTwo = 3;
-        }
-        else if (controllerValue <= starMoon.max && controllerValue >= starMoon.min)
-        {
-            playerInfoStruct.symbOne = 2;
-            playerInfoStruct.symbTwo = 1;
-        }
-        else if (controllerValue <= starStar.max && controllerValue >= starStar.min)
-        {
-            playerInfoStruct.symbOne = 2;
-            playerInfoStruct.symbTwo = 2;
-        }
-        else if (controllerValue <= starSun.max && controllerValue >= starSun.min)
-        {
-            playerInfoStruct.symbOne = 2;
-            playerInfoStruct.symbTwo = 3;
-        }
-        else if (controllerValue <= sunMoon.max && controllerValue >= sunMoon.min)
-        {
-            playerInfoStruct.symbOne = 3;
-            playerInfoStruct.symbTwo = 1;
-        }
-        else if (controllerValue <= sunStar.max && controllerValue >= sunStar.min)
-        {
-            playerInfoStruct.symbOne = 3;
-            playerInfoStruct.symbTwo = 2;
-        }
-        else if (controllerValue <= sunSun.max && controllerValue >= sunSun.min)
-        {
-            playerInfoStruct.symbOne = 3;
-            playerInfoStruct.symbTwo = 3;
-        }
-        
+        if (IsMoonMoon())      { playerInfoStruct.symbOne = moon; playerInfoStruct.symbTwo = moon; }
+        else if (IsMoonStar()) { playerInfoStruct.symbOne = moon; playerInfoStruct.symbTwo = star; }
+        else if (IsMoonSun())  { playerInfoStruct.symbOne = moon; playerInfoStruct.symbTwo = sun;  }
+        else if (IsStarMoon()) { playerInfoStruct.symbOne = star; playerInfoStruct.symbTwo = moon; }
+        else if (IsStarStar()) { playerInfoStruct.symbOne = star; playerInfoStruct.symbTwo = star; }
+        else if (IsStarSun())  { playerInfoStruct.symbOne = star; playerInfoStruct.symbTwo = sun;  }
+        else if (IsSunMoon())  { playerInfoStruct.symbOne = sun;  playerInfoStruct.symbTwo = moon; }
+        else if (IsSunStar())  { playerInfoStruct.symbOne = sun;  playerInfoStruct.symbTwo = star; }
+        else if (IsSunSun())   { playerInfoStruct.symbOne = sun;  playerInfoStruct.symbTwo = sun;  }
+
         Debug.Log(playerInfoStruct.symbOne + "    " + playerInfoStruct.symbTwo);
     }
 
