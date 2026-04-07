@@ -82,6 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyManager
   enemyUnitPrefab: {fileID: 4414871117303439921, guid: aef9a3e063e740f4d8100584de73ceb4, type: 3}
+  projectileUnityPrefab: {fileID: 8473337529483587920, guid: 2031192bc99a8421eb70b983361cd8bc, type: 3}
   meleeSpawnPositions: []
   projectileSpawnPositions: []
   theFirstUniqueComboStartSteps:

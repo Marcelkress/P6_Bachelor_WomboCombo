@@ -16902,7 +16902,7 @@ MonoBehaviour:
   m_NotificationBehavior: 2
   m_MaxPlayerCount: -1
   m_AllowJoining: 1
-  m_JoinBehavior: 0
+  m_JoinBehavior: 2
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls:
@@ -38652,7 +38652,7 @@ MonoBehaviour:
       - 0
       globalNormalsAngle: 69
       flipNormals: 0
-    vertexPathUpToDate: 1
+    vertexPathUpToDate: 0
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0
     showTransformTool: 1

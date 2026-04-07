@@ -29,6 +29,7 @@ public class PlayerComboInput : MonoBehaviour
     private ControllerState inputData; 
     private PlayerInfoStruct playerInfoStruct;
     private PlayerInput input;
+    public bool useBalls;
     
     [Header("Symbol values")] public int moon = 1;
     public int star = 2, sun = 3;
@@ -54,14 +55,16 @@ public class PlayerComboInput : MonoBehaviour
         
         playerInfoStruct.symbOne = 1;
         playerInfoStruct.symbTwo = 1;
-
-        controllerInput = FindFirstObjectByType<ControllerInputCrossPlatform>();
+        
+        if(useBalls)
+            controllerInput = FindFirstObjectByType<ControllerInputCrossPlatform>();
     }
 
     
     private void Update()
     {
-        inputData = controllerInput.GetInput(playerID == Player.Player1 ? 1 : 2);
+        if(useBalls)
+            inputData = controllerInput.GetInput(playerID == Player.Player1 ? 1 : 2);
 
         if (inputData.connected == false)
             return;
@@ -85,7 +88,7 @@ public class PlayerComboInput : MonoBehaviour
         else
             return controllerValue >= interval.min && controllerValue <= interval.max;
     }
-
+    
     private bool IsMoonMoon() => IsInInterval(moonMoon);
     private bool IsMoonStar() => IsInInterval(moonStar);
     private bool IsMoonSun()  => IsInInterval(moonSun);

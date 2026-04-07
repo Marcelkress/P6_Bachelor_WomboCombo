@@ -249,9 +249,12 @@ public class EnemyProjectile : MonoBehaviour
     {
         Die();
     }
-
+    
+    private bool isDead;
     private void Die()
     {
+        if (isDead) return; // Prevent multiple death triggers
+            isDead = true;
         manager.Enemies.Remove(this.gameObject);
         manager.EnemyDied();
         Destroy(this.gameObject);

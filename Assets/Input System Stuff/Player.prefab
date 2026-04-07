@@ -107,7 +107,7 @@ MonoBehaviour:
     m_ActionId: c1449e4f-89c4-4803-aac7-2958ee480e89
     m_ActionName: 'Player two/Bottom Triangle[/Keyboard/f,/DualShock4GamepadHID/buttonNorth,/DualSenseGamepadHID/buttonNorth]'
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Controller scheme
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Player one
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -153,6 +153,7 @@ MonoBehaviour:
     min: 0
     max: 0
   playerID: 1
+  useBalls: 1
   moon: 1
   star: 2
   sun: 3

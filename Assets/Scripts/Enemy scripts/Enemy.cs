@@ -373,8 +373,6 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         if (isDead) return; // Prevent multiple death triggers
-
-
         isDead = true;
         Debug.Log("Enemy Defeated!"); // Enemy is defeated
         manager.Enemies.Remove(this.gameObject);
