@@ -122,10 +122,20 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         }
     }
 
+    private bool initialAggro = true;
+
+    private float initialShootDelayMin = 1, initialShootDelayMax = 3;
     private IEnumerator BeginShoot()
     {
         while (true)
         {
+            if (initialAggro == true)
+            {
+                float startWait = Random.Range(initialShootDelayMin, initialShootDelayMax);
+                yield return new WaitForSeconds(startWait);
+                anim.SetTrigger("Shoot");
+                initialAggro = false;
+            }
             float waitTime = Random.Range(shootIntervalMin, shootIntervalMax);
             yield return new WaitForSeconds(waitTime);
             anim.SetTrigger("Shoot");
@@ -137,6 +147,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         GameObject projectile = Instantiate(projectilePrefab, projectileShootPoint.position, Quaternion.identity);
         manager.Enemies.Add(projectile);
         projectile.GetComponent<EnemyProjectile>().manager = this.manager;
+        projectile.GetComponent<EnemyProjectile>().enemy = this;
     }
 
     public void PlayerOneUpdate()

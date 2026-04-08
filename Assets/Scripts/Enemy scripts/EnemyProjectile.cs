@@ -36,6 +36,8 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
     private PlayerInfoStruct playerOneInfo, playerTwoInfo;
     private Transform player;
     private Player playerScript;
+
+    public Enemy enemy;
     
     private void Awake()
     {
@@ -258,7 +260,7 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
     {
         if (isDead) return; // Prevent multiple death triggers
             isDead = true;
-            
+        
         manager.Enemies.Remove(this.gameObject);
         manager.EnemyDied();
         Destroy(this.gameObject);
