@@ -7,41 +7,42 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
+    [Header("Health")]
     public int health = 3; // Example health value for the player
     private int currentHealth;  
+    public UnityEvent PlayerDiedEvent;
 
+    [Header("Health UI")]
     public Image healthBar; // Reference to the health bar UI element
     public TMP_Text healthText; // Reference to the health text UI element (optional)
-
-    private int[] healingComboArray = new int[] {  1, 3, 1, 2 ,1, 1 };
-    private int comboStep = 0; // keeps track of the current step in the combo sequence
-
     public Sprite SquareImage, CircleImage, TriangleImage;
-
     public GameObject inputUIImage; // reference UI image which should be updated to show the combo array (Should spawn multiple)
-
-    public GameObject gameOverScreen; // Reference to the Game Over screen UI element
     [SerializeField] private Transform content;
     private Image[] contentSprite;
+    
+    [Header("Heal combo")]
+    public int[] healingComboArray = new int[] {  2, 1, 2, 2, 2, 3 };
+    private int comboStep = 0; // keeps track of the current step in the combo sequence
 
     private PlayerInput playerInput; // Reference to the PlayerInput component for handling input actions
     private EncounterManager encounterManager; // Reference to the EncounterManager for accessing boss logic and other encounter-related data
 
     [Header("Fire ball")]
     public GameObject fireballPrefab;
-
+    
+    [Header("Boss")]
     public bool lookAtBoss = false; // whether the player should look at the boss, used for certain encounters and the boss fight
 
-    public UnityEvent PlayerDiedEvent;
+    public static bool healingComboStarted;
     
     void Start()
     {
         currentHealth = health; // Initialize current health to the maximum health at the start
-
         playerInput = GetComponent<PlayerInput>(); // Get the PlayerInput component attached to the player game object
         encounterManager = EncounterManager.instance; // Get the instance of the EncounterManager
-
         InitializeUI();
+        InputManager.instance.PlayerOneEvent.AddListener(PlayerOneUpdate);
+        InputManager.instance.PlayerTwoEvent.AddListener(PlayerTwoUpdate);
     }
     private void LateUpdate()
     {
@@ -61,7 +62,7 @@ public class Player : MonoBehaviour
             healthText.text = currentHealth.ToString(); // Set the initial health text (optional)
         }
         
-        contentSprite = new Image[healingComboArray.Length]; // Initialize the contentSprite array to match the length of healingComboArray
+        contentSprite = new Image[healingComboArray.Length]; // Initialize the contentSprite array to match the length of healinghealingComboArray
 
         for (int i = 0; i < healingComboArray.Length; i++)
         {
@@ -99,45 +100,77 @@ public class Player : MonoBehaviour
 
     }
     
+    public void PlayerOneUpdate()
+    {
+        playerOneInfo = InputManager.instance.GetPlayerSymbols(1);
+        //CompareCombo(1);
+    }
+    public void PlayerTwoUpdate()
+    {
+        playerTwoInfo = InputManager.instance.GetPlayerSymbols(2);
+        //CompareCombo(2);
+    }
+    
+    private PlayerInfoStruct playerOneInfo, playerTwoInfo;
     private int rightIndex = 0;
     private int leftIndex = 0;
-    private void HealingSpell()
+   /* private void CompareCombo(int id)
     {
-        rightIndex = comboStep * 2 + 1;
-        leftIndex = comboStep * 2;
-
-        contentSprite[leftIndex].enabled = false;
-        contentSprite[rightIndex].enabled = false;
-
-        comboStep++; // Move to the next step in the combo sequence
-
-        // if fully complete heal player for 1 health and reset combo
-        if (comboStep * 2 >= healingComboArray.Length)
+        if (healingComboStarted == false)
         {
-            currentHealth += 1; // Heal the player for 1 health
-            Debug.Log("Player healed! Current health: " + currentHealth);
-
-            healthText.text = currentHealth.ToString(); // Update the health text (optional)
-            // Update the health bar UI element
-            if (healthBar != null)
+            if (Enemy.globalComboStarted)
             {
-                healthBar.fillAmount = (float)currentHealth / health; // Update the fill amount
-                AnimateHealthBar(); // Optional: Add a tweening effect to the health bar for smoother transitions
-                rightIndex = 0; // Reset the right index for the next combo
-                leftIndex = 0; // Reset the left index for the next combo
-                comboStep = 0; // Reset the combo step for the next combo
-                
-                foreach (Image img in contentSprite)
-                {
-                    img.enabled = true; // Re-enable all combo step UI elements for the next combo
-                }
-
+                return;
             }
         }
 
+        if (debug)
+        {
+            Debug.Log("ComboStep: " + comboStep);
+            Debug.Log("Array symb one: " + healingComboArray[comboStep]);
+            Debug.Log("Array symb two: " + healingComboArray[comboStep + 1]);
+        }
 
+        // If either player one or player two symbols are correct continue
+        if ((playerOneInfo.symbOne == healingComboArray[comboStep] && playerOneInfo.symbTwo == healingComboArray[comboStep + 1])
+            || (playerTwoInfo.symbOne == healingComboArray[comboStep] && playerTwoInfo.symbTwo == healingComboArray[comboStep + 1]))
+        {
+            Debug.Log(comboStep);
+
+            if (healingComboArray[comboStep] == 2) // If the top symbol is square
+            {
+                if (playerOneInfo.symbOne == healingComboArray[comboStep] && id == 1)
+                    pOneSquare = true;
+
+                if(playerTwoInfo.symbOne == healingComboArray[comboStep] && id == 2)
+                    pTwoSquare = true;
+
+                startTimer = true;
+
+                Debug.Log("returning");
+
+                return;
+            }
+
+            Debug.Log("Shooting from Method");
+
+            healingComboStarted = true;
+            Enemy.globalComboStarted = true;
+
+            // Completed one combo step
+            //UpdateUI(); Vi opdatere istedet når fireball rammer enemy
+
+            comboStep += 2;
+            
+            if (comboStep >= healingComboArray.Length)
+            {
+                // Completed entire combo
+                localComboStarted = false;
+                globalComboStarted = false;
+            }
+        }
     }
-    
+    */
     public void TakeDamage(int damage)
     {
         currentHealth -= damage; // Reduce the player's health by the damage amount

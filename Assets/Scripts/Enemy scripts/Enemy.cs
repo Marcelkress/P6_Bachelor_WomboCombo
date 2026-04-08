@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
 
     public bool debug = false;
     // ComboCheck
-    private static bool globalComboStarted;
+    public static bool globalComboStarted;
     private bool localComboStarted;
 
     [Header("Attack")]
