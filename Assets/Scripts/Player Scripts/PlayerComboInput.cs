@@ -122,6 +122,7 @@ public class PlayerComboInput : MonoBehaviour
     public void OnFire()
     {
         InputManager.instance.UpdatePlayerInfo((int)playerID, playerInfoStruct);
+        Debug.Log("Fire from combo input " + playerID.ToString());
     }
 
     private bool topCanChange = true, bottomCanChange = true;
@@ -135,7 +136,7 @@ public class PlayerComboInput : MonoBehaviour
             topCanChange = false;
             playerInfoStruct.symbOne += (int)val.x;
 
-            if (playerID == Player.Player1)
+            if (playerID == Player.Player2)
             {
                 if (playerInfoStruct.symbOne > 3)
                 {
@@ -146,7 +147,7 @@ public class PlayerComboInput : MonoBehaviour
                     playerInfoStruct.symbOne = 3;
                 }
             }
-            else if (playerID == Player.Player2)
+            else if (playerID == Player.Player1)
             {
                 if (playerInfoStruct.symbOne > 2)
                 {

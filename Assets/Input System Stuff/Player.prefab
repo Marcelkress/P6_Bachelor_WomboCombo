@@ -129,7 +129,7 @@ MonoBehaviour:
     min: 5
     max: 7
   moonMoon:
-    min: 0
+    min: 29
     max: 4
   moonSun:
     min: 24
