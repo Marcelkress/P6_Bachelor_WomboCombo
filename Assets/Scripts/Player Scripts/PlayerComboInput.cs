@@ -33,7 +33,7 @@ public class PlayerComboInput : MonoBehaviour
     
     [Header("Symbol values")] public int moon = 1;
     public int star = 2, sun = 3;
-
+    
     private static bool playerOneTaken;
     
     private void Awake()
@@ -122,7 +122,7 @@ public class PlayerComboInput : MonoBehaviour
     public void OnFire()
     {
         InputManager.instance.UpdatePlayerInfo((int)playerID, playerInfoStruct);
-        Debug.Log("Fire from combo input " + playerID.ToString());
+        //Debug.Log("Fire from combo input " + playerID.ToString());
     }
 
     private bool topCanChange = true, bottomCanChange = true;

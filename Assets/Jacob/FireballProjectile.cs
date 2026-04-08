@@ -15,14 +15,14 @@ public class FireballProjectile : MonoBehaviour
 
     public GameObject fireExplosionPrefab;
 
-    private Enemy targetedEnemyScript;
+    private IEnemyDamagable targetedEnemyScript;
     private void Start()
     {
         currentPosition = this.transform;
     }
     public void SetTargetTransform(Transform targetTransform, GameObject targetedEnemy)
     {
-        targetedEnemyScript = targetedEnemy.GetComponent<Enemy>();
+        targetedEnemyScript = targetedEnemy.GetComponent<IEnemyDamagable>();
         
         if (target == null)
         {
@@ -46,4 +46,9 @@ public class FireballProjectile : MonoBehaviour
             this.gameObject.SetActive(false);
         }
     }
+}
+
+public interface IEnemyDamagable
+{
+    public void UpdateUI();
 }

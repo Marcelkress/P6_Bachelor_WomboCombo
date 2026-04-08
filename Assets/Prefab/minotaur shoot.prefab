@@ -5176,8 +5176,8 @@ MonoBehaviour:
   projectileEnemy: 1
   projectilePrefab: {fileID: 4021818255343050866, guid: 62bcb43a4b20c4f1b92a9025c5e23c4b, type: 3}
   projectileShootPoint: {fileID: 3150456201645677521}
-  shootIntervalMax: 20
-  shootIntervalMin: 25
+  shootIntervalMax: 1
+  shootIntervalMin: 10
   comboArray: 
   comboStep: 0
   comboLength: 0

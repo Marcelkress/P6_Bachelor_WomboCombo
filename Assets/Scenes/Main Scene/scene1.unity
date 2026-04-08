@@ -7630,7 +7630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EncounterManager
   Encounters:
   - enemyManager: {fileID: 1612380698}
-    meleeEnemyCount: 1
+    meleeEnemyCount: 0
     projectileEnemyCount: 1
     minComboLength: 2
     maxComboLength: 4
@@ -36311,7 +36311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fb2a53cdf0814fcab5d2ba15b316a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
-  debug: 1
+  debug: 0
   PlayerOneEvent:
     m_PersistentCalls:
       m_Calls: []

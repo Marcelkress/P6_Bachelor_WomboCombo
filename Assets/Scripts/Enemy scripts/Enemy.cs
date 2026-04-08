@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using Random = UnityEngine.Random;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IEnemyDamagable
 {
     [Header("Enemy type")] 
     public bool projectileEnemy;

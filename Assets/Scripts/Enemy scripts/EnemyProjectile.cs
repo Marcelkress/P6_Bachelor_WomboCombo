@@ -3,7 +3,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyProjectile : MonoBehaviour
+public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
 {
     private Transform target;
     public int damage = 1;
@@ -19,7 +19,7 @@ public class EnemyProjectile : MonoBehaviour
     public int minLength = 1, maxLength = 2;
     private float deathTimer;
     public float squareSuccessWindow = 0.5f;
-    public bool startTimer, pOneSquare, pTwoSquare;
+    public bool startTimer, pOneStar, pTwoStar;
 
     
     [Header("UI")] 
@@ -69,11 +69,13 @@ public class EnemyProjectile : MonoBehaviour
         {
             timer += Time.deltaTime;
             
-            if (pOneSquare == true && pTwoSquare == true) // both players pressed within the window
+            if (pOneStar == true && pTwoStar == true) // both players pressed within the window
             {
+                Debug.Log("Both players pressed star top");
                 if (timer < squareSuccessWindow) // only succeed if still within the time window
                 {
                     comboStep += 2;
+                    playerScript.ShootFireball(this.transform, this.gameObject);
                 }
                 else
                 {
@@ -82,16 +84,16 @@ public class EnemyProjectile : MonoBehaviour
                 
                 timer = 0;
                 startTimer = false;
-                pOneSquare = false;
-                pTwoSquare = false;
+                pOneStar = false;
+                pTwoStar = false;
             }
             else if (timer >= squareSuccessWindow)
             {
                 Debug.Log("Resetting after time");
                 timer = 0;
                 startTimer = false;
-                pOneSquare = false;
-                pTwoSquare = false;
+                pOneStar = false;
+                pTwoStar = false;
             }
         }
 
@@ -110,28 +112,29 @@ public class EnemyProjectile : MonoBehaviour
     
     private void CompareCombo(int id)
     {
+        Debug.Log("Combo on projectile");
         // If either player one or player two symbols are correct continue
         if ((playerOneInfo.symbOne == comboArray[comboStep] && playerOneInfo.symbTwo == comboArray[comboStep + 1])
             || (playerTwoInfo.symbOne == comboArray[comboStep] && playerTwoInfo.symbTwo == comboArray[comboStep + 1]))
         {
             Debug.Log(comboStep);
 
-            if (comboArray[comboStep] == 2) // If the top symbol is square
+            if (comboArray[comboStep] == 2) // If the top symbol is star
             {
                 if (playerOneInfo.symbOne == comboArray[comboStep] && id == 1)
-                    pOneSquare = true;
+                    pOneStar = true;
 
                 if(playerTwoInfo.symbOne == comboArray[comboStep] && id == 2)
-                    pTwoSquare = true;
+                    pTwoStar = true;
 
                 startTimer = true;
 
-                Debug.Log("returning");
+                Debug.Log("Starting time");
 
                 return;
             }
 
-            Debug.Log("Shooting from Method");
+            // Debug.Log("Shooting from Method");
             playerScript.ShootFireball(this.transform, this.gameObject);
             comboStep += 2;
         }
@@ -255,6 +258,7 @@ public class EnemyProjectile : MonoBehaviour
     {
         if (isDead) return; // Prevent multiple death triggers
             isDead = true;
+            
         manager.Enemies.Remove(this.gameObject);
         manager.EnemyDied();
         Destroy(this.gameObject);
