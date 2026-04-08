@@ -20,6 +20,5 @@ public class EnemyCanvasOri : MonoBehaviour
         directionToPlayer.y = 0; // Keep the enemy upright by ignoring the y-axis
 
         rectTransform.rotation = Quaternion.LookRotation(directionToPlayer); // Rotate the enemy canvas to face the player
-        rectTransform.position = new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z); // Position the enemy canvas above the enemy
     }
 }
