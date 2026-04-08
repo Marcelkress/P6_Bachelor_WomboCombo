@@ -8,11 +8,10 @@ public class FireballProjectile : MonoBehaviour
 
     public AnimationCurve projectileCurve;
     private Transform target;
+    public float maxLiveTime = 20;
 
     private Transform currentPosition;
-
     private float animationTime;
-
     public GameObject fireExplosionPrefab;
 
     private IEnemyDamagable targetedEnemyScript;
@@ -28,8 +27,10 @@ public class FireballProjectile : MonoBehaviour
         {
             target = targetTransform;
         }
-        
     }
+
+    private float timer;
+    
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -44,6 +45,13 @@ public class FireballProjectile : MonoBehaviour
             // Epic explosion vfx
             GameObject explosion = Instantiate(fireExplosionPrefab, target.position, target.rotation);
             this.gameObject.SetActive(false);
+        }
+
+        timer += Time.deltaTime;
+
+        if (timer > maxLiveTime || target == null)
+        {
+            Destroy(this.gameObject);
         }
     }
 }

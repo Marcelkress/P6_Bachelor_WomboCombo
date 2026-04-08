@@ -8,22 +8,35 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour
 {
     [Header("Health")]
-    public int health = 3; // Example health value for the player
+    public int maxHealth = 3; // Example health value for the player
     private int currentHealth;  
     public UnityEvent PlayerDiedEvent;
+    public int healAmount = 5;
 
     [Header("Health UI")]
     public Image healthBar; // Reference to the health bar UI element
     public TMP_Text healthText; // Reference to the health text UI element (optional)
-    public Sprite SquareImage, CircleImage, TriangleImage;
     public GameObject inputUIImage; // reference UI image which should be updated to show the combo array (Should spawn multiple)
     [SerializeField] private Transform content;
     private Image[] contentSprite;
+    public Sprite moonImg, starImg, sunImg; // references to the UI images for each button (Square, Circle, Triangle)
+    public float shakeDuration;
+    public Vector3 shakeStrength;
+    public float shakeRandomness;
+    public float healComboFadeTime = .3f;
+
+    private int uiComboStep;
     
     [Header("Heal combo")]
     public int[] healingComboArray = new int[] {  2, 1, 2, 2, 2, 3 };
-    private int comboStep = 0; // keeps track of the current step in the combo sequence
 
+    public float starSuccessWindow = 0.5f;
+    private int comboStep = 0; // keeps track of the current step in the combo sequence
+    public bool debug = false;
+
+    public int shakeVibrato;
+
+    
     private PlayerInput playerInput; // Reference to the PlayerInput component for handling input actions
     private EncounterManager encounterManager; // Reference to the EncounterManager for accessing boss logic and other encounter-related data
 
@@ -37,7 +50,7 @@ public class Player : MonoBehaviour
     
     void Start()
     {
-        currentHealth = health; // Initialize current health to the maximum health at the start
+        currentHealth = maxHealth; // Initialize current health to the maximum health at the start
         playerInput = GetComponent<PlayerInput>(); // Get the PlayerInput component attached to the player game object
         encounterManager = EncounterManager.instance; // Get the instance of the EncounterManager
         InitializeUI();
@@ -58,7 +71,7 @@ public class Player : MonoBehaviour
     {
         if (healthBar != null)
         {
-            healthBar.fillAmount = (float)currentHealth / health; // Set the initial fill amount of the health bar
+            healthBar.fillAmount = (float)currentHealth / maxHealth; // Set the initial fill amount of the health bar
             healthText.text = currentHealth.ToString(); // Set the initial health text (optional)
         }
         
@@ -69,18 +82,18 @@ public class Player : MonoBehaviour
             // Instantiate a new UI image for each combo step and set its parent to the content transform
             GameObject uiImage = Instantiate(inputUIImage, content);
 
-            // 1 = Square, 2 = Circle, 3 = Triangle (you can customize this mapping as needed)
+
 
                 switch (healingComboArray[i])
                 {
                     case 1:
-                        uiImage.GetComponent<Image>().sprite = SquareImage; // Set the sprite to the Square image
+                        uiImage.GetComponent<Image>().sprite = moonImg; 
                         break;
                     case 2:
-                        uiImage.GetComponent<Image>().sprite = CircleImage; // Set the sprite     to the Circle image
+                        uiImage.GetComponent<Image>().sprite = starImg; 
                         break;
                     case 3:
-                        uiImage.GetComponent<Image>().sprite = TriangleImage; // Set the sprite to the Triangle image
+                        uiImage.GetComponent<Image>().sprite = sunImg; 
                         break;
 
                 }
@@ -103,19 +116,20 @@ public class Player : MonoBehaviour
     public void PlayerOneUpdate()
     {
         playerOneInfo = InputManager.instance.GetPlayerSymbols(1);
-        //CompareCombo(1);
+        CompareCombo(1);
     }
     public void PlayerTwoUpdate()
     {
         playerTwoInfo = InputManager.instance.GetPlayerSymbols(2);
-        //CompareCombo(2);
+        CompareCombo(2);
     }
     
     private PlayerInfoStruct playerOneInfo, playerTwoInfo;
-    private int rightIndex = 0;
-    private int leftIndex = 0;
-   /* private void CompareCombo(int id)
+    private bool pOneStar, pTwoStar, startTimer;
+    private float timer;
+    private void CompareCombo(int id)
     {
+        Debug.Log("heal method");
         if (healingComboStarted == false)
         {
             if (Enemy.globalComboStarted)
@@ -135,15 +149,15 @@ public class Player : MonoBehaviour
         if ((playerOneInfo.symbOne == healingComboArray[comboStep] && playerOneInfo.symbTwo == healingComboArray[comboStep + 1])
             || (playerTwoInfo.symbOne == healingComboArray[comboStep] && playerTwoInfo.symbTwo == healingComboArray[comboStep + 1]))
         {
-            Debug.Log(comboStep);
+            //Debug.Log(comboStep);
 
             if (healingComboArray[comboStep] == 2) // If the top symbol is square
             {
                 if (playerOneInfo.symbOne == healingComboArray[comboStep] && id == 1)
-                    pOneSquare = true;
+                    pOneStar = true;
 
                 if(playerTwoInfo.symbOne == healingComboArray[comboStep] && id == 2)
-                    pTwoSquare = true;
+                    pTwoStar = true;
 
                 startTimer = true;
 
@@ -152,25 +166,121 @@ public class Player : MonoBehaviour
                 return;
             }
 
-            Debug.Log("Shooting from Method");
-
             healingComboStarted = true;
             Enemy.globalComboStarted = true;
 
             // Completed one combo step
-            //UpdateUI(); Vi opdatere istedet når fireball rammer enemy
+            UpdateUI();
 
             comboStep += 2;
             
             if (comboStep >= healingComboArray.Length)
             {
                 // Completed entire combo
-                localComboStarted = false;
-                globalComboStarted = false;
+                healingComboStarted = false;
+                Enemy.globalComboStarted = false;
             }
         }
     }
-    */
+
+    void Update()
+    {
+        if (startTimer)
+        {
+            timer += Time.deltaTime;
+            
+            if (pOneStar == true && pTwoStar == true) // both players pressed within the window
+            {
+                //Debug.Log("Both players pressed star top");
+                if (timer < starSuccessWindow) // only succeed if still within the time window
+                {
+                    comboStep += 2;
+                    UpdateUI();
+                }
+                else
+                {
+                    //Debug.Log("Too slow - resetting");
+                }
+                
+                timer = 0;
+                startTimer = false;
+                pOneStar = false;
+                pTwoStar = false;
+            }
+            else if (timer >= starSuccessWindow)
+            {
+                //Debug.Log("Resetting after time");
+                timer = 0;
+                startTimer = false;
+                pOneStar = false;
+                pTwoStar = false;
+            }
+        }
+    }
+    
+    public void UpdateUI()
+    {
+        // animate the UI elements with shake effect and then disable the current combo step's UI elements
+        int top = uiComboStep;
+        int bottom = uiComboStep + 1;
+
+        uiComboStep += 2;
+
+        // If we've already consumed all combo inputs, complete immediately.
+        if (bottom >= healingComboArray.Length)
+        {
+            return;
+        }
+
+        if (bottom >= contentSprite.Length || top >= contentSprite.Length)
+        {
+            return;
+        }
+        
+        Sequence comboStepSequence = DOTween.Sequence();
+        comboStepSequence.Join(
+            contentSprite[bottom].transform
+                .DOShakePosition(shakeDuration, shakeStrength, shakeVibrato, shakeRandomness, false)
+        );
+        
+        comboStepSequence.Join(
+            contentSprite[top].transform
+                .DOShakePosition(shakeDuration, shakeStrength, shakeVibrato, shakeRandomness, false)
+        );
+
+        comboStepSequence.OnComplete(() =>
+        {
+            contentSprite[bottom].DOFade(0, healComboFadeTime);
+            contentSprite[top].DOFade(0, healComboFadeTime);
+
+            //comboStep++; // Move to the next step in the combo sequence
+            CheckHealCompletion();
+            comboStepSequence.Kill();
+        });
+    }
+
+    private void CheckHealCompletion()
+    {
+        Debug.Log("Checking for full health");
+        if (uiComboStep >= healingComboArray.Length)
+        {
+            foreach (var img in contentSprite)
+            {
+                img.DOFade(1, healComboFadeTime);
+                uiComboStep = 0;
+            }
+
+            currentHealth += 5;
+            if (currentHealth > maxHealth)
+            {
+                currentHealth = maxHealth;
+            }
+            
+            AnimateHealthBar();
+            healthText.text = currentHealth.ToString();
+        }
+    }
+    
     public void TakeDamage(int damage)
     {
         currentHealth -= damage; // Reduce the player's health by the damage amount
@@ -181,9 +291,9 @@ public class Player : MonoBehaviour
         if (healthBar != null)
         {
 
-            if (currentHealth < health/2)
+            if (currentHealth < maxHealth/2)
             {
-                healthBar.fillAmount = (float)currentHealth / health;
+                healthBar.fillAmount = (float)currentHealth / maxHealth;
                 
                  // Optional: Add a tweening effect to the health bar for smoother transitions
                 AnimateHealthBar();
@@ -192,7 +302,7 @@ public class Player : MonoBehaviour
             }
             else
             {
-                healthBar.fillAmount = (float)currentHealth / health;
+                healthBar.fillAmount = (float)currentHealth / maxHealth;
                 AnimateHealthBar();
             }
         }
@@ -206,10 +316,9 @@ public class Player : MonoBehaviour
 
     private void AnimateHealthBar()
     {
-        // Example of using DOTween to animate the health bar fill amount
         if (healthBar != null)
         {
-            healthBar.DOFillAmount((float)currentHealth / health, 0.5f).SetEase(Ease.OutQuad);
+            healthBar.DOFillAmount((float)currentHealth / maxHealth, 0.5f).SetEase(Ease.OutQuad);
         }
     }
 
@@ -217,7 +326,6 @@ public class Player : MonoBehaviour
     {
         if (healthBar != null)
         {
-            // Example of using DOTween to shake the health bar
             healthBar.transform.DOShakePosition(0.5f, new Vector3(10f, 0f, 0f), 10, 90, false);
         }
     }
