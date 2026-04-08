@@ -71,7 +71,7 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
             
             if (pOneStar == true && pTwoStar == true) // both players pressed within the window
             {
-                Debug.Log("Both players pressed star top");
+                //Debug.Log("Both players pressed star top");
                 if (timer < squareSuccessWindow) // only succeed if still within the time window
                 {
                     comboStep += 2;
@@ -79,7 +79,7 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
                 }
                 else
                 {
-                    Debug.Log("Too slow - resetting");
+                    //Debug.Log("Too slow - resetting");
                 }
                 
                 timer = 0;
@@ -89,7 +89,7 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
             }
             else if (timer >= squareSuccessWindow)
             {
-                Debug.Log("Resetting after time");
+                //Debug.Log("Resetting after time");
                 timer = 0;
                 startTimer = false;
                 pOneStar = false;
@@ -112,7 +112,7 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
     
     private void CompareCombo(int id)
     {
-        Debug.Log("Combo on projectile");
+        //Debug.Log("Combo on projectile");
         // If either player one or player two symbols are correct continue
         if ((playerOneInfo.symbOne == comboArray[comboStep] && playerOneInfo.symbTwo == comboArray[comboStep + 1])
             || (playerTwoInfo.symbOne == comboArray[comboStep] && playerTwoInfo.symbTwo == comboArray[comboStep + 1]))
@@ -129,7 +129,7 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
 
                 startTimer = true;
 
-                Debug.Log("Starting time");
+                //Debug.Log("Starting time");
 
                 return;
             }

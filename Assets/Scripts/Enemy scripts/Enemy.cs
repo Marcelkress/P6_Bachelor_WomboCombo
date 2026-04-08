@@ -93,7 +93,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
     {
         player = GameObject.FindGameObjectWithTag("Player").transform; // Find the player by tag
         playerScript = player.GetComponent<Player>();
-        Debug.Log(aggroDelay);
+        //Debug.Log(aggroDelay);
         Invoke(nameof(AggroPlayer), aggroDelay);
     }
 
@@ -106,10 +106,10 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
             // Calculate direction from enemy to player (for facing)
             Vector3 directionToPlayer = player.position - transform.position;
 
-// Optional: Flatten the direction to avoid vertical tilting (if desired for gameplay)
+            // Optional: Flatten the direction to avoid vertical tilting (if desired for gameplay)
             directionToPlayer.y = 0; // Comment this out if you want full 3D facing
 
-// Rotate to face the player
+            // Rotate to face the player
             transform.LookAt(transform.position + directionToPlayer);
                 
             
@@ -172,11 +172,11 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
                 {
                     comboStep += 2;
                     playerScript.ShootFireball(this.transform, this.gameObject);
-                    Debug.Log("Shooting from update");
+                    //Debug.Log("Shooting from update");
                 }
                 else
                 {
-                    Debug.Log("Too slow - resetting");
+                    //Debug.Log("Too slow - resetting");
                 }
                 
                 timer = 0;
@@ -186,7 +186,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
             }
             else if (timer >= squareSuccessWindow)
             {
-                Debug.Log("Resetting after time");
+                //Debug.Log("Resetting after time");
                 timer = 0;
                 startTimer = false;
                 pOneSquare = false;
@@ -242,9 +242,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
             //UpdateUI(); Vi opdatere istedet når fireball rammer enemy
 
             comboStep += 2;
-
             
-
             if (comboStep >= comboArray.Length)
             {
                 localComboStarted = false;
@@ -373,7 +371,10 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
     private void Die()
     {
         if (isDead) return; // Prevent multiple death triggers
-        isDead = true;
+            isDead = true;
+
+        globalComboStarted = false;
+        localComboStarted = false;
         Debug.Log("Enemy Defeated!"); // Enemy is defeated
         manager.Enemies.Remove(this.gameObject);
         manager.EnemyDied();

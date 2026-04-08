@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
@@ -31,6 +32,8 @@ public class Player : MonoBehaviour
 
     public bool lookAtBoss = false; // whether the player should look at the boss, used for certain encounters and the boss fight
 
+    public UnityEvent PlayerDiedEvent;
+    
     void Start()
     {
         currentHealth = health; // Initialize current health to the maximum health at the start
@@ -95,6 +98,7 @@ public class Player : MonoBehaviour
         fireballScript.SetTargetTransform(target, targetedEnemy);
 
     }
+    
     private int rightIndex = 0;
     private int leftIndex = 0;
     private void HealingSpell()
@@ -187,8 +191,9 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
-        gameOverScreen.SetActive(true); // Show the Game Over screen
-        Time.timeScale = 0f; // Pause the game by setting time scale to
+        PlayerDiedEvent.Invoke();
+        //gameOverScreen.SetActive(true); // Show the Game Over screen
+        //Time.timeScale = 0f; // Pause the game by setting time scale to
     }
 
 }
