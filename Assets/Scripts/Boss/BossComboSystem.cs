@@ -58,10 +58,8 @@ public class BossComboSystem : MonoBehaviour
         epicBossLogic = GetComponent<EpicBossLogic>();
         playerScript = player.GetComponent<Player>();
 
-        if (epicBossLogic.currentPhase == BossPhase.Idle)
-        {
-            bossComboArray = RandomArray(4, 8); // random combo array for boss, can be used in phase 1 for example
-        }
+        bossComboArray = RandomArray(4, 8); // random combo array for boss, can be used in phase 1 for example
+        
         InitializeUI();
 
         if (InputManager.instance != null)
@@ -301,11 +299,6 @@ public class BossComboSystem : MonoBehaviour
             contentSprite[top].transform
                 .DOShakePosition(shakeDuration, shakeStrength, shakeVibrato, shakeRandomness, false)
         );
-
-        if (epicBossLogic.bossNavMeshAgent != null)
-        {
-            epicBossLogic.bossNavMeshAgent.speed = 0;
-        }
 
         if (anim != null)
         {

@@ -1,185 +1,146 @@
+using System.Collections;
 using UnityEngine;
 using PathCreation.Examples;
 using UnityEngine.AI;
-public enum BossPhase
-{
-    Idle,
-    Phase1,
-    Phase2,
-    Phase3
-}
 
 public class EpicBossLogic : MonoBehaviour
 {
-
-    [SerializeField] private EncounterManager encounterManager;
+    [Header("Core References")]
     [SerializeField] private PathFollower playerPathFollower;
-    [SerializeField] private BossComboSystem bossComboSystem;
     [SerializeField] private PathFollower bossPathFollower;
 
     [Header("Player Destinations")]
     public PathDestinationObject[] destinations;
-    [Header("Boss settings")]
-    public float decisionInterval = 3f; // how often the boss decides on a new action in phase 2, can be used for a specific attack pattern in phase 2 or 3 where the boss moves around a lot
-    public float moveSpeed;
 
-    [Header("Boss movement destinations")]
-    public PathDestinationObject[] bossRetreatDestinations; // when moving other places
-    public PathDestinationObject[] bossFlyDestinations; // when moving to attack the player, maybe can be used for a specific attack pattern in phase 2 or 3 where the boss moves around a lot
-    public Transform player; // for moving to the player when having to attack
-    
-    private Player playerScript;
+    [Header("Boss Movement Destinations")]
+    public PathDestinationObject[] bossRetreatDestinations;
+    public PathDestinationObject[] bossFlyDestinations;
 
+    [Header("Testing Settings")]
+    [Tooltip("How often to pick a new destination")]
+    public float movementInterval = 4f;
+    public bool autoTestMovement = true;
+    public bool movePlayer = true;
+    public bool moveBoss = true;
 
-    [Header("Spawning")]
-    public EnemyManager bossMinionManager;
+    private int lastPlayerIndex = -1;
+    private int lastBossFlyIndex = -1;
+    private int lastBossRetreatIndex = -1;
 
-    public BossPhase currentPhase = BossPhase.Idle;
+    public BossPhase currentPhase = BossPhase.Phase1; // Just to avoid breaking references
+    public bool bossGothitted = false; 
+    public bool minionsCleared = true; 
 
+    private bool shouldLookAtBoss = false;
 
-    public bool bossGothitted = false; // placeholder
-    public bool minionsCleared = false;
-    public NavMeshAgent bossNavMeshAgent;
+    private Vector3 originalCameraRotation;
 
-    private float decisionTimer;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
+    public enum BossPhase { Idle, Phase1, Phase2, Phase3 }
+
+    private void Start()
     {
-        bossNavMeshAgent = GetComponent<NavMeshAgent>();
-        bossNavMeshAgent.speed = moveSpeed;
-
-        encounterManager = EncounterManager.instance;
-        if (encounterManager != null)
+        if (autoTestMovement)
         {
-            playerPathFollower = encounterManager.playerPathFollower;
+            StartCoroutine(TestMovementRoutine());
         }
-
-        if (player == null)
-        {
-            GameObject playerGo = GameObject.FindGameObjectWithTag("Player");
-            if (playerGo != null)
-            {
-                playerScript = playerGo.GetComponent<Player>();
-                player = playerGo.transform;
-            }
-        }
-        
     }
 
     private void Update()
-    {
-        if (currentPhase == BossPhase.Phase1)
+    {        // Simple hit reaction test
+        if (bossGothitted)
         {
-            // Check for player input to trigger boss hit
-            if (bossGothitted)
+            bossGothitted = false;
+            if (bossRetreatDestinations.Length > 0 && bossPathFollower != null)
             {
-                bossPathFollower.MoveTo(bossRetreatDestinations[Random.Range(0, bossRetreatDestinations.Length)]); // move to random retreat destination when hit, can be used for a specific attack pattern in phase 2 or 3 where the boss moves around a lot
-
-                playerPathFollower.MoveTo(destinations[1]);
-                bossGothitted = false; // reset hit state
-
-                // reset bossagent destination so it does not move
-                bossNavMeshAgent.isStopped = true;
-
-                if (bossComboSystem.bossComboArray.Length <= 0)
-                {
-                    // phase 2
-                    bossComboSystem.RandomArray(4, 8);
-                    StartPhaseTwo();
-                }
-                Invoke(nameof(StartPhaseOne), 2f); 
+                int index = Random.Range(0, bossRetreatDestinations.Length);
+                bossPathFollower.MoveTo(bossRetreatDestinations[index]);
+                Debug.Log($"Boss hit! Retreating to {bossRetreatDestinations[index].name}");
             }
         }
-        else if (currentPhase == BossPhase.Phase2)
-        {
-            if (bossComboSystem.bossComboArray.Length <= 0)
-            {
-                // phase 2
-                bossComboSystem.RandomArray(4, 8);
-                StartPhaseThree();
-            }
-            decisionTimer += Time.deltaTime;
-            if (decisionTimer >= decisionInterval)
-            {
-                bossPathFollower.MoveTo(bossFlyDestinations[Random.Range(0, bossFlyDestinations.Length)]);
-                playerScript.lookAtBoss = true;
-                Invoke(nameof(ShootFireBall), 1.5f); // move player to random node every few seconds, can be used for a specific attack pattern in phase 2 or 3 where the boss moves around a lot
-                decisionTimer = 0f;
-            }
-        }
-        else if (currentPhase == BossPhase.Phase3)
-        {
-            Time.timeScale = 0.5f; // slow down time for dramatic effect in final phase
-            
 
-        }
-    }
-
-    private void ShootFireBall()
-    {
-        // shooting fireball towards player.
-    }
-
-    /// Called by EncounterManager when all regular encounters are done.
-    public void StartBossBattle()
-    {
-        Debug.Log("Epic Boss Battle Started!");
-        if (destinations.Length > 0)
+        if (shouldLookAtBoss)
         {
-            playerPathFollower.MoveTo(destinations[0]);
-            Invoke(nameof(StartPhaseOne), destinations[0].travelDuration + 1f); // brief delay upon arrival
+            originalCameraRotation = GetCurrentCameraRotation();
+            PlayerCameraLookAtBoss();
         }
         else
         {
-            StartPhaseOne();
+            // Smoothly return camera to original rotation
+            Quaternion targetRotation = Quaternion.Euler(originalCameraRotation);
+            Camera.main.transform.rotation = Quaternion.Slerp(Camera.main.transform.rotation, targetRotation, Time.deltaTime * 2f);
         }
     }
 
-    private void StartPhaseOne()
-    {
-        bossPathFollower.MoveTo(0); // move to initial position, can be the same as one of the bossMovementDestinations, but ensures it is on the path. Maybe can be used for a dramatic entrance.
-        currentPhase = BossPhase.Phase1;
-        Debug.Log("Phase 1, spawn minions."); // maybe boss cannot be hit while minions are alive?
-        bossMinionManager.InitializeEncounter(2, 0, 4, 2, 1f); // spawn some minions with random combos, but ensure they have unique starting combos for the first two steps
-        minionsCleared = false;
+    
 
-        bossNavMeshAgent.SetDestination(player.position); // move towards player, Cant be hit until minions are cleared.
-    }
-
-    public void OnMinionsCleared()
+    private IEnumerator TestMovementRoutine()
     {
-        if (currentPhase == BossPhase.Phase1)
+        while (true)
         {
-            minionsCleared = true;
-            //localComboStarted = false;
-            //globalComboStarted = false;
-            Debug.Log("Minnions cleared. Can attack boss");
+            yield return new WaitForSeconds(movementInterval);
+
+            if (movePlayer && destinations.Length > 0 && playerPathFollower != null)
+            {
+                int pIndex = GetRandomIndex(destinations.Length, lastPlayerIndex);
+                lastPlayerIndex = pIndex;
+                playerPathFollower.MoveTo(destinations[pIndex]);
+                Debug.Log($"Player moving to {destinations[pIndex].name}");
+            }
+
+            if (moveBoss && bossPathFollower != null)
+            {
+                bool useFly = Random.value > 0.3f;
+                var targetArray = useFly ? bossFlyDestinations : bossRetreatDestinations;
+                
+                if (targetArray != null && targetArray.Length > 0)
+                {
+                    int previousIndex = useFly ? lastBossFlyIndex : lastBossRetreatIndex;
+                    int bIndex = GetRandomIndex(targetArray.Length, previousIndex);
+                    
+                    if (useFly) lastBossFlyIndex = bIndex;
+                    else lastBossRetreatIndex = bIndex;
+
+                    bossPathFollower.MoveTo(targetArray[bIndex]);
+                    string type = useFly ? "Fly" : "Retreat";
+                    Debug.Log($"Boss moving to {type} destination: {targetArray[bIndex].name}");
+                }
+            }
         }
     }
 
-    public void StartPhaseTwo()
+    private int GetRandomIndex(int arrayLength, int previousIndex)
     {
-        currentPhase = BossPhase.Phase2;
-        Debug.Log("Phase 2: Boss flees, player camera follows dynamically");
-        // Boss flees, player camera follows dynamically
-        // MovePlayerToRandomNode();
-    }
-
-    public void StartPhaseThree()
-    {
-        currentPhase = BossPhase.Phase3;
-        Debug.Log("Phase 3: The Wombo Combo, boss make epic final attach pattern with time slow");
-        // Time slows, final attack pattern
-    }
-
-    public void MovePlayerToRandomNode()
-    {
-        if (destinations.Length > 0)
+        if (arrayLength <= 1) return 0;
+        int randomIndex = Random.Range(0, arrayLength);
+        if (randomIndex == previousIndex)
         {
-            int randomIndex = Random.Range(0, destinations.Length);
-            playerPathFollower.MoveTo(destinations[randomIndex]);
+            randomIndex = (randomIndex + 1) % arrayLength;
+        }
+        return randomIndex;
+    }
+
+    private void PlayerCameraLookAtBoss()
+    {
+        Camera.main.transform.rotation = Quaternion.LookRotation(transform.position - Camera.main.transform.position);
+    }
+
+    public void StartBossBattle() { Debug.Log("StartBossBattle called"); }
+    public void OnMinionsCleared() { minionsCleared = true; }
+    public void StartPhaseTwo() { currentPhase = BossPhase.Phase2; }
+    public void StartPhaseThree() { currentPhase = BossPhase.Phase3; }
+    public void MovePlayerToRandomNode() 
+    {
+        if (destinations.Length > 0 && playerPathFollower != null)
+        {
+            int pIndex = GetRandomIndex(destinations.Length, lastPlayerIndex);
+            lastPlayerIndex = pIndex;
+            playerPathFollower.MoveTo(destinations[pIndex]);
         }
     }
 
+
+    private Vector3 GetCurrentCameraRotation()
+    {
+        return Camera.main.transform.rotation.eulerAngles;
+    }
 }
