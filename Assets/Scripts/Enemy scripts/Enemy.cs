@@ -301,7 +301,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         {
             return;
         }
-        GetComponentInChildren<Canvas>().sortingOrder = 100;
+        GetComponentInChildren<Canvas>().sortingOrder = 100; //TODO, Måske slet fordi det fucker projectile visibility up 
         Sequence comboStepSequence = DOTween.Sequence();
         comboStepSequence.Join(
             contentSprite[bottom].transform
