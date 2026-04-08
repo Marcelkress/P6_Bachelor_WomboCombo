@@ -561,3 +561,4 @@ MonoBehaviour:
   valueToAdd: 450
   useBossLogic: 0
   useProjectileLogic: 0
+  scalingFactor: 2

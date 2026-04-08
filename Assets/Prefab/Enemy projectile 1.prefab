@@ -499,3 +499,4 @@ MonoBehaviour:
   valueToAdd: 450
   useBossLogic: 0
   useProjectileLogic: 1
+  scalingFactor: 5

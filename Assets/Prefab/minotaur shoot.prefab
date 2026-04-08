@@ -4937,6 +4937,7 @@ MonoBehaviour:
   valueToAdd: 450
   useBossLogic: 0
   useProjectileLogic: 0
+  scalingFactor: 5
 --- !u!1 &7801817223162080366
 GameObject:
   m_ObjectHideFlags: 0

@@ -131,6 +131,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   valueToAdd: 450
   useBossLogic: 0
+  useProjectileLogic: 0
+  scalingFactor: 5
 --- !u!1 &2004318125498620402
 GameObject:
   m_ObjectHideFlags: 0
