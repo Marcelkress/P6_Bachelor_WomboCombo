@@ -10,20 +10,12 @@ using UnityEngine.InputSystem;
 /// Reads two rotary-encoder controllers over a serial/USB connection.
 ///
 /// Linux  — Uses libc termios via P/Invoke. No native plugin required.
-///          The LinuxSerial.dll / System.IO.Ports fallback paths are gone;
-///          this code talks to the OS directly through libc.so.6.
+/// macOS  — Tries the MacSerial native plugin first; falls back to libc termios.
+/// Windows— Uses System.IO.Ports.
 ///
-/// macOS  — Tries the MacSerial native plugin first; falls back to libc
-///          termios if the plugin is absent.
-///
-/// Windows— Uses System.IO.Ports (fully supported on Windows Mono/CoreCLR).
-///
-/// ── LINUX QUICK-START ─────────────────────────────────────────────────────
-///  1. Identify your port: ls /dev/ttyACM0  (or /dev/ttyUSB0, etc.)
-///  2. Grant access (re-login after):  sudo usermod -aG uucp $USER
-///  3. log out and back in (or reboot) to apply group change.
-///  3. Set portName in the Inspector to match (e.g. /dev/ttyACM0).
-/// ─────────────────────────────────────────────────────────────────────────
+/// Reads are BLOCKING — the OS wakes the read thread the moment bytes arrive,
+/// so there is no polling latency. Parsing uses a fixed buffer and avoids
+/// per-packet allocations to keep the GC quiet.
 /// </summary>
 public class ControllerInputCrossPlatform : MonoBehaviour
 {
@@ -36,12 +28,10 @@ public class ControllerInputCrossPlatform : MonoBehaviour
     [Header("Controller IDs")]
     public string player1Id = "Controller 1";
     public string player2Id = "Controller 2";
-    
+
     public ControllerState player1;
     public ControllerState player2;
 
-    // ─────────────────────────────────────────────────────────────────────
-    //  Default port per platform
     // ─────────────────────────────────────────────────────────────────────
 #if   UNITY_STANDALONE_LINUX || UNITY_EDITOR_LINUX
     const string DefaultPortName = "/dev/ttyACM0";
@@ -54,21 +44,18 @@ public class ControllerInputCrossPlatform : MonoBehaviour
 #endif
 
     // ─────────────────────────────────────────────────────────────────────
-    //  Serial port abstraction
-    // ─────────────────────────────────────────────────────────────────────
     interface ISerialPort
     {
         bool Open(string port, int baud);
-        int  Read(byte[] buf, int max);
+        int  Read(byte[] buf, int max);   // BLOCKING — returns ≥1 or 0 on retryable error
         void Close();
     }
 
     // ═════════════════════════════════════════════════════════════════════
-    //  POSIX (Linux + macOS) — libc termios via P/Invoke
+    //  POSIX (Linux + macOS) — libc termios via P/Invoke, BLOCKING reads
     // ═════════════════════════════════════════════════════════════════════
 #if UNITY_STANDALONE_LINUX || UNITY_EDITOR_LINUX || UNITY_STANDALONE_OSX || UNITY_EDITOR_OSX
 
-    // ── libc syscalls (shared between Linux and macOS) ───────────────────
     [DllImport("libc", SetLastError = true, EntryPoint = "open")]
     static extern int  libc_open([MarshalAs(UnmanagedType.LPStr)] string path, int flags);
 
@@ -84,39 +71,24 @@ public class ControllerInputCrossPlatform : MonoBehaviour
     [DllImport("libc", SetLastError = true, EntryPoint = "tcsetattr")]
     static extern int  libc_tcsetattr(int fd, uint action, ref TermiosNative t);
 
-    // cfmakeraw sets raw mode (no echo, no canonical, no signals, etc.)
     [DllImport("libc", EntryPoint = "cfmakeraw")]
     static extern void libc_cfmakeraw(ref TermiosNative t);
 
-    // ── Platform-specific termios layout, constants, and baud helpers ────
-    //
-    //   Linux : tcflag_t = uint (4 bytes), speed_t = uint (4 bytes), NCCS = 19
-    //   macOS : tcflag_t = ulong (8 bytes), speed_t = ulong (8 bytes), NCCS = 20
-    //           Linux uses encoded Bxxx constants; macOS uses raw integer baud values.
-    // ────────────────────────────────────────────────────────────────────
-
 #if UNITY_STANDALONE_LINUX || UNITY_EDITOR_LINUX
 
-    // open(2) flags (Linux x86-64 / ARM64)
     const int  O_RDWR          = 2;
-    const int  O_NOCTTY        = 256;    // 0x100
-    const int  O_NONBLOCK      = 2048;   // 0x800
+    const int  O_NOCTTY        = 256;
     const uint TCSANOW         = 0u;
-    // c_cflag bits
     const uint CSIZE_MASK      = 0x030u;
     const uint CS8             = 0x030u;
     const uint CREAD           = 0x080u;
     const uint CLOCAL          = 0x800u;
-    // c_iflag bits
     const uint IGNPAR          = 0x004u;
-    // c_cc indices
     const int  CC_SIZE         = 19;
     const int  VTIME_IDX       = 5;
     const int  VMIN_IDX        = 6;
-    // EAGAIN errno on Linux
-    const int  EAGAIN          = 11;
+    const int  EINTR           = 4;
 
-    // Linux encodes baud as a symbolic constant, NOT the raw integer.
     [DllImport("libc", SetLastError = true, EntryPoint = "cfsetispeed")]
     static extern int libc_cfsetispeed(ref TermiosNative t, uint speed);
     [DllImport("libc", SetLastError = true, EntryPoint = "cfsetospeed")]
@@ -131,12 +103,9 @@ public class ControllerInputCrossPlatform : MonoBehaviour
         115200 => 0x1002u,
         230400 => 0x1003u,
         460800 => 0x1004u,
-        _      => 0x1002u   // default 115200
+        _      => 0x1002u
     };
 
-    // Linux termios struct — 44 bytes on x86-64 and ARM64
-    // Layout: 4x uint (iflag/oflag/cflag/lflag) + 1 byte (c_line) +
-    //         19 bytes (c_cc) + 2x uint (ispeed/ospeed)
     [StructLayout(LayoutKind.Sequential)]
     struct TermiosNative
     {
@@ -144,7 +113,7 @@ public class ControllerInputCrossPlatform : MonoBehaviour
         public uint c_oflag;
         public uint c_cflag;
         public uint c_lflag;
-        public byte c_line;          // Linux-specific discipline line byte
+        public byte c_line;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 19)]
         public byte[] c_cc;
         public uint c_ispeed;
@@ -154,35 +123,25 @@ public class ControllerInputCrossPlatform : MonoBehaviour
 #else // ── macOS ────────────────────────────────────────────────────────
 
     const int   O_RDWR          = 2;
-    const int   O_NOCTTY        = 0x20000;  // macOS value differs from Linux
-    const int   O_NONBLOCK      = 4;        // 0x0004
+    const int   O_NOCTTY        = 0x20000;
     const uint  TCSANOW         = 0u;
-    // c_cflag bits (BSD/macOS values, different from Linux)
     const ulong CSIZE_MASK      = 0x0300UL;
     const ulong CS8             = 0x0300UL;
     const ulong CREAD           = 0x0800UL;
     const ulong CLOCAL          = 0x8000UL;
-    // c_iflag bits
     const ulong IGNPAR          = 0x0004UL;
-    // c_cc indices (macOS VMIN/VTIME are at different positions than Linux)
     const int   CC_SIZE         = 20;
     const int   VTIME_IDX       = 17;
     const int   VMIN_IDX        = 16;
-    // EAGAIN errno on macOS/BSD
-    const int   EAGAIN          = 35;
+    const int   EINTR           = 4;
 
-    // macOS speed_t = unsigned long (8 bytes on 64-bit), and cfsetispeed
-    // takes the raw integer baud rate (not a Linux-style encoded constant).
     [DllImport("libc", SetLastError = true, EntryPoint = "cfsetispeed")]
     static extern int libc_cfsetispeed(ref TermiosNative t, ulong speed);
     [DllImport("libc", SetLastError = true, EntryPoint = "cfsetospeed")]
     static extern int libc_cfsetospeed(ref TermiosNative t, ulong speed);
 
-    static ulong BaudConst(int baud) => (ulong)baud;  // macOS uses raw value
+    static ulong BaudConst(int baud) => (ulong)baud;
 
-    // macOS termios struct — 72 bytes on 64-bit macOS
-    // tcflag_t = unsigned long (8 bytes), NCCS = 20 cc_t bytes,
-    // then 4 bytes padding to align speed_t (unsigned long, 8 bytes).
     [StructLayout(LayoutKind.Sequential)]
     struct TermiosNative
     {
@@ -192,23 +151,23 @@ public class ControllerInputCrossPlatform : MonoBehaviour
         public ulong c_lflag;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 20)]
         public byte[] c_cc;
-        public uint   _pad;          // 4-byte padding: aligns c_ispeed to 8 bytes
+        public uint   _pad;
         public ulong  c_ispeed;
         public ulong  c_ospeed;
     }
 
-#endif // Linux vs macOS constants
+#endif // Linux vs macOS
 
-    // ── PosixSerialPort: shared implementation ───────────────────────────
     sealed class PosixSerialPort : ISerialPort
     {
         int _fd = -1;
 
         public bool Open(string port, int baud)
         {
-            // O_NONBLOCK during open avoids blocking on modem-control lines;
-            // we keep it for non-blocking reads in the poll loop.
-            _fd = libc_open(port, O_RDWR | O_NOCTTY | O_NONBLOCK);
+            // NOTE: O_NONBLOCK is intentionally NOT set. We want read() to
+            // block until at least one byte is available (VMIN=1, VTIME=0).
+            // The kernel wakes us as soon as data arrives — zero polling lag.
+            _fd = libc_open(port, O_RDWR | O_NOCTTY);
             if (_fd < 0)
             {
                 int errno = Marshal.GetLastWin32Error();
@@ -223,7 +182,6 @@ public class ControllerInputCrossPlatform : MonoBehaviour
                 return false;
             }
 
-            // Read current terminal attributes
             var t = new TermiosNative();
             if (libc_tcgetattr(_fd, ref t) < 0)
             {
@@ -232,23 +190,16 @@ public class ControllerInputCrossPlatform : MonoBehaviour
                 return false;
             }
 
-            // Raw mode: disables canonical processing, echo, signals, etc.
             libc_cfmakeraw(ref t);
 
-            // Ensure 8-N-1, receiver enabled, ignore modem control lines.
             t.c_cflag = (t.c_cflag & ~CSIZE_MASK) | CS8 | CREAD | CLOCAL;
-
-            // Ignore framing/parity errors from the device.
             t.c_iflag |= IGNPAR;
 
-            // VMIN=0 / VTIME=0 → read() returns immediately with whatever is
-            // in the buffer (or 0 bytes). Combined with O_NONBLOCK this is a
-            // clean non-blocking poll; the read loop sleeps 1 ms between polls.
             if (t.c_cc == null) t.c_cc = new byte[CC_SIZE];
-            t.c_cc[VMIN_IDX]  = 0;
+            // VMIN=1, VTIME=0 → blocking read returns as soon as ≥1 byte arrives.
+            t.c_cc[VMIN_IDX]  = 1;
             t.c_cc[VTIME_IDX] = 0;
 
-            // Apply baud rate via the cfset functions (correct for each platform)
             if (libc_cfsetispeed(ref t, BaudConst(baud)) < 0 ||
                 libc_cfsetospeed(ref t, BaudConst(baud)) < 0)
             {
@@ -257,7 +208,6 @@ public class ControllerInputCrossPlatform : MonoBehaviour
                 return false;
             }
 
-            // Commit settings immediately (TCSANOW)
             if (libc_tcsetattr(_fd, TCSANOW, ref t) < 0)
             {
                 Debug.LogError($"[Serial] tcsetattr failed. errno={Marshal.GetLastWin32Error()}");
@@ -265,7 +215,7 @@ public class ControllerInputCrossPlatform : MonoBehaviour
                 return false;
             }
 
-            Debug.Log($"[Serial] Opened {port} @ {baud} baud (fd={_fd}, libc termios)");
+            Debug.Log($"[Serial] Opened {port} @ {baud} baud (fd={_fd}, libc termios, blocking)");
             return true;
         }
 
@@ -276,7 +226,7 @@ public class ControllerInputCrossPlatform : MonoBehaviour
             if (n < 0)
             {
                 int err = Marshal.GetLastWin32Error();
-                if (err == EAGAIN) return 0;   // normal: no data yet with O_NONBLOCK
+                if (err == EINTR) return 0;        // signal interrupted; just retry
                 Debug.LogWarning($"[Serial] read error. errno={err}");
                 return 0;
             }
@@ -292,7 +242,7 @@ public class ControllerInputCrossPlatform : MonoBehaviour
 #endif // LINUX || OSX
 
     // ═════════════════════════════════════════════════════════════════════
-    //  macOS — native plugin (preferred; PosixSerialPort is the fallback)
+    //  macOS — native plugin (preferred)
     // ═════════════════════════════════════════════════════════════════════
 #if UNITY_STANDALONE_OSX || UNITY_EDITOR_OSX
     sealed class MacPluginSerialPort : ISerialPort
@@ -311,10 +261,7 @@ public class ControllerInputCrossPlatform : MonoBehaviour
                 if (_open) Debug.Log($"[Serial] Opened {port} @ {baud} baud (MacSerial plugin)");
                 return _open;
             }
-            catch (DllNotFoundException)
-            {
-                return false;   // caller will fall back to PosixSerialPort
-            }
+            catch (DllNotFoundException) { return false; }
             catch (Exception ex)
             {
                 Debug.LogWarning($"[Serial] MacSerial plugin error: {ex.Message}");
@@ -331,7 +278,7 @@ public class ControllerInputCrossPlatform : MonoBehaviour
 #endif
 
     // ═════════════════════════════════════════════════════════════════════
-    //  Windows — System.IO.Ports
+    //  Windows — System.IO.Ports, BLOCKING reads via BaseStream
     // ═════════════════════════════════════════════════════════════════════
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
     sealed class WindowsSerialPort : ISerialPort
@@ -342,9 +289,12 @@ public class ControllerInputCrossPlatform : MonoBehaviour
         {
             try
             {
-                _port = new System.IO.Ports.SerialPort(port, baud) { ReadTimeout = 10 };
+                _port = new System.IO.Ports.SerialPort(port, baud)
+                {
+                    ReadTimeout = System.IO.Ports.SerialPort.InfiniteTimeout
+                };
                 _port.Open();
-                Debug.Log($"[Serial] Opened {port} @ {baud} baud (System.IO.Ports)");
+                Debug.Log($"[Serial] Opened {port} @ {baud} baud (System.IO.Ports, blocking)");
                 return true;
             }
             catch (Exception ex)
@@ -358,8 +308,10 @@ public class ControllerInputCrossPlatform : MonoBehaviour
         {
             try
             {
-                int avail = _port.BytesToRead;
-                return avail > 0 ? _port.Read(buf, 0, Math.Min(max, avail)) : 0;
+                // BaseStream.Read blocks until ≥1 byte is available, exactly
+                // like POSIX read with VMIN=1. Avoids the BytesToRead polling
+                // pattern that introduces latency on Windows.
+                return _port.BaseStream.Read(buf, 0, max);
             }
             catch (TimeoutException) { return 0; }
             catch (Exception ex)
@@ -378,28 +330,24 @@ public class ControllerInputCrossPlatform : MonoBehaviour
 #endif
 
     // ─────────────────────────────────────────────────────────────────────
-    //  Packet protocol  (0xAA 0x55 | ControllerPacket)
+    //  Packet protocol  (0xAA 0x55 | 16 byte name | int32 rotation | byte pushed)
     // ─────────────────────────────────────────────────────────────────────
-    const byte Header1 = 0xAA;
-    const byte Header2 = 0x55;
-
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    struct ControllerPacket
-    {
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 16)]
-        public byte[] controllerName;
-        public int    rotationValue;
-        public byte   pushed;
-    }
-
-    int PacketSize => Marshal.SizeOf(typeof(ControllerPacket));
+    const byte Header1     = 0xAA;
+    const byte Header2     = 0x55;
+    const int  NameLen     = 16;
+    const int  PacketSize  = NameLen + 4 + 1;     // 21 bytes
+    const int  FullSize    = 2 + PacketSize +1;      // 23 bytes (header + payload)
 
     // ─────────────────────────────────────────────────────────────────────
     //  Runtime state
     // ─────────────────────────────────────────────────────────────────────
-    readonly object     _lock      = new object();
-    readonly byte[]     _readBuf   = new byte[256];
-    readonly List<byte> _streamBuf = new List<byte>();
+    readonly object _lock      = new object();
+    readonly byte[] _readBuf   = new byte[256];
+    readonly byte[] _streamBuf = new byte[1024];   // fixed-size, no GC
+    int             _streamLen;
+
+    byte[] _player1IdBytes;
+    byte[] _player2IdBytes;
 
     ISerialPort   _serial;
     Thread        _thread;
@@ -412,7 +360,7 @@ public class ControllerInputCrossPlatform : MonoBehaviour
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
-        
+
         inputManager = GetComponent<PlayerInputManager>();
     }
 
@@ -424,6 +372,11 @@ public class ControllerInputCrossPlatform : MonoBehaviour
             enabled = false;
             return;
         }
+
+        // Pre-encode the controller IDs once so the parser can compare
+        // raw bytes — no string allocation per packet.
+        _player1IdBytes = Encoding.ASCII.GetBytes(player1Id ?? string.Empty);
+        _player2IdBytes = Encoding.ASCII.GetBytes(player2Id ?? string.Empty);
 
         _serial = CreateAndOpen();
         if (_serial == null)
@@ -449,7 +402,6 @@ public class ControllerInputCrossPlatform : MonoBehaviour
         return p.Open(portName, baudRate) ? p : null;
 
 #elif UNITY_STANDALONE_OSX || UNITY_EDITOR_OSX
-        // Try native MacSerial plugin first; fall back to libc if absent
         var mac = new MacPluginSerialPort();
         if (mac.Open(portName, baudRate)) return mac;
 
@@ -468,68 +420,189 @@ public class ControllerInputCrossPlatform : MonoBehaviour
     }
 
     // ─────────────────────────────────────────────────────────────────────
-    //  Background read loop
+    //  Background read loop — blocking I/O, no Sleep
     // ─────────────────────────────────────────────────────────────────────
     void ReadLoop()
     {
         while (_running)
         {
             int n = _serial.Read(_readBuf, _readBuf.Length);
-            if (n <= 0) { Thread.Sleep(1); continue; }  // 1 ms poll interval
+            if (n <= 0) continue;   // retryable error or shutdown
+
+            // Append to the parse buffer. If the buffer would overflow
+            // (shouldn't happen in practice), drop the oldest unparsed bytes.
+            if (_streamLen + n > _streamBuf.Length)
+            {
+                int drop = (_streamLen + n) - _streamBuf.Length;
+                if (drop >= _streamLen) _streamLen = 0;
+                else
+                {
+                    Buffer.BlockCopy(_streamBuf, drop, _streamBuf, 0, _streamLen - drop);
+                    _streamLen -= drop;
+                }
+            }
+
+            Buffer.BlockCopy(_readBuf, 0, _streamBuf, _streamLen, n);
+            _streamLen += n;
+
+            ParsePackets();
+        }
+    }
+    
+    // ─────────────────────────────────────────────────────────────────────
+//  Packet parsing — validates name BEFORE consuming, recovers from
+//  false-positive headers (AA 55 inside a previous packet's payload)
+//  by advancing only 1 byte instead of FullSize.
+// ─────────────────────────────────────────────────────────────────────
+    void ParsePackets()
+    {
+        int read = 0;
+
+        while (read + FullSize <= _streamLen)
+        {
+            if (_streamBuf[read] != Header1 || _streamBuf[read + 1] != Header2)
+            {
+                read++;
+                continue;
+            }
+
+            int payloadStart = read + 2;
+
+            // XOR checksum over the 21-byte payload
+            byte cksum = 0;
+            for (int i = 0; i < PacketSize; i++)
+                cksum ^= _streamBuf[payloadStart + i];
+
+            if (cksum != _streamBuf[payloadStart + PacketSize])
+            {
+                // Bad checksum — this header is a false positive.
+                // Advance ONE byte and keep scanning.
+                read++;
+                continue;
+            }
+
+            bool isP1 = MatchesId(_streamBuf, payloadStart, NameLen, _player1IdBytes);
+            bool isP2 = !isP1 && MatchesId(_streamBuf, payloadStart, NameLen, _player2IdBytes);
+
+            if (!isP1 && !isP2)
+            {
+                read++;
+                continue;
+            }
+
+            int  rotation = BitConverter.ToInt32(_streamBuf, payloadStart + NameLen);
+            bool pushed   = _streamBuf[payloadStart + NameLen + 4] != 0;
 
             lock (_lock)
             {
-                for (int i = 0; i < n; i++) _streamBuf.Add(_readBuf[i]);
-                ParsePackets();
+                if (isP1)
+                {
+                    player1.rotation  = rotation;
+                    player1.pushed    = pushed;
+                    player1.connected = true;
+                }
+                else
+                {
+                    player2.rotation  = rotation;
+                    player2.pushed    = pushed;
+                    player2.connected = true;
+                }
             }
+
+            read += FullSize;
+        }
+
+        if (read > 0)
+        {
+            int leftover = _streamLen - read;
+            if (leftover > 0)
+                Buffer.BlockCopy(_streamBuf, read, _streamBuf, 0, leftover);
+            _streamLen = leftover;
         }
     }
 
+    
+    
+
     // ─────────────────────────────────────────────────────────────────────
-    //  Packet parsing
+    //  Packet parsing — zero allocations in the hot path
     // ─────────────────────────────────────────────────────────────────────
-    void ParsePackets()
+    /*void ParsePackets()
     {
-        while (true)
+        int read = 0;
+
+        while (read + FullSize <= _streamLen)
         {
-            int hi = FindHeader();
-            if (hi < 0)
+            if (_streamBuf[read] == Header1 && _streamBuf[read + 1] == Header2)
             {
-                // Keep the last byte in case it is the first byte of the next header
-                if (_streamBuf.Count > 1) _streamBuf.RemoveRange(0, _streamBuf.Count - 1);
-                return;
+                DecodePacket(_streamBuf, read + 2);
+                read += FullSize;
             }
-            if (hi > 0) _streamBuf.RemoveRange(0, hi);  // discard garbage before header
-
-            int fullSize = 2 + PacketSize;
-            if (_streamBuf.Count < fullSize) return;    // wait for more bytes
-
-            byte[] raw = _streamBuf.GetRange(2, PacketSize).ToArray();
-            _streamBuf.RemoveRange(0, fullSize);
-
-            var pkt = BytesToStruct<ControllerPacket>(raw);
-            string id = NullTerminatedAscii(pkt.controllerName);
-
-            if (id == player1Id)
+            else
             {
-                player1.rotation  = pkt.rotationValue;
-                player1.pushed    = pkt.pushed != 0;
+                read++;   // resync: skip one byte and keep looking
+            }
+        }
+
+        // Compact: move any unconsumed tail to the front of the buffer.
+        if (read > 0)
+        {
+            int leftover = _streamLen - read;
+            if (leftover > 0)
+                Buffer.BlockCopy(_streamBuf, read, _streamBuf, 0, leftover);
+            _streamLen = leftover;
+        }
+    }
+
+    void DecodePacket(byte[] buf, int offset)
+    {
+        
+        
+        
+       /* // Layout: [0..15] name, [16..19] int32 rotation, [20] pushed
+        int  rotation = BitConverter.ToInt32(buf, offset + NameLen);
+        bool pushed   = buf[offset + NameLen + 4] != 0;
+/*
+       // TEMP DIAGNOSTIC — remove after debugging
+       var sb = new System.Text.StringBuilder();
+       for (int i = 0; i < PacketSize; i++) sb.Append(buf[offset + i].ToString("X2") + " ");
+       int  rotation = BitConverter.ToInt32(buf, offset + NameLen);
+       bool pushed   = buf[offset + NameLen + 4] != 0;
+       Debug.Log($"[Pkt] rot={rotation} pushed={pushed} raw={sb}");
+       
+       
+        if (MatchesId(buf, offset, NameLen, _player1IdBytes))
+        {
+            lock (_lock)
+            {
+                player1.rotation  = rotation;
+                player1.pushed    = pushed;
                 player1.connected = true;
             }
-            else if (id == player2Id)
+        }
+        else if (MatchesId(buf, offset, NameLen, _player2IdBytes))
+        {
+            lock (_lock)
             {
-                player2.rotation  = pkt.rotationValue;
-                player2.pushed    = pkt.pushed != 0;
+                player2.rotation  = rotation;
+                player2.pushed    = pushed;
                 player2.connected = true;
             }
         }
+        
+
     }
 
-    int FindHeader()
+    */
+
+    static bool MatchesId(byte[] buf, int offset, int fieldLen, byte[] id)
     {
-        for (int i = 0; i < _streamBuf.Count - 1; i++)
-            if (_streamBuf[i] == Header1 && _streamBuf[i + 1] == Header2) return i;
-        return -1;
+        if (id == null || id.Length > fieldLen) return false;
+        for (int i = 0; i < id.Length; i++)
+            if (buf[offset + i] != id[i]) return false;
+        // Field must be either exactly the ID, or null-terminated right after it.
+        if (id.Length < fieldLen && buf[offset + id.Length] != 0) return false;
+        return true;
     }
 
     // ─────────────────────────────────────────────────────────────────────
@@ -543,20 +616,23 @@ public class ControllerInputCrossPlatform : MonoBehaviour
         lock (_lock) { player1.pushed = false; player2.pushed = false; }
     }
 
-    // ─────────────────────────────────────────────────────────────────────
-    //  Helpers
-    // ─────────────────────────────────────────────────────────────────────
-    static string NullTerminatedAscii(byte[] b)
-    {
-        int len = Array.IndexOf(b, (byte)0);
-        return Encoding.ASCII.GetString(b, 0, len < 0 ? b.Length : len);
-    }
+    public ControllerState GetInput(int ID) => ID == 1 ? player1 : player2;
 
-    static T BytesToStruct<T>(byte[] bytes) where T : struct
+    // ─────────────────────────────────────────────────────────────────────
+    //  PlayerInputManager wiring
+    // ─────────────────────────────────────────────────────────────────────
+    private PlayerInputManager inputManager;
+
+    void Update()
     {
-        var h = GCHandle.Alloc(bytes, GCHandleType.Pinned);
-        try   { return Marshal.PtrToStructure<T>(h.AddrOfPinnedObject()); }
-        finally { h.Free(); }
+        if (inputManager.playerCount == 0)
+        {
+            if (player1.connected) inputManager.JoinPlayer();
+        }
+        else if (inputManager.playerCount == 1)
+        {
+            if (player2.connected) inputManager.JoinPlayer();
+        }
     }
 
     // ─────────────────────────────────────────────────────────────────────
@@ -565,36 +641,12 @@ public class ControllerInputCrossPlatform : MonoBehaviour
     void OnDisable()         => Shutdown();
     void OnApplicationQuit() => Shutdown();
 
-    public ControllerState GetInput(int ID)
-    {
-        return ID == 1 ? player1 : player2;
-    }
-
-    private PlayerInputManager inputManager;
-    
-    void Update()
-    {
-        if (inputManager.playerCount == 0)
-        {
-            if (player1.connected == true)
-            {
-                inputManager.JoinPlayer();
-            }
-        }
-        else if(inputManager.playerCount == 1)
-        {
-            if (player2.connected == true)
-            {
-                inputManager.JoinPlayer();
-            }
-        }
-    }
-    
     void Shutdown()
     {
         _running = false;
+        try { _serial?.Close(); } catch { /* ignore */ }
+        // Closing the fd unblocks the pending read() so the thread exits.
         _thread?.Join(500);
-        _serial?.Close();
         _serial = null;
     }
 }
