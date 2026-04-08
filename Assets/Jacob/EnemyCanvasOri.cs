@@ -20,5 +20,7 @@ public class EnemyCanvasOri : MonoBehaviour
         directionToPlayer.y = 0; // Keep the enemy upright by ignoring the y-axis
 
         rectTransform.rotation = Quaternion.LookRotation(directionToPlayer); // Rotate the enemy canvas to face the player
+        
+
     }
 }
