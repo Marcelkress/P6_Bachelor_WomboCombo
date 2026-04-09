@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace PathCreation.Examples
 {
@@ -41,67 +42,98 @@ namespace PathCreation.Examples
         }
 
         private int FirstTravelGizmoIndex = 1;
-        private int SecondTravelGizmoIndex = 2;
         public void MoveTo(PathDestinationObject destination)
         {
             activeDestination = destination;
             lookSettleStarted = false;
 
-            // BezierPath works in pathCreator local space
-            // sørger for at konvertere destination og start position til local space, så det ikke giver nogle vilde curves, da det er en retning der er vigtig for kameraet at følge.
-            Vector3 localStart = pathCreator.transform.InverseTransformPoint(transform.position);
-            Vector3 localEnd = pathCreator.transform.InverseTransformPoint(destination.transform.position);
-            
-            BezierPath bezierPath = new BezierPath(new Vector3[] { localStart, localEnd }, false, PathSpace.xyz); // faktisk laver pathen
+            // Build waypoint positions: current pos → subDestinations → main destination
+            List<Vector3> waypoints = new List<Vector3>();
+            List<PathDestinationObject> waypointObjects = new List<PathDestinationObject>();
+
+            waypoints.Add(transform.position);
+            waypointObjects.Add(null); // no destination object for start position
+
+            if (destination.subDestinations != null)
+            {
+                foreach (var sub in destination.subDestinations)
+                {
+                    waypoints.Add(sub.transform.position);
+                    waypointObjects.Add(sub);
+                }
+            }
+
+            waypoints.Add(destination.transform.position);
+            waypointObjects.Add(destination);
+
+            // Convert all to local space (BezierPath works in pathCreator local space)
+            Vector3[] localPoints = new Vector3[waypoints.Count];
+            for (int i = 0; i < waypoints.Count; i++)
+                localPoints[i] = pathCreator.transform.InverseTransformPoint(waypoints[i]);
+
+            // Constructor uses Automatic mode → smooth handles for all intermediate anchors
+            BezierPath bezierPath = new BezierPath(localPoints, false, PathSpace.xyz);
+            // Switch to Free so we can override specific handles without auto-recalculation
             bezierPath.ControlPointMode = BezierPath.ControlMode.Free;
 
-            // Automatic control mode generates unpredictable handles with only 2 points.
-            // Så de ikke bliver placeret tilfældigt, da det er en retning der er vigtig for kameraet at følge. Ellers kan det give nogle ret vilde curves. (De blå gizmos i editoren)
-            float pathLength = Vector3.Distance(localStart, localEnd);
+            // Override departure handle (after-handle of first anchor, index 1)
+            float totalDistance = Vector3.Distance(localPoints[0], localPoints[localPoints.Length - 1]);
             Vector3 localForward = pathCreator.transform.InverseTransformDirection(transform.forward);
-            bezierPath.SetPoint(FirstTravelGizmoIndex, localStart + localForward * (pathLength * departureStrength)); // den blå gizmo bliver placeret i dens nuværende fremadrettede retning, den blå gizmo er scalet pathlength. Men bliver ikke rigtig brugt
+            bezierPath.SetPoint(FirstTravelGizmoIndex, localPoints[0] + localForward * (totalDistance * departureStrength));
 
-            // End handle is pulled towards the destination's control point if set, otherwise straight
-            if (destination.controlPoint != null)
+            // Override before-handle for any waypoint that has a controlPoint set
+            for (int i = 1; i < waypointObjects.Count; i++)
             {
-                Vector3 localControl = pathCreator.transform.InverseTransformPoint(destination.controlPoint.position); // laver til local space 
-                bezierPath.SetPoint(SecondTravelGizmoIndex, localControl); // den blå gizmo bliver placeret i destinationens control point, hvis den er sat
+                PathDestinationObject wp = waypointObjects[i];
+                if (wp != null && wp.controlPoint != null)
+                {
+                    int beforeHandleIndex = i * 3 - 1; // before-handle of anchor i
+                    Vector3 localControl = pathCreator.transform.InverseTransformPoint(wp.controlPoint.position);
+                    bezierPath.SetPoint(beforeHandleIndex, localControl);
+                }
             }
-            else
-            {
-                bezierPath.SetPoint(SecondTravelGizmoIndex, Vector3.Lerp(localStart, localEnd, 2f / 3f)); // får bare default value
-            }
-           
 
-            pathCreator.bezierPath = bezierPath; // assign pathen til pathCreator, så den kan bruges i LateUpdate til at flytte kameraet
+            pathCreator.bezierPath = bezierPath;
 
             startDistance = 0f;
+            dist = 0f;
             targetDistance = pathCreator.path.length;
             travelTimer = 0f;
             isMoving = true;
+        }
+
+        public float GetCurrentTripDuration()
+        {
+            if (activeDestination == null || pathCreator == null) return 0f;
+            float speed = Mathf.Max(0.01f, activeDestination.travelSpeed);
+            return pathCreator.path.length / speed;
         }
 
         private float dist; 
         void LateUpdate()
         {
             if (!isMoving || activeDestination == null) return;
+            
+            float speed = Mathf.Max(0.01f, activeDestination.travelSpeed);
+            float totalTripDuration = targetDistance / speed;
 
             travelTimer += Time.deltaTime;
-            float time = Mathf.Clamp01(travelTimer / activeDestination.travelDuration); // clamp tiden mellem 0 og 1, så den ikke overskrider destinationens travelDuration
-            float curved = activeDestination.moveCurve.Evaluate(time); // bruger destinationens moveCurve til at få en kurvet tid, så bevægelsen ikke er lineær
+            float progress = totalTripDuration > 0f ? Mathf.Clamp01(travelTimer / totalTripDuration) : 1f;
+
+            float curved = activeDestination.moveCurve.Evaluate(progress);
 
             dist = Mathf.Lerp(startDistance, targetDistance, curved);
             transform.position = pathCreator.path.GetPointAtDistance(dist, endOfPathInstruction);
             if (activeDestination.rotateTowardsPath)
             {
-                if (activeDestination.lookTarget != null && time >= activeDestination.lookBlendStart)
+                if (activeDestination.lookTarget != null && progress >= activeDestination.lookBlendStart)
                 {
-                    if (!lookSettleStarted)
+                    if (!lookSettleStarted || activeDestination.shouldSettleLook)
                     {
                         lookSettleStarted = true;
                         lookStartRotation = transform.rotation;
                     }
-                    RotationBasedOnDestinationObject(time);
+                    RotationBasedOnDestinationObject(progress);
                 }
                 else
                 {
@@ -109,10 +141,10 @@ namespace PathCreation.Examples
                 }
             }
 
-            if (cam) cam.fieldOfView = baseFov + activeDestination.fovBoost * Mathf.Sin(time * Mathf.PI); // fov boost that peaks at the middle of the trip. Slower at the start and end.
+            if (cam) cam.fieldOfView = baseFov + activeDestination.fovBoost * Mathf.Sin(progress * Mathf.PI); // fov boost that peaks at the middle of the trip. Slower at the start and end.
 
-            if (time >= 1f)
-            {   
+            if (progress >= 1f)
+            {
                 isMoving = false;
                 if (cam) cam.fieldOfView = baseFov;
                 StartCoroutine(ArrivalShake());

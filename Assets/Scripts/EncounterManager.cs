@@ -83,7 +83,7 @@ public class EncounterManager : MonoBehaviour
         playerPathFollower.MoveTo(encounterIndex);
         if (encounterIndex < playerPathFollower.destinations.Length)
         {
-            StartEncounter(playerPathFollower.destinations[encounterIndex].travelDuration + defaultEnemyAggroDelay); // Start next encounter after trip is done, with a little buffer
+            StartEncounter(playerPathFollower.GetCurrentTripDuration() + defaultEnemyAggroDelay); // Start next encounter after trip is done, with a little buffer
         }
         else
         {
