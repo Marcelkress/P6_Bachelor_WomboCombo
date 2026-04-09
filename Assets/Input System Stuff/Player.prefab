@@ -126,32 +126,32 @@ MonoBehaviour:
   controllerInput: {fileID: 0}
   controllerValue: 6
   moonStar:
-    min: 5
-    max: 7
+    min: 4
+    max: 6
   moonMoon:
     min: 29
-    max: 4
+    max: 1
   moonSun:
-    min: 24
-    max: 27
+    min: 23
+    max: 26
   starMoon:
     min: 13
-    max: 17
+    max: 15
   starStar:
     min: 18
     max: 20
   starSun:
-    min: 9
-    max: 12
+    min: 8
+    max: 10
   sunMoon:
-    min: 0
-    max: 0
+    min: 29
+    max: 1
   sunStar:
-    min: 0
-    max: 0
+    min: 4
+    max: 6
   sunSun:
-    min: 0
-    max: 0
+    min: 23
+    max: 26
   playerID: 1
   useBalls: 1
   moon: 1

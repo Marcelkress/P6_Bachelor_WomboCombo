@@ -101,15 +101,22 @@ public class PlayerComboInput : MonoBehaviour
 
     private void UpdateSymbolsFromController()
     {
-        if (IsMoonMoon())      { playerInfoStruct.symbOne = moon; playerInfoStruct.symbTwo = moon; }
-        else if (IsMoonStar()) { playerInfoStruct.symbOne = moon; playerInfoStruct.symbTwo = star; }
-        else if (IsMoonSun())  { playerInfoStruct.symbOne = moon; playerInfoStruct.symbTwo = sun;  }
-        else if (IsStarMoon()) { playerInfoStruct.symbOne = star; playerInfoStruct.symbTwo = moon; }
+        if (playerID == Player.Player1)
+        {
+            if (IsSunMoon())  { playerInfoStruct.symbOne = sun;  playerInfoStruct.symbTwo = moon; }
+            else if (IsSunStar())  { playerInfoStruct.symbOne = sun;  playerInfoStruct.symbTwo = star; }
+            else if (IsSunSun())   { playerInfoStruct.symbOne = sun;  playerInfoStruct.symbTwo = sun;  }
+        }
+        else if (playerID == Player.Player2)
+        {
+            if (IsMoonMoon())      { playerInfoStruct.symbOne = moon; playerInfoStruct.symbTwo = moon; }
+            else if (IsMoonStar()) { playerInfoStruct.symbOne = moon; playerInfoStruct.symbTwo = star; }
+            else if (IsMoonSun())  { playerInfoStruct.symbOne = moon; playerInfoStruct.symbTwo = sun;  }
+        }
+
+        if (IsStarMoon()) { playerInfoStruct.symbOne = star; playerInfoStruct.symbTwo = moon; }
         else if (IsStarStar()) { playerInfoStruct.symbOne = star; playerInfoStruct.symbTwo = star; }
         else if (IsStarSun())  { playerInfoStruct.symbOne = star; playerInfoStruct.symbTwo = sun;  }
-        else if (IsSunMoon())  { playerInfoStruct.symbOne = sun;  playerInfoStruct.symbTwo = moon; }
-        else if (IsSunStar())  { playerInfoStruct.symbOne = sun;  playerInfoStruct.symbTwo = star; }
-        else if (IsSunSun())   { playerInfoStruct.symbOne = sun;  playerInfoStruct.symbTwo = sun;  }
 
         Debug.Log(playerInfoStruct.symbOne + "    " + playerInfoStruct.symbTwo);
     }
