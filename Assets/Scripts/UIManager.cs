@@ -10,6 +10,8 @@ public class UIManager : MonoBehaviour
     public GameObject restartButton;
     public TMP_Text gameOverText;
 
+    public EncounterManager encounterManager;
+
     public float UIFadeTime = 0.8f;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,10 +28,11 @@ public class UIManager : MonoBehaviour
         gameOverText.DOFade(1, UIFadeTime);
         gameOverBackground.DOFade(1, UIFadeTime).OnComplete(() =>
         {
-            restartButton.SetActive(true);
+            encounterManager.RestartFromLastRespawn();
         });
         
     }
+
 
     public void ReloadScene()
     {

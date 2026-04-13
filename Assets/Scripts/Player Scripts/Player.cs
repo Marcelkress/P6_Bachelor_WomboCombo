@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     private int currentHealth;  
     public UnityEvent PlayerDiedEvent;
     public int healAmount = 5;
+    public int lives = 3;
 
     [Header("Health UI")]
     public Image healthBar; // Reference to the health bar UI element
@@ -47,6 +48,8 @@ public class Player : MonoBehaviour
     public bool lookAtBoss = false; // whether the player should look at the boss, used for certain encounters and the boss fight
 
     public static bool healingComboStarted;
+
+    private int deathCounterSaveInfo;
     
     void Start()
     {
@@ -332,7 +335,10 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
+        lives--;
+        deathCounterSaveInfo++;
         PlayerDiedEvent.Invoke();
+
         //gameOverScreen.SetActive(true); // Show the Game Over screen
         //Time.timeScale = 0f; // Pause the game by setting time scale to
     }

@@ -6,6 +6,7 @@ public struct EncounterStruct
     public EnemyManager enemyManager;
     public int meleeEnemyCount, projectileEnemyCount;
     public int minComboLength, maxComboLength;
+    public bool respawnPoint;
 }
 public class EncounterManager : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class EncounterManager : MonoBehaviour
     [Tooltip("Set to skip ahead to a specific encounter (0 = normal start)")]
     public bool useDevTools = false;
     public int startFromEncounter = 0;
+
+    public int lastRespawnPoint;
 
     private void Awake()
     {
@@ -58,6 +61,13 @@ public class EncounterManager : MonoBehaviour
         StartEncounter(defaultEnemyAggroDelay);
     }
 
+    public void RestartFromLastRespawn()
+    {
+        if (lastRespawnPoint < 0 || lastRespawnPoint >= playerPathFollower.destinations.Length) return;
+        playerPathFollower.transform.position = playerPathFollower.destinations[lastRespawnPoint].transform.position;
+        StartEncounter(defaultEnemyAggroDelay);
+    }
+
     public void GoToNextEncounter()
     {
         if (bossBattleStarted) return;
@@ -81,6 +91,10 @@ public class EncounterManager : MonoBehaviour
 
         // Trigger player camera trip
         playerPathFollower.MoveTo(encounterIndex);
+        if (Encounters[encounterIndex].respawnPoint)
+        {
+            lastRespawnPoint = encounterIndex; // what the last respawn point was, used for player death and retrying
+        }
         if (encounterIndex < playerPathFollower.destinations.Length)
         {
             StartEncounter(playerPathFollower.GetCurrentTripDuration() + defaultEnemyAggroDelay); // Start next encounter after trip is done, with a little buffer
