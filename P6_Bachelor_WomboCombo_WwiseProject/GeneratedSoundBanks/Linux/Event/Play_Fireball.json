@@ -1,0 +1,72 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Linux",
+  "BasePlatform": "Linux",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "146533081",
+    "Type": "Event",
+    "GUID": "{9F6DD6B5-E43E-43C3-AFB2-07F4859F203C}",
+    "Language": "SFX",
+    "Hash": "{F35B71E4-DA0E-3C97-FBE0-F06C15BC4EBA}",
+    "ObjectPath": "Play_Fireball",
+    "ShortName": "Play_Fireball",
+    "Path": "Event/Play_Fireball.bnk",
+    "Media": [
+     {
+      "Id": "98952576",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Fireball C.wav",
+      "Path": "Media/98952576.wem",
+      "CachePath": "62/{622ED8FC-C05C-D1E9-4E92-08AC314538B8}.wem"
+     },
+     {
+      "Id": "372213822",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Fireball C.wav",
+      "Path": "Media/372213822.wem",
+      "CachePath": "66/{660167C7-5C24-8D99-C001-574884805CDA}.wem"
+     },
+     {
+      "Id": "492585967",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Fireball C.wav",
+      "Path": "Media/492585967.wem",
+      "CachePath": "3A/{3AEA5776-38B2-CD05-ECEF-2DD0B80F01C4}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "146533081",
+      "Name": "Play_Fireball",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Fireball",
+      "GUID": "{9F6DD6B5-E43E-43C3-AFB2-07F4859F203C}",
+      "DurationType": "OneShot",
+      "DurationMin": "3.615562",
+      "DurationMax": "5.6544876",
+      "MediaRefs": [
+       {
+        "Id": "98952576"
+       },
+       {
+        "Id": "372213822"
+       },
+       {
+        "Id": "492585967"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{E9B4891C-9FFE-BE64-3520-1098E22B56BB}"
+ }
+}

@@ -1,0 +1,97 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "2943090728",
+    "Type": "Event",
+    "GUID": "{78F34ECF-17B1-4279-B6AC-780E5656D290}",
+    "Language": "SFX",
+    "Hash": "{8B02A700-E10A-8524-1C6F-697843C4B8CE}",
+    "ObjectPath": "Play_Die_Hurt",
+    "ShortName": "Play_Die_Hurt",
+    "Path": "Event/Play_Die_Hurt.bnk",
+    "Media": [
+     {
+      "Id": "71517098",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Die_hurt.wav",
+      "Path": "Media/71517098.wem",
+      "CachePath": "BA/{BA0E8F1E-8CF3-9C18-4280-CF042A9ADD5B}.wem"
+     },
+     {
+      "Id": "614365545",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Die_hurt5.wav",
+      "Path": "Media/614365545.wem",
+      "CachePath": "0B/{0B1D163A-C026-8230-A197-4A5AA6A4E0F4}.wem"
+     },
+     {
+      "Id": "648361567",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Die_hurt4.wav",
+      "Path": "Media/648361567.wem",
+      "CachePath": "08/{081B4F45-21C0-71C7-C600-A6EB5095D013}.wem"
+     },
+     {
+      "Id": "876120047",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Die_hurt2.wav",
+      "Path": "Media/876120047.wem",
+      "CachePath": "E3/{E353B3D7-1E94-B821-CAD1-10E61774F654}.wem"
+     },
+     {
+      "Id": "927727448",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Die_hurt3.wav",
+      "Path": "Media/927727448.wem",
+      "CachePath": "C4/{C4CF5BB4-BC49-C09F-1F4D-58651D4C1912}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2943090728",
+      "Name": "Play_Die_Hurt",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Die_Hurt",
+      "GUID": "{78F34ECF-17B1-4279-B6AC-780E5656D290}",
+      "MaxAttenuation": "65",
+      "DurationType": "OneShot",
+      "DurationMin": "2.25",
+      "DurationMax": "2.25",
+      "MediaRefs": [
+       {
+        "Id": "71517098"
+       },
+       {
+        "Id": "614365545"
+       },
+       {
+        "Id": "648361567"
+       },
+       {
+        "Id": "876120047"
+       },
+       {
+        "Id": "927727448"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{F2EE8A19-68AA-A4FC-D555-E5DCC54D7B7D}"
+ }
+}

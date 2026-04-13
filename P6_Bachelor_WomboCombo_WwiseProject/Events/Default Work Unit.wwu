@@ -26,6 +26,72 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_freesound_community_raven_manymp3_14529" ID="{7B9505B7-42A5-4C44-9C01-5137BB8FD424}">
+					<ChildrenList>
+						<Action Name="" ID="{9308ACAC-0E8E-4F10-8EC0-32DAE67AEC2A}" ShortID="79842680">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="freesound_community-raven-manymp3-14529" ID="{D54BAC5E-FBA6-4F25-B2BE-9AC35860EF46}" WorkUnitID="{4F9991F6-C6B0-464E-A79D-228F4B413CED}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Fireball" ID="{9F6DD6B5-E43E-43C3-AFB2-07F4859F203C}">
+					<ChildrenList>
+						<Action Name="" ID="{62C3F550-93DF-4A3A-96EA-3E8958925D06}" ShortID="1013417121">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Fireball" ID="{E2E1A5CE-7027-46DD-A96E-B52DF01DDED8}" WorkUnitID="{4F9991F6-C6B0-464E-A79D-228F4B413CED}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Minotauer_Attack" ID="{0A406643-4279-4597-9D2E-D47272AAFC70}">
+					<ChildrenList>
+						<Action Name="" ID="{403EEAA5-454C-4153-9C04-85661AF9ACBB}" ShortID="1034814875">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Attack" ID="{E8A6151A-AF3E-4E49-B313-C85FDEE555B0}" WorkUnitID="{4F9991F6-C6B0-464E-A79D-228F4B413CED}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_PlayerHit" ID="{BFC77D08-BC66-4A2D-B11C-BD6CB548BB30}">
+					<ChildrenList>
+						<Action Name="" ID="{E8985231-8CF8-4F34-AEE5-3C805C850257}" ShortID="59798974">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="PlayerHit" ID="{701D4252-3E8F-4655-8F47-07DBCD2615FE}" WorkUnitID="{4F9991F6-C6B0-464E-A79D-228F4B413CED}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_WindGrass_BSZ01_94_1" ID="{1D4CABC6-5E7F-453A-9E58-CD7EE1EB8DB2}">
+					<ChildrenList>
+						<Action Name="" ID="{A3FAA97A-93A8-4633-B325-1D17A564CD94}" ShortID="287591004">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="WindGrass BSZ01_94_1" ID="{E10B1E17-9212-4E2A-AB35-4E92FEA4226E}" WorkUnitID="{4F9991F6-C6B0-464E-A79D-228F4B413CED}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Die_Hurt" ID="{78F34ECF-17B1-4279-B6AC-780E5656D290}">
+					<ChildrenList>
+						<Action Name="" ID="{9B3F1FF4-959F-4291-9E10-D29C6BDD6D3E}" ShortID="481443574">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Die_Hurt" ID="{89990261-3622-4905-98CA-596EF9C05466}" WorkUnitID="{4F9991F6-C6B0-464E-A79D-228F4B413CED}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

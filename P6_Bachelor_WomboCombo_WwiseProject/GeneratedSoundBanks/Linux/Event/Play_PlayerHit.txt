@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	514211712	Play_PlayerHit			\Default Work Unit\Play_PlayerHit	
+

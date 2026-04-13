@@ -1,0 +1,97 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "514211712",
+    "Type": "Event",
+    "GUID": "{BFC77D08-BC66-4A2D-B11C-BD6CB548BB30}",
+    "Language": "SFX",
+    "Hash": "{0250AC03-D07A-9BDB-FF2E-5035A3060A9D}",
+    "ObjectPath": "Play_PlayerHit",
+    "ShortName": "Play_PlayerHit",
+    "Path": "Event/Play_PlayerHit.bnk",
+    "Media": [
+     {
+      "Id": "21087991",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Hard Bloody Punch F-16bit.wav",
+      "Path": "Media/21087991.wem",
+      "CachePath": "FE/{FEDE764C-7C88-B778-B621-8E3E9EEA61DB}.wem"
+     },
+     {
+      "Id": "156577482",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Hard Bloody Punch B-16bit.wav",
+      "Path": "Media/156577482.wem",
+      "CachePath": "D0/{D0D73570-2FD4-DC15-D88B-CE2447825F8D}.wem"
+     },
+     {
+      "Id": "536171733",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Hard Bloody Punch D-16bit.wav",
+      "Path": "Media/536171733.wem",
+      "CachePath": "3F/{3F23D9E9-51CF-A224-0F85-02DB96A617AA}.wem"
+     },
+     {
+      "Id": "716446925",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Hard Bloody Punch C-16bit.wav",
+      "Path": "Media/716446925.wem",
+      "CachePath": "84/{84010CE9-651B-8F12-3F85-AACB142C8B8F}.wem"
+     },
+     {
+      "Id": "762582990",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Hard Bloody Punch E-16bit.wav",
+      "Path": "Media/762582990.wem",
+      "CachePath": "32/{3291AB14-9534-A494-62BE-5F1F51CF9F32}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "514211712",
+      "Name": "Play_PlayerHit",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_PlayerHit",
+      "GUID": "{BFC77D08-BC66-4A2D-B11C-BD6CB548BB30}",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "1.0000231",
+      "DurationMax": "1.818655",
+      "MediaRefs": [
+       {
+        "Id": "21087991"
+       },
+       {
+        "Id": "156577482"
+       },
+       {
+        "Id": "536171733"
+       },
+       {
+        "Id": "716446925"
+       },
+       {
+        "Id": "762582990"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{B142A9FA-FB8B-EF0B-8902-2DADC30178FA}"
+ }
+}

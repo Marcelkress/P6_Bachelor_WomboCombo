@@ -4279,6 +4279,7 @@ GameObject:
   - component: {fileID: -4306049832133032721}
   - component: {fileID: 1154904056095590652}
   - component: {fileID: -548900165601823740}
+  - component: {fileID: 5520970755904628524}
   m_Layer: 6
   m_Name: minotaur1
   m_TagString: Untagged
@@ -4441,6 +4442,30 @@ CapsuleCollider:
   m_Height: 2.196533
   m_Direction: 1
   m_Center: {x: 0, y: 1.1217655, z: 0}
+--- !u!114 &5520970755904628524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4414871117303439921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3775954631c564042be636cdf49aca34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MonsterAudio
+  attackSoundEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 55f0661ee5f9246c79c20a89913b25e0, type: 2}
+  playerDamageSoundEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: b7b58a22de3c242cb9f1108510759421, type: 2}
+  enemyDamageSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 55f03d4b1294d41b89598220768fe9cc, type: 2}
 --- !u!1 &4414871117353324497
 GameObject:
   m_ObjectHideFlags: 0

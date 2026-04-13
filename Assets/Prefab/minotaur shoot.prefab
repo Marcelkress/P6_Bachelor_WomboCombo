@@ -5093,6 +5093,7 @@ GameObject:
   - component: {fileID: 5410129483911563115}
   - component: {fileID: 3952911826081636430}
   - component: {fileID: 2905702442726046532}
+  - component: {fileID: -4987121949083833474}
   m_Layer: 6
   m_Name: minotaur shoot
   m_TagString: Untagged
@@ -5254,6 +5255,30 @@ CapsuleCollider:
   m_Height: 2.196533
   m_Direction: 1
   m_Center: {x: 0, y: 1.1217655, z: 0}
+--- !u!114 &-4987121949083833474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8473337529483587920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3775954631c564042be636cdf49aca34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MonsterAudio
+  attackSoundEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  playerDamageSoundEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  enemyDamageSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 55f03d4b1294d41b89598220768fe9cc, type: 2}
 --- !u!1 &8737791070999506933
 GameObject:
   m_ObjectHideFlags: 0

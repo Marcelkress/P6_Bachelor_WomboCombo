@@ -1,0 +1,96 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "2883861275",
+    "Type": "Event",
+    "GUID": "{0A406643-4279-4597-9D2E-D47272AAFC70}",
+    "Language": "SFX",
+    "Hash": "{EAE5B279-7FD6-323D-475E-76A5E78B0668}",
+    "ObjectPath": "Play_Minotauer_Attack",
+    "ShortName": "Play_Minotauer_Attack",
+    "Path": "Event/Play_Minotauer_Attack.bnk",
+    "Media": [
+     {
+      "Id": "411207146",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Attack Attack 2.wav",
+      "Path": "Media/411207146.wem",
+      "CachePath": "3C/{3CAC249E-252E-8E9F-4F96-86437BFEFA5C}.wem"
+     },
+     {
+      "Id": "462889026",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Attack Attack.wav",
+      "Path": "Media/462889026.wem",
+      "CachePath": "FD/{FD2C863C-9DBE-222F-8779-F65D55980675}.wem"
+     },
+     {
+      "Id": "530083644",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Attack Attack 4.wav",
+      "Path": "Media/530083644.wem",
+      "CachePath": "57/{577A73BA-0E52-5098-4986-EDCCD5091CC3}.wem"
+     },
+     {
+      "Id": "645883208",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Attack Attack 3.wav",
+      "Path": "Media/645883208.wem",
+      "CachePath": "26/{269B84C7-8A07-F1B5-BF55-61057ECBCECC}.wem"
+     },
+     {
+      "Id": "944608917",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Attack Attack 5.wav",
+      "Path": "Media/944608917.wem",
+      "CachePath": "EF/{EF1140F2-28EC-216D-FA3D-9BC083EBBE66}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2883861275",
+      "Name": "Play_Minotauer_Attack",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Minotauer_Attack",
+      "GUID": "{0A406643-4279-4597-9D2E-D47272AAFC70}",
+      "DurationType": "OneShot",
+      "DurationMin": "2.230754",
+      "DurationMax": "2.6488252",
+      "MediaRefs": [
+       {
+        "Id": "411207146"
+       },
+       {
+        "Id": "462889026"
+       },
+       {
+        "Id": "530083644"
+       },
+       {
+        "Id": "645883208"
+       },
+       {
+        "Id": "944608917"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{0D6851E8-13BB-886D-47D4-828C82AE68E3}"
+ }
+}

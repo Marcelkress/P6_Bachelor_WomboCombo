@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b80bf1016e8a4e0e804fd0053d57878, type: 3}
+  m_Name: BFC77D08-BC66-4A2D-B11C-BD6CB548BB30
+  m_EditorClassIdentifier: AK.Wwise.Unity.API.WwiseTypes::WwiseEventReference
+  objectName: Play_PlayerHit
+  id: 514211712
+  guid: BFC77D08-BC66-4A2D-B11C-BD6CB548BB30
+  IsInUserDefinedSoundBank: 0

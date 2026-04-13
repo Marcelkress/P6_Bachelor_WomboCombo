@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	2883861275	Play_Minotauer_Attack			\Default Work Unit\Play_Minotauer_Attack	
+
