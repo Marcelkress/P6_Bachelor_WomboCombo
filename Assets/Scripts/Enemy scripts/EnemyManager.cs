@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
   [System.Serializable]
@@ -100,6 +101,14 @@ public class EnemyManager : MonoBehaviour
         return randArray;
     }
 
+    public void ClearAllEntities()
+    {
+        foreach (var Entities in Enemies)
+        {
+            Destroy(Entities.gameObject); // både projectiles og enemies 
+        }
+        Enemies.Clear();
+    }
     public void EnemyDied()
     {
         if (Enemies.Count <= 0 && !EncounterManager.instance.bossBattleStarted)

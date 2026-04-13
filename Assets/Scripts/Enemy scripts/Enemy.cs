@@ -51,14 +51,14 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
     public int shakeVibrato;
 
     private bool isDead = false;
+    public static int wrongComboInput;
 
     [Header("Animation")] public Animator anim;
     
     
     private PlayerInfoStruct playerOneInfo, playerTwoInfo;
 
-    [HideInInspector] public EnemyManager manager;
-
+    public EnemyManager manager;
 
     private float speed;
     
@@ -168,6 +168,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
     
     void Update()
     {
+
         CheckAttackDist();
         
         if(!projectileEnemy)
@@ -259,6 +260,11 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
                 localComboStarted = false;
                 globalComboStarted = false;
             }
+        }
+        else
+        {
+            Debug.Log("Wrong input");
+            wrongComboInput++;
         }
     }
     
