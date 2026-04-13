@@ -1,0 +1,47 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Linux",
+  "BasePlatform": "Linux",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "649460754",
+    "Type": "Event",
+    "GUID": "{7B9505B7-42A5-4C44-9C01-5137BB8FD424}",
+    "Language": "SFX",
+    "Hash": "{2F43F2FC-E952-5EEB-2A49-3A83CCAEFC93}",
+    "ObjectPath": "Play_freesound_community_raven_manymp3_14529",
+    "ShortName": "Play_freesound_community_raven_manymp3_14529",
+    "Path": "Event/Play_freesound_community_raven_manymp3_14529.bnk",
+    "Media": [
+     {
+      "Id": "766190690",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "freesound_community-raven-manymp3-14529.wav",
+      "Path": "Media/766190690.wem",
+      "CachePath": "8F/{8FBAE18D-FE17-CA2F-4B0C-630B8EC82BF8}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "649460754",
+      "Name": "Play_freesound_community_raven_manymp3_14529",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_freesound_community_raven_manymp3_14529",
+      "GUID": "{7B9505B7-42A5-4C44-9C01-5137BB8FD424}",
+      "MaxAttenuation": "50",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "766190690"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{DF78CB21-E90E-8011-487D-25DE9D649AD2}"
+ }
+}

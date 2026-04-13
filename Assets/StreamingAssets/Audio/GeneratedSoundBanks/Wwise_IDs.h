@@ -13,6 +13,7 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID PLAY_FREESOUND_COMMUNITY_RAVEN_MANYMP3_14529 = 649460754U;
         static const AkUniqueID PLAY_HOLLOW_16BIT = 1648528756U;
         static const AkUniqueID PLAY_TRAMP963_WATERFALL_SOUNDS_259625 = 2572739826U;
     } // namespace EVENTS
