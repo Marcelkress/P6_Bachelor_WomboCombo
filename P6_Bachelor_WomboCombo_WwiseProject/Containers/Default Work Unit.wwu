@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{4F9991F6-C6B0-464E-A79D-228F4B413CED}" SchemaVersion="133">
+	<Containers>
+		<WorkUnit Name="Default Work Unit" ID="{4F9991F6-C6B0-464E-A79D-228F4B413CED}" PersistMode="Standalone">
+			<ChildrenList>
+				<Folder Name="Music" ID="{D146DB97-0906-478C-A16A-C93963BC98BE}" ShortID="440822134">
+					<ChildrenList>
+						<Sound Name="Athenaeum" ID="{E610E7F9-7A70-4329-89CD-29DB35613C59}" ShortID="841536660">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AF9EEC83-A8E4-4C08-A3B7-085D894A22A7}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{DC0F5E70-B7C9-40C2-A399-414C27A89E4E}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Athenaeum" ID="{9A9C902B-D60D-4E29-AB8E-2C2CC6D096AC}">
+									<Language>SFX</Language>
+									<AudioFile>Athenaeum.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="103011614"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Athenaeum" ID="{9A9C902B-D60D-4E29-AB8E-2C2CC6D096AC}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Choir Ambience" ID="{5E753777-6F6C-4DF4-9F3F-69801F0305AE}" ShortID="650408023">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AF9EEC83-A8E4-4C08-A3B7-085D894A22A7}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{DC0F5E70-B7C9-40C2-A399-414C27A89E4E}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Choir Ambience" ID="{BA1615C5-90B8-4115-AA85-3C5A90FCF17C}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="12.2251750867226"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>Choir Ambience.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="5821410"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Choir Ambience" ID="{BA1615C5-90B8-4115-AA85-3C5A90FCF17C}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
+	</Containers>
+</WwiseDocument>
