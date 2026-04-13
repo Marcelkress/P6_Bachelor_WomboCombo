@@ -15,6 +15,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_tramp963_waterfall_sounds_259625" ID="{1212C50C-6E82-45BF-AF34-CDEF9E295A47}">
+					<ChildrenList>
+						<Action Name="" ID="{7FB4C3F4-BF48-42E3-9DC2-C8268E03DC19}" ShortID="951651826">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="tramp963-waterfall-sounds-259625" ID="{E54B3379-EECA-40B9-86A5-5EC7021CB56C}" WorkUnitID="{4F9991F6-C6B0-464E-A79D-228F4B413CED}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
