@@ -26063,6 +26063,52 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1385113952}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1392956671
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1392956673}
+  - component: {fileID: 1392956672}
+  m_Layer: 0
+  m_Name: Save test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1392956672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392956671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a79d9f5a9142a6999dde4c8d3020ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveSystemSettings
+  currentSaveSlot: 0
+  testInt: 12
+--- !u!4 &1392956673
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392956671}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.09024, y: 2.53843, z: -5.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1394111849
 GameObject:
   m_ObjectHideFlags: 0
@@ -38652,7 +38698,7 @@ MonoBehaviour:
       - 0
       globalNormalsAngle: 69
       flipNormals: 0
-    vertexPathUpToDate: 0
+    vertexPathUpToDate: 1
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0
     showTransformTool: 1
@@ -38914,7 +38960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b09746f865050d49991514c2c25670ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PathDestinationObject
-  travelDuration: 2
+  travelSpeed: 10
   moveCurve:
     serializedVersion: 2
     m_Curve:
@@ -38943,7 +38989,10 @@ MonoBehaviour:
   arrivalShakeDuration: 0.2
   arrivalShakeMagnitude: 0.1
   rotateTowardsPath: 1
+  overwriteSubDestinations: 0
+  subDestinations: []
   controlPoint: {fileID: 8824643814526984272}
+  shouldSettleLook: 1
   lookTarget: {fileID: 462643443792948225}
   lookSettleDuration: 0.5
   lookBlendStart: 0.7
@@ -39166,3 +39215,4 @@ SceneRoots:
   - {fileID: 1760787415}
   - {fileID: 4466840603704037476}
   - {fileID: 3268799612952867153}
+  - {fileID: 1392956673}
