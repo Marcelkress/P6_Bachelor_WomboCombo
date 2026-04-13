@@ -354,6 +354,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
 
     private void CheckAttackDist()
     {
+        if (player == null || agent == null) return;
         
         if (Vector3.Distance(transform.position, player.transform.position) <= agent.stoppingDistance + 1)
         {
