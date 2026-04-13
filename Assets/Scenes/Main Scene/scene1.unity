@@ -7912,6 +7912,7 @@ GameObject:
   m_Component:
   - component: {fileID: 309611475}
   - component: {fileID: 309611474}
+  - component: {fileID: 309611476}
   m_Layer: 0
   m_Name: EncounterManager
   m_TagString: Untagged
@@ -7937,92 +7938,110 @@ MonoBehaviour:
     projectileEnemyCount: 1
     minComboLength: 2
     maxComboLength: 4
+    respawnPoint: 0
   - enemyManager: {fileID: 1088628462}
     meleeEnemyCount: 2
     projectileEnemyCount: 1
     minComboLength: 2
     maxComboLength: 4
+    respawnPoint: 1
   - enemyManager: {fileID: 1030023371}
     meleeEnemyCount: 4
     projectileEnemyCount: 2
     minComboLength: 3
     maxComboLength: 5
+    respawnPoint: 0
   - enemyManager: {fileID: 385785121}
     meleeEnemyCount: 2
     projectileEnemyCount: 0
     minComboLength: 2
     maxComboLength: 4
+    respawnPoint: 0
   - enemyManager: {fileID: 1126966903}
     meleeEnemyCount: 2
     projectileEnemyCount: 0
     minComboLength: 2
     maxComboLength: 4
+    respawnPoint: 0
   - enemyManager: {fileID: 1761839060}
     meleeEnemyCount: 2
     projectileEnemyCount: 2
     minComboLength: 2
     maxComboLength: 4
+    respawnPoint: 0
   - enemyManager: {fileID: 2102292839}
     meleeEnemyCount: 0
     projectileEnemyCount: 2
     minComboLength: 2
     maxComboLength: 4
+    respawnPoint: 0
   - enemyManager: {fileID: 486749952}
     meleeEnemyCount: 0
     projectileEnemyCount: 2
     minComboLength: 2
     maxComboLength: 4
+    respawnPoint: 0
   - enemyManager: {fileID: 1441776804}
     meleeEnemyCount: 1
     projectileEnemyCount: 0
     minComboLength: 6
     maxComboLength: 8
+    respawnPoint: 0
   - enemyManager: {fileID: 1831252325}
     meleeEnemyCount: 1
     projectileEnemyCount: 0
     minComboLength: 6
     maxComboLength: 8
+    respawnPoint: 0
   - enemyManager: {fileID: 1307176549}
     meleeEnemyCount: 1
     projectileEnemyCount: 0
     minComboLength: 6
     maxComboLength: 8
+    respawnPoint: 0
   - enemyManager: {fileID: 699083529}
     meleeEnemyCount: 1
     projectileEnemyCount: 0
     minComboLength: 6
     maxComboLength: 8
+    respawnPoint: 0
   - enemyManager: {fileID: 1132233565}
     meleeEnemyCount: 1
     projectileEnemyCount: 0
     minComboLength: 6
     maxComboLength: 8
+    respawnPoint: 0
   - enemyManager: {fileID: 878032463}
     meleeEnemyCount: 1
     projectileEnemyCount: 0
     minComboLength: 6
     maxComboLength: 8
+    respawnPoint: 0
   - enemyManager: {fileID: 873243292}
     meleeEnemyCount: 1
     projectileEnemyCount: 0
     minComboLength: 6
     maxComboLength: 8
+    respawnPoint: 0
   - enemyManager: {fileID: 2022458300}
     meleeEnemyCount: 1
     projectileEnemyCount: 0
     minComboLength: 6
     maxComboLength: 8
+    respawnPoint: 0
   - enemyManager: {fileID: 845520328}
     meleeEnemyCount: 1
     projectileEnemyCount: 0
     minComboLength: 6
     maxComboLength: 8
+    respawnPoint: 0
   playerPathFollower: {fileID: 631350399}
   defaultEnemyAggroDelay: 0
   epicBossLogic: {fileID: 0}
   bossBattleStarted: 0
   useDevTools: 0
   startFromEncounter: 0
+  lastRespawnPoint: 0
 --- !u!4 &309611475
 Transform:
   m_ObjectHideFlags: 0
@@ -8038,6 +8057,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &309611476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309611473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a79d9f5a9142a6999dde4c8d3020ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveSystemSettings
+  currentSaveSlot: 1
+  testInt: 0
 --- !u!1001 &314417219
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44547,6 +44580,7 @@ MonoBehaviour:
   gameOverBackground: {fileID: 1156613505}
   restartButton: {fileID: 1156613503}
   gameOverText: {fileID: 132476219}
+  encounterManager: {fileID: 309611474}
   UIFadeTime: 0.8
 --- !u!4 &1715214807 stripped
 Transform:

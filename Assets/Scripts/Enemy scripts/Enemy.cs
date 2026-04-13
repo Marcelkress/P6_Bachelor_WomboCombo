@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
     
     private PlayerInfoStruct playerOneInfo, playerTwoInfo;
 
-    [HideInInspector] public EnemyManager manager;
+    public EnemyManager manager;
 
     private float speed;
     

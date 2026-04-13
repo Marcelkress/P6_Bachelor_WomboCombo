@@ -288,7 +288,7 @@ public class Player : MonoBehaviour
     {
         currentHealth -= damage; // Reduce the player's health by the damage amount
         healthText.text = currentHealth.ToString(); // Update the health text (optional)
-        Debug.Log("Player took damage! Current health: " + currentHealth);
+        //Debug.Log("Player took damage! Current health: " + currentHealth);
 
         // Update the health bar UI element
         if (healthBar != null)
@@ -310,12 +310,16 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (currentHealth <= 0)
+        if (currentHealth == 0)
         {
-            Die(); // Call the Die method if health drops to 0 or below
+            if (dead) return;
+            dead = true;
+            Die(); // Call the Die method if health drops to 0
         }
 
     }
+
+    private bool dead;
 
     private void AnimateHealthBar()
     {
@@ -338,8 +342,8 @@ public class Player : MonoBehaviour
         lives--;
         deathCounterSaveInfo++;
         PlayerDiedEvent.Invoke();
-
-
+        currentHealth = maxHealth;
+        dead = false;
         //gameOverScreen.SetActive(true); // Show the Game Over screen
         //Time.timeScale = 0f; // Pause the game by setting time scale to
     }

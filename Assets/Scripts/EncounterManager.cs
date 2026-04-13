@@ -1,5 +1,7 @@
 using PathCreation.Examples;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 [System.Serializable]
 public struct EncounterStruct
 {
@@ -63,10 +65,20 @@ public class EncounterManager : MonoBehaviour
 
     public void RestartFromLastRespawn()
     {
-        if (lastRespawnPoint < 0 || lastRespawnPoint >= playerPathFollower.destinations.Length) return;
+        if (lastRespawnPoint < 0 || lastRespawnPoint >= playerPathFollower.destinations.Length)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        Encounters[encounterIndex-1].enemyManager.ClearAllEntities();
+
         playerPathFollower.transform.position = playerPathFollower.destinations[lastRespawnPoint].transform.position;
+        encounterIndex = lastRespawnPoint;
+        Encounters[encounterIndex] = Encounters[encounterIndex]; // refresh encounter to reset enemy managers enemy lists and such
         StartEncounter(defaultEnemyAggroDelay);
     }
+
+       
 
     public void GoToNextEncounter()
     {

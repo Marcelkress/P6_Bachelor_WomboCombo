@@ -249,12 +249,13 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
             Die();
         }
     }
+    /*
 
     private void OnDisable()
     {
         Die();
     }
-    
+    */
     private bool isDead;
     private void Die()
     {
