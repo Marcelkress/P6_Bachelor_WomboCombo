@@ -339,8 +339,13 @@ public class Player : MonoBehaviour
         deathCounterSaveInfo++;
         PlayerDiedEvent.Invoke();
 
+
         //gameOverScreen.SetActive(true); // Show the Game Over screen
         //Time.timeScale = 0f; // Pause the game by setting time scale to
     }
 
+    private void OnDisable()
+    {
+        SaveSystem.SaveData(deathCounterSaveInfo, "deathCounter");
+    }
 }
