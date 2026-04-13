@@ -22,9 +22,23 @@
 										<MediaID ID="103011614"/>
 									</MediaIDList>
 								</AudioFileSource>
+								<AudioFileSource Name="Hollow-16bit" ID="{B42981E4-0D75-401B-9D0E-79FD721ECFF8}">
+									<Language>SFX</Language>
+									<AudioFile>Hollow-16bit.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="847279914"/>
+									</MediaIDList>
+								</AudioFileSource>
+								<AudioFileSource Name="Hollow-16bit_01" ID="{236F7E43-7090-49A1-9376-71B34E5F3789}">
+									<Language>SFX</Language>
+									<AudioFile>Hollow-16bit.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="847279914"/>
+									</MediaIDList>
+								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="Athenaeum" ID="{9A9C902B-D60D-4E29-AB8E-2C2CC6D096AC}" Platform="Linked"/>
+								<ActiveSource Name="Hollow-16bit_01" ID="{236F7E43-7090-49A1-9376-71B34E5F3789}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="Choir Ambience" ID="{5E753777-6F6C-4DF4-9F3F-69801F0305AE}" ShortID="650408023">
@@ -51,6 +65,28 @@
 							</ChildrenList>
 							<ActiveSourceList>
 								<ActiveSource Name="Choir Ambience" ID="{BA1615C5-90B8-4115-AA85-3C5A90FCF17C}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Hollow-16bit" ID="{0D5BD3FF-9550-49C9-9D63-36B377ABD2E4}" ShortID="496994726">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AF9EEC83-A8E4-4C08-A3B7-085D894A22A7}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{DC0F5E70-B7C9-40C2-A399-414C27A89E4E}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Hollow-16bit" ID="{7E8F8A51-2E8B-4C46-A3DF-491ADB9FFB55}">
+									<Language>SFX</Language>
+									<AudioFile>Hollow-16bit.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="847279914"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Hollow-16bit" ID="{7E8F8A51-2E8B-4C46-A3DF-491ADB9FFB55}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>

@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{B783DC9F-9BEC-42C1-B4DC-C87CD8EA776D}" SchemaVersion="133">
 	<Events>
-		<WorkUnit Name="Default Work Unit" ID="{B783DC9F-9BEC-42C1-B4DC-C87CD8EA776D}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{B783DC9F-9BEC-42C1-B4DC-C87CD8EA776D}" PersistMode="Standalone">
+			<ChildrenList>
+				<Folder Name="Ambient sounds" ID="{666EA8C3-E55F-4BD5-9878-406846A57BED}" ShortID="75667466"/>
+				<Event Name="Play_Hollow_16bit" ID="{FBCEC0F4-2C87-4E7E-B7A4-42DF95BC94DD}">
+					<ChildrenList>
+						<Action Name="" ID="{841E92A9-D423-4C4D-8760-69AB7ECA5B0C}" ShortID="990272518">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Hollow-16bit" ID="{0D5BD3FF-9550-49C9-9D63-36B377ABD2E4}" WorkUnitID="{4F9991F6-C6B0-464E-A79D-228F4B413CED}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>

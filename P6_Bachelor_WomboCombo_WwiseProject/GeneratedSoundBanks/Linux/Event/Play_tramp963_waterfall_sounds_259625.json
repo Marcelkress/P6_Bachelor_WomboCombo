@@ -1,0 +1,47 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Linux",
+  "BasePlatform": "Linux",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "2572739826",
+    "Type": "Event",
+    "GUID": "{1212C50C-6E82-45BF-AF34-CDEF9E295A47}",
+    "Language": "SFX",
+    "Hash": "{E646ED9C-6178-D2E4-EF5A-E61ECC559D0B}",
+    "ObjectPath": "Play_tramp963_waterfall_sounds_259625",
+    "ShortName": "Play_tramp963_waterfall_sounds_259625",
+    "Path": "Event/Play_tramp963_waterfall_sounds_259625.bnk",
+    "Media": [
+     {
+      "Id": "168576095",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "tramp963-waterfall-sounds-259625.wav",
+      "Path": "Media/168576095.wem",
+      "CachePath": "78/{78CBDECF-4763-B108-CB82-E6E6BA8C4DAE}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2572739826",
+      "Name": "Play_tramp963_waterfall_sounds_259625",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_tramp963_waterfall_sounds_259625",
+      "GUID": "{1212C50C-6E82-45BF-AF34-CDEF9E295A47}",
+      "MaxAttenuation": "100",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "168576095"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{341D98EC-B4BB-9630-807B-86BAA577D324}"
+ }
+}
