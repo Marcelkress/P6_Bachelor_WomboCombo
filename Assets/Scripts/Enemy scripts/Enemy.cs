@@ -51,6 +51,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
     public int shakeVibrato;
 
     private bool isDead = false;
+    public static int wrongComboInput;
 
     [Header("Animation")] public Animator anim;
     
@@ -259,6 +260,11 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
                 localComboStarted = false;
                 globalComboStarted = false;
             }
+        }
+        else
+        {
+            Debug.Log("Wrong input");
+            wrongComboInput++;
         }
     }
     

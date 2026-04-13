@@ -346,6 +346,7 @@ public class Player : MonoBehaviour
 
     private void OnDisable()
     {
-        SaveSystem.SaveData(deathCounterSaveInfo, "deathCounter");
+        SaveSystem.SaveData(Enemy.wrongComboInput, "Wrong combo Inputs");
+        //SaveSystem.SaveData(deathCounterSaveInfo, "deathCounter");
     }
 }
