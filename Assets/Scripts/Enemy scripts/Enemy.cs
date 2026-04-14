@@ -223,7 +223,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
             Debug.Log("Array symb one: " + comboArray[comboStep]);
             Debug.Log("Array symb two: " + comboArray[comboStep + 1]);
         }
-
+        
             // If either player one or player two symbols are correct continue
         if ((playerOneInfo.symbOne == comboArray[comboStep] && playerOneInfo.symbTwo == comboArray[comboStep + 1])
             || (playerTwoInfo.symbOne == comboArray[comboStep] && playerTwoInfo.symbTwo == comboArray[comboStep + 1]))
