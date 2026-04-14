@@ -117,7 +117,7 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
     private void CompareCombo(int id)
     {
         // if combostep out of bounds return
-        if (comboStep >= comboArray.Length)
+        if (comboStep >= comboArray.Length) // Det er bare for at prevent fejl errors når vi spiller
         {
             return;
         }
