@@ -116,6 +116,12 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
     
     private void CompareCombo(int id)
     {
+        // if combostep out of bounds return
+        if (comboStep >= comboArray.Length)
+        {
+            return;
+        }
+
         //Debug.Log("Combo on projectile");
         Debug.Log(comboStep);
         // If either player one or player two symbols are correct continue
