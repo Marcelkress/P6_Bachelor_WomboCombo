@@ -77,12 +77,14 @@ public class PlayerComboInput : MonoBehaviour
         controllerValue = inputData.rotation;
         UpdateSymbolsFromController();
 
+        // vi tjekker om vi har presset knappen så  vi ikke kommer til at sende on fire mange gange
         bool pressedNow = inputData.pushed;
 
         if (pressedNow && !waitingForRelease)
         {
             waitingForRelease = true;
             OnFire();
+            waitingForRelease = false;
         }
         else if (!pressedNow)
         {
