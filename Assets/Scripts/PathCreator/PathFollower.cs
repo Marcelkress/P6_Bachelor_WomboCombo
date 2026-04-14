@@ -35,10 +35,31 @@ namespace PathCreation.Examples
             if (cam) baseFov = cam.fieldOfView;
         }
 
-        public void MoveTo(int index)
+        public void MoveTo(int index, bool isRespawning = false)
         {
             if (index < 0 || index >= destinations.Length) return;
-            MoveTo(destinations[index]);
+
+            if(isRespawning)
+            {
+                InstantMoveTo(destinations[index]);
+            }
+            else
+            {
+               MoveTo(destinations[index]);
+            }
+            
+        }
+
+        private void InstantMoveTo(PathDestinationObject destination)
+        {
+            transform.position = destination.transform.position;
+            if (destination.lookTarget != null)
+            {
+                Vector3 dir = destination.lookTarget.position - destination.transform.position;
+                dir.y = 0f;
+                if (dir != Vector3.zero)
+                    transform.rotation = Quaternion.LookRotation(dir);
+            }
         }
 
         private int FirstTravelGizmoIndex = 1;

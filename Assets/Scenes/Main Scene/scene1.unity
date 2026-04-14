@@ -3725,6 +3725,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6385583692841672266, guid: 98e6c30c76740414f9c65dbbd2a5dd24, type: 3}
+      propertyPath: PlayerRespawnEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6385583692841672266, guid: 98e6c30c76740414f9c65dbbd2a5dd24, type: 3}
       propertyPath: FireballSound.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
@@ -3745,6 +3749,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6385583692841672266, guid: 98e6c30c76740414f9c65dbbd2a5dd24, type: 3}
+      propertyPath: PlayerRespawnEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6385583692841672266, guid: 98e6c30c76740414f9c65dbbd2a5dd24, type: 3}
       propertyPath: FireballSound.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Play
       objectReference: {fileID: 0}
@@ -3753,8 +3761,20 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6385583692841672266, guid: 98e6c30c76740414f9c65dbbd2a5dd24, type: 3}
+      propertyPath: PlayerRespawnEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1714762078}
+    - target: {fileID: 6385583692841672266, guid: 98e6c30c76740414f9c65dbbd2a5dd24, type: 3}
       propertyPath: PlayerDiedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowGameOverMenu
+      value: GameOverFade
+      objectReference: {fileID: 0}
+    - target: {fileID: 6385583692841672266, guid: 98e6c30c76740414f9c65dbbd2a5dd24, type: 3}
+      propertyPath: PlayerRespawnEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6385583692841672266, guid: 98e6c30c76740414f9c65dbbd2a5dd24, type: 3}
+      propertyPath: PlayerRespawnEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RespawnFade
       objectReference: {fileID: 0}
     - target: {fileID: 6385583692841672266, guid: 98e6c30c76740414f9c65dbbd2a5dd24, type: 3}
       propertyPath: FireballSound.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -3765,11 +3785,19 @@ PrefabInstance:
       value: UIManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6385583692841672266, guid: 98e6c30c76740414f9c65dbbd2a5dd24, type: 3}
+      propertyPath: PlayerRespawnEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6385583692841672266, guid: 98e6c30c76740414f9c65dbbd2a5dd24, type: 3}
       propertyPath: FireballSound.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6385583692841672266, guid: 98e6c30c76740414f9c65dbbd2a5dd24, type: 3}
       propertyPath: PlayerDiedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6385583692841672266, guid: 98e6c30c76740414f9c65dbbd2a5dd24, type: 3}
+      propertyPath: PlayerRespawnEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6749706326885626226, guid: 98e6c30c76740414f9c65dbbd2a5dd24, type: 3}
@@ -45261,7 +45289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   gameOverBackground: {fileID: 1156613505}
-  restartButton: {fileID: 1156613503}
+  restartButton: {fileID: 1619102563}
   gameOverText: {fileID: 132476219}
   encounterManager: {fileID: 309611474}
   UIFadeTime: 0.8
@@ -56113,6 +56141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cded085d155cde949b60f67a11dbc3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.ProbeVolume
+  version: 2
+  globalVolume: 0
   mode: 1
   size: {x: 403.01, y: 167.9733, z: 403.01}
   overrideRendererFilters: 0
@@ -56143,8 +56173,6 @@ MonoBehaviour:
     e33: 1
   cachedHashCode: 1346806664
   fillEmptySpaces: 0
-  version: 2
-  globalVolume: 0
 --- !u!4 &2100707613
 Transform:
   m_ObjectHideFlags: 0

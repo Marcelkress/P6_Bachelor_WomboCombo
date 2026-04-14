@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour
         restartButton.SetActive(false);
     }
 
-    public void ShowGameOverMenu()
+    public void RespawnFade()
     {
         gameOverBackground.gameObject.SetActive(true);
         gameOverText.gameObject.SetActive(true);
@@ -41,12 +41,22 @@ public class UIManager : MonoBehaviour
                 gameOverBackground.gameObject.SetActive(false);
             });
         });
-        
+    }
+
+    public void GameOverFade()
+    {
+        gameOverBackground.gameObject.SetActive(true);
+        gameOverText.gameObject.SetActive(true);
+        gameOverText.DOFade(1, UIFadeTime);
+        gameOverBackground.DOFade(1, UIFadeTime).OnComplete(() =>
+        {
+            restartButton.SetActive(true);
+        });
     }
 
 
     public void ReloadScene()
     {
-        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

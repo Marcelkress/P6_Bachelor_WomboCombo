@@ -3,13 +3,10 @@ using UnityEngine.UI;
 
 public class CanvasSizer : MonoBehaviour
 {
-    public float valueToAdd = 450;
+    [SerializeField] public float valueToAdd = 450;
     private Enemy enemyScript;
-    public bool useBossLogic = false, useProjectileLogic = false;
-    public int scalingFactor = 2;
-    [SerializeField] private float startScalingDistance = 30f;
-    [SerializeField] private float maxFarScaleMultiplier = 1.5f;
-    [SerializeField] private float farScaleDistance = 90f;
+    [SerializeField] public bool useBossLogic = false, useProjectileLogic = false;
+    [SerializeField] UniCanvasSizerSettings canvasSettings;
     private BossComboSystem bossComboSystem;
     private EnemyProjectile enemyProjectile;
     private Canvas canvas;
@@ -32,8 +29,8 @@ public class CanvasSizer : MonoBehaviour
         currentCanvasSize = canvas.transform.localScale;
 
         initialCanvasDistance = Vector3.Distance(player.transform.position, transform.position);
-        targetCanvasSize = currentCanvasSize/scalingFactor;
-        farCanvasSize = currentCanvasSize * maxFarScaleMultiplier;
+        targetCanvasSize = currentCanvasSize/canvasSettings.reducingFactor;
+        farCanvasSize = currentCanvasSize * canvasSettings.maxFarScaleMultiplier;
         if (useBossLogic)
         {
             bossComboSystem = GetComponentInParent<BossComboSystem>();
@@ -70,14 +67,14 @@ public class CanvasSizer : MonoBehaviour
 
         Vector3 newCurrentCanvasSize;
 
-        if (dis <= startScalingDistance)
+        if (dis <= canvasSettings.startScalingDistance)
         {
-            float clampedDistance = Mathf.Clamp01(dis / startScalingDistance);
+            float clampedDistance = Mathf.Clamp01(dis / canvasSettings.startScalingDistance);
             newCurrentCanvasSize = Vector3.Lerp(targetCanvasSize, currentCanvasSize, clampedDistance);
         }
         else
         {
-            float clampedDistance = Mathf.InverseLerp(startScalingDistance, farScaleDistance, dis);
+            float clampedDistance = Mathf.InverseLerp(canvasSettings.startScalingDistance, canvasSettings.farScaleDistance, dis);
             newCurrentCanvasSize = Vector3.Lerp(currentCanvasSize, farCanvasSize, clampedDistance);
         }
 

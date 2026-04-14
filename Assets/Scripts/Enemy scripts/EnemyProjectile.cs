@@ -64,6 +64,12 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
         InitializeUI();
     }
 
+    private void OnDisable()
+    {
+        InputManager.instance.PlayerOneEvent.RemoveListener(PlayerOneUpdate);
+        InputManager.instance.PlayerTwoEvent.RemoveListener(PlayerTwoUpdate);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.CompareTag("Player"))

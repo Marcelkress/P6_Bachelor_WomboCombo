@@ -17,6 +17,14 @@ public class EnemyManager : MonoBehaviour
     public List<startStruct> theFirstUniqueComboStartSteps = new List<startStruct>();
     public List<GameObject> Enemies;
 
+    private List<startStruct> pooledComboStartSteps = new List<startStruct>(); // for resetting the theFirstUniqueComboStartSteps list
+
+
+    private void Awake()
+    {
+        pooledComboStartSteps = new List<startStruct>(theFirstUniqueComboStartSteps); // stores the pool of unique starting combos for resetting laters
+    }
+
     /// <summary>
     /// Spawns enemies within specified count and assigns random combos
     /// </summary>
@@ -25,6 +33,9 @@ public class EnemyManager : MonoBehaviour
     /// <param name="minComboLegnth"></param>
     public void InitializeEncounter(int meleeSpawnCount, int projectileSpawnCount, int maxComboLength, int minComboLegnth, float enemyAggroDelay)
     {
+        // added pga restarting encounter fordi vi havde opbrugt alle unikke comboer
+        theFirstUniqueComboStartSteps = new List<startStruct>(pooledComboStartSteps); // resets the list to its original state at the start of each encounter
+
         Enemies = new List<GameObject>();
 
         for (int i = meleeSpawnPositions.Length - 1; i > 0; i--)

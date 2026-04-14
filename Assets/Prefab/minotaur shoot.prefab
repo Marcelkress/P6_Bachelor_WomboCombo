@@ -4988,7 +4988,7 @@ MonoBehaviour:
   valueToAdd: 450
   useBossLogic: 0
   useProjectileLogic: 0
-  scalingFactor: 5
+  canvasSettings: {fileID: 11400000, guid: 9dc7451b09e985fcf88b66dbd5f0886b, type: 2}
 --- !u!1 &7801817223162080366
 GameObject:
   m_ObjectHideFlags: 0

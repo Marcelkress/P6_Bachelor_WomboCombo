@@ -409,13 +409,14 @@ MonoBehaviour:
   comboLength: 0
   enemyMaterial: {fileID: 2100000, guid: 12f0f1e14c2165f478965f1d735e3efa, type: 2}
   enemyMeshRenderer: {fileID: 3978854120457980880}
+  lightFeedbackIntensity: 4
+  visualFeedbackFadeDuration: 0.1
   debug: 0
   damageAmount: 1
   attackCooldown: 1
   stoppingDistance: 1
   content: {fileID: 3608603056928829360}
   canvas: {fileID: 0}
-  canvasFadeDuration: 0.1
   moonImg: {fileID: 0}
   starImg: {fileID: 0}
   sunImg: {fileID: 0}
@@ -562,4 +563,4 @@ MonoBehaviour:
   valueToAdd: 450
   useBossLogic: 0
   useProjectileLogic: 0
-  scalingFactor: 2
+  canvasSettings: {fileID: 0}

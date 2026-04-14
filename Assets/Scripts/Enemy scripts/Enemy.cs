@@ -95,6 +95,12 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         SetRandomColor();
     }
 
+    private void OnDisable()
+    {
+        InputManager.instance.PlayerOneEvent.RemoveListener(PlayerOneUpdate);
+        InputManager.instance.PlayerTwoEvent.RemoveListener(PlayerTwoUpdate);
+    }
+
     void SetRandomColor()
     {
         // Clone the material so each enemy has its own instance

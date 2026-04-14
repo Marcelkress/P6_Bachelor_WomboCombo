@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     [Header("Health")]
     public int maxHealth = 3; // Example health value for the player
     private int currentHealth;  
-    public UnityEvent PlayerDiedEvent;
+    public UnityEvent PlayerDiedEvent, PlayerRespawnEvent;
     public int healAmount = 5;
     public int lives = 3;
 
@@ -320,11 +320,9 @@ public class Player : MonoBehaviour
             dead = true;
             Die(); // Call the Die method if health drops to 0
         }
-
     }
 
     private bool dead;
-
     private void AnimateHealthBar()
     {
         if (healthBar != null)
@@ -345,11 +343,16 @@ public class Player : MonoBehaviour
     {
         lives--;
         deathCounterSaveInfo++;
-        PlayerDiedEvent.Invoke();
+        if (lives <= 0)
+        {
+            PlayerDiedEvent.Invoke();
+            return;
+        }
+        PlayerRespawnEvent.Invoke();
         currentHealth = maxHealth;
+        TakeDamage(0); // Update health UI to reflect reset health
         dead = false;
-        //gameOverScreen.SetActive(true); // Show the Game Over screen
-        //Time.timeScale = 0f; // Pause the game by setting time scale to
+      
     }
 
     private void OnDisable()

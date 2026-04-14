@@ -63,6 +63,7 @@ MonoBehaviour:
   pTwoStar: 0
   content: {fileID: 3582004658680625}
   canvas: {fileID: 7173858605462518587}
+  canvasFadeDuration: 0.1
   moonImg: {fileID: -269033315, guid: 7d84bd30573ee4f53a4a6bff5e75a8d0, type: 3}
   starImg: {fileID: 560802353, guid: 0dfbfea56bf784c539419f890bc00bb3, type: 3}
   sunImg: {fileID: 1848850449, guid: e9a5e41d881c4416b9c7ec36fb20f900, type: 3}
@@ -424,4 +425,4 @@ MonoBehaviour:
   valueToAdd: 450
   useBossLogic: 0
   useProjectileLogic: 1
-  scalingFactor: 7
+  canvasSettings: {fileID: 11400000, guid: 9dc7451b09e985fcf88b66dbd5f0886b, type: 2}
