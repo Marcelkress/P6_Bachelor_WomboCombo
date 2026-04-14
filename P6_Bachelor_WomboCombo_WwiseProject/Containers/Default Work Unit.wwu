@@ -1324,6 +1324,7 @@
 								<RandomSequenceContainer Name="Die_Hurt" ID="{89990261-3622-4905-98CA-596EF9C05466}" ShortID="35636042">
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="AttenuationDistanceScaling" Type="Real32" Value="0.65"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">

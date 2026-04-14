@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{BFC77D08-BC66-4A2D-B11C-BD6CB548BB30}",
     "Language": "SFX",
-    "Hash": "{0250AC03-D07A-9BDB-FF2E-5035A3060A9D}",
+    "Hash": "{5AB403B9-E4C2-6333-AACE-190B634AF0D2}",
     "ObjectPath": "Play_PlayerHit",
     "ShortName": "Play_PlayerHit",
     "Path": "Event/Play_PlayerHit.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "Hard Bloody Punch F-16bit.wav",
       "Path": "Media/21087991.wem",
-      "CachePath": "FE/{FEDE764C-7C88-B778-B621-8E3E9EEA61DB}.wem"
+      "CachePath": "8C/{8CDFF5D6-E5B2-26B7-121F-FF885B478CEF}.wem"
      },
      {
       "Id": "156577482",
@@ -31,7 +31,7 @@
       "Location": "Loose",
       "ShortName": "Hard Bloody Punch B-16bit.wav",
       "Path": "Media/156577482.wem",
-      "CachePath": "D0/{D0D73570-2FD4-DC15-D88B-CE2447825F8D}.wem"
+      "CachePath": "D5/{D50ED88E-9B64-23C3-B488-E77312D3EECA}.wem"
      },
      {
       "Id": "536171733",
@@ -40,7 +40,7 @@
       "Location": "Loose",
       "ShortName": "Hard Bloody Punch D-16bit.wav",
       "Path": "Media/536171733.wem",
-      "CachePath": "3F/{3F23D9E9-51CF-A224-0F85-02DB96A617AA}.wem"
+      "CachePath": "F9/{F97565B4-7AF1-9FA1-7EFC-B9C811026699}.wem"
      },
      {
       "Id": "716446925",
@@ -49,7 +49,7 @@
       "Location": "Loose",
       "ShortName": "Hard Bloody Punch C-16bit.wav",
       "Path": "Media/716446925.wem",
-      "CachePath": "84/{84010CE9-651B-8F12-3F85-AACB142C8B8F}.wem"
+      "CachePath": "73/{7312C919-28D7-BF90-DEF8-F042D3567CC4}.wem"
      },
      {
       "Id": "762582990",
@@ -58,7 +58,7 @@
       "Location": "Loose",
       "ShortName": "Hard Bloody Punch E-16bit.wav",
       "Path": "Media/762582990.wem",
-      "CachePath": "32/{3291AB14-9534-A494-62BE-5F1F51CF9F32}.wem"
+      "CachePath": "48/{482167F0-90DF-A3F0-35A6-4A217F39222F}.wem"
      }
     ],
     "Events": [
@@ -92,6 +92,6 @@
     ]
    }
   ],
-  "FileHash": "{6C3CB44A-7AA7-A9E6-4775-C6ED2B92475C}"
+  "FileHash": "{0BD9627B-B65D-FBC8-F5F0-947B2D7BD2F2}"
  }
 }

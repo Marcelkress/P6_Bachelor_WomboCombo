@@ -10025,6 +10025,7 @@ GameObject:
   - component: {fileID: 378218968}
   - component: {fileID: 378218967}
   - component: {fileID: 378218969}
+  - component: {fileID: 378218970}
   m_Layer: 3
   m_Name: Terrain
   m_TagString: Untagged
@@ -10139,6 +10140,34 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: a1f74bede40ae73ea91d0141c2499824, type: 2}
   m_BuildHeightMesh: 0
+--- !u!114 &378218970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378218965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87883f7e72ba746f5830005fc7a01a63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: AK.Wwise.Unity.MonoBehaviour::AkSurfaceReflector
+  Mesh: {fileID: 0}
+  AcousticTextures:
+  - idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  TransmissionLossValues:
+  - 1
+  EnableDiffraction: 1
+  EnableDiffractionOnBoundaryEdges: 0
+  BypassPortalSubtraction: 0
+  Solid: 0
+  isStatic: 0
+  AcousticTextureInternal:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
 --- !u!4 &378865880 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 27bfdb9a40efac94b969eaf77cea92d9, type: 3}
@@ -11445,7 +11474,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: ad1f5855a33f0694886cbd301d99cc40, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 691806737}
   m_SourcePrefab: {fileID: 100100000, guid: ad1f5855a33f0694886cbd301d99cc40, type: 3}
 --- !u!1001 &440083323
 PrefabInstance:
@@ -12682,6 +12714,39 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25bd3a4b06a440c419b8701c9ddefa5c, type: 3}
+--- !u!1 &464240090 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 945a31643075a9f499417327c6210802, type: 3}
+  m_PrefabInstance: {fileID: 494614571}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &464240095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464240090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87883f7e72ba746f5830005fc7a01a63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: AK.Wwise.Unity.MonoBehaviour::AkSurfaceReflector
+  Mesh: {fileID: 4300002, guid: 5987499c7e7a4364eb7c351ac1bb0782, type: 3}
+  AcousticTextures:
+  - idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 3ad5d1788f8f649e880f87fae3a82332, type: 2}
+  TransmissionLossValues:
+  - 1
+  EnableDiffraction: 1
+  EnableDiffractionOnBoundaryEdges: 0
+  BypassPortalSubtraction: 0
+  Solid: 0
+  isStatic: 0
+  AcousticTextureInternal:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
 --- !u!4 &465355717 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 940d55d4117386f4f9398ea3ff52d4cd, type: 3}
@@ -13471,7 +13536,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100002, guid: 945a31643075a9f499417327c6210802, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 464240095}
   m_SourcePrefab: {fileID: 100100000, guid: 945a31643075a9f499417327c6210802, type: 3}
 --- !u!1001 &496709310
 PrefabInstance:
@@ -19241,6 +19309,39 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ab71fe40f4b301438e2dd2e8af50a27, type: 3}
+--- !u!1 &691806733 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: ad1f5855a33f0694886cbd301d99cc40, type: 3}
+  m_PrefabInstance: {fileID: 430904761}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &691806737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691806733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87883f7e72ba746f5830005fc7a01a63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: AK.Wwise.Unity.MonoBehaviour::AkSurfaceReflector
+  Mesh: {fileID: 4300000, guid: cffd35361a9ea044e8715024748615d9, type: 3}
+  AcousticTextures:
+  - idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 3ad5d1788f8f649e880f87fae3a82332, type: 2}
+  TransmissionLossValues:
+  - 1
+  EnableDiffraction: 1
+  EnableDiffractionOnBoundaryEdges: 0
+  BypassPortalSubtraction: 0
+  Solid: 0
+  isStatic: 0
+  AcousticTextureInternal:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
 --- !u!1 &696440283
 GameObject:
   m_ObjectHideFlags: 0
@@ -30043,7 +30144,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: f282d9fb9b399dd4384b20aba08642fb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2141070895}
   m_SourcePrefab: {fileID: 100100000, guid: f282d9fb9b399dd4384b20aba08642fb, type: 3}
 --- !u!4 &1143888917 stripped
 Transform:
@@ -38340,6 +38444,39 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 977e7278d3486f1489724a6d226b9ca0, type: 3}
+--- !u!1 &1453362733 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: d209be13548e70947bc39053977ce977, type: 3}
+  m_PrefabInstance: {fileID: 1792566603}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1453362737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1453362733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87883f7e72ba746f5830005fc7a01a63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: AK.Wwise.Unity.MonoBehaviour::AkSurfaceReflector
+  Mesh: {fileID: 4300000, guid: dfb9706df9ac8264ebf1e58976096256, type: 3}
+  AcousticTextures:
+  - idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 3ad5d1788f8f649e880f87fae3a82332, type: 2}
+  TransmissionLossValues:
+  - 1
+  EnableDiffraction: 1
+  EnableDiffractionOnBoundaryEdges: 0
+  BypassPortalSubtraction: 0
+  Solid: 0
+  isStatic: 0
+  AcousticTextureInternal:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
 --- !u!1001 &1454655329
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48090,7 +48227,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: d209be13548e70947bc39053977ce977, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1453362737}
   m_SourcePrefab: {fileID: 100100000, guid: d209be13548e70947bc39053977ce977, type: 3}
 --- !u!1001 &1793574149
 PrefabInstance:
@@ -57249,6 +57389,39 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6be32491f3b02484199356b1867e9d23, type: 3}
+--- !u!1 &2141070891 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: f282d9fb9b399dd4384b20aba08642fb, type: 3}
+  m_PrefabInstance: {fileID: 1142540909}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2141070895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141070891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87883f7e72ba746f5830005fc7a01a63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: AK.Wwise.Unity.MonoBehaviour::AkSurfaceReflector
+  Mesh: {fileID: 4300000, guid: 19ada405e483e2e42b3568b712163648, type: 3}
+  AcousticTextures:
+  - idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 3ad5d1788f8f649e880f87fae3a82332, type: 2}
+  TransmissionLossValues:
+  - 1
+  EnableDiffraction: 1
+  EnableDiffractionOnBoundaryEdges: 0
+  BypassPortalSubtraction: 0
+  Solid: 0
+  isStatic: 0
+  AcousticTextureInternal:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
 --- !u!1001 &2144039213
 PrefabInstance:
   m_ObjectHideFlags: 0

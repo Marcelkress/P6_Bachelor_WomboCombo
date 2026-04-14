@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{0A406643-4279-4597-9D2E-D47272AAFC70}",
     "Language": "SFX",
-    "Hash": "{EAE5B279-7FD6-323D-475E-76A5E78B0668}",
+    "Hash": "{5DB1A7C2-23AB-BA24-F18D-38DA09A61E00}",
     "ObjectPath": "Play_Minotauer_Attack",
     "ShortName": "Play_Minotauer_Attack",
     "Path": "Event/Play_Minotauer_Attack.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "Attack Attack 2.wav",
       "Path": "Media/411207146.wem",
-      "CachePath": "3C/{3CAC249E-252E-8E9F-4F96-86437BFEFA5C}.wem"
+      "CachePath": "3C/{3C58E81C-B507-B60F-0968-9D22EDAF0720}.wem"
      },
      {
       "Id": "462889026",
@@ -31,7 +31,7 @@
       "Location": "Loose",
       "ShortName": "Attack Attack.wav",
       "Path": "Media/462889026.wem",
-      "CachePath": "FD/{FD2C863C-9DBE-222F-8779-F65D55980675}.wem"
+      "CachePath": "85/{857BD316-7111-DF40-F294-E589665F9F7F}.wem"
      },
      {
       "Id": "530083644",
@@ -49,7 +49,7 @@
       "Location": "Loose",
       "ShortName": "Attack Attack 3.wav",
       "Path": "Media/645883208.wem",
-      "CachePath": "26/{269B84C7-8A07-F1B5-BF55-61057ECBCECC}.wem"
+      "CachePath": "AA/{AA9365C5-1EAF-1183-2BA0-18C902068EBE}.wem"
      },
      {
       "Id": "944608917",
@@ -58,7 +58,7 @@
       "Location": "Loose",
       "ShortName": "Attack Attack 5.wav",
       "Path": "Media/944608917.wem",
-      "CachePath": "EF/{EF1140F2-28EC-216D-FA3D-9BC083EBBE66}.wem"
+      "CachePath": "1A/{1AAD62C5-59EB-B29C-F09C-C6BF7B3F82FE}.wem"
      }
     ],
     "Events": [
@@ -91,6 +91,6 @@
     ]
    }
   ],
-  "FileHash": "{0D6851E8-13BB-886D-47D4-828C82AE68E3}"
+  "FileHash": "{38138B69-29A0-1FD5-0CD8-7FC923286857}"
  }
 }

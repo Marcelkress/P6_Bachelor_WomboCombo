@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{9F6DD6B5-E43E-43C3-AFB2-07F4859F203C}",
     "Language": "SFX",
-    "Hash": "{F35B71E4-DA0E-3C97-FBE0-F06C15BC4EBA}",
+    "Hash": "{B0149418-A261-1BC1-CE32-FE39B3EC940C}",
     "ObjectPath": "Play_Fireball",
     "ShortName": "Play_Fireball",
     "Path": "Event/Play_Fireball.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "Fireball C.wav",
       "Path": "Media/98952576.wem",
-      "CachePath": "62/{622ED8FC-C05C-D1E9-4E92-08AC314538B8}.wem"
+      "CachePath": "2E/{2E1BACC9-5FBD-2F42-D4FA-D9A267E56C60}.wem"
      },
      {
       "Id": "372213822",
@@ -31,7 +31,7 @@
       "Location": "Loose",
       "ShortName": "Fireball C.wav",
       "Path": "Media/372213822.wem",
-      "CachePath": "66/{660167C7-5C24-8D99-C001-574884805CDA}.wem"
+      "CachePath": "13/{13C45885-E2AB-37A5-3FD6-F6D50D0749DD}.wem"
      },
      {
       "Id": "492585967",
@@ -40,7 +40,7 @@
       "Location": "Loose",
       "ShortName": "Fireball C.wav",
       "Path": "Media/492585967.wem",
-      "CachePath": "3A/{3AEA5776-38B2-CD05-ECEF-2DD0B80F01C4}.wem"
+      "CachePath": "5F/{5FFD9654-C131-6412-2430-ACBFF7ABF48B}.wem"
      }
     ],
     "Events": [
@@ -67,6 +67,6 @@
     ]
    }
   ],
-  "FileHash": "{26D3932F-8E59-B107-9229-C4DA9BB50D1B}"
+  "FileHash": "{46819FCC-CEE4-7049-33B9-2F6F6E3498C3}"
  }
 }
