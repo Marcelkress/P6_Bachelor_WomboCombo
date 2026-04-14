@@ -34,9 +34,11 @@ public class FireballProjectile : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (target == null) Destroy(this.gameObject);
-        
-        
+        if (target == null || currentPosition == null) 
+        {
+            Destroy(gameObject);
+            return;
+        }
         animationTime += Time.deltaTime * speed;        
         currentPosition.position = Vector3.MoveTowards(currentPosition.position, target.position, projectileCurve.Evaluate(animationTime));
         

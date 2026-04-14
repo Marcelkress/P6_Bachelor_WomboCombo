@@ -216,6 +216,12 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
                 return;
             }
         }
+        
+        // if combostep out of bounds return
+        if (comboStep >= comboArray.Length)
+        {
+            return;
+        }
 
         if (debug)
         {

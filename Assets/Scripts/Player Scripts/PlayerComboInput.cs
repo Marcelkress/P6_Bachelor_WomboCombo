@@ -84,6 +84,7 @@ public class PlayerComboInput : MonoBehaviour
         {
             waitingForRelease = true;
             OnFire();
+            waitingForRelease = false;
         }
         else if (!pressedNow)
         {
