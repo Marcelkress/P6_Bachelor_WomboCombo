@@ -1,11 +1,8 @@
 using UnityEngine;
-using DG.Tweening;
-using Unity.Mathematics;
 
 public class FireballProjectile : MonoBehaviour
 {
     public float speed = 10f;
-
     public AnimationCurve projectileCurve;
     private Transform target;
     public float maxLiveTime = 20;
@@ -15,14 +12,31 @@ public class FireballProjectile : MonoBehaviour
     public GameObject fireExplosionPrefab;
 
     private IEnemyDamagable targetedEnemyScript;
-    private void Start()
+
+    [SerializeField] private AK.Wwise.Event playerProjectileSound;
+    private uint _soundPlayingId;
+
+    private void OnEnable()
     {
         currentPosition = this.transform;
+        animationTime = 0f;
+        timer = 0f;
+        _soundPlayingId = playerProjectileSound.Post(gameObject);
     }
+
+    private void OnDisable()
+    {
+        StopProjectileSound();
+    }
+
+    private void OnDestroy()
+    {
+        StopProjectileSound();
+    }
+
     public void SetTargetTransform(Transform targetTransform, GameObject targetedEnemy)
     {
         targetedEnemyScript = targetedEnemy.GetComponent<IEnemyDamagable>();
-        
         if (target == null)
         {
             target = targetTransform;
@@ -30,33 +44,46 @@ public class FireballProjectile : MonoBehaviour
     }
 
     private float timer;
-    
-    // Update is called once per frame
+
     void FixedUpdate()
     {
-        if (target == null || currentPosition == null) 
+        if (target == null || currentPosition == null)
         {
-            Destroy(gameObject);
+            this.gameObject.SetActive(false);
             return;
         }
-        animationTime += Time.deltaTime * speed;        
-        currentPosition.position = Vector3.MoveTowards(currentPosition.position, target.position, projectileCurve.Evaluate(animationTime));
-        
+
+        animationTime += Time.deltaTime * speed;
+        currentPosition.position = Vector3.MoveTowards(
+            currentPosition.position,
+            target.position,
+            projectileCurve.Evaluate(animationTime)
+        );
+
         float distance = Vector3.Distance(currentPosition.position, target.position);
 
-        if (distance <= 0.01f) // Distance to register as hit.
+        if (distance <= 0.01f)
         {
             targetedEnemyScript.UpdateUI();
-            // Epic explosion vfx
-            GameObject explosion = Instantiate(fireExplosionPrefab, target.position, target.rotation);
+            Instantiate(fireExplosionPrefab, target.position, target.rotation);
+            target = null;
             this.gameObject.SetActive(false);
+            return;
         }
 
         timer += Time.deltaTime;
-
-        if (timer > maxLiveTime || target == null)
+        if (timer > maxLiveTime)
         {
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
+        }
+    }
+
+    private void StopProjectileSound()
+    {
+        if (_soundPlayingId != 0)
+        {
+            AkSoundEngine.StopPlayingID(_soundPlayingId, 0);
+            _soundPlayingId = 0;
         }
     }
 }

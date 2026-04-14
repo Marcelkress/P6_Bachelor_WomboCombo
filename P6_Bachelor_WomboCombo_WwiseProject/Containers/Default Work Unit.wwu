@@ -707,6 +707,11 @@
 						<RandomSequenceContainer Name="Fireball" ID="{E2E1A5CE-7027-46DD-A96E-B52DF01DDED8}" ShortID="225358670">
 							<PropertyList>
 								<Property Name="3DSpatialization" Type="int16" Value="2"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-8</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
