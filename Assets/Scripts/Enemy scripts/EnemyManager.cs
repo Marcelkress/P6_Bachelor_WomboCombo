@@ -16,7 +16,7 @@ public class EnemyManager : MonoBehaviour
     public Transform[] projectileSpawnPositions;
     public List<startStruct> theFirstUniqueComboStartSteps = new List<startStruct>();
     public List<GameObject> Enemies;
-
+    public float enemyAggroDelayVariance = 0.24f; // added variance to enemy aggro delay for more dynamic encounters
     private List<startStruct> pooledComboStartSteps = new List<startStruct>(); // for resetting the theFirstUniqueComboStartSteps list
 
 
@@ -65,7 +65,8 @@ public class EnemyManager : MonoBehaviour
 
             theFirstUniqueComboStartSteps.RemoveAt(randNum);
             
-            enemyScript.Initialize(enemyAggroDelay);
+            float varience = Random.Range(-enemyAggroDelayVariance, enemyAggroDelayVariance);
+            enemyScript.Initialize(enemyAggroDelay + varience);
         }
         
         for (int i = 0; i < projectileSpawnCount; i++)
@@ -89,7 +90,8 @@ public class EnemyManager : MonoBehaviour
 
             theFirstUniqueComboStartSteps.RemoveAt(randNum);
             
-            enemyScript.Initialize(enemyAggroDelay);
+            float varience = Random.Range(-enemyAggroDelayVariance, enemyAggroDelayVariance);
+            enemyScript.Initialize(enemyAggroDelay + varience);
         }
     }
     

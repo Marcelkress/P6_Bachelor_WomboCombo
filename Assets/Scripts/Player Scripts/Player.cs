@@ -59,8 +59,12 @@ public class Player : MonoBehaviour
         playerInput = GetComponent<PlayerInput>(); // Get the PlayerInput component attached to the player game object
         encounterManager = EncounterManager.instance; // Get the instance of the EncounterManager
         InitializeUI();
-        InputManager.instance.PlayerOneEvent.AddListener(PlayerOneUpdate);
-        InputManager.instance.PlayerTwoEvent.AddListener(PlayerTwoUpdate);
+
+        if (InputManager.instance != null)
+        {
+            InputManager.instance.PlayerOneEvent.AddListener(PlayerOneUpdate);
+            InputManager.instance.PlayerTwoEvent.AddListener(PlayerTwoUpdate);
+        }
     }
     private void LateUpdate()
     {

@@ -12,7 +12,13 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
     public GameObject projectilePrefab;
     public Transform projectileShootPoint;
     public float shootIntervalMax, shootIntervalMin;
-    
+
+    [Header("Size Scaling")]
+    public float baseScale = 1f;
+    public float sizePerComboPair = 0.08f;
+    public float maxScale = 1.8f;
+    public float randomScaleVariance = 0.1f; // Random variance to add to the scale for visual diversity
+
     [Header("Combo")]
     public int[] comboArray;
     [SerializeField] private int comboStep = 0;
@@ -86,19 +92,24 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         comboLength = comboArray.Length / 2;
+        UpdateSizeFromComboLength();
         speed = agent.speed;
         InitializeUI(); 
-        
-        InputManager.instance.PlayerOneEvent.AddListener(PlayerOneUpdate);
-        InputManager.instance.PlayerTwoEvent.AddListener(PlayerTwoUpdate);
-        
+        if (InputManager.instance != null)
+        {
+            InputManager.instance.PlayerOneEvent.AddListener(PlayerOneUpdate);
+            InputManager.instance.PlayerTwoEvent.AddListener(PlayerTwoUpdate);
+        }
         SetRandomColor();
     }
 
     private void OnDisable()
     {
-        InputManager.instance.PlayerOneEvent.RemoveListener(PlayerOneUpdate);
-        InputManager.instance.PlayerTwoEvent.RemoveListener(PlayerTwoUpdate);
+        if (InputManager.instance != null)
+        {
+            InputManager.instance.PlayerOneEvent.RemoveListener(PlayerOneUpdate);
+            InputManager.instance.PlayerTwoEvent.RemoveListener(PlayerTwoUpdate);
+        }
     }
 
     void SetRandomColor()
@@ -116,9 +127,19 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
     public void Initialize(float aggroDelay)
     {
         player = GameObject.FindGameObjectWithTag("Player").transform; // Find the player by tag
-        playerScript = player.GetComponent<Player>();
-        //Debug.Log(aggroDelay);
+        playerScript = player.GetComponent<Player>();        
+
         Invoke(nameof(AggroPlayer), aggroDelay);
+    
+    }
+
+
+    private void UpdateSizeFromComboLength()
+    {
+        float newScale = baseScale + (comboLength - 1) * sizePerComboPair; // Calculate new scale based on combo length
+        newScale = Mathf.Min(newScale, maxScale); // Ensure the new scale does not exceed the maximum
+        newScale += Random.Range(-randomScaleVariance, randomScaleVariance); // Add random variance to the scale
+        transform.localScale = Vector3.one * newScale; // Apply the new scale to the enemy
     }
 
     public void AggroPlayer()

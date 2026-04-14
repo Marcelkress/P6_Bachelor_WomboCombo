@@ -67,7 +67,9 @@ public class FireballProjectile : MonoBehaviour
             targetedEnemyScript.UpdateUI();
             Instantiate(fireExplosionPrefab, target.position, target.rotation);
             target = null;
+            
             this.gameObject.SetActive(false);
+            Invoke(nameof(CleanUp),3f);
             return;
         }
 
@@ -75,6 +77,7 @@ public class FireballProjectile : MonoBehaviour
         if (timer > maxLiveTime)
         {
             this.gameObject.SetActive(false);
+            Invoke(nameof(CleanUp),3f);
         }
     }
 
@@ -86,7 +89,14 @@ public class FireballProjectile : MonoBehaviour
             _soundPlayingId = 0;
         }
     }
+
+    private void CleanUp()
+    {
+        Destroy(this.fireExplosionPrefab);
+        Destroy(this.gameObject);
+    }
 }
+
 
 public interface IEnemyDamagable
 {
