@@ -26,11 +26,11 @@
   <Project Path="AK.Wwise.Unity.API.csproj" />
   <Project Path="AK.Wwise.Unity.MonoBehaviour.Editor.csproj" />
   <Project Path="Unity.VisualStudio.Editor.csproj" />
-  <Project Path="Unity.InputSystem.csproj" />
   <Project Path="AK.Wwise.Unity.API.Editor.csproj" />
-  <Project Path="PPv2URPConverters.csproj" />
-  <Project Path="BetterHierarchy.csproj" />
+  <Project Path="Unity.InputSystem.csproj" />
   <Project Path="AK.Wwise.Unity.ProjectDatabase.csproj" />
+  <Project Path="BetterHierarchy.csproj" />
+  <Project Path="PPv2URPConverters.csproj" />
   <Project Path="Unity.Searcher.Editor.csproj" />
   <Project Path="Unity.ProBuilder.Editor.csproj" />
   <Project Path="UnityEditor.TestRunner.csproj" />
