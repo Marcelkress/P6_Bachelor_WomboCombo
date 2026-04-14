@@ -29,6 +29,12 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
     public Material enemyMaterial; // Reference to the enemy's material for visual feedback (e.g., flashing when hit)  
     public MeshRenderer enemyMeshRenderer;
 
+    [Header("Visual Feedback")]
+    private Light enemySpotLight; // for visuelt feedback når man targeter enemy
+    public float lightFeedbackIntensity = 4f; 
+    public float visualFeedbackFadeDuration = 0.1f;
+
+
     public bool debug = false;
     // ComboCheck
     public static bool globalComboStarted;
@@ -43,6 +49,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
     [SerializeField] private Transform content;
 
     public GameObject canvas;
+
     public Sprite moonImg, starImg, sunImg; // references to the UI images for each button (Square, Circle, Triangle)
     public GameObject inputUIImage; // reference UI image which should be updated to show the combo array (Should spawn multiple)
     public float shakeDuration;
@@ -61,10 +68,21 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
     public EnemyManager manager;
 
     private float speed;
+
+    private Canvas canvasComponent;
+    private Image canvasImage;
+    private float lastCanvasImageAlpha;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        enemySpotLight = GetComponentInChildren<Light>();
+        enemySpotLight.intensity = 0; // Start with the spotlight off
+
+        canvasComponent = canvas.GetComponent<Canvas>();
+        canvasImage = canvas.GetComponentInChildren<Image>();
+        lastCanvasImageAlpha = canvasImage.color.a;
+
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         comboLength = comboArray.Length / 2;
@@ -119,6 +137,9 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         {
             agent.SetDestination(player.transform.position);
             agent.stoppingDistance = stoppingDistance;
+
+            anim.SetBool("Walk", !agent.isStopped);
+
         }
     }
 
@@ -171,8 +192,6 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
 
         CheckAttackDist();
         
-        if(!projectileEnemy)
-            anim.SetBool("Walk", !agent.isStopped);
 
         if (startTimer)
         {
@@ -324,7 +343,12 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         {
             return;
         }
-        GetComponentInChildren<Canvas>().sortingOrder = 100; //TODO, Måske slet fordi det fucker projectile visibility up 
+        canvasComponent.sortingOrder = 100; //TODO, Måske slet fordi det fucker projectile visibility up 
+        enemySpotLight.DOIntensity(lightFeedbackIntensity, visualFeedbackFadeDuration);
+        canvasImage.DOFade(1, visualFeedbackFadeDuration); // sætter alpha til 1 (sætter den ned igen i CheckComboCompletion når combo er færdig)
+
+        
+
         Sequence comboStepSequence = DOTween.Sequence();
         comboStepSequence.Join(
             contentSprite[bottom].transform
@@ -343,10 +367,10 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         {
             contentSprite[bottom].enabled = false;
             contentSprite[top].enabled = false;
-
             //comboStep++; // Move to the next step in the combo sequence
             CheckComboCompletion();
             comboStepSequence.Kill();
+
         });
     }
 
@@ -360,6 +384,8 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         int totalSteps = comboArray.Length;
         if (uiComboStep >= totalSteps)
         {
+            canvasImage.DOFade(lastCanvasImageAlpha, visualFeedbackFadeDuration);
+            enemySpotLight.DOIntensity(0, visualFeedbackFadeDuration);
             Die();
         }
     }

@@ -415,6 +415,7 @@ MonoBehaviour:
   stoppingDistance: 1
   content: {fileID: 3608603056928829360}
   canvas: {fileID: 0}
+  canvasFadeDuration: 0.1
   moonImg: {fileID: 0}
   starImg: {fileID: 0}
   sunImg: {fileID: 0}

@@ -25,6 +25,7 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
     [Header("UI")] 
     [SerializeField] private Transform content;
     public GameObject canvas;
+    public float canvasFadeDuration = 0.1f;
     public Sprite moonImg, starImg, sunImg; // references to the UI images for each button (Square, Circle, Triangle)
     public GameObject inputUIImage; // reference UI image which should be updated to show the combo array (Should spawn multiple)
     public float shakeDuration = 0.2f;
@@ -38,6 +39,10 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
     private Player playerScript;
 
     public Enemy enemy;
+
+    private Canvas canvasComponent;
+    private Image canvasImage;
+    private float lastCanvasImageAlpha;
     
     private void Awake()
     {
@@ -51,6 +56,9 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        canvasComponent = canvas.GetComponent<Canvas>();
+        canvasImage = canvas.GetComponentInChildren<Image>();
+        lastCanvasImageAlpha = canvasImage.color.a;
         target = Camera.main.transform;
         transform.DOMove(target.position, speedTime, false).SetEase(Ease.InOutCubic);
         InitializeUI();
@@ -227,7 +235,13 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
         {
             return;
         }
-        GetComponentInChildren<Canvas>().sortingOrder = 100;
+
+        // ------ //
+        // for nemmere at se hvilken enemy man er i gang med
+        canvasComponent.sortingOrder = 100;
+        canvasImage.DOFade(1, canvasFadeDuration); // sætter alpha til 1 (sætter den ned igen i CheckComboCompletion når combo er færdig)
+        // ------ //
+
         Sequence comboStepSequence = DOTween.Sequence();
         comboStepSequence.Join(
             contentSprite[bottom].transform
@@ -255,6 +269,7 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
         int totalSteps = comboArray.Length;
         if (uiComboStep >= totalSteps)
         {
+            canvasImage.DOFade(lastCanvasImageAlpha, canvasFadeDuration);
             Die();
         }
     }

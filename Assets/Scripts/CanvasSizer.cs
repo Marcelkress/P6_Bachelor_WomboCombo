@@ -7,6 +7,9 @@ public class CanvasSizer : MonoBehaviour
     private Enemy enemyScript;
     public bool useBossLogic = false, useProjectileLogic = false;
     public int scalingFactor = 2;
+    [SerializeField] private float startScalingDistance = 30f;
+    [SerializeField] private float maxFarScaleMultiplier = 1.5f;
+    [SerializeField] private float farScaleDistance = 90f;
     private BossComboSystem bossComboSystem;
     private EnemyProjectile enemyProjectile;
     private Canvas canvas;
@@ -15,6 +18,7 @@ public class CanvasSizer : MonoBehaviour
 
     private Vector3 currentCanvasSize;
     private Vector3 targetCanvasSize;
+    private Vector3 farCanvasSize;
 
     private float initialCanvasDistance;
 
@@ -29,6 +33,7 @@ public class CanvasSizer : MonoBehaviour
 
         initialCanvasDistance = Vector3.Distance(player.transform.position, transform.position);
         targetCanvasSize = currentCanvasSize/scalingFactor;
+        farCanvasSize = currentCanvasSize * maxFarScaleMultiplier;
         if (useBossLogic)
         {
             bossComboSystem = GetComponentInParent<BossComboSystem>();
@@ -63,9 +68,19 @@ public class CanvasSizer : MonoBehaviour
 
         float dis = Vector3.Distance(playerPos, transform.position);
 
-        float clampedDistance = Mathf.Clamp01(dis / initialCanvasDistance);
-        
-        Vector3 newCurrentCanvasSize = Vector3.Lerp(targetCanvasSize, currentCanvasSize, clampedDistance);
+        Vector3 newCurrentCanvasSize;
+
+        if (dis <= startScalingDistance)
+        {
+            float clampedDistance = Mathf.Clamp01(dis / startScalingDistance);
+            newCurrentCanvasSize = Vector3.Lerp(targetCanvasSize, currentCanvasSize, clampedDistance);
+        }
+        else
+        {
+            float clampedDistance = Mathf.InverseLerp(startScalingDistance, farScaleDistance, dis);
+            newCurrentCanvasSize = Vector3.Lerp(currentCanvasSize, farCanvasSize, clampedDistance);
+        }
+
         canvas.transform.localScale = newCurrentCanvasSize;
     }
     

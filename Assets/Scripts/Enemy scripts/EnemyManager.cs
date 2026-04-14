@@ -95,7 +95,7 @@ public class EnemyManager : MonoBehaviour
         
         for (int i = 0; i < randArray.Length; i++)
         {
-            randArray[i] = Random.Range(1, 3);
+            randArray[i] = Random.Range(1, 4); // 1, 2 eller 3 (man skal have 4 selvom vi kun har 3 symboler fordi upper bound er exclusive, som betyder at den ikke kan returnere 4)
         }
         
         return randArray;
