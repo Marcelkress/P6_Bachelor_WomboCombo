@@ -35,6 +35,8 @@ public class PlayerComboInput : MonoBehaviour
     public int star = 2, sun = 3;
     
     private static bool playerOneTaken;
+
+    private bool waitingForRelease;
     
     private void Awake()
     {
@@ -63,22 +65,32 @@ public class PlayerComboInput : MonoBehaviour
     
     private void Update()
     {
-        if(useBalls)
-            inputData = controllerInput.GetInput(playerID == Player.Player1 ? 1 : 2);
+        if (useBalls)
+        inputData = controllerInput.GetInput(playerID == Player.Player1 ? 1 : 2);
 
-        if (inputData.connected == false)
+        if (!inputData.connected)
+        {
+            waitingForRelease = false;
             return;
+        }
 
         controllerValue = inputData.rotation;
-        
         UpdateSymbolsFromController();
-        
-        if (inputData.pushed == true)
+
+        bool pressedNow = inputData.pushed;
+
+        if (pressedNow && !waitingForRelease)
         {
-            inputData.pushed = false;
+            waitingForRelease = true;
             OnFire();
         }
+        else if (!pressedNow)
+        {
+            waitingForRelease = false;
+        }
     }
+
+
     
     private bool IsInInterval(Interval interval)
     {
