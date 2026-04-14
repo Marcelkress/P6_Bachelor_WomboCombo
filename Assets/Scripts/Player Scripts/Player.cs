@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
     [Header("Fire ball")]
     public GameObject fireballPrefab;
 
-    public UnityEvent FireballSound;
+    //public UnityEvent FireballSound;
     
     [Header("Boss")]
     public bool lookAtBoss = false; // whether the player should look at the boss, used for certain encounters and the boss fight
@@ -116,7 +116,7 @@ public class Player : MonoBehaviour
 
         fireballScript.SetTargetTransform(target, targetedEnemy);
         
-        FireballSound.Invoke();
+       // FireballSound.Invoke();
 
     }
     
