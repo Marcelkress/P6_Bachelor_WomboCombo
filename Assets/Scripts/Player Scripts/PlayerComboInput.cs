@@ -118,7 +118,7 @@ public class PlayerComboInput : MonoBehaviour
         else if (IsStarStar()) { playerInfoStruct.symbOne = star; playerInfoStruct.symbTwo = star; }
         else if (IsStarSun())  { playerInfoStruct.symbOne = star; playerInfoStruct.symbTwo = sun;  }
 
-        Debug.Log(playerInfoStruct.symbOne + "    " + playerInfoStruct.symbTwo);
+        //Debug.Log(playerInfoStruct.symbOne + "    " + playerInfoStruct.symbTwo);
     }
 
     public PlayerInfoStruct GetSymbolUpdate()

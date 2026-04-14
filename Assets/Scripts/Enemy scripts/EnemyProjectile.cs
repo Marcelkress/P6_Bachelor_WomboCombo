@@ -61,7 +61,7 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
         if (other.transform.CompareTag("Player"))
         {
             other.transform.GetComponent<Player>().TakeDamage(damage);
-            Destroy(this.gameObject);
+            Die();
         }
     }
     
@@ -112,14 +112,17 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
         comboStep += 2;
     }
     
+    private bool hasStarted = false;
+    
     private void CompareCombo(int id)
     {
         //Debug.Log("Combo on projectile");
+        Debug.Log(comboStep);
         // If either player one or player two symbols are correct continue
         if ((playerOneInfo.symbOne == comboArray[comboStep] && playerOneInfo.symbTwo == comboArray[comboStep + 1])
             || (playerTwoInfo.symbOne == comboArray[comboStep] && playerTwoInfo.symbTwo == comboArray[comboStep + 1]))
         {
-            Debug.Log(comboStep);
+            //Debug.Log(comboStep);
 
             if (comboArray[comboStep] == 2) // If the top symbol is star
             {

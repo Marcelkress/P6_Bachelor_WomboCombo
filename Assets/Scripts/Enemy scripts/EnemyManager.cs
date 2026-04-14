@@ -111,6 +111,7 @@ public class EnemyManager : MonoBehaviour
     }
     public void EnemyDied()
     {
+        Debug.Log(Enemies.Count);
         if (Enemies.Count <= 0 && !EncounterManager.instance.bossBattleStarted)
         {
             EncounterManager.instance.GoToNextEncounter();
