@@ -8246,17 +8246,17 @@ MonoBehaviour:
     maxComboLength: 4
     respawnPoint: 0
   - enemyManager: {fileID: 1088628462}
-    meleeEnemyCount: 3
+    meleeEnemyCount: 2
     projectileEnemyCount: 0
     minComboLength: 2
     maxComboLength: 4
-    respawnPoint: 1
+    respawnPoint: 0
   - enemyManager: {fileID: 1030023371}
     meleeEnemyCount: 4
     projectileEnemyCount: 2
     minComboLength: 3
     maxComboLength: 5
-    respawnPoint: 0
+    respawnPoint: 1
   - enemyManager: {fileID: 385785121}
     meleeEnemyCount: 2
     projectileEnemyCount: 0
@@ -8280,7 +8280,7 @@ MonoBehaviour:
     projectileEnemyCount: 2
     minComboLength: 2
     maxComboLength: 4
-    respawnPoint: 0
+    respawnPoint: 1
   - enemyManager: {fileID: 486749952}
     meleeEnemyCount: 0
     projectileEnemyCount: 2
