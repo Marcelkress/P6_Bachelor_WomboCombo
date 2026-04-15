@@ -114,6 +114,50 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_Enemy_projektile_hit" ID="{65B7EB93-421E-4FCB-B605-D2DEAE9B1CCD}">
+					<ChildrenList>
+						<Action Name="" ID="{B922643C-6D81-4DC6-9F14-C42CB2B184B7}" ShortID="136430665">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy projektile hit" ID="{5D1F113D-41B5-40E7-9233-D59C2CF6A9F6}" WorkUnitID="{4F9991F6-C6B0-464E-A79D-228F4B413CED}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_EnemyProjectile2" ID="{A827DA73-A864-47DF-9B57-7F807CA82D33}">
+					<ChildrenList>
+						<Action Name="" ID="{6F3709AB-C0E8-4113-8B09-A0061B8B0FA2}" ShortID="307083568">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="EnemyProjectile2" ID="{C5AAEE69-0499-44EB-86CB-9B3F887E6211}" WorkUnitID="{4F9991F6-C6B0-464E-A79D-228F4B413CED}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Minotauer_steps_grass" ID="{E63FEFAE-C052-467F-BCAA-4306AA7B59C5}">
+					<ChildrenList>
+						<Action Name="" ID="{B4757AFD-C9CC-41A0-9246-73DC5D7191AF}" ShortID="817159994">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Minotauer steps grass" ID="{2DA5B849-15FF-4010-8E56-EEF24E185C7E}" WorkUnitID="{4F9991F6-C6B0-464E-A79D-228F4B413CED}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Minotauser_steps_stone" ID="{5B9A56BF-7C09-4DFC-A1FE-76C31A61431D}">
+					<ChildrenList>
+						<Action Name="" ID="{75848F8A-F6EB-4E31-87C7-678EBD8A4640}" ShortID="333908820">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Minotauser steps stone" ID="{A7B9FC4D-590B-4A07-9C5C-FA93B5E63EA2}" WorkUnitID="{4F9991F6-C6B0-464E-A79D-228F4B413CED}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

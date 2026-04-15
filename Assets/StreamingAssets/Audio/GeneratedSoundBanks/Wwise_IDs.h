@@ -22,6 +22,8 @@ namespace AK
         static const AkUniqueID PLAY_FREESOUND_COMMUNITY_RAVEN_MANYMP3_14529 = 649460754U;
         static const AkUniqueID PLAY_HOLLOW_16BIT = 1648528756U;
         static const AkUniqueID PLAY_MINOTAUER_ATTACK = 2883861275U;
+        static const AkUniqueID PLAY_MINOTAUER_STEPS_GRASS = 2684025063U;
+        static const AkUniqueID PLAY_MINOTAUSER_STEPS_STONE = 1974550383U;
         static const AkUniqueID PLAY_PLAYERHIT = 514211712U;
         static const AkUniqueID PLAY_TRAMP963_WATERFALL_SOUNDS_259625 = 2572739826U;
         static const AkUniqueID PLAY_WINDGRASS_BSZ01_94_1 = 3277248305U;

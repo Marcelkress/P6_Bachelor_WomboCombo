@@ -1,0 +1,109 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "2684025063",
+    "Type": "Event",
+    "GUID": "{E63FEFAE-C052-467F-BCAA-4306AA7B59C5}",
+    "Language": "SFX",
+    "Hash": "{5B0854A9-A274-FAFF-0A04-E902CF9BFB4C}",
+    "ObjectPath": "Play_Minotauer_steps_grass",
+    "ShortName": "Play_Minotauer_steps_grass",
+    "Path": "Event/Play_Minotauer_steps_grass.bnk",
+    "Media": [
+     {
+      "Id": "57189065",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Mnitauser steps grass.wav",
+      "Path": "Media/57189065.wem",
+      "CachePath": "74/{74606683-71ED-0037-ED2B-8D9C8831FF52}.wem"
+     },
+     {
+      "Id": "94127363",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Mnitauser steps grass.wav",
+      "Path": "Media/94127363.wem",
+      "CachePath": "5A/{5A407C21-54DC-6907-AD79-6B13B1D92E33}.wem"
+     },
+     {
+      "Id": "147565660",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Mnitauser steps grass.wav",
+      "Path": "Media/147565660.wem",
+      "CachePath": "C7/{C7B7AF74-73B8-6A46-6A91-99850D2A18E9}.wem"
+     },
+     {
+      "Id": "569996755",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Mnitauser steps grass.wav",
+      "Path": "Media/569996755.wem",
+      "CachePath": "BA/{BA19F404-532B-3A6E-CC2E-60CEDA0F5E8D}.wem"
+     },
+     {
+      "Id": "681038195",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Mnitauser steps grass.wav",
+      "Path": "Media/681038195.wem",
+      "CachePath": "B6/{B6DE7BDC-DE33-CEC6-92D4-0FBEE859D8B1}.wem"
+     },
+     {
+      "Id": "954416019",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Mnitauser steps grass.wav",
+      "Path": "Media/954416019.wem",
+      "CachePath": "A2/{A2341234-4896-0299-5A4A-17CB90A0D38F}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2684025063",
+      "Name": "Play_Minotauer_steps_grass",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Minotauer_steps_grass",
+      "GUID": "{E63FEFAE-C052-467F-BCAA-4306AA7B59C5}",
+      "MaxAttenuation": "20",
+      "DurationType": "OneShot",
+      "DurationMin": "1.1725519",
+      "DurationMax": "2.027309",
+      "MediaRefs": [
+       {
+        "Id": "57189065"
+       },
+       {
+        "Id": "94127363"
+       },
+       {
+        "Id": "147565660"
+       },
+       {
+        "Id": "569996755"
+       },
+       {
+        "Id": "681038195"
+       },
+       {
+        "Id": "954416019"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{B7769FC5-7C5B-E859-D717-7D5BACCC676C}"
+ }
+}

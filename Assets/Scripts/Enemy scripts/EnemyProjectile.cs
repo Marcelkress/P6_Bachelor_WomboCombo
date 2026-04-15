@@ -286,7 +286,9 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
         if (uiComboStep >= totalSteps)
         {
             canvasImage.DOFade(lastCanvasImageAlpha, canvasFadeDuration);
+            enemyProjectileSound.Stop(this.gameObject);
             Die();
+            
         }
     }
     /*
@@ -304,6 +306,7 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
         
         manager.Enemies.Remove(this.gameObject);
         manager.EnemyDied();
+        enemyProjectileSound.Stop(this.gameObject);
         Destroy(this.gameObject);
         
     }

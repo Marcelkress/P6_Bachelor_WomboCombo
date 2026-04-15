@@ -1,0 +1,109 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Linux",
+  "BasePlatform": "Linux",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "1974550383",
+    "Type": "Event",
+    "GUID": "{5B9A56BF-7C09-4DFC-A1FE-76C31A61431D}",
+    "Language": "SFX",
+    "Hash": "{53E542F4-4D81-6A2E-8E66-7D33078B32B1}",
+    "ObjectPath": "Play_Minotauser_steps_stone",
+    "ShortName": "Play_Minotauser_steps_stone",
+    "Path": "Event/Play_Minotauser_steps_stone.bnk",
+    "Media": [
+     {
+      "Id": "136201909",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Mnitauser steps stone.wav",
+      "Path": "Media/136201909.wem",
+      "CachePath": "E4/{E4F8FD7C-024D-F210-F186-38570E01F8C3}.wem"
+     },
+     {
+      "Id": "387220678",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Mnitauser steps stone.wav",
+      "Path": "Media/387220678.wem",
+      "CachePath": "0B/{0B1F9EA0-A483-E895-0BBE-413A72B244FB}.wem"
+     },
+     {
+      "Id": "435913531",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Mnitauser steps stone.wav",
+      "Path": "Media/435913531.wem",
+      "CachePath": "E8/{E87B2594-A322-8894-DCB1-E4931B5AC8EF}.wem"
+     },
+     {
+      "Id": "546613109",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Mnitauser steps stone.wav",
+      "Path": "Media/546613109.wem",
+      "CachePath": "70/{70B68130-5817-D95E-E6F3-33A195618EF7}.wem"
+     },
+     {
+      "Id": "722315045",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Mnitauser steps stone.wav",
+      "Path": "Media/722315045.wem",
+      "CachePath": "47/{47002F8F-3322-8F5A-D417-248EB1849982}.wem"
+     },
+     {
+      "Id": "852310433",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Mnitauser steps stone.wav",
+      "Path": "Media/852310433.wem",
+      "CachePath": "7D/{7D18EC95-EC85-A266-F0AD-31742DF6D4BB}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "1974550383",
+      "Name": "Play_Minotauser_steps_stone",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Minotauser_steps_stone",
+      "GUID": "{5B9A56BF-7C09-4DFC-A1FE-76C31A61431D}",
+      "MaxAttenuation": "20",
+      "DurationType": "OneShot",
+      "DurationMin": "1.0081755",
+      "DurationMax": "1.9506",
+      "MediaRefs": [
+       {
+        "Id": "136201909"
+       },
+       {
+        "Id": "387220678"
+       },
+       {
+        "Id": "435913531"
+       },
+       {
+        "Id": "546613109"
+       },
+       {
+        "Id": "722315045"
+       },
+       {
+        "Id": "852310433"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{275246B3-FC2D-16BD-7821-0A8BC3E51DC8}"
+ }
+}

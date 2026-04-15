@@ -6,6 +6,8 @@ public class MonsterAudio : MonoBehaviour
     [SerializeField] private AK.Wwise.Event attackSoundEvent;
     [SerializeField] private AK.Wwise.Event playerDamageSoundEvent;
     [SerializeField] private AK.Wwise.Event enemyDamageSound;
+    [SerializeField] private AK.Wwise.Event minotauserWalkSound;
+    //[SerializeField] private AK.Wwise.Event walkStoneSound;
 
     // This method will be called by the Animation Event
     public void PlayAttackSound()
@@ -23,6 +25,14 @@ public class MonsterAudio : MonoBehaviour
     {
         enemyDamageSound.Post(gameObject);
     }
+
+    public void MinitauserWalk()
+    {
+        minotauserWalkSound.Post(gameObject);
+    }
+
+    
+
 }
 
 

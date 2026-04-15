@@ -132,7 +132,6 @@ MonoBehaviour:
   useBossLogic: 0
   useProjectileLogic: 0
   canvasSettings: {fileID: 11400000, guid: 9dc7451b09e985fcf88b66dbd5f0886b, type: 2}
-  canvasFadeInTime: 0.5
 --- !u!1 &1991231254658932559
 GameObject:
   m_ObjectHideFlags: 0
@@ -4539,6 +4538,10 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 55f03d4b1294d41b89598220768fe9cc, type: 2}
+  minotauserWalkSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 35abdf7487b774db0a4e78e96eac55de, type: 2}
 --- !u!114 &3171513875413308432
 MonoBehaviour:
   m_ObjectHideFlags: 0
