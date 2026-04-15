@@ -13,14 +13,25 @@ public class UIManager : MonoBehaviour
     public EncounterManager encounterManager;
 
     public float UIFadeTime = 0.8f;
+
+    public GameObject startScreen;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        startScreen.SetActive(true);
+        Time.timeScale = 0f;
         gameOverText.DOFade(0, 0);
         gameOverBackground.DOFade(0, 0);
         restartButton.SetActive(false);
+    }
+
+    // Bare så vi kan starte spillet når vi er klar
+    public void StartGame()
+    {
+        Time.timeScale = 1f;
+        startScreen.SetActive(false);
     }
 
     public void RespawnFade()
