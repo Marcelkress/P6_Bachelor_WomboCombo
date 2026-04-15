@@ -74,6 +74,14 @@ MonoBehaviour:
   shakeVibrato: 10
   manager: {fileID: 0}
   enemy: {fileID: 0}
+  enemyProjectileSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 97d6c16cd59134b1c83f3a1821c160f9, type: 2}
+  enemyProjectileHitSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 958e28e6a18224e7aadd96e9ef8de8fa, type: 2}
 --- !u!23 &6880963845943604894
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -439,4 +447,3 @@ MonoBehaviour:
   useBossLogic: 0
   useProjectileLogic: 1
   canvasSettings: {fileID: 11400000, guid: 9dc7451b09e985fcf88b66dbd5f0886b, type: 2}
-  canvasFadeInTime: 0.5

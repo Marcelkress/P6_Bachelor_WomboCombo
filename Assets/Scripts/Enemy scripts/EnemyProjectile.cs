@@ -44,6 +44,11 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
     private Image canvasImage;
     private float lastCanvasImageAlpha;
     
+    
+    [SerializeField] private AK.Wwise.Event enemyProjectileSound;
+    [SerializeField] private AK.Wwise.Event enemyProjectileHitSound;
+  
+    
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform; // Find the player by tag
@@ -62,12 +67,14 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
         target = Camera.main.transform;
         transform.DOMove(target.position, speedTime, false).SetEase(Ease.InOutCubic);
         InitializeUI();
+        enemyProjectileSound.Post(gameObject);
     }
 
     private void OnDisable()
     {
         InputManager.instance.PlayerOneEvent.RemoveListener(PlayerOneUpdate);
         InputManager.instance.PlayerTwoEvent.RemoveListener(PlayerTwoUpdate);
+       
     }
 
     private void OnTriggerEnter(Collider other)
@@ -75,7 +82,10 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
         if (other.transform.CompareTag("Player"))
         {
             other.transform.GetComponent<Player>().TakeDamage(damage);
+            enemyProjectileHitSound.Post(this.gameObject);
             Die();
+            enemyProjectileSound.Stop(this.gameObject);
+           
         }
     }
     
@@ -295,5 +305,10 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
         manager.Enemies.Remove(this.gameObject);
         manager.EnemyDied();
         Destroy(this.gameObject);
+        
     }
+    
+
+    
+    
 }

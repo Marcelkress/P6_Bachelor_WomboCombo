@@ -92,6 +92,28 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_Cold_Winds" ID="{63AB2E89-C1D3-42A1-8DE2-693722C5411D}">
+					<ChildrenList>
+						<Action Name="" ID="{BE2D64A5-3E07-40B9-8676-1D557887412F}" ShortID="316169895">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Cold Winds" ID="{D3DF0B5B-A5E9-4AFC-B008-1FF199E8A220}" WorkUnitID="{4F9991F6-C6B0-464E-A79D-228F4B413CED}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Enemy_projectile_sound" ID="{EACD3C50-ACF5-40EB-9D15-B310B106F008}">
+					<ChildrenList>
+						<Action Name="" ID="{243BB838-EBF5-49C2-9BC7-7280EACA2326}" ShortID="551668905">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy projectile sound" ID="{2DC3C90B-88AB-4349-BAAC-F061D2B63714}" WorkUnitID="{4F9991F6-C6B0-464E-A79D-228F4B413CED}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

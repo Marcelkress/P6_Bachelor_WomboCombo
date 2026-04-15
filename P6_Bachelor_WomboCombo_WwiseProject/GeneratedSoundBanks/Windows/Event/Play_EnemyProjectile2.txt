@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	2457855683	Play_EnemyProjectile2			\Default Work Unit\Play_EnemyProjectile2	
+

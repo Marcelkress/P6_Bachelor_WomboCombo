@@ -1,0 +1,49 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "1884171676",
+    "Type": "Event",
+    "GUID": "{63AB2E89-C1D3-42A1-8DE2-693722C5411D}",
+    "Language": "SFX",
+    "Hash": "{79CF8C08-C5DD-7D4B-7966-562A60DBA414}",
+    "ObjectPath": "Play_Cold_Winds",
+    "ShortName": "Play_Cold_Winds",
+    "Path": "Event/Play_Cold_Winds.bnk",
+    "Media": [
+     {
+      "Id": "399486198",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Cold Winds.wav",
+      "Path": "Media/399486198.wem",
+      "CachePath": "71/{71D24C8F-DC94-B736-9C5C-A85824EB7136}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "1884171676",
+      "Name": "Play_Cold_Winds",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Cold_Winds",
+      "GUID": "{63AB2E89-C1D3-42A1-8DE2-693722C5411D}",
+      "MaxAttenuation": "50",
+      "DurationType": "OneShot",
+      "DurationMin": "214",
+      "DurationMax": "214",
+      "MediaRefs": [
+       {
+        "Id": "399486198"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{E5B92321-F20C-DE87-E4FA-2E7ADEAF7C9F}"
+ }
+}

@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3692402696	Play_Enemy_projectile_sound			\Default Work Unit\Play_Enemy_projectile_sound	
+

@@ -13,7 +13,11 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID PLAY_COLD_WINDS = 1884171676U;
         static const AkUniqueID PLAY_DIE_HURT = 2943090728U;
+        static const AkUniqueID PLAY_ENEMY_PROJECTILE_SOUND = 3692402696U;
+        static const AkUniqueID PLAY_ENEMY_PROJEKTILE_HIT = 4040943786U;
+        static const AkUniqueID PLAY_ENEMYPROJECTILE2 = 2457855683U;
         static const AkUniqueID PLAY_FIREBALL = 146533081U;
         static const AkUniqueID PLAY_FREESOUND_COMMUNITY_RAVEN_MANYMP3_14529 = 649460754U;
         static const AkUniqueID PLAY_HOLLOW_16BIT = 1648528756U;

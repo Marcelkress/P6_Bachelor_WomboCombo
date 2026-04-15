@@ -74,4 +74,7 @@ crashlytics-build.properties
 [Aa]ssets/[Ss]treamingAssets/aa.meta
 [Aa]ssets/[Ss]treamingAssets/aa/*
 
+#Wwise profiler files 
+P6_Bachelor_WomboCombo_WwiseProject/*.prof
+
 # End of https://www.toptal.com/developers/gitignore/api/unity

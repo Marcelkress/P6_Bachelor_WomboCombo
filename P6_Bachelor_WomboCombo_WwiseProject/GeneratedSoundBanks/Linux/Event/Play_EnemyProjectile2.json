@@ -1,0 +1,49 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Linux",
+  "BasePlatform": "Linux",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "2457855683",
+    "Type": "Event",
+    "GUID": "{A827DA73-A864-47DF-9B57-7F807CA82D33}",
+    "Language": "SFX",
+    "Hash": "{A9EA9836-459F-B589-00DF-6B42A1AEF176}",
+    "ObjectPath": "Play_EnemyProjectile2",
+    "ShortName": "Play_EnemyProjectile2",
+    "Path": "Event/Play_EnemyProjectile2.bnk",
+    "Media": [
+     {
+      "Id": "308023362",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Enemy projectile sound 2.wav",
+      "Path": "Media/308023362.wem",
+      "CachePath": "47/{47C14820-1CD2-CABA-0A2F-8F2C08728202}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2457855683",
+      "Name": "Play_EnemyProjectile2",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_EnemyProjectile2",
+      "GUID": "{A827DA73-A864-47DF-9B57-7F807CA82D33}",
+      "MaxAttenuation": "15",
+      "DurationType": "OneShot",
+      "DurationMin": "28.934008",
+      "DurationMax": "33.52567",
+      "MediaRefs": [
+       {
+        "Id": "308023362"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{CA2702C9-C3C4-137E-CB81-B935FBF56FAB}"
+ }
+}
