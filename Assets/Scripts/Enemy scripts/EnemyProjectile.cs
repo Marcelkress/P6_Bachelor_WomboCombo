@@ -91,7 +91,7 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
                 if (timer < squareSuccessWindow) // only succeed if still within the time window
                 {
                     comboStep += 2;
-                    playerScript.ShootFireball(this.transform, this.gameObject);
+                    playerScript.ShootMagicspell(this.transform, this.gameObject);
                 }
                 else
                 {
@@ -160,7 +160,7 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
             }
 
             // Debug.Log("Shooting from Method");
-            playerScript.ShootFireball(this.transform, this.gameObject);
+            playerScript.ShootMagicspell(this.transform, this.gameObject);
             comboStep += 2;
         }
     }

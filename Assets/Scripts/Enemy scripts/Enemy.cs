@@ -78,6 +78,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
     private Canvas canvasComponent;
     private Image canvasImage;
     private float lastCanvasImageAlpha;
+    private Color lastCanvasImageColor;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -88,6 +89,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         canvasComponent = canvas.GetComponent<Canvas>();
         canvasImage = canvas.GetComponentInChildren<Image>();
         lastCanvasImageAlpha = canvasImage.color.a;
+        lastCanvasImageColor = canvasImage.color;
 
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
@@ -229,7 +231,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
                 if (timer < squareSuccessWindow) // only succeed if still within the time window
                 {
                     comboStep += 2;
-                    playerScript.ShootFireball(this.transform, this.gameObject);
+                    playerScript.ShootMagicspell(this.transform, this.gameObject);
                     //Debug.Log("Shooting from update");
                 }
                 else
@@ -302,7 +304,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
             localComboStarted = true;
             globalComboStarted = true;
 
-            playerScript.ShootFireball(this.transform, this.gameObject); // Enemies are the only one that knows that they can be hit therefor is also the ones telling when the fireball should go off.
+            playerScript.ShootMagicspell(this.transform, this.gameObject); // Enemies are the only one that knows that they can be hit therefor is also the ones telling when the fireball should go off.
             //UpdateUI(); Vi opdatere istedet når fireball rammer enemy
 
             comboStep += 2;
@@ -370,11 +372,14 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         {
             return;
         }
+
+        // ----------- //
+        // for bedre visual cues
         canvasComponent.sortingOrder = 100; //TODO, Måske slet fordi det fucker projectile visibility up 
         enemySpotLight.DOIntensity(lightFeedbackIntensity, visualFeedbackFadeDuration);
+        canvasImage.color = Color.white; // for at gøre den mere tydlig
         canvasImage.DOFade(1, visualFeedbackFadeDuration); // sætter alpha til 1 (sætter den ned igen i CheckComboCompletion når combo er færdig)
-
-        
+        // ----------- //
 
         Sequence comboStepSequence = DOTween.Sequence();
         comboStepSequence.Join(
@@ -413,6 +418,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         {
             canvasImage.DOFade(lastCanvasImageAlpha, visualFeedbackFadeDuration);
             enemySpotLight.DOIntensity(0, visualFeedbackFadeDuration);
+
             Die();
         }
     }

@@ -94,7 +94,7 @@ public class BossComboSystem : MonoBehaviour
                     epicBossLogic.bossGothitted = true;
                     if (playerScript != null)
                     {
-                        playerScript.ShootFireball(transform, gameObject);
+                        playerScript.ShootMagicspell(transform, gameObject);
                     }
                 }
 
@@ -207,7 +207,7 @@ public class BossComboSystem : MonoBehaviour
 
             if (playerScript != null)
             {
-                playerScript.ShootFireball(this.transform, this.gameObject); 
+                playerScript.ShootMagicspell(this.transform, this.gameObject); 
             }
             //UpdateUI(); Vi opdatere istedet når fireball rammer enemy
 

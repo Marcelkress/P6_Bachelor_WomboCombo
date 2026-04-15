@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: 2354878761664168158}
   - component: {fileID: 2859221562183866814}
   - component: {fileID: 9064182275487191702}
+  - component: {fileID: 5756696389760430371}
   m_Layer: 6
   m_Name: Content
   m_TagString: Untagged
@@ -277,7 +278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 0.6862745}
+  m_Color: {r: 0.49056602, g: 0.488252, b: 0.488252, a: 0.92941177}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -285,7 +286,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 43a7d98bd4222b64e933596512dc09ad, type: 3}
-  m_Type: 1
+  m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -294,6 +295,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &5756696389760430371
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6696820838869075533}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &7173858605462518587
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,3 +439,4 @@ MonoBehaviour:
   useBossLogic: 0
   useProjectileLogic: 1
   canvasSettings: {fileID: 11400000, guid: 9dc7451b09e985fcf88b66dbd5f0886b, type: 2}
+  canvasFadeInTime: 0.5

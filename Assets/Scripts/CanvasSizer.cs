@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+using DG.Tweening;
+using System.Collections;
 public class CanvasSizer : MonoBehaviour
 {
     [SerializeField] public float valueToAdd = 450;
@@ -10,6 +11,7 @@ public class CanvasSizer : MonoBehaviour
     private BossComboSystem bossComboSystem;
     private EnemyProjectile enemyProjectile;
     private Canvas canvas;
+    private CanvasGroup content;
 
     private int comboSize;
 
@@ -19,7 +21,13 @@ public class CanvasSizer : MonoBehaviour
 
     private float initialCanvasDistance;
 
-    private GameObject player;
+    private GameObject player;  
+
+    private void Awake()
+    {
+        content = GetComponentInChildren<CanvasGroup>();
+        content.alpha = 0;
+    }
         
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,6 +35,8 @@ public class CanvasSizer : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         canvas = GetComponent<Canvas>();
         currentCanvasSize = canvas.transform.localScale;
+
+        StartCoroutine(FadeCanvasIn());
 
         initialCanvasDistance = Vector3.Distance(player.transform.position, transform.position);
         targetCanvasSize = currentCanvasSize/canvasSettings.reducingFactor;
@@ -56,6 +66,12 @@ public class CanvasSizer : MonoBehaviour
         }
 
         canvas.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, size); 
+    }
+
+    private IEnumerator FadeCanvasIn()
+    {
+        content.DOFade(1, canvasSettings.canvasFadeInTime);
+        yield return new WaitForSeconds(canvasSettings.canvasFadeInTime);
     }
 
     // Sizes the canvas based on the distance to the player, making it smaller as the player gets closer

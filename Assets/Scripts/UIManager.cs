@@ -15,11 +15,29 @@ public class UIManager : MonoBehaviour
     public float UIFadeTime = 0.8f;
 
     public GameObject startScreen;
+
+    public bool removeControllerUI = false;
+    public bool removeDebugUI = false;
+    public GameObject debugUI;
+    public GameObject[] controllerUI;
+
+    [SerializeField] private Player player;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (removeDebugUI)
+        {
+            debugUI.SetActive(false);
+        }
+        if (removeControllerUI)
+        {
+            foreach (var ui in controllerUI)
+            {
+                ui.SetActive(false);
+            }
+        }
         startScreen.SetActive(true);
         Time.timeScale = 0f;
         gameOverText.DOFade(0, 0);
@@ -43,6 +61,7 @@ public class UIManager : MonoBehaviour
         gameOverText.DOFade(1, UIFadeTime);
         gameOverBackground.DOFade(1, UIFadeTime).OnComplete(() =>
         {
+            player.TakeDamage(0); // Force health bar update and shake effect
             encounterManager.RestartFromLastRespawn();
 
             gameOverText.DOFade(0, UIFadeTime);
