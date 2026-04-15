@@ -16,6 +16,14 @@ public class EnemyManager : MonoBehaviour
     public Transform[] projectileSpawnPositions;
     public List<startStruct> theFirstUniqueComboStartSteps = new List<startStruct>();
     public List<GameObject> Enemies;
+    public float enemyAggroDelayVariance = 0.24f; // added variance to enemy aggro delay for more dynamic encounters
+    private List<startStruct> pooledComboStartSteps = new List<startStruct>(); // for resetting the theFirstUniqueComboStartSteps list
+
+
+    private void Awake()
+    {
+        pooledComboStartSteps = new List<startStruct>(theFirstUniqueComboStartSteps); // stores the pool of unique starting combos for resetting laters
+    }
 
     /// <summary>
     /// Spawns enemies within specified count and assigns random combos
@@ -25,6 +33,9 @@ public class EnemyManager : MonoBehaviour
     /// <param name="minComboLegnth"></param>
     public void InitializeEncounter(int meleeSpawnCount, int projectileSpawnCount, int maxComboLength, int minComboLegnth, float enemyAggroDelay)
     {
+        // added pga restarting encounter fordi vi havde opbrugt alle unikke comboer
+        theFirstUniqueComboStartSteps = new List<startStruct>(pooledComboStartSteps); // resets the list to its original state at the start of each encounter
+
         Enemies = new List<GameObject>();
 
         for (int i = meleeSpawnPositions.Length - 1; i > 0; i--)
@@ -54,7 +65,8 @@ public class EnemyManager : MonoBehaviour
 
             theFirstUniqueComboStartSteps.RemoveAt(randNum);
             
-            enemyScript.Initialize(enemyAggroDelay);
+            float varience = Random.Range(-enemyAggroDelayVariance, enemyAggroDelayVariance);
+            enemyScript.Initialize(enemyAggroDelay + varience);
         }
         
         for (int i = 0; i < projectileSpawnCount; i++)
@@ -78,7 +90,8 @@ public class EnemyManager : MonoBehaviour
 
             theFirstUniqueComboStartSteps.RemoveAt(randNum);
             
-            enemyScript.Initialize(enemyAggroDelay);
+            float varience = Random.Range(-enemyAggroDelayVariance, enemyAggroDelayVariance);
+            enemyScript.Initialize(enemyAggroDelay + varience);
         }
     }
     
@@ -95,7 +108,7 @@ public class EnemyManager : MonoBehaviour
         
         for (int i = 0; i < randArray.Length; i++)
         {
-            randArray[i] = Random.Range(1, 3);
+            randArray[i] = Random.Range(1, 4); // 1, 2 eller 3 (man skal have 4 selvom vi kun har 3 symboler fordi upper bound er exclusive, som betyder at den ikke kan returnere 4)
         }
         
         return randArray;

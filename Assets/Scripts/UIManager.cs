@@ -13,17 +13,46 @@ public class UIManager : MonoBehaviour
     public EncounterManager encounterManager;
 
     public float UIFadeTime = 0.8f;
+
+    public GameObject startScreen;
+
+    public bool removeControllerUI = false;
+    public bool removeDebugUI = false;
+    public GameObject debugUI;
+    public GameObject[] controllerUI;
+
+    [SerializeField] private Player player;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (removeDebugUI)
+        {
+            debugUI.SetActive(false);
+        }
+        if (removeControllerUI)
+        {
+            foreach (var ui in controllerUI)
+            {
+                ui.SetActive(false);
+            }
+        }
+        startScreen.SetActive(true);
+        Time.timeScale = 0f;
         gameOverText.DOFade(0, 0);
         gameOverBackground.DOFade(0, 0);
         restartButton.SetActive(false);
     }
 
-    public void ShowGameOverMenu()
+    // Bare så vi kan starte spillet når vi er klar
+    public void StartGame()
+    {
+        Time.timeScale = 1f;
+        startScreen.SetActive(false);
+    }
+
+    public void RespawnFade()
     {
         gameOverBackground.gameObject.SetActive(true);
         gameOverText.gameObject.SetActive(true);
@@ -32,6 +61,7 @@ public class UIManager : MonoBehaviour
         gameOverText.DOFade(1, UIFadeTime);
         gameOverBackground.DOFade(1, UIFadeTime).OnComplete(() =>
         {
+            player.TakeDamage(0); // Force health bar update and shake effect
             encounterManager.RestartFromLastRespawn();
 
             gameOverText.DOFade(0, UIFadeTime);
@@ -41,12 +71,22 @@ public class UIManager : MonoBehaviour
                 gameOverBackground.gameObject.SetActive(false);
             });
         });
-        
+    }
+
+    public void GameOverFade()
+    {
+        gameOverBackground.gameObject.SetActive(true);
+        gameOverText.gameObject.SetActive(true);
+        gameOverText.DOFade(1, UIFadeTime);
+        gameOverBackground.DOFade(1, UIFadeTime).OnComplete(() =>
+        {
+            restartButton.SetActive(true);
+        });
     }
 
 
     public void ReloadScene()
     {
-        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

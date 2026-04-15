@@ -10,12 +10,13 @@ public class Player : MonoBehaviour
     [Header("Health")]
     public int maxHealth = 3; // Example health value for the player
     private int currentHealth;  
-    public UnityEvent PlayerDiedEvent;
+    public UnityEvent PlayerDiedEvent, PlayerRespawnEvent;
     public int healAmount = 5;
     public int lives = 3;
 
     [Header("Health UI")]
-    public Image healthBar; // Reference to the health bar UI element
+    public RectTransform healthBarUI; // Reference to the health bar UI element
+    public Material healthBarMaterial; // Reference to the material used for the health bar
     public TMP_Text healthText; // Reference to the health text UI element (optional)
     public GameObject inputUIImage; // reference UI image which should be updated to show the combo array (Should spawn multiple)
     [SerializeField] private Transform content;
@@ -59,8 +60,12 @@ public class Player : MonoBehaviour
         playerInput = GetComponent<PlayerInput>(); // Get the PlayerInput component attached to the player game object
         encounterManager = EncounterManager.instance; // Get the instance of the EncounterManager
         InitializeUI();
-        InputManager.instance.PlayerOneEvent.AddListener(PlayerOneUpdate);
-        InputManager.instance.PlayerTwoEvent.AddListener(PlayerTwoUpdate);
+
+        if (InputManager.instance != null)
+        {
+            InputManager.instance.PlayerOneEvent.AddListener(PlayerOneUpdate);
+            InputManager.instance.PlayerTwoEvent.AddListener(PlayerTwoUpdate);
+        }
     }
     private void LateUpdate()
     {
@@ -74,9 +79,9 @@ public class Player : MonoBehaviour
     }
     private void InitializeUI()
     {
-        if (healthBar != null)
+        if (healthBarMaterial != null)
         {
-            healthBar.fillAmount = (float)currentHealth / maxHealth; // Set the initial fill amount of the health bar
+            healthBarMaterial.SetFloat("_FillLevel", maxHealth); // Set the initial fill level of the health bar material
             healthText.text = currentHealth.ToString(); // Set the initial health text (optional)
         }
         
@@ -108,7 +113,7 @@ public class Player : MonoBehaviour
     
     }
 
-    public void ShootFireball(Transform target, GameObject targetedEnemy)
+    public void ShootMagicspell(Transform target, GameObject targetedEnemy)
     {
         GameObject fireball = Instantiate(fireballPrefab, this.transform.position, this.transform.rotation);
 
@@ -295,23 +300,15 @@ public class Player : MonoBehaviour
         //Debug.Log("Player took damage! Current health: " + currentHealth);
 
         // Update the health bar UI element
-        if (healthBar != null)
+        if (healthBarMaterial != null)
         {
 
-            if (currentHealth < maxHealth/2)
-            {
-                healthBar.fillAmount = (float)currentHealth / maxHealth;
+           
+            healthBarMaterial.SetFloat("_FillLevel", (float)currentHealth / maxHealth);
                 
-                 // Optional: Add a tweening effect to the health bar for smoother transitions
-                AnimateHealthBar();
-                ShakeHealthBar();
-
-            }
-            else
-            {
-                healthBar.fillAmount = (float)currentHealth / maxHealth;
-                AnimateHealthBar();
-            }
+            // TODO: Add a tweening effect to the health bar for smoother transitions
+            AnimateHealthBar();
+            ShakeHealthBar();
         }
 
         if (currentHealth == 0)
@@ -320,36 +317,36 @@ public class Player : MonoBehaviour
             dead = true;
             Die(); // Call the Die method if health drops to 0
         }
-
     }
 
     private bool dead;
-
     private void AnimateHealthBar()
     {
-        if (healthBar != null)
+        if (healthBarMaterial != null)
         {
-            healthBar.DOFillAmount((float)currentHealth / maxHealth, 0.5f).SetEase(Ease.OutQuad);
+            healthBarMaterial.SetFloat("_FillLevel", (float)currentHealth / maxHealth);
         }
     }
 
     private void ShakeHealthBar()
     {
-        if (healthBar != null)
-        {
-            healthBar.transform.DOShakePosition(0.5f, new Vector3(10f, 0f, 0f), 10, 90, false);
-        }
+        if (healthBarUI == null) return;
+
+        healthBarUI.DOShakeAnchorPos(0.5f, new Vector2(10f, 0f), 10, 90, false, true);
     }
 
     private void Die()
     {
         lives--;
         deathCounterSaveInfo++;
-        PlayerDiedEvent.Invoke();
+        if (lives <= 0) // real dead FR
+        {
+            PlayerDiedEvent.Invoke();
+            return;
+        }
+        PlayerRespawnEvent.Invoke(); // fake dead FR
         currentHealth = maxHealth;
         dead = false;
-        //gameOverScreen.SetActive(true); // Show the Game Over screen
-        //Time.timeScale = 0f; // Pause the game by setting time scale to
     }
 
     private void OnDisable()

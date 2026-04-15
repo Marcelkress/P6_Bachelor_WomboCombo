@@ -68,19 +68,18 @@ public class EncounterManager : MonoBehaviour
         if (lastRespawnPoint < 0 || lastRespawnPoint >= playerPathFollower.destinations.Length)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            return;
         }
 
         Encounters[encounterIndex-1].enemyManager.ClearAllEntities();
 
-        playerPathFollower.transform.position = playerPathFollower.destinations[lastRespawnPoint].transform.position;
+        //playerPathFollower.transform.position = playerPathFollower.destinations[lastRespawnPoint].transform.position;
         encounterIndex = lastRespawnPoint;
         Encounters[encounterIndex] = Encounters[encounterIndex]; // refresh encounter to reset enemy managers enemy lists and such
-        StartEncounter(defaultEnemyAggroDelay);
+        GoToNextEncounter(true);
     }
 
-       
-
-    public void GoToNextEncounter()
+    public void GoToNextEncounter(bool isRespawning = false)
     {
         if (bossBattleStarted) return;
             
@@ -102,7 +101,12 @@ public class EncounterManager : MonoBehaviour
 
 
         // Trigger player camera trip
-        playerPathFollower.MoveTo(encounterIndex);
+        playerPathFollower.MoveTo(encounterIndex, isRespawning);
+        if (isRespawning)
+        {
+            StartEncounter(0); // Start encounter immediately if respawning, since player is already at the correct position
+            return;
+        }
         if (Encounters[encounterIndex].respawnPoint)
         {
             lastRespawnPoint = encounterIndex; // what the last respawn point was, used for player death and retrying

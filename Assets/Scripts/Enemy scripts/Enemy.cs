@@ -12,7 +12,13 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
     public GameObject projectilePrefab;
     public Transform projectileShootPoint;
     public float shootIntervalMax, shootIntervalMin;
-    
+
+    [Header("Size Scaling")]
+    public float baseScale = 1f;
+    public float sizePerComboPair = 0.08f;
+    public float maxScale = 1.8f;
+    public float randomScaleVariance = 0.1f; // Random variance to add to the scale for visual diversity
+
     [Header("Combo")]
     public int[] comboArray;
     [SerializeField] private int comboStep = 0;
@@ -29,6 +35,12 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
     public Material enemyMaterial; // Reference to the enemy's material for visual feedback (e.g., flashing when hit)  
     public MeshRenderer enemyMeshRenderer;
 
+    [Header("Visual Feedback")]
+    private Light enemySpotLight; // for visuelt feedback når man targeter enemy
+    public float lightFeedbackIntensity = 4f; 
+    public float visualFeedbackFadeDuration = 0.1f;
+
+
     public bool debug = false;
     // ComboCheck
     public static bool globalComboStarted;
@@ -43,6 +55,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
     [SerializeField] private Transform content;
 
     public GameObject canvas;
+
     public Sprite moonImg, starImg, sunImg; // references to the UI images for each button (Square, Circle, Triangle)
     public GameObject inputUIImage; // reference UI image which should be updated to show the combo array (Should spawn multiple)
     public float shakeDuration;
@@ -61,20 +74,44 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
     public EnemyManager manager;
 
     private float speed;
+
+    private Canvas canvasComponent;
+    private Image canvasImage;
+    private float lastCanvasImageAlpha;
+    private Color lastCanvasImageColor;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        enemySpotLight = GetComponentInChildren<Light>();
+        enemySpotLight.intensity = 0; // Start with the spotlight off
+
+        canvasComponent = canvas.GetComponent<Canvas>();
+        canvasImage = canvas.GetComponentInChildren<Image>();
+        lastCanvasImageAlpha = canvasImage.color.a;
+        lastCanvasImageColor = canvasImage.color;
+
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         comboLength = comboArray.Length / 2;
+        UpdateSizeFromComboLength();
         speed = agent.speed;
         InitializeUI(); 
-        
-        InputManager.instance.PlayerOneEvent.AddListener(PlayerOneUpdate);
-        InputManager.instance.PlayerTwoEvent.AddListener(PlayerTwoUpdate);
-        
+        if (InputManager.instance != null)
+        {
+            InputManager.instance.PlayerOneEvent.AddListener(PlayerOneUpdate);
+            InputManager.instance.PlayerTwoEvent.AddListener(PlayerTwoUpdate);
+        }
         SetRandomColor();
+    }
+
+    private void OnDisable()
+    {
+        if (InputManager.instance != null)
+        {
+            InputManager.instance.PlayerOneEvent.RemoveListener(PlayerOneUpdate);
+            InputManager.instance.PlayerTwoEvent.RemoveListener(PlayerTwoUpdate);
+        }
     }
 
     void SetRandomColor()
@@ -92,9 +129,19 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
     public void Initialize(float aggroDelay)
     {
         player = GameObject.FindGameObjectWithTag("Player").transform; // Find the player by tag
-        playerScript = player.GetComponent<Player>();
-        //Debug.Log(aggroDelay);
+        playerScript = player.GetComponent<Player>();        
+
         Invoke(nameof(AggroPlayer), aggroDelay);
+    
+    }
+
+
+    private void UpdateSizeFromComboLength()
+    {
+        float newScale = baseScale + (comboLength - 1) * sizePerComboPair; // Calculate new scale based on combo length
+        newScale = Mathf.Min(newScale, maxScale); // Ensure the new scale does not exceed the maximum
+        newScale += Random.Range(-randomScaleVariance, randomScaleVariance); // Add random variance to the scale
+        transform.localScale = Vector3.one * newScale; // Apply the new scale to the enemy
     }
 
     public void AggroPlayer()
@@ -119,6 +166,9 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         {
             agent.SetDestination(player.transform.position);
             agent.stoppingDistance = stoppingDistance;
+
+            anim.SetBool("Walk", !agent.isStopped);
+
         }
     }
 
@@ -171,8 +221,6 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
 
         CheckAttackDist();
         
-        if(!projectileEnemy)
-            anim.SetBool("Walk", !agent.isStopped);
 
         if (startTimer)
         {
@@ -183,7 +231,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
                 if (timer < squareSuccessWindow) // only succeed if still within the time window
                 {
                     comboStep += 2;
-                    playerScript.ShootFireball(this.transform, this.gameObject);
+                    playerScript.ShootMagicspell(this.transform, this.gameObject);
                     //Debug.Log("Shooting from update");
                 }
                 else
@@ -256,7 +304,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
             localComboStarted = true;
             globalComboStarted = true;
 
-            playerScript.ShootFireball(this.transform, this.gameObject); // Enemies are the only one that knows that they can be hit therefor is also the ones telling when the fireball should go off.
+            playerScript.ShootMagicspell(this.transform, this.gameObject); // Enemies are the only one that knows that they can be hit therefor is also the ones telling when the fireball should go off.
             //UpdateUI(); Vi opdatere istedet når fireball rammer enemy
 
             comboStep += 2;
@@ -324,7 +372,15 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         {
             return;
         }
-        GetComponentInChildren<Canvas>().sortingOrder = 100; //TODO, Måske slet fordi det fucker projectile visibility up 
+
+        // ----------- //
+        // for bedre visual cues
+        canvasComponent.sortingOrder = 100; //TODO, Måske slet fordi det fucker projectile visibility up 
+        enemySpotLight.DOIntensity(lightFeedbackIntensity, visualFeedbackFadeDuration);
+        canvasImage.color = Color.white; // for at gøre den mere tydlig
+        canvasImage.DOFade(1, visualFeedbackFadeDuration); // sætter alpha til 1 (sætter den ned igen i CheckComboCompletion når combo er færdig)
+        // ----------- //
+
         Sequence comboStepSequence = DOTween.Sequence();
         comboStepSequence.Join(
             contentSprite[bottom].transform
@@ -343,10 +399,10 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         {
             contentSprite[bottom].enabled = false;
             contentSprite[top].enabled = false;
-
             //comboStep++; // Move to the next step in the combo sequence
             CheckComboCompletion();
             comboStepSequence.Kill();
+
         });
     }
 
@@ -360,6 +416,9 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         int totalSteps = comboArray.Length;
         if (uiComboStep >= totalSteps)
         {
+            canvasImage.DOFade(lastCanvasImageAlpha, visualFeedbackFadeDuration);
+            enemySpotLight.DOIntensity(0, visualFeedbackFadeDuration);
+
             Die();
         }
     }
