@@ -15,6 +15,14 @@ public class Player : MonoBehaviour
     public UnityEvent PlayerDiedEvent, PlayerRespawnEvent;
     public int healAmount = 5;
     public int lives = 3;
+    public Image takeDamageEffect; // Reference to a UI Image that will flash when the player takes damage
+    public float damageFlashDuration = 0.2f; // Duration of the damage flash effect
+    public float damageFlashIntensity = 0.5f; // Intensity of the damage flash effect (0 to 1)
+
+    [Header("Character Wobbing effect")]
+    public float amplitude = 0.1f; // The maximum distance the player will wobble
+    public float frequency = 1f; // The speed of the wobble
+    public Transform wobbleTransform; // The transform that will be wobbled (e.g., the player's body or a child object)
 
     [Header("Health UI")]
     public RectTransform healthBarUI; // Reference to the health bar UI element
@@ -59,6 +67,7 @@ public class Player : MonoBehaviour
     
     void Start()
     {
+        takeDamageEffect.DOFade(0f, 0f); // Ensure the damage effect is invisible at the start
         currentHealth = maxHealth; // Initialize current health to the maximum health at the start
         playerInput = GetComponent<PlayerInput>(); // Get the PlayerInput component attached to the player game object
         encounterManager = EncounterManager.instance; // Get the instance of the EncounterManager
@@ -68,6 +77,23 @@ public class Player : MonoBehaviour
         {
             InputManager.instance.PlayerOneEvent.AddListener(PlayerOneUpdate);
             InputManager.instance.PlayerTwoEvent.AddListener(PlayerTwoUpdate);
+        }
+
+        StartCoroutine(StartWobbleEffect());
+    }
+
+    private IEnumerator StartWobbleEffect()
+    {
+        Vector3 originalPosition = wobbleTransform.localPosition;
+        float elapsedTime = 0f;
+
+        while (true)
+        {
+            elapsedTime += Time.deltaTime;
+            float wobbleX = Mathf.Sin(elapsedTime * frequency) * amplitude;
+            float wobbleY = Mathf.Cos(elapsedTime * frequency) * amplitude;
+            wobbleTransform.localPosition = originalPosition + new Vector3(wobbleX, wobbleY, 0f);
+            yield return null; // Wait for the next frame
         }
     }
     private void LateUpdate()
@@ -368,7 +394,7 @@ public class Player : MonoBehaviour
 
            
             healthBarMaterial.SetFloat("_FillLevel", (float)currentHealth / maxHealth);
-                
+            FlashDamageEffect();
             // TODO: Add a tweening effect to the health bar for smoother transitions
             AnimateHealthBar();
             ShakeHealthBar();
@@ -396,6 +422,18 @@ public class Player : MonoBehaviour
         if (healthBarUI == null) return;
 
         healthBarUI.DOShakeAnchorPos(0.5f, new Vector2(10f, 0f), 10, 90, false, true);
+    }
+
+    private void FlashDamageEffect()
+    {
+        if (takeDamageEffect == null) return;
+
+        takeDamageEffect.DOKill();
+
+        takeDamageEffect.DOFade(damageFlashIntensity, damageFlashDuration).OnComplete(() =>
+        {
+            takeDamageEffect.DOFade(0f, damageFlashDuration);
+        });
     }
 
     private void Die()

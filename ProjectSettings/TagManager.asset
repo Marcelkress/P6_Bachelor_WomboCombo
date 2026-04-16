@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerOne
   - PlayerTwo
+  - CameraShaker
   layers:
   - Default
   - TransparentFX

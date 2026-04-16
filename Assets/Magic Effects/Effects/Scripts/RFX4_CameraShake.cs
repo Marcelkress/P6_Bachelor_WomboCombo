@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
+
 public class RFX4_CameraShake : MonoBehaviour
 {
     public AnimationCurve ShakeCurve = AnimationCurve.EaseInOut(0, 1, 1, 0);
@@ -42,33 +43,49 @@ public class RFX4_CameraShake : MonoBehaviour
     }
 
     IEnumerator Shake()
+{
+    var shaker = GameObject.FindGameObjectWithTag("CameraShaker");
+    if (shaker == null) yield break;
+
+    var camT = shaker.transform;
+    var elapsed = 0f;
+    var time = 0f;
+    var randomStart = Random.Range(-1000.0f, 1000.0f);
+    var distanceDamper = 1 - Mathf.Clamp01((camT.position - transform.position).magnitude / DistanceForce);
+    var direction = (transform.position - camT.position).normalized;
+
+    var baseLocalPos = camT.localPosition;
+    var baseLocalRot = camT.localRotation;
+
+    try
     {
-        var elapsed = 0.0f;
-        var camT = Camera.main.transform;
-        var originalCamRotation = camT.rotation.eulerAngles;
-        var direction = (transform.position - camT.position).normalized;
-        var time = 0f;
-        var randomStart = Random.Range(-1000.0f, 1000.0f);
-        var distanceDamper = 1 - Mathf.Clamp01((camT.position - transform.position).magnitude / DistanceForce);
-        Vector3 oldRotation = Vector3.zero;
-        while (elapsed < Duration && canUpdate) {
+        while (elapsed < Duration && canUpdate)
+        {
             elapsed += Time.deltaTime;
             var percentComplete = elapsed / Duration;
             var damper = ShakeCurve.Evaluate(percentComplete) * distanceDamper;
             time += Time.deltaTime * damper;
-            camT.position -= direction * Time.deltaTime * Mathf.Sin(time * Speed) * damper * Magnitude/2;
 
-            var alpha = randomStart + Speed * percentComplete / 10;
+            var posOffset = -direction * Time.deltaTime * Mathf.Sin(time * Speed) * damper * (Magnitude * 0.5f);
+
+            var alpha = randomStart + Speed * percentComplete / 10f;
             var x = Mathf.PerlinNoise(alpha, 0.0f) * 2.0f - 1.0f;
             var y = Mathf.PerlinNoise(1000 + alpha, alpha + 1000) * 2.0f - 1.0f;
             var z = Mathf.PerlinNoise(0.0f, alpha) * 2.0f - 1.0f;
 
-            if (Quaternion.Euler(originalCamRotation + oldRotation)!=camT.rotation)
-                originalCamRotation = camT.rotation.eulerAngles;
-            oldRotation = Mathf.Sin(time * Speed) * damper * Magnitude * new Vector3(0.5f + y, 0.3f + x, 0.3f + z) * RotationDamper;
-            camT.rotation = Quaternion.Euler(originalCamRotation + oldRotation);
+            var rotOffset = Mathf.Sin(time * Speed) * damper * Magnitude *
+                            new Vector3(0.5f + y, 0.3f + x, 0.3f + z) * RotationDamper;
+
+            camT.localPosition = baseLocalPos + posOffset;
+            camT.localRotation = baseLocalRot * Quaternion.Euler(rotOffset);
 
             yield return null;
         }
     }
+    finally
+    {
+        camT.localPosition = Vector3.zero;
+        camT.localRotation = Quaternion.identity;
+    }
+}
 }
