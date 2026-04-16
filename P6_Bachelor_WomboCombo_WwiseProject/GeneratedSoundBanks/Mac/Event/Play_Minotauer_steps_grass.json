@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{E63FEFAE-C052-467F-BCAA-4306AA7B59C5}",
     "Language": "SFX",
-    "Hash": "{5B0854A9-A274-FAFF-0A04-E902CF9BFB4C}",
+    "Hash": "{B9054BB6-0555-144E-BB1B-3193A8E03CF0}",
     "ObjectPath": "Play_Minotauer_steps_grass",
     "ShortName": "Play_Minotauer_steps_grass",
     "Path": "Event/Play_Minotauer_steps_grass.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "Mnitauser steps grass.wav",
       "Path": "Media/57189065.wem",
-      "CachePath": "74/{74606683-71ED-0037-ED2B-8D9C8831FF52}.wem"
+      "CachePath": "73/{73D74571-B771-A839-278D-E289176CCA9A}.wem"
      },
      {
       "Id": "94127363",
@@ -31,7 +31,7 @@
       "Location": "Loose",
       "ShortName": "Mnitauser steps grass.wav",
       "Path": "Media/94127363.wem",
-      "CachePath": "5A/{5A407C21-54DC-6907-AD79-6B13B1D92E33}.wem"
+      "CachePath": "F3/{F38F639D-C301-DD2B-A431-95474E666AD7}.wem"
      },
      {
       "Id": "147565660",
@@ -40,7 +40,7 @@
       "Location": "Loose",
       "ShortName": "Mnitauser steps grass.wav",
       "Path": "Media/147565660.wem",
-      "CachePath": "C7/{C7B7AF74-73B8-6A46-6A91-99850D2A18E9}.wem"
+      "CachePath": "01/{01E6C8C6-2F25-6BAD-E0B0-1DCCCCA47337}.wem"
      },
      {
       "Id": "569996755",
@@ -49,7 +49,7 @@
       "Location": "Loose",
       "ShortName": "Mnitauser steps grass.wav",
       "Path": "Media/569996755.wem",
-      "CachePath": "BA/{BA19F404-532B-3A6E-CC2E-60CEDA0F5E8D}.wem"
+      "CachePath": "A7/{A7BE32CB-E708-F851-2AE9-D891FC2E6566}.wem"
      },
      {
       "Id": "681038195",
@@ -58,7 +58,7 @@
       "Location": "Loose",
       "ShortName": "Mnitauser steps grass.wav",
       "Path": "Media/681038195.wem",
-      "CachePath": "B6/{B6DE7BDC-DE33-CEC6-92D4-0FBEE859D8B1}.wem"
+      "CachePath": "4E/{4ED588F4-F70D-3A42-B569-399D3552E8A7}.wem"
      },
      {
       "Id": "954416019",
@@ -104,6 +104,6 @@
     ]
    }
   ],
-  "FileHash": "{B7769FC5-7C5B-E859-D717-7D5BACCC676C}"
+  "FileHash": "{2AD86242-3F26-9F88-BCD7-4BBE4FD2409C}"
  }
 }

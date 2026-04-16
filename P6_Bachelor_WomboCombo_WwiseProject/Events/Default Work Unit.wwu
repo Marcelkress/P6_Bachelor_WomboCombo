@@ -158,6 +158,28 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_LightningStrike" ID="{4DF00548-0438-40DA-8842-DDAA11BB5DFA}">
+					<ChildrenList>
+						<Action Name="" ID="{89FD0851-67AF-420D-BB9E-D3F2E6533E72}" ShortID="590774223">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="LightningStrike" ID="{FE4952F5-D651-45E8-BAEF-AC2095ABF538}" WorkUnitID="{4F9991F6-C6B0-464E-A79D-228F4B413CED}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_5_Fire_Bomb_B" ID="{26EAB187-2101-4244-98EC-440EEF145097}">
+					<ChildrenList>
+						<Action Name="" ID="{3F23B7AF-58DB-46AE-8036-AD1BE616B6BA}" ShortID="693543641">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX 5-Fire Bomb B" ID="{D88508F3-4F0B-4C8A-98C1-C23503BD4E40}" WorkUnitID="{4F9991F6-C6B0-464E-A79D-228F4B413CED}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
