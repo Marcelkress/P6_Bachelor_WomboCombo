@@ -3779,6 +3779,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 721312277}
     - target: {fileID: 6198776561076755395, guid: 98e6c30c76740414f9c65dbbd2a5dd24, type: 3}
+      propertyPath: spellAttackSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6198776561076755395, guid: 98e6c30c76740414f9c65dbbd2a5dd24, type: 3}
       propertyPath: epicExplosionShakeDuration
       value: 0.9
       objectReference: {fileID: 0}

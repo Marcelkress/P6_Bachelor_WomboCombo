@@ -368,7 +368,7 @@ public class MagicBall : MonoBehaviour
                     {
                         explosion = Instantiate(epicExplosionPrefab, targetPos, Quaternion.identity);
 
-                        if (attachExplosionToTarget && target != null)
+                        if (attachExplosionToTarget && target != null) // so it is always on the target
                             explosion.transform.SetParent(target.transform, true);
 
                     }
