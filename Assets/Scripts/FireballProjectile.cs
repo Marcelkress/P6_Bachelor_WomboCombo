@@ -100,5 +100,5 @@ public class FireballProjectile : MonoBehaviour
 
 public interface IEnemyDamagable
 {
-    public void UpdateUI();
+    public void UpdateUI(bool instantKill = false);
 }

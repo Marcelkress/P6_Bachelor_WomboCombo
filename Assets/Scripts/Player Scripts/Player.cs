@@ -19,6 +19,15 @@ public class Player : MonoBehaviour
     public float damageFlashDuration = 0.2f; // Duration of the damage flash effect
     public float damageFlashIntensity = 0.5f; // Intensity of the damage flash effect (0 to 1)
 
+    [Header("Epicness buildup")]
+    public float epicnessIncreasePerHit = 0.1f;
+    public float epicnessDecreasePerMiss = 0.05f;
+    public float maxEpicness = 1f;
+    public float epicnessThresholdForSpell = 0.8f; // The epicness level required to be able to shoot a magic spell
+    private float startingEpicness = 0f;
+    public float currentEpicness = 0f;
+    public event System.Action<float> EpicnessChanged;
+
     [Header("Character Wobbing effect")]
     public float amplitude = 0.1f; // The maximum distance the player will wobble
     public float frequency = 1f; // The speed of the wobble
@@ -52,6 +61,7 @@ public class Player : MonoBehaviour
     [Header("Magic spell")]
     public GameObject[] MagicSpellPrefabs; // Array of different magic spell prefabs that the player can shoot
     public Transform[] shootingPoints;
+    [SerializeField] private MagicBall magicBall;
 
     private PlayerInput playerInput; // Reference to the PlayerInput component for handling input actions
     private EncounterManager encounterManager; // Reference to the EncounterManager for accessing boss logic and other encounter-related data
@@ -147,13 +157,36 @@ public class Player : MonoBehaviour
     [SerializeField] private float lightningCleanupDelay = 1f;
     private List<GameObject> instantiatedMagicSpells = new List<GameObject>();
 
+    public void AddEpicness(float delta)
+    {
+        float nextEpicness = Mathf.Clamp(currentEpicness + delta, 0f, maxEpicness);
+
+        if (Mathf.Approximately(nextEpicness, currentEpicness))
+            return;
+
+        currentEpicness = nextEpicness;
+        EpicnessChanged?.Invoke(currentEpicness);
+    }
+
     public void ShootMagicspell(Transform target, GameObject targetedEnemy)
     {
+        if (magicBall != null)
+            magicBall.PlayCastFeedback();
+
         int spellIndex = Random.Range(0, MagicSpellPrefabs.Length);
         int shootingPointIndex = Random.Range(0, shootingPoints.Length);
         
         Vector3 targetPos = target.position;
         targetPos += Vector3.up * upwardsOffset;
+
+        if (currentEpicness >= epicnessThresholdForSpell)
+        {
+            
+            currentEpicness = 0f; // Reset epicness after shooting the powerful spell
+            EpicnessChanged?.Invoke(currentEpicness); // Notify listeners of the epicness change
+            magicBall.StartCoroutine(magicBall.SpellAttack(targetedEnemy, true));
+            return; // Exit the method to prevent shooting a regular spell
+        }
 
        // if (spellIndex == 0) spellIndex = 1; // TEMPORARY 
         
@@ -296,7 +329,7 @@ public class Player : MonoBehaviour
                 if (timer < starSuccessWindow) // only succeed if still within the time window
                 {
                     comboStep += 2;
-                    UpdateUI();
+                    
                 }
                 else
                 {

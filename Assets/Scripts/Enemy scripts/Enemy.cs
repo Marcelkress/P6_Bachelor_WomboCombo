@@ -255,6 +255,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
                 if (timer < squareSuccessWindow) // only succeed if still within the time window
                 {
                     comboStep += 2;
+                    playerScript.AddEpicness(playerScript.epicnessIncreasePerHit); // Increase epicness on successful combo input
                     playerScript.ShootMagicspell(this.transform, this.gameObject);
                     //Debug.Log("Shooting from update");
                 }
@@ -328,6 +329,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
             localComboStarted = true;
             globalComboStarted = true;
 
+            playerScript.AddEpicness(playerScript.epicnessIncreasePerHit); // Increase epicness on successful combo input
             playerScript.ShootMagicspell(this.transform, this.gameObject); // Enemies are the only one that knows that they can be hit therefor is also the ones telling when the fireball should go off.
             //UpdateUI(); Vi opdatere istedet når fireball rammer enemy
 
@@ -341,6 +343,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         }
         else
         {
+            playerScript.AddEpicness(-playerScript.epicnessDecreasePerMiss); // Decrease epicness on failed combo input
             Debug.Log("Wrong input");
             wrongComboInput++;
         }
@@ -377,10 +380,10 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         //UpdateUI();
         //comboStep += 2;
         playerScript.ShootMagicspell(this.transform, this.gameObject); // Enemies are the only one that knows that they can be hit therefor is also the ones telling when the fireball should go off.
-
+        playerScript.AddEpicness(playerScript.epicnessIncreasePerHit); // Increase epicness on successful combo input
     }
 
-    public void UpdateUI()
+    public void UpdateUI(bool instantKill = false)
     {
        // animate the UI elements with shake effect and then disable the current combo step's UI elements
         int top = uiComboStep;
@@ -426,7 +429,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
             contentSprite[bottom].enabled = false;
             contentSprite[top].enabled = false;
             //comboStep++; // Move to the next step in the combo sequence
-            CheckComboCompletion();
+            CheckComboCompletion(instantKill);
             comboStepSequence.Kill();
 
         });
@@ -437,10 +440,10 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
             agent.speed = speed;
     }
 
-    private void CheckComboCompletion()
+    private void CheckComboCompletion(bool instantKill)
     {
         int totalSteps = comboArray.Length;
-        if (uiComboStep >= totalSteps)
+        if (uiComboStep >= totalSteps || instantKill == true)
         {
             canvasImage.DOFade(lastCanvasImageAlpha, visualFeedbackFadeDuration);
             enemySpotLight.DOIntensity(0, visualFeedbackFadeDuration);
