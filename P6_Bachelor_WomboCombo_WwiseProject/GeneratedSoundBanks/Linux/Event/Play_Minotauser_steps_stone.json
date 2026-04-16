@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{5B9A56BF-7C09-4DFC-A1FE-76C31A61431D}",
     "Language": "SFX",
-    "Hash": "{53E542F4-4D81-6A2E-8E66-7D33078B32B1}",
+    "Hash": "{5048EE9F-6644-571B-7CFC-CC4BF1F4DE8E}",
     "ObjectPath": "Play_Minotauser_steps_stone",
     "ShortName": "Play_Minotauser_steps_stone",
     "Path": "Event/Play_Minotauser_steps_stone.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "Mnitauser steps stone.wav",
       "Path": "Media/136201909.wem",
-      "CachePath": "E4/{E4F8FD7C-024D-F210-F186-38570E01F8C3}.wem"
+      "CachePath": "98/{98B3C1F0-A37F-3198-2E57-BDE50EE4AFDC}.wem"
      },
      {
       "Id": "387220678",
@@ -31,7 +31,7 @@
       "Location": "Loose",
       "ShortName": "Mnitauser steps stone.wav",
       "Path": "Media/387220678.wem",
-      "CachePath": "0B/{0B1F9EA0-A483-E895-0BBE-413A72B244FB}.wem"
+      "CachePath": "17/{176EF575-0317-DDE8-DAA5-365629C52406}.wem"
      },
      {
       "Id": "435913531",
@@ -40,7 +40,7 @@
       "Location": "Loose",
       "ShortName": "Mnitauser steps stone.wav",
       "Path": "Media/435913531.wem",
-      "CachePath": "E8/{E87B2594-A322-8894-DCB1-E4931B5AC8EF}.wem"
+      "CachePath": "DF/{DF10E7A8-352D-ED7C-7E44-287CA68D00EA}.wem"
      },
      {
       "Id": "546613109",
@@ -49,7 +49,7 @@
       "Location": "Loose",
       "ShortName": "Mnitauser steps stone.wav",
       "Path": "Media/546613109.wem",
-      "CachePath": "70/{70B68130-5817-D95E-E6F3-33A195618EF7}.wem"
+      "CachePath": "7E/{7EDE93CA-0A8C-C42C-08C2-A0368DB0E6BA}.wem"
      },
      {
       "Id": "722315045",
@@ -58,7 +58,7 @@
       "Location": "Loose",
       "ShortName": "Mnitauser steps stone.wav",
       "Path": "Media/722315045.wem",
-      "CachePath": "47/{47002F8F-3322-8F5A-D417-248EB1849982}.wem"
+      "CachePath": "1F/{1F2D01DB-F99E-18E7-6E4B-C6EA82A3C824}.wem"
      },
      {
       "Id": "852310433",
@@ -67,7 +67,7 @@
       "Location": "Loose",
       "ShortName": "Mnitauser steps stone.wav",
       "Path": "Media/852310433.wem",
-      "CachePath": "7D/{7D18EC95-EC85-A266-F0AD-31742DF6D4BB}.wem"
+      "CachePath": "8B/{8B4948FF-9870-C3F0-6654-39C2CA0BBC4F}.wem"
      }
     ],
     "Events": [
@@ -104,6 +104,6 @@
     ]
    }
   ],
-  "FileHash": "{275246B3-FC2D-16BD-7821-0A8BC3E51DC8}"
+  "FileHash": "{982412DB-C102-948F-9027-CCA9A00A42AF}"
  }
 }

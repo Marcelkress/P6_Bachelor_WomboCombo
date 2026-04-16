@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{9F6DD6B5-E43E-43C3-AFB2-07F4859F203C}",
     "Language": "SFX",
-    "Hash": "{56B0009D-D207-299C-EFFD-2CD3D32DE9F8}",
+    "Hash": "{7CB42DF2-103D-0CF3-3221-F20B1F836A33}",
     "ObjectPath": "Play_Fireball",
     "ShortName": "Play_Fireball",
     "Path": "Event/Play_Fireball.bnk",
@@ -68,6 +68,6 @@
     ]
    }
   ],
-  "FileHash": "{51B85891-A1F5-15BF-E0E8-EDEA3084485B}"
+  "FileHash": "{9A09F15D-8DA3-CFB6-A9FC-F50CED13BDBE}"
  }
 }

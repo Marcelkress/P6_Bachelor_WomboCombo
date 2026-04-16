@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	889095714	Play_LightningStrike			\Default Work Unit\Play_LightningStrike	
+

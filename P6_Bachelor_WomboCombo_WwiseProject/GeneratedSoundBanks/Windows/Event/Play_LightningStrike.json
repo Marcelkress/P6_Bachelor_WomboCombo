@@ -1,0 +1,72 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "889095714",
+    "Type": "Event",
+    "GUID": "{4DF00548-0438-40DA-8842-DDAA11BB5DFA}",
+    "Language": "SFX",
+    "Hash": "{C0D91FED-973A-1FA4-4ED3-661C759742A0}",
+    "ObjectPath": "Play_LightningStrike",
+    "ShortName": "Play_LightningStrike",
+    "Path": "Event/Play_LightningStrike.bnk",
+    "Media": [
+     {
+      "Id": "739750044",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "SFX 4-Thunderwave B.wav",
+      "Path": "Media/739750044.wem",
+      "CachePath": "AD/{ADD6979C-358C-AB4E-CD50-F404B9488C44}.wem"
+     },
+     {
+      "Id": "799066041",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "SFX 2-Call Lightning B.wav",
+      "Path": "Media/799066041.wem",
+      "CachePath": "98/{9815431A-5381-DAF8-3812-27AC6279E6E5}.wem"
+     },
+     {
+      "Id": "1053414898",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "SFX 3-Thunderclap [2026-04-16 224013].wav",
+      "Path": "Media/1053414898.wem",
+      "CachePath": "8A/{8A3923E7-EDA4-13D7-5FDB-0C09E95819FF}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "889095714",
+      "Name": "Play_LightningStrike",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_LightningStrike",
+      "GUID": "{4DF00548-0438-40DA-8842-DDAA11BB5DFA}",
+      "DurationType": "OneShot",
+      "DurationMin": "11.294125",
+      "DurationMax": "11.294125",
+      "MediaRefs": [
+       {
+        "Id": "739750044"
+       },
+       {
+        "Id": "799066041"
+       },
+       {
+        "Id": "1053414898"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{FA54B01D-E814-E714-C2EE-56ECF4C06872}"
+ }
+}
