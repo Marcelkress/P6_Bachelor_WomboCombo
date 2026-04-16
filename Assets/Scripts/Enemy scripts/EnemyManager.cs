@@ -19,7 +19,9 @@ public class EnemyManager : MonoBehaviour
     public float enemyAggroDelayVariance = 0.24f; // added variance to enemy aggro delay for more dynamic encounters
     private List<startStruct> pooledComboStartSteps = new List<startStruct>(); // for resetting the theFirstUniqueComboStartSteps list
 
+    public bool enemiesShouldCharge = false;
 
+    
     private void Awake()
     {
         pooledComboStartSteps = new List<startStruct>(theFirstUniqueComboStartSteps); // stores the pool of unique starting combos for resetting laters
@@ -54,7 +56,7 @@ public class EnemyManager : MonoBehaviour
 
             Enemy enemyScript = enemy.GetComponent<Enemy>();
             enemyScript.manager = this;
-            
+            enemyScript.shouldCharge = enemiesShouldCharge;
             // Først helt random Combo Array for hver enemy
             enemyScript.comboArray = RandomArray(minComboLegnth, maxComboLength);
             

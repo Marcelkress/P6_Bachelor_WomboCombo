@@ -13,6 +13,10 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
     public Transform projectileShootPoint;
     public float shootIntervalMax, shootIntervalMin;
 
+    [Header("Movement and Aggro for non-projectile enemies")]
+    public bool shouldCharge;
+    public float chargeSpeedMultiplier = 2f; // Multiplier for the NavMeshAgent speed when charging
+
     [Header("Size Scaling")]
     public float baseScale = 1f;
     public float sizePerComboPair = 0.08f;
@@ -95,7 +99,18 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         agent = GetComponent<NavMeshAgent>();
         comboLength = comboArray.Length / 2;
         UpdateSizeFromComboLength();
-        speed = agent.speed;
+        if (shouldCharge)
+        {
+            agent.speed = agent.speed * chargeSpeedMultiplier;
+
+            speed = agent.speed; // Store the original speed value for later use when resetting speed after hit recovery
+            
+        }
+        else
+        {
+            speed = agent.speed;
+        }
+        
         InitializeUI(); 
         if (InputManager.instance != null)
         {
@@ -167,7 +182,16 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
             agent.SetDestination(player.transform.position);
             agent.stoppingDistance = stoppingDistance;
 
-            anim.SetBool("Walk", !agent.isStopped);
+            if (shouldCharge)
+            {
+                anim.SetBool("Run", !agent.isStopped);
+            }
+            else
+            {
+                anim.SetBool("Walk", !agent.isStopped);
+            }
+
+            
 
         }
     }
@@ -350,8 +374,10 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
 
     public void CheatComboStep()
     {
-        UpdateUI();
-        comboStep += 2;
+        //UpdateUI();
+        //comboStep += 2;
+        playerScript.ShootMagicspell(this.transform, this.gameObject); // Enemies are the only one that knows that they can be hit therefor is also the ones telling when the fireball should go off.
+
     }
 
     public void UpdateUI()

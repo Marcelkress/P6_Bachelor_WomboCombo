@@ -404,6 +404,8 @@ MonoBehaviour:
   projectileShootPoint: {fileID: 0}
   shootIntervalMax: 0
   shootIntervalMin: 0
+  shouldCharge: 0
+  chargeSpeedMultiplier: 2
   baseScale: 1
   sizePerComboPair: 0.08
   maxScale: 1.8

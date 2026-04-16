@@ -44,7 +44,7 @@ public class FireballProjectile : MonoBehaviour
     }
 
     private float timer;
-
+    private GameObject instantiatedExplosion;
     void FixedUpdate()
     {
         if (target == null || currentPosition == null)
@@ -65,7 +65,7 @@ public class FireballProjectile : MonoBehaviour
         if (distance <= 0.01f)
         {
             targetedEnemyScript.UpdateUI();
-            Instantiate(fireExplosionPrefab, target.position, target.rotation);
+            instantiatedExplosion = Instantiate(fireExplosionPrefab, target.position, target.rotation);
             target = null;
             
             this.gameObject.SetActive(false);
@@ -92,7 +92,7 @@ public class FireballProjectile : MonoBehaviour
 
     private void CleanUp()
     {
-        Destroy(this.fireExplosionPrefab);
+        Destroy(this.instantiatedExplosion);
         Destroy(this.gameObject);
     }
 }

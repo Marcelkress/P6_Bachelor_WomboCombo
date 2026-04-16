@@ -4,6 +4,8 @@ using DG.Tweening;
 using UnityEngine.InputSystem;
 using TMPro;
 using UnityEngine.Events;
+using System.Collections.Generic;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
@@ -38,12 +40,13 @@ public class Player : MonoBehaviour
 
     public int shakeVibrato;
 
-    
+
+    [Header("Magic spell")]
+    public GameObject[] MagicSpellPrefabs; // Array of different magic spell prefabs that the player can shoot
+    public Transform[] shootingPoints;
+
     private PlayerInput playerInput; // Reference to the PlayerInput component for handling input actions
     private EncounterManager encounterManager; // Reference to the EncounterManager for accessing boss logic and other encounter-related data
-
-    [Header("Fire ball")]
-    public GameObject fireballPrefab;
 
     //public UnityEvent FireballSound;
     
@@ -113,16 +116,76 @@ public class Player : MonoBehaviour
     
     }
 
+    private float upwardsOffset = 0.5f; // Adjust this value to control how much the player looks upwards when looking at the boss
+
+    [SerializeField] private float lightningCleanupDelay = 1f;
+    private List<GameObject> instantiatedMagicSpells = new List<GameObject>();
+
     public void ShootMagicspell(Transform target, GameObject targetedEnemy)
     {
-        GameObject fireball = Instantiate(fireballPrefab, this.transform.position, this.transform.rotation);
-
-        FireballProjectile fireballScript = fireball.GetComponent<FireballProjectile>();
-
-        fireballScript.SetTargetTransform(target, targetedEnemy);
+        int spellIndex = Random.Range(0, MagicSpellPrefabs.Length);
+        int shootingPointIndex = Random.Range(0, shootingPoints.Length);
         
-       // FireballSound.Invoke();
+        Vector3 targetPos = target.position;
+        targetPos += Vector3.up * upwardsOffset;
 
+       // if (spellIndex == 0) spellIndex = 1; // TEMPORARY 
+        
+        if (spellIndex == 0)
+        {
+            GameObject fireball = Instantiate(MagicSpellPrefabs[spellIndex], shootingPoints[shootingPointIndex].position, shootingPoints[shootingPointIndex].rotation);
+
+            FireballProjectile fireballScript = fireball.GetComponent<FireballProjectile>();
+
+            fireballScript.SetTargetTransform(target, targetedEnemy);
+        
+            // FireballSound.Invoke();
+        }
+        else if (spellIndex == 1)
+        {
+            GameObject lightning = Instantiate(MagicSpellPrefabs[spellIndex], shootingPoints[shootingPointIndex].position, shootingPoints[shootingPointIndex].rotation);
+            instantiatedMagicSpells.Add(lightning);
+
+            Vector3 direction = targetPos - lightning.transform.position;
+            if (direction.sqrMagnitude > 0.0001f)
+            {
+                lightning.transform.rotation = Quaternion.LookRotation(direction.normalized);
+            }
+
+            RFX4_RaycastCollision raycastCollision = lightning.GetComponentInChildren<RFX4_RaycastCollision>();
+            IEnemyDamagable enemyDamagable = targetedEnemy.GetComponent<IEnemyDamagable>();
+
+            if (raycastCollision != null)
+            {
+                bool hasAppliedHit = false;
+                raycastCollision.CollisionEnter += (sender, collisionInfo) =>
+                {
+                    if (hasAppliedHit || enemyDamagable == null) return;
+                    hasAppliedHit = true;
+                    enemyDamagable.UpdateUI();
+                };
+
+                raycastCollision.UpdateRaycast(targetedEnemy);
+            }
+
+            StartCoroutine(waitAndCleanUp(lightning, lightningCleanupDelay));
+        }
+    }
+
+    private IEnumerator waitAndCleanUp(GameObject spell, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        CleanUpSpell(spell);
+    }
+
+    private void CleanUpSpell(GameObject spell)
+    {
+        if (spell != null)
+        {
+            Destroy(spell);
+        }
+
+        instantiatedMagicSpells.Remove(spell);
     }
     
     public void PlayerOneUpdate()
