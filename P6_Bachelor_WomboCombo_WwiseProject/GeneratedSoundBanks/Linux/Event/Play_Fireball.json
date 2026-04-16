@@ -10,37 +10,37 @@
     "Type": "Event",
     "GUID": "{9F6DD6B5-E43E-43C3-AFB2-07F4859F203C}",
     "Language": "SFX",
-    "Hash": "{7CB42DF2-103D-0CF3-3221-F20B1F836A33}",
+    "Hash": "{B266E7E2-6F5B-471A-C65C-6409FF4D7FDF}",
     "ObjectPath": "Play_Fireball",
     "ShortName": "Play_Fireball",
     "Path": "Event/Play_Fireball.bnk",
     "Media": [
      {
-      "Id": "98952576",
+      "Id": "68741855",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Loose",
-      "ShortName": "Fireball C.wav",
-      "Path": "Media/98952576.wem",
-      "CachePath": "2E/{2E1BACC9-5FBD-2F42-D4FA-D9A267E56C60}.wem"
+      "ShortName": "SFX 7-Fireball C.wav",
+      "Path": "Media/68741855.wem",
+      "CachePath": "48/{4877E716-599A-CDA9-AE4D-5FBF82B735BA}.wem"
      },
      {
-      "Id": "372213822",
+      "Id": "531704169",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Loose",
-      "ShortName": "Fireball C.wav",
-      "Path": "Media/372213822.wem",
-      "CachePath": "13/{13C45885-E2AB-37A5-3FD6-F6D50D0749DD}.wem"
+      "ShortName": "SFX 6-Fireball B.wav",
+      "Path": "Media/531704169.wem",
+      "CachePath": "DA/{DAA4A828-D11A-279A-1D72-1F80DA0C556A}.wem"
      },
      {
-      "Id": "492585967",
+      "Id": "890959329",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Loose",
-      "ShortName": "Fireball C.wav",
-      "Path": "Media/492585967.wem",
-      "CachePath": "5F/{5FFD9654-C131-6412-2430-ACBFF7ABF48B}.wem"
+      "ShortName": "SFX 8-Fireball D.wav",
+      "Path": "Media/890959329.wem",
+      "CachePath": "EC/{EC843958-D2E0-8CD5-C7F9-A596AAD76F1A}.wem"
      }
     ],
     "Events": [
@@ -51,23 +51,23 @@
       "GUID": "{9F6DD6B5-E43E-43C3-AFB2-07F4859F203C}",
       "MaxAttenuation": "65",
       "DurationType": "OneShot",
-      "DurationMin": "3.615562",
-      "DurationMax": "5.6544876",
+      "DurationMin": "4.9411874",
+      "DurationMax": "4.9411874",
       "MediaRefs": [
        {
-        "Id": "98952576"
+        "Id": "68741855"
        },
        {
-        "Id": "372213822"
+        "Id": "531704169"
        },
        {
-        "Id": "492585967"
+        "Id": "890959329"
        }
       ]
      }
     ]
    }
   ],
-  "FileHash": "{30F05746-3EEB-6E56-4F2D-AF4A55E2E1B4}"
+  "FileHash": "{51D41EE4-4CFB-08D6-7CBD-B2DA49D7DDB1}"
  }
 }

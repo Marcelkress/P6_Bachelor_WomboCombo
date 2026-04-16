@@ -81,6 +81,8 @@ public class MagicBall : MonoBehaviour
 
     private Vector3 initialPos;
 
+    [Header("Bomb Timer sound")] [SerializeField]
+    private AK.Wwise.Event BombTimer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -98,6 +100,8 @@ public class MagicBall : MonoBehaviour
         currentEmissionMultiplier = idleEmissionMultiplier;
         ApplyEmissionColor();
         //StartCoroutine(InitializeSequence());
+        
+       
 
         topHalfInitialScale = topHalfSphere.transform.localScale; // Store the initial scale of the top half sphere
         initialLocalPosition = transform.localPosition;
@@ -356,7 +360,8 @@ public class MagicBall : MonoBehaviour
                 : target.transform.position + Vector3.up * spellTargetYOffset;
 
             transform.position = Vector3.MoveTowards(transform.position, targetPos, spellAttackSpeed * Time.deltaTime);
-
+            
+            
             // when close enought use the epicExplosionParticle and then the magic ball returns to its initial position
             if (Vector3.Distance(transform.position, targetPos) < spellHitDistance)
             {
@@ -367,6 +372,7 @@ public class MagicBall : MonoBehaviour
                     if (epicExplosionPrefab != null)
                     {
                         explosion = Instantiate(epicExplosionPrefab, targetPos, Quaternion.identity);
+                        BombTimer.Stop(this.gameObject);
 
                         if (attachExplosionToTarget && target != null) // so it is always on the target
                             explosion.transform.SetParent(target.transform, true);
@@ -416,4 +422,12 @@ public class MagicBall : MonoBehaviour
         }
         transform.position = returnPoint.position; // Ensure it snaps exactly to the return point
     }
+
+    public void BombTimerStart()
+    {
+        BombTimer.Post(this.gameObject);
+    }
+    
+    
+    
 }

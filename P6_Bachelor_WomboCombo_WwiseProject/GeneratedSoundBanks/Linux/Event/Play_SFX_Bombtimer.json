@@ -1,0 +1,49 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Linux",
+  "BasePlatform": "Linux",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "2257001325",
+    "Type": "Event",
+    "GUID": "{7DA0C645-E254-4251-AC9C-932F2DD1A520}",
+    "Language": "SFX",
+    "Hash": "{D60D47B1-0BB2-F933-1DCE-99155C3E10C9}",
+    "ObjectPath": "Play_SFX_Bombtimer",
+    "ShortName": "Play_SFX_Bombtimer",
+    "Path": "Event/Play_SFX_Bombtimer.bnk",
+    "Media": [
+     {
+      "Id": "800777795",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "SFX Bombtimer.wav",
+      "Path": "Media/800777795.wem",
+      "CachePath": "AA/{AA62DB7A-CF27-75CB-119A-027633CBFF04}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2257001325",
+      "Name": "Play_SFX_Bombtimer",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_SFX_Bombtimer",
+      "GUID": "{7DA0C645-E254-4251-AC9C-932F2DD1A520}",
+      "MaxAttenuation": "50",
+      "DurationType": "OneShot",
+      "DurationMin": "4.238604",
+      "DurationMax": "4.238604",
+      "MediaRefs": [
+       {
+        "Id": "800777795"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{FEC812E7-39FE-6103-21C1-36584BEBAEBB}"
+ }
+}

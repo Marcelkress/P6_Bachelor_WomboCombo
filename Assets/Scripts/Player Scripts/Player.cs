@@ -185,6 +185,7 @@ public class Player : MonoBehaviour
             currentEpicness = 0f; // Reset epicness after shooting the powerful spell
             EpicnessChanged?.Invoke(currentEpicness); // Notify listeners of the epicness change
             magicBall.StartCoroutine(magicBall.SpellAttack(targetedEnemy, true));
+            magicBall.BombTimerStart();
             return; // Exit the method to prevent shooting a regular spell
         }
 

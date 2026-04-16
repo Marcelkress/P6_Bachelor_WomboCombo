@@ -180,6 +180,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_SFX_Bombtimer" ID="{7DA0C645-E254-4251-AC9C-932F2DD1A520}">
+					<ChildrenList>
+						<Action Name="" ID="{C9981E41-3901-40CA-AD12-026F57B6B397}" ShortID="239957449">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX Bombtimer" ID="{ECA0B7ED-5D9C-4013-B63E-BED46088E773}" WorkUnitID="{4F9991F6-C6B0-464E-A79D-228F4B413CED}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
