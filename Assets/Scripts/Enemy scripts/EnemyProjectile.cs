@@ -128,7 +128,7 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
         deathTimer += Time.deltaTime;
         if (deathTimer > liveTime)
         {
-            Destroy(this.gameObject);
+            Die();
         }
     }
 
