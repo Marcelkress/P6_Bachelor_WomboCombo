@@ -103,7 +103,7 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
                 if (timer < squareSuccessWindow) // only succeed if still within the time window
                 {
                     comboStep += 2;
-                    playerScript.ShootMagicspell(playerSpellTargetPoint, this.gameObject);
+                    playerScript.ShootMagicspell(playerSpellTargetPoint, this.gameObject, true);
                 }
                 else
                 {
@@ -136,7 +136,7 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
     {
         //UpdateUI();
         //comboStep += 2;
-        playerScript.ShootMagicspell(playerSpellTargetPoint, this.gameObject); // Enemies are the only one that knows that they can be hit therefor is also the ones telling when the fireball should go off.
+        playerScript.ShootMagicspell(playerSpellTargetPoint, this.gameObject, true); // Enemies are the only one that knows that they can be hit therefor is also the ones telling when the fireball should go off.
 
     }
     
@@ -174,7 +174,7 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
             }
 
             // Debug.Log("Shooting from Method");
-            playerScript.ShootMagicspell(playerSpellTargetPoint, this.gameObject);
+            playerScript.ShootMagicspell(playerSpellTargetPoint, this.gameObject, true);
             comboStep += 2;
         }
     }

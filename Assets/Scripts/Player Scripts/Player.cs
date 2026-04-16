@@ -168,7 +168,7 @@ public class Player : MonoBehaviour
         EpicnessChanged?.Invoke(currentEpicness);
     }
 
-    public void ShootMagicspell(Transform target, GameObject targetedEnemy)
+    public void ShootMagicspell(Transform target, GameObject targetedEnemy, bool isProjectile = false)
     {
         if (magicBall != null)
             magicBall.PlayCastFeedback();
@@ -179,7 +179,7 @@ public class Player : MonoBehaviour
         Vector3 targetPos = target.position;
         targetPos += Vector3.up * upwardsOffset;
 
-        if (currentEpicness >= epicnessThresholdForSpell)
+        if (currentEpicness >= epicnessThresholdForSpell && !isProjectile) // kan ikke epic boom på projectiles
         {
             
             currentEpicness = 0f; // Reset epicness after shooting the powerful spell
