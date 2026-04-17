@@ -2966,6 +2966,13 @@
 							</ReferenceList>
 							<ChildrenList>
 								<Sound Name="SFX 2-Call Lightning B" ID="{D0663D79-2F74-462F-B024-2304488460E6}" ShortID="485318326">
+									<PropertyList>
+										<Property Name="Inclusion" Type="bool">
+											<ValueList>
+												<Value>False</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AF9EEC83-A8E4-4C08-A3B7-085D894A22A7}"/>
