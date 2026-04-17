@@ -315,7 +315,7 @@ public class Player : MonoBehaviour
                 healingComboStarted = false;
                 Enemy.globalComboStarted = false;
             }*/
-            
+
         }
     }
 
@@ -405,6 +405,8 @@ public class Player : MonoBehaviour
         Debug.Log("Checking for full health");
         if (uiComboStep >= healingComboArray.Length)
         {
+            Enemy.globalComboStarted = false;
+            healingComboStarted = false;
             foreach (var img in contentSprite)
             {
                 img.DOFade(1, healComboFadeTime);
