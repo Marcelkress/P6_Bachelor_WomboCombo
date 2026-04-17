@@ -261,6 +261,8 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
                     comboStep += 2;
                     playerScript.AddEpicness(playerScript.epicnessIncreasePerHit); // Increase epicness on successful combo input
                     playerScript.ShootMagicspell(this.transform, this.gameObject);
+                    globalComboStarted = false;
+                    localComboStarted = false;
                     //Debug.Log("Shooting from update");
                 }
                 else
@@ -322,6 +324,8 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
                     pTwoSquare = true;
 
                 startTimer = true;
+                localComboStarted = true;
+                globalComboStarted = true;
 
                 Debug.Log("returning");
 
