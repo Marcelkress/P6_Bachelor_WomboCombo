@@ -29,6 +29,12 @@ public class ControllerInputCrossPlatform : MonoBehaviour
     public string player1Id = "Controller 1";
     public string player2Id = "Controller 2";
 
+    [Header("Push Event Queue")]
+    [Tooltip("If release packets are missed, a pressed latch is re-armed after this idle time (ms).")]
+    public int pushLatchRearmMs = 120;
+    [Tooltip("Maximum queued push events per player to avoid unbounded growth.")]
+    public int maxQueuedPushEvents = 32;
+
     public ControllerState player1;
     public ControllerState player2;
 
@@ -353,6 +359,13 @@ public class ControllerInputCrossPlatform : MonoBehaviour
     Thread        _thread;
     volatile bool _running;
 
+    bool _player1PushLatched;
+    bool _player2PushLatched;
+    long _player1LastPushTrueMs;
+    long _player2LastPushTrueMs;
+    int _player1QueuedPushEvents;
+    int _player2QueuedPushEvents;
+
     // ─────────────────────────────────────────────────────────────────────
     //  Unity lifecycle
     // ─────────────────────────────────────────────────────────────────────
@@ -497,17 +510,17 @@ public class ControllerInputCrossPlatform : MonoBehaviour
             {
                 if (isP1)
                 {
-                    if (!player1.pushed && pushed) player1.pushPending = true;
                     player1.rotation  = rotation;
-                    player1.pushed    = pushed;
                     player1.connected = true;
+                    ProcessPushPacket(ref player1, pushed, ref _player1PushLatched, ref _player1LastPushTrueMs,
+                        ref _player1QueuedPushEvents);
                 }
                 else
                 {
-                    if (!player2.pushed && pushed) player2.pushPending = true;
                     player2.rotation  = rotation;
-                    player2.pushed    = pushed;
                     player2.connected = true;
+                    ProcessPushPacket(ref player2, pushed, ref _player2PushLatched, ref _player2LastPushTrueMs,
+                        ref _player2QueuedPushEvents);
                 }
             }
 
@@ -607,6 +620,37 @@ public class ControllerInputCrossPlatform : MonoBehaviour
         return true;
     }
 
+    static long NowMs() => DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond;
+
+    void ProcessPushPacket(ref ControllerState state, bool pushed, ref bool pushLatched,
+        ref long lastPushTrueMs, ref int queuedPushEvents)
+    {
+        long nowMs = NowMs();
+
+        if (pushed)
+        {
+            bool rearmedByIdle = pushLatched && (nowMs - lastPushTrueMs >= pushLatchRearmMs);
+
+            // Queue exactly one event when transitioning into a press, or when a stale latch re-arms after idle.
+            if (!pushLatched || rearmedByIdle)
+            {
+                if (queuedPushEvents < maxQueuedPushEvents)
+                    queuedPushEvents++;
+            }
+
+            pushLatched = true;
+            lastPushTrueMs = nowMs;
+            state.pushed = true;
+            state.pushPending = queuedPushEvents > 0;
+            return;
+        }
+
+        // A clean release packet immediately re-arms for the next press.
+        state.pushed = false;
+        pushLatched = false;
+        state.pushPending = queuedPushEvents > 0;
+    }
+
     // ─────────────────────────────────────────────────────────────────────
     //  Public API
     // ─────────────────────────────────────────────────────────────────────
@@ -619,6 +663,10 @@ public class ControllerInputCrossPlatform : MonoBehaviour
         {
             player1.pushed = false; player1.pushPending = false;
             player2.pushed = false; player2.pushPending = false;
+            _player1PushLatched = false;
+            _player2PushLatched = false;
+            _player1QueuedPushEvents = 0;
+            _player2QueuedPushEvents = 0;
         }
     }
 
@@ -629,13 +677,33 @@ public class ControllerInputCrossPlatform : MonoBehaviour
             if (ID == 1)
             {
                 var state = player1;
-                player1.pushPending = false;
+                if (_player1QueuedPushEvents > 0)
+                {
+                    _player1QueuedPushEvents--;
+                    state.pushPending = true;
+                }
+                else
+                {
+                    state.pushPending = false;
+                }
+
+                player1.pushPending = _player1QueuedPushEvents > 0;
                 return state;
             }
             else
             {
                 var state = player2;
-                player2.pushPending = false;
+                if (_player2QueuedPushEvents > 0)
+                {
+                    _player2QueuedPushEvents--;
+                    state.pushPending = true;
+                }
+                else
+                {
+                    state.pushPending = false;
+                }
+
+                player2.pushPending = _player2QueuedPushEvents > 0;
                 return state;
             }
         }

@@ -123,18 +123,6 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
 
     private void OnDisable()
     {
-        // Ensure this enemy does not leave the global combo lock set when disabled.
-        if (localComboStarted)
-        {
-            localComboStarted = false;
-            globalComboStarted = false;
-        }
-
-        startTimer = false;
-        pOneSquare = false;
-        pTwoSquare = false;
-        timer = 0f;
-
         if (InputManager.instance != null)
         {
             InputManager.instance.PlayerOneEvent.RemoveListener(PlayerOneUpdate);
@@ -287,13 +275,6 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
                 pOneSquare = false;
                 pTwoSquare = false;
 
-                // Match non-square flow: release lock when the combo is completed.
-                if (comboStep >= comboArray.Length)
-                {
-                    localComboStarted = false;
-                    globalComboStarted = false;
-                }
-
             }
             else if (timer >= squareSuccessWindow)
             {
@@ -303,19 +284,8 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
                 pOneSquare = false;
                 pTwoSquare = false;
 
-                // First player started sync, but partner missed the window.
-                // Release ownership so players can retry this step.
-                localComboStarted = false;
-                globalComboStarted = false;
-
             }
         }
-    }
-
-    private bool SenderMatchesCurrentStep(int id)
-    {
-        var senderInfo = id == 1 ? playerOneInfo : playerTwoInfo;
-        return senderInfo.symbOne == comboArray[comboStep] && senderInfo.symbTwo == comboArray[comboStep + 1];
     }
     
     private void CompareCombo(int id)
@@ -340,46 +310,28 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
             Debug.Log("Array symb one: " + comboArray[comboStep]);
             Debug.Log("Array symb two: " + comboArray[comboStep + 1]);
         }
-
-        bool senderMatches = SenderMatchesCurrentStep(id);
-
-        // While waiting for simultaneous input, only process this specific step.
-        if (startTimer)
-        {
-            if (comboArray[comboStep] == 2 && senderMatches)
-            {
-                if (id == 1)
-                    pOneSquare = true;
-                else
-                    pTwoSquare = true;
-            }
-
-            // Do not evaluate other combos or mark wrong input while sync is active.
-            return;
-        }
         
-        if (senderMatches)
+            // If either player one or player two symbols are correct continue
+        if ((playerOneInfo.symbOne == comboArray[comboStep] && playerOneInfo.symbTwo == comboArray[comboStep + 1])
+            || (playerTwoInfo.symbOne == comboArray[comboStep] && playerTwoInfo.symbTwo == comboArray[comboStep + 1]))
         {
             Debug.Log(comboStep);
 
+            /* TODO: Does not work
             if (comboArray[comboStep] == 2) // If the top symbol is square
             {
-                if (id == 1)
+                if (playerOneInfo.symbOne == comboArray[comboStep] && id == 1)
                     pOneSquare = true;
-                else
+
+                if(playerTwoInfo.symbOne == comboArray[comboStep] && id == 2)
                     pTwoSquare = true;
 
-                // Lock this enemy as the active combo owner while waiting for partner input.
-                localComboStarted = true;
-                globalComboStarted = true;
-
                 startTimer = true;
-                timer = 0f;
 
                 Debug.Log("returning");
 
                 return;
-            }
+            }*/
 
             Debug.Log("Shooting from Method");
 
@@ -542,10 +494,6 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         if (isDead) return; // Prevent multiple death triggers
             isDead = true;
 
-        startTimer = false;
-        pOneSquare = false;
-        pTwoSquare = false;
-        timer = 0f;
         globalComboStarted = false;
         localComboStarted = false;
         Debug.Log("Enemy Defeated!"); // Enemy is defeated

@@ -215,5 +215,5 @@ public struct ControllerState
     public int rotation;
     public bool pushed;
     public bool connected;
-    public bool pushPending; // set by serial thread on rising edge, cleared by main thread after reading
+    public bool pushPending; // true when at least one queued push event is available to consume
 }
