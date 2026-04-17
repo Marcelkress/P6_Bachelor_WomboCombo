@@ -38845,7 +38845,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419428000}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45cb4a7b3dd211c54b21bfaaee320f5d, type: 3}
   m_Name: 
@@ -47017,7 +47017,7 @@ MonoBehaviour:
   encounterManager: {fileID: 309611474}
   UIFadeTime: 0.8
   startScreen: {fileID: 1580783147}
-  removeControllerUI: 1
+  removeControllerUI: 0
   removeDebugUI: 1
   debugUI: {fileID: 529837871}
   controllerUI:
@@ -58248,8 +58248,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cded085d155cde949b60f67a11dbc3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.ProbeVolume
-  version: 2
-  globalVolume: 0
   mode: 1
   size: {x: 403.01, y: 167.9733, z: 403.01}
   overrideRendererFilters: 0
@@ -58280,6 +58278,8 @@ MonoBehaviour:
     e33: 1
   cachedHashCode: 1346806664
   fillEmptySpaces: 0
+  version: 2
+  globalVolume: 0
 --- !u!4 &2100707613
 Transform:
   m_ObjectHideFlags: 0
