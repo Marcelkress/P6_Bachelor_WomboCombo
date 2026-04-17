@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{4DF00548-0438-40DA-8842-DDAA11BB5DFA}",
     "Language": "SFX",
-    "Hash": "{EA37D23B-1DB6-AC72-F98A-AF9AA5DBD253}",
+    "Hash": "{BA9C23E8-1703-128E-82FF-B9A6C182ABAF}",
     "ObjectPath": "Play_LightningStrike",
     "ShortName": "Play_LightningStrike",
     "Path": "Event/Play_LightningStrike.bnk",
@@ -23,15 +23,6 @@
       "ShortName": "SFX 4-Thunderwave B.wav",
       "Path": "Media/739750044.wem",
       "CachePath": "AD/{ADD6979C-358C-AB4E-CD50-F404B9488C44}.wem"
-     },
-     {
-      "Id": "799066041",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Loose",
-      "ShortName": "SFX 2-Call Lightning B.wav",
-      "Path": "Media/799066041.wem",
-      "CachePath": "98/{9815431A-5381-DAF8-3812-27AC6279E6E5}.wem"
      },
      {
       "Id": "1053414898",
@@ -57,9 +48,6 @@
         "Id": "739750044"
        },
        {
-        "Id": "799066041"
-       },
-       {
         "Id": "1053414898"
        }
       ]
@@ -67,6 +55,6 @@
     ]
    }
   ],
-  "FileHash": "{5CE03D1C-C69E-679C-567E-E05136BF8DBF}"
+  "FileHash": "{293A1103-E5E8-723A-E5A3-8D8EADF3BB65}"
  }
 }
