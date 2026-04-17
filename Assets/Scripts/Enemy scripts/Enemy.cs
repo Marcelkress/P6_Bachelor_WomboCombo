@@ -123,6 +123,8 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
 
     private void OnDisable()
     {
+        ResetSquareSyncState(releaseComboLock: localComboStarted);
+
         if (InputManager.instance != null)
         {
             InputManager.instance.PlayerOneEvent.RemoveListener(PlayerOneUpdate);
@@ -239,52 +241,76 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         CompareCombo(2);
     }
 
-    private float timer;
     public float squareSuccessWindow = 0.5f;
-    public bool startTimer, pOneSquare, pTwoSquare;
+    private float squareSyncTimer;
+    private int firstSquarePlayerId;
+    private bool waitingForSquarePartner;
     
     
     void Update()
     {
 
         CheckAttackDist();
-        
 
-        if (startTimer)
+        if (waitingForSquarePartner)
         {
-            timer += Time.deltaTime;
-            
-            if (pOneSquare == true && pTwoSquare == true) // both players pressed within the window
-            {
-                if (timer < squareSuccessWindow) // only succeed if still within the time window
-                {
-                    comboStep += 2;
-                    playerScript.AddEpicness(playerScript.epicnessIncreasePerHit); // Increase epicness on successful combo input
-                    playerScript.ShootMagicspell(this.transform, this.gameObject);
-                    globalComboStarted = true;
-                    localComboStarted = true;
-                    //Debug.Log("Shooting from update");
-                }
-                else
-                {
-                    //Debug.Log("Too late for square input");
-                }
-                
-                timer = 0;
-                startTimer = false;
-                pOneSquare = false;
-                pTwoSquare = false;
+            squareSyncTimer += Time.deltaTime;
 
-            }
-            else if (timer >= squareSuccessWindow)
+            if (squareSyncTimer >= squareSuccessWindow)
             {
-                //Debug.Log("Resetting after time");
-                timer = 0;
-                startTimer = false;
-                pOneSquare = false;
-                pTwoSquare = false;
+                if (debug)
+                    Debug.Log("Square sync timed out");
 
+                // Timeout should release ownership so players can retry this step.
+                ResetSquareSyncState(releaseComboLock: true);
             }
+        }
+    }
+
+    private PlayerInfoStruct GetPlayerInfoForId(int id)
+    {
+        return id == 1 ? playerOneInfo : playerTwoInfo;
+    }
+
+    private bool SenderMatchesCurrentStep(int id)
+    {
+        PlayerInfoStruct senderInfo = GetPlayerInfoForId(id);
+        return senderInfo.symbOne == comboArray[comboStep] && senderInfo.symbTwo == comboArray[comboStep + 1];
+    }
+
+    private void BeginSquareSync(int id)
+    {
+        waitingForSquarePartner = true;
+        firstSquarePlayerId = id;
+        squareSyncTimer = 0f;
+
+        // Claim combo ownership immediately so other enemies cannot steal the sync window.
+        localComboStarted = true;
+        globalComboStarted = true;
+    }
+
+    private void ResetSquareSyncState(bool releaseComboLock)
+    {
+        waitingForSquarePartner = false;
+        firstSquarePlayerId = 0;
+        squareSyncTimer = 0f;
+
+        if (releaseComboLock)
+        {
+            localComboStarted = false;
+            globalComboStarted = false;
+        }
+    }
+
+    private void CompleteComboStep()
+    {
+        playerScript.AddEpicness(playerScript.epicnessIncreasePerHit); // Increase epicness on successful combo input
+        playerScript.ShootMagicspell(this.transform, this.gameObject); // Enemies are the only one that knows that they can be hit therefor is also the ones telling when the fireball should go off.
+        comboStep += 2;
+
+        if (comboStep >= comboArray.Length)
+        {
+            ResetSquareSyncState(releaseComboLock: true);
         }
     }
     
@@ -310,52 +336,45 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
             Debug.Log("Array symb one: " + comboArray[comboStep]);
             Debug.Log("Array symb two: " + comboArray[comboStep + 1]);
         }
-        
-            // If either player one or player two symbols are correct continue
-        if ((playerOneInfo.symbOne == comboArray[comboStep] && playerOneInfo.symbTwo == comboArray[comboStep + 1])
-            || (playerTwoInfo.symbOne == comboArray[comboStep] && playerTwoInfo.symbTwo == comboArray[comboStep + 1]))
+
+        if (!SenderMatchesCurrentStep(id))
         {
-            Debug.Log(comboStep);
-
-            /* TODO: Does not work
-            if (comboArray[comboStep] == 2) // If the top symbol is square
+            // While waiting for partner input on square sync, ignore mismatches without miss penalty.
+            if (!waitingForSquarePartner)
             {
-                if (playerOneInfo.symbOne == comboArray[comboStep] && id == 1)
-                    pOneSquare = true;
+                playerScript.AddEpicness(-playerScript.epicnessDecreasePerMiss); // Decrease epicness on failed combo input
+                Debug.Log("Wrong input");
+                wrongComboInput++;
+            }
+            return;
+        }
 
-                if(playerTwoInfo.symbOne == comboArray[comboStep] && id == 2)
-                    pTwoSquare = true;
+        Debug.Log(comboStep);
 
-                startTimer = true;
+        if (comboArray[comboStep] == 2) // If the top symbol is square
+        {
+            if (!waitingForSquarePartner)
+            {
+                BeginSquareSync(id);
 
-                Debug.Log("returning");
+                if (debug)
+                    Debug.Log("Square sync started");
 
                 return;
-            }*/
-
-            Debug.Log("Shooting from Method");
-
-            localComboStarted = true;
-            globalComboStarted = true;
-
-            playerScript.AddEpicness(playerScript.epicnessIncreasePerHit); // Increase epicness on successful combo input
-            playerScript.ShootMagicspell(this.transform, this.gameObject); // Enemies are the only one that knows that they can be hit therefor is also the ones telling when the fireball should go off.
-            //UpdateUI(); Vi opdatere istedet når fireball rammer enemy
-
-            comboStep += 2;
-            
-            if (comboStep >= comboArray.Length)
-            {
-                localComboStarted = false;
-                globalComboStarted = false;
             }
+
+            // Same player cannot satisfy both simultaneous presses.
+            if (id == firstSquarePlayerId)
+                return;
+
+            ResetSquareSyncState(releaseComboLock: false);
+            CompleteComboStep();
+            return;
         }
-        else
-        {
-            playerScript.AddEpicness(-playerScript.epicnessDecreasePerMiss); // Decrease epicness on failed combo input
-            Debug.Log("Wrong input");
-            wrongComboInput++;
-        }
+
+        localComboStarted = true;
+        globalComboStarted = true;
+        CompleteComboStep();
     }
     
     private void InitializeUI()
@@ -494,8 +513,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         if (isDead) return; // Prevent multiple death triggers
             isDead = true;
 
-        globalComboStarted = false;
-        localComboStarted = false;
+        ResetSquareSyncState(releaseComboLock: true);
         Debug.Log("Enemy Defeated!"); // Enemy is defeated
         manager.Enemies.Remove(this.gameObject);
         manager.EnemyDied();
