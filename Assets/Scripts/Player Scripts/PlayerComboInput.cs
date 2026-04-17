@@ -40,6 +40,10 @@ public class PlayerComboInput : MonoBehaviour
     private static bool playerOneTaken;
 
     private bool waitingForRelease;
+    [SerializeField, Min(0f)]
+    private float releaseDebounceSeconds = 0.03f;
+    private float releaseStartedAt = -1f;
+    private bool wasPressedLastFrame;
     
     private void Awake()
     {
@@ -82,6 +86,8 @@ public class PlayerComboInput : MonoBehaviour
         if (!inputData.connected)
         {
             waitingForRelease = false;
+            releaseStartedAt = -1f;
+            wasPressedLastFrame = false;
             return;
         }
 
@@ -90,17 +96,28 @@ public class PlayerComboInput : MonoBehaviour
 
         // vi tjekker om vi har presset knappen så  vi ikke kommer til at sende on fire mange gange
         bool pressedNow = inputData.pushed;
+        bool pressedEdge = pressedNow && !wasPressedLastFrame;
 
-        if (pressedNow && !waitingForRelease)
+        if (pressedNow)
         {
-            waitingForRelease = true;
-            OnFire();
-            waitingForRelease = false;
+            releaseStartedAt = -1f;
+
+            if (pressedEdge && !waitingForRelease)
+            {
+                waitingForRelease = true;
+                OnFire();
+            }
         }
-        else if (!pressedNow)
+        else
         {
-            waitingForRelease = false;
+            if (releaseStartedAt < 0f)
+                releaseStartedAt = Time.unscaledTime;
+
+            if (waitingForRelease && Time.unscaledTime - releaseStartedAt >= releaseDebounceSeconds)
+                waitingForRelease = false;
         }
+
+        wasPressedLastFrame = pressedNow;
     }
 
 
