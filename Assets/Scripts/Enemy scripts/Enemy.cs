@@ -292,7 +292,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
     {
         if (localComboStarted == false)
         {
-            if (globalComboStarted)
+            if (globalComboStarted || Player.healingComboStarted)
             {
                 return;
             }
@@ -318,7 +318,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
             Debug.Log(comboStep);
 
            
-            if (comboArray[comboStep] == 2) // If the top symbol is square
+            if (comboArray[comboStep] == 2) // If the top symbol is Star
             {
                 if (playerOneInfo.symbOne == comboArray[comboStep] && id == 1)
                     pOneSquare = true;
