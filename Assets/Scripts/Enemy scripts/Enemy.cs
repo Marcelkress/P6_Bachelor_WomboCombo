@@ -268,12 +268,16 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
                 else
                 {
                     //Debug.Log("Too slow - resetting");
+                    globalComboStarted = false;
+                    localComboStarted = false;
                 }
                 
                 timer = 0;
                 startTimer = false;
                 pOneSquare = false;
                 pTwoSquare = false;
+                globalComboStarted = false;
+                localComboStarted = false;
             }
             else if (timer >= squareSuccessWindow)
             {
@@ -282,6 +286,8 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
                 startTimer = false;
                 pOneSquare = false;
                 pTwoSquare = false;
+                globalComboStarted = false;
+                localComboStarted = false;
             }
         }
     }
