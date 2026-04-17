@@ -51,20 +51,6 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
     public static bool globalComboStarted;
     private bool localComboStarted;
 
-    private void SetComboLock(bool locked)
-    {
-        localComboStarted = locked;
-        globalComboStarted = locked;
-    }
-
-    private void ResetSquareWindowState()
-    {
-        timer = 0f;
-        startTimer = false;
-        pOneSquare = false;
-        pTwoSquare = false;
-    }
-
     [Header("Attack")]
     public int damageAmount = 1; 
     public float attackCooldown = 1f;
@@ -142,11 +128,6 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
             InputManager.instance.PlayerOneEvent.RemoveListener(PlayerOneUpdate);
             InputManager.instance.PlayerTwoEvent.RemoveListener(PlayerTwoUpdate);
         }
-
-        if (localComboStarted)
-            SetComboLock(false);
-
-        ResetSquareWindowState();
     }
 
     void SetRandomColor()
@@ -280,26 +261,28 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
                     comboStep += 2;
                     playerScript.AddEpicness(playerScript.epicnessIncreasePerHit); // Increase epicness on successful combo input
                     playerScript.ShootMagicspell(this.transform, this.gameObject);
-
-                    // Keep this enemy locked between combo steps, but release when completed.
-                    if (comboStep >= comboArray.Length)
-                        SetComboLock(false);
+                    globalComboStarted = true;
+                    localComboStarted = true;
                     //Debug.Log("Shooting from update");
                 }
                 else
                 {
                     //Debug.Log("Too late for square input");
-                    SetComboLock(false);
                 }
-
-                ResetSquareWindowState();
+                
+                timer = 0;
+                startTimer = false;
+                pOneSquare = false;
+                pTwoSquare = false;
 
             }
             else if (timer >= squareSuccessWindow)
             {
                 //Debug.Log("Resetting after time");
-                SetComboLock(false);
-                ResetSquareWindowState();
+                timer = 0;
+                startTimer = false;
+                pOneSquare = false;
+                pTwoSquare = false;
 
             }
         }
@@ -307,14 +290,17 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
     
     private void CompareCombo(int id)
     {
-        if (!localComboStarted && globalComboStarted)
-            return;
+        if (localComboStarted == false)
+        {
+            if (globalComboStarted)
+            {
+                return;
+            }
+        }
         
         // if combostep out of bounds return
         if (comboStep >= comboArray.Length)
         {
-            if (localComboStarted)
-                SetComboLock(false);
             return;
         }
 
@@ -331,6 +317,8 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         {
             Debug.Log(comboStep);
 
+
+            /*
             if (comboArray[comboStep] == 2) // If the top symbol is square
             {
                 if (playerOneInfo.symbOne == comboArray[comboStep] && id == 1)
@@ -339,18 +327,17 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
                 if(playerTwoInfo.symbOne == comboArray[comboStep] && id == 2)
                     pTwoSquare = true;
 
-                // Lock immediately when square timing starts so target cannot switch mid-window.
-                SetComboLock(true);
                 startTimer = true;
 
                 Debug.Log("returning");
 
                 return;
-            }
+            }*/
 
             Debug.Log("Shooting from Method");
 
-            SetComboLock(true);
+            localComboStarted = true;
+            globalComboStarted = true;
 
             playerScript.AddEpicness(playerScript.epicnessIncreasePerHit); // Increase epicness on successful combo input
             playerScript.ShootMagicspell(this.transform, this.gameObject); // Enemies are the only one that knows that they can be hit therefor is also the ones telling when the fireball should go off.
@@ -360,7 +347,8 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
             
             if (comboStep >= comboArray.Length)
             {
-                SetComboLock(false);
+                localComboStarted = false;
+                globalComboStarted = false;
             }
         }
         else
@@ -507,8 +495,8 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         if (isDead) return; // Prevent multiple death triggers
             isDead = true;
 
-        SetComboLock(false);
-        ResetSquareWindowState();
+        globalComboStarted = false;
+        localComboStarted = false;
         Debug.Log("Enemy Defeated!"); // Enemy is defeated
         manager.Enemies.Remove(this.gameObject);
         manager.EnemyDied();
