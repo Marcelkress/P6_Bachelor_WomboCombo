@@ -299,7 +299,8 @@ public class Player : MonoBehaviour
 
                 return;
             }
-/*
+
+            /*
             healingComboStarted = true;
             Enemy.globalComboStarted = true;
 
@@ -314,6 +315,7 @@ public class Player : MonoBehaviour
                 healingComboStarted = false;
                 Enemy.globalComboStarted = false;
             }*/
+            
         }
     }
 
