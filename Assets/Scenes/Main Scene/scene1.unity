@@ -8392,7 +8392,7 @@ MonoBehaviour:
     respawnPoint: 0
   - enemyManager: {fileID: 1030023371}
     meleeEnemyCount: 3
-    projectileEnemyCount: 2
+    projectileEnemyCount: 1
     minComboLength: 2
     maxComboLength: 4
     respawnPoint: 1
@@ -8415,14 +8415,14 @@ MonoBehaviour:
     maxComboLength: 4
     respawnPoint: 0
   - enemyManager: {fileID: 2102292839}
-    meleeEnemyCount: 0
-    projectileEnemyCount: 2
+    meleeEnemyCount: 1
+    projectileEnemyCount: 1
     minComboLength: 2
     maxComboLength: 4
     respawnPoint: 1
   - enemyManager: {fileID: 486749952}
-    meleeEnemyCount: 0
-    projectileEnemyCount: 2
+    meleeEnemyCount: 1
+    projectileEnemyCount: 1
     minComboLength: 2
     maxComboLength: 4
     respawnPoint: 0
@@ -38866,14 +38866,18 @@ MonoBehaviour:
   baudRate: 115200
   player1Id: Controller 1
   player2Id: Controller 2
+  pushLatchRearmMs: 120
+  maxQueuedPushEvents: 32
   player1:
     rotation: 0
     pushed: 0
     connected: 0
+    pushPending: 0
   player2:
     rotation: 0
     pushed: 0
     connected: 0
+    pushPending: 0
 --- !u!1001 &1421407971
 PrefabInstance:
   m_ObjectHideFlags: 0
