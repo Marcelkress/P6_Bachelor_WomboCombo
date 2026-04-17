@@ -5335,7 +5335,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 4021818255343050866, guid: 62bcb43a4b20c4f1b92a9025c5e23c4b, type: 3}
   projectileShootPoint: {fileID: 3150456201645677521}
   shootIntervalMax: 12
-  shootIntervalMin: 7
+  shootIntervalMin: 9
   shouldCharge: 0
   chargeSpeedMultiplier: 2
   baseScale: 1
