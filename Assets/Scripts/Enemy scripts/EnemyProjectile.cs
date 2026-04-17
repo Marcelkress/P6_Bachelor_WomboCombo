@@ -63,10 +63,10 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        target = GameObject.FindGameObjectWithTag("MagicBall").transform;
         canvasComponent = canvas.GetComponent<Canvas>();
         canvasImage = canvas.GetComponentInChildren<Image>();
         lastCanvasImageAlpha = canvasImage.color.a;
-        target = Camera.main.transform;
         transform.DOMove(target.position, speedTime, false).SetEase(Ease.InOutCubic);
         InitializeUI();
         enemyProjectileSound.Post(gameObject);
@@ -81,9 +81,9 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.CompareTag("Player"))
+        if (other.transform.CompareTag("MagicBall"))
         {
-            other.transform.GetComponent<Player>().TakeDamage(damage);
+            player.GetComponent<Player>().TakeDamage(damage);
             enemyProjectileHitSound.Post(this.gameObject);
             Die();
             enemyProjectileSound.Stop(this.gameObject);
