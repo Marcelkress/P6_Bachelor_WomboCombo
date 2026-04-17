@@ -42,6 +42,20 @@ public class BossComboSystem : MonoBehaviour
     public bool startTimer;
     public bool pOneSquare;
     public bool pTwoSquare;
+
+    private void SetComboLock(bool locked)
+    {
+        localComboStarted = locked;
+        globalComboStarted = locked;
+    }
+
+    private void ResetSquareWindowState()
+    {
+        timer = 0f;
+        startTimer = false;
+        pOneSquare = false;
+        pTwoSquare = false;
+    }
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -78,6 +92,11 @@ public class BossComboSystem : MonoBehaviour
             InputManager.instance.PlayerTwoEvent.RemoveListener(PlayerTwoUpdate);
         }
 
+        if (localComboStarted)
+            SetComboLock(false);
+
+        ResetSquareWindowState();
+
     }
 
     private void Update()
@@ -96,19 +115,21 @@ public class BossComboSystem : MonoBehaviour
                     {
                         playerScript.ShootMagicspell(transform, gameObject);
                     }
+
+                    if (comboStep >= bossComboArray.Length)
+                        SetComboLock(false);
+                }
+                else
+                {
+                    SetComboLock(false);
                 }
 
-                timer = 0;
-                startTimer = false;
-                pOneSquare = false;
-                pTwoSquare = false;
+                ResetSquareWindowState();
             }
             else if (timer >= squareSuccessWindow)
             {
-                timer = 0;
-                startTimer = false;
-                pOneSquare = false;
-                pTwoSquare = false;
+                SetComboLock(false);
+                ResetSquareWindowState();
             }
         }
     }
@@ -164,12 +185,14 @@ public class BossComboSystem : MonoBehaviour
             return;
         }
 
-        if (localComboStarted == false)
+        if (!localComboStarted && globalComboStarted)
+            return;
+
+        if (comboStep >= bossComboArray.Length)
         {
-            if (globalComboStarted)
-            {
-                return;
-            }
+            if (localComboStarted)
+                SetComboLock(false);
+            return;
         }
 
         if (debug)
@@ -193,6 +216,7 @@ public class BossComboSystem : MonoBehaviour
                 if(playerTwoInfo.symbOne == bossComboArray[comboStep] && id == 2)
                     pTwoSquare = true;
 
+                SetComboLock(true);
                 startTimer = true;
 
                 Debug.Log("returning");
@@ -202,8 +226,7 @@ public class BossComboSystem : MonoBehaviour
 
             Debug.Log("Shooting from Method");
 
-            localComboStarted = true;
-            globalComboStarted = true;
+            SetComboLock(true);
 
             if (playerScript != null)
             {
@@ -217,8 +240,7 @@ public class BossComboSystem : MonoBehaviour
 
             if (comboStep >= bossComboArray.Length)
             {
-                localComboStarted = false;
-                globalComboStarted = false;
+                SetComboLock(false);
             }
         }
     }
