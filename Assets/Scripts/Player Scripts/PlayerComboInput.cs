@@ -39,8 +39,6 @@ public class PlayerComboInput : MonoBehaviour
     
     private static bool playerOneTaken;
 
-    private bool waitingForRelease;
-    private bool wasPressedLastFrame;
     
     private void Awake()
     {
@@ -81,32 +79,15 @@ public class PlayerComboInput : MonoBehaviour
         inputData = controllerInput.GetInput(playerID == Player.Player1 ? 1 : 2);
 
         if (!inputData.connected)
-        {
-            waitingForRelease = false;
-            wasPressedLastFrame = false;
             return;
-        }
 
         controllerValue = inputData.rotation;
         UpdateSymbolsFromController();
 
-        // vi tjekker om vi har presset knappen så  vi ikke kommer til at sende on fire mange gange
-        bool pressedNow = inputData.pushed;
-        bool pressedEdge = pressedNow && !wasPressedLastFrame;
-        bool releasedEdge = !pressedNow && wasPressedLastFrame;
-
-        if (pressedEdge && !waitingForRelease)
+        if (inputData.pushPending)
         {
-            waitingForRelease = true;
             OnFire();
         }
-
-        if (releasedEdge)
-        {
-            waitingForRelease = false;
-        }
-
-        wasPressedLastFrame = pressedNow;
     }
 
 
@@ -234,4 +215,5 @@ public struct ControllerState
     public int rotation;
     public bool pushed;
     public bool connected;
+    public bool pushPending; // set by serial thread on rising edge, cleared by main thread after reading
 }

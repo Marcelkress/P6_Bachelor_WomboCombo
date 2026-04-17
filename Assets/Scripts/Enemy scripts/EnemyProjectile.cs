@@ -131,6 +131,7 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
                 startTimer = false;
                 pOneStar = false;
                 pTwoStar = false;
+                comboStep = 0;
             }
         }
 

@@ -497,12 +497,14 @@ public class ControllerInputCrossPlatform : MonoBehaviour
             {
                 if (isP1)
                 {
+                    if (!player1.pushed && pushed) player1.pushPending = true;
                     player1.rotation  = rotation;
                     player1.pushed    = pushed;
                     player1.connected = true;
                 }
                 else
                 {
+                    if (!player2.pushed && pushed) player2.pushPending = true;
                     player2.rotation  = rotation;
                     player2.pushed    = pushed;
                     player2.connected = true;
@@ -613,14 +615,29 @@ public class ControllerInputCrossPlatform : MonoBehaviour
 
     public void ClearPushes()
     {
-        lock (_lock) { player1.pushed = false; player2.pushed = false; }
+        lock (_lock)
+        {
+            player1.pushed = false; player1.pushPending = false;
+            player2.pushed = false; player2.pushPending = false;
+        }
     }
 
     public ControllerState GetInput(int ID)
     {
         lock (_lock)
         {
-            return ID == 1 ? player1 : player2;
+            if (ID == 1)
+            {
+                var state = player1;
+                player1.pushPending = false;
+                return state;
+            }
+            else
+            {
+                var state = player2;
+                player2.pushPending = false;
+                return state;
+            }
         }
     }
 
