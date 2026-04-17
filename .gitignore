@@ -78,3 +78,6 @@ crashlytics-build.properties
 P6_Bachelor_WomboCombo_WwiseProject/*.prof
 
 # End of https://www.toptal.com/developers/gitignore/api/unity
+Assets/Forst/Conifers \[BOTD\]/Conifers_BIRP.unitypackage.meta
+Assets/Forst/Conifers \[BOTD\]/Conifers_HDRP.unitypackage.meta
+Assets/Forst/Conifers \[BOTD\]/Conifers_URP.unitypackage.meta
