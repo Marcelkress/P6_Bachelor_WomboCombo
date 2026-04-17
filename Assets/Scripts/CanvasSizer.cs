@@ -12,9 +12,11 @@ public class CanvasSizer : MonoBehaviour
     private EnemyProjectile enemyProjectile;
     private Canvas canvas;
     private CanvasGroup content;
+    public Image borderImage;
 
     private int comboSize;
 
+    public Color uiBorderColor;
     private Vector3 currentCanvasSize;
     private Vector3 targetCanvasSize;
     private Vector3 farCanvasSize;
@@ -25,7 +27,7 @@ public class CanvasSizer : MonoBehaviour
 
     private void Awake()
     {
-        content = GetComponentInChildren<CanvasGroup>();
+        content = GetComponent<CanvasGroup>();
         content.alpha = 0;
     }
         
@@ -70,8 +72,20 @@ public class CanvasSizer : MonoBehaviour
 
     private IEnumerator FadeCanvasIn()
     {
+        if (useBossLogic)
+        {
+            yield break;
+        }
+        yield return new WaitForSeconds(canvasSettings.canvasFadeInTime / 2);
+        if (useProjectileLogic)
+        {
+            borderImage.color = enemyProjectile.uiBorderColor;
+        }
+        else
+        {
+            borderImage.color = enemyScript.uiBorderColor;
+        }
         content.DOFade(1, canvasSettings.canvasFadeInTime);
-        yield return new WaitForSeconds(canvasSettings.canvasFadeInTime);
     }
 
     // Sizes the canvas based on the distance to the player, making it smaller as the player gets closer

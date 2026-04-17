@@ -1288,6 +1288,81 @@ SkinnedMeshRenderer:
     m_Center: {x: -1.0698276, y: -0.19430393, z: -0.19463399}
     m_Extent: {x: 0.05415368, y: 0.05403185, z: 0.015732527}
   m_DirtyAABB: 0
+--- !u!1 &1281956995620439532
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 55645538638249225}
+  - component: {fileID: 5890181403746806009}
+  - component: {fileID: 6166212478251728986}
+  m_Layer: 7
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &55645538638249225
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281956995620439532}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6339727665919351961}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 20, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5890181403746806009
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281956995620439532}
+  m_CullTransparentMesh: 1
+--- !u!114 &6166212478251728986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281956995620439532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -2413806693520163455, guid: c71dfc67e295019dd8c470b9f6b7a588, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 3
 --- !u!1 &1294314201181109194
 GameObject:
   m_ObjectHideFlags: 0
@@ -4466,7 +4541,7 @@ CanvasGroup:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7169032734107146961}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
@@ -4884,6 +4959,7 @@ GameObject:
   - component: {fileID: 4063194494381126431}
   - component: {fileID: 3539388775248394980}
   - component: {fileID: 864787170926083533}
+  - component: {fileID: 658750423746849662}
   m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
@@ -4903,6 +4979,7 @@ RectTransform:
   m_LocalScale: {x: 0.0024999997, y: 0.0019999999, z: 0.0009999999}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 55645538638249225}
   - {fileID: 5995405454664805783}
   m_Father: {fileID: 2818440370618795742}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
@@ -5002,7 +5079,20 @@ MonoBehaviour:
   useBossLogic: 0
   useProjectileLogic: 0
   canvasSettings: {fileID: 11400000, guid: 9dc7451b09e985fcf88b66dbd5f0886b, type: 2}
-  canvasFadeInTime: 0.5
+  borderImage: {fileID: 6166212478251728986}
+  uiBorderColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!225 &658750423746849662
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7717078891350627424}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &7801817223162080366
 GameObject:
   m_ObjectHideFlags: 0
@@ -5246,6 +5336,8 @@ MonoBehaviour:
   projectileShootPoint: {fileID: 3150456201645677521}
   shootIntervalMax: 12
   shootIntervalMin: 7
+  shouldCharge: 0
+  chargeSpeedMultiplier: 2
   baseScale: 1
   sizePerComboPair: 0.08
   maxScale: 1.8
@@ -5257,6 +5349,7 @@ MonoBehaviour:
   enemyMeshRenderer: {fileID: 3978854120457980880, guid: 178cc0fb6666a3cd8991a4e3707ee07b, type: 3}
   lightFeedbackIntensity: 4
   visualFeedbackFadeDuration: 0.1
+  uiBorderColor: {r: 0, g: 0, b: 0, a: 0}
   debug: 0
   damageAmount: 1
   attackCooldown: 1
@@ -5273,6 +5366,7 @@ MonoBehaviour:
   shakeVibrato: 10
   anim: {fileID: 0}
   manager: {fileID: 0}
+  canvasImage: {fileID: 1613315277110553567}
   squareSuccessWindow: 0.3
   startTimer: 0
   pOneSquare: 0
@@ -5351,6 +5445,10 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 55f03d4b1294d41b89598220768fe9cc, type: 2}
+  minotauserWalkSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
 --- !u!1 &8737791070999506933
 GameObject:
   m_ObjectHideFlags: 0

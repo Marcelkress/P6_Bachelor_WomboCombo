@@ -44,6 +44,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
     public float lightFeedbackIntensity = 4f; 
     public float visualFeedbackFadeDuration = 0.1f;
 
+    public Color uiBorderColor;
 
     public bool debug = false;
     // ComboCheck
@@ -80,7 +81,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
     private float speed;
 
     private Canvas canvasComponent;
-    private Image canvasImage;
+    public Image canvasImage;
     private float lastCanvasImageAlpha;
     private Color lastCanvasImageColor;
     
@@ -91,7 +92,6 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         enemySpotLight.intensity = 0; // Start with the spotlight off
 
         canvasComponent = canvas.GetComponent<Canvas>();
-        canvasImage = canvas.GetComponentInChildren<Image>();
         lastCanvasImageAlpha = canvasImage.color.a;
         lastCanvasImageColor = canvasImage.color;
 
@@ -118,6 +118,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
             InputManager.instance.PlayerTwoEvent.AddListener(PlayerTwoUpdate);
         }
         SetRandomColor();
+
     }
 
     private void OnDisable()
@@ -135,9 +136,12 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         enemyMaterial = new Material(enemyMaterial);
         enemyMeshRenderer.material = enemyMaterial;
 
-        enemyMaterial.SetColor("_LitColor", Random.ColorHSV(0f, 1f, 0.7f, 1f, 0.8f, 1f));
+        Color randomColor = Random.ColorHSV(0f, 1f, 0.7f, 1f, 0.8f, 1f);
+
+        enemyMaterial.SetColor("_LitColor", randomColor);
         Color color = enemyMaterial.GetColor("_LitColor");
         enemyMaterial.SetColor("_ShadowColor", color * 0.5f);
+        uiBorderColor = randomColor;
 
     }
 

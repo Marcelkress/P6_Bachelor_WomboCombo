@@ -23,6 +23,8 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
     public float squareSuccessWindow = 0.5f;
     public bool startTimer, pOneStar, pTwoStar;
 
+    public Color uiBorderColor;
+
     
     [Header("UI")] 
     [SerializeField] private Transform content;
@@ -70,6 +72,7 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
         transform.DOMove(target.position, speedTime, false).SetEase(Ease.InOutCubic);
         InitializeUI();
         enemyProjectileSound.Post(gameObject);
+        SetRandomColor();
     }
 
     private void OnDisable()
@@ -77,6 +80,12 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
         InputManager.instance.PlayerOneEvent.RemoveListener(PlayerOneUpdate);
         InputManager.instance.PlayerTwoEvent.RemoveListener(PlayerTwoUpdate);
        
+    }
+
+        void SetRandomColor()
+    {
+        Color randomColor = UnityEngine.Random.ColorHSV(0f, 1f, 0.7f, 1f, 0.8f, 1f);
+        uiBorderColor = randomColor;
     }
 
     private void OnTriggerEnter(Collider other)

@@ -417,6 +417,7 @@ MonoBehaviour:
   enemyMeshRenderer: {fileID: 3978854120457980880}
   lightFeedbackIntensity: 4
   visualFeedbackFadeDuration: 0.1
+  uiBorderColor: {r: 0, g: 0, b: 0, a: 0}
   debug: 0
   damageAmount: 1
   attackCooldown: 1
@@ -433,6 +434,7 @@ MonoBehaviour:
   shakeVibrato: 10
   anim: {fileID: 0}
   manager: {fileID: 0}
+  canvasImage: {fileID: 0}
   squareSuccessWindow: 0.5
   startTimer: 0
   pOneSquare: 0
@@ -570,3 +572,5 @@ MonoBehaviour:
   useBossLogic: 0
   useProjectileLogic: 0
   canvasSettings: {fileID: 0}
+  borderImage: {fileID: 0}
+  uiBorderColor: {r: 0, g: 0, b: 0, a: 0}
