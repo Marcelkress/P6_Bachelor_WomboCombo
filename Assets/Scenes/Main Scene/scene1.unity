@@ -28197,15 +28197,15 @@ PrefabInstance:
     - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: 'meleeSpawnPositions.Array.data[2]'
       value: 
-      objectReference: {fileID: 1030023375}
+      objectReference: {fileID: 0}
     - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: 'meleeSpawnPositions.Array.data[3]'
       value: 
-      objectReference: {fileID: 1030023374}
+      objectReference: {fileID: 0}
     - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: 'meleeSpawnPositions.Array.data[4]'
       value: 
-      objectReference: {fileID: 1030023373}
+      objectReference: {fileID: 0}
     - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: 'meleeSpawnPositions.Array.data[5]'
       value: 
@@ -28303,7 +28303,10 @@ PrefabInstance:
       value: 3.06
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8315905859283554261, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+    - {fileID: 5279170095301563804, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+    - {fileID: 3984906520195313799, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6017696618043871699, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       insertIndex: -1
@@ -28327,21 +28330,6 @@ MonoBehaviour:
 --- !u!4 &1030023372 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8181313545885335257, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
-  m_PrefabInstance: {fileID: 1030023370}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1030023373 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2115005355421534699, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
-  m_PrefabInstance: {fileID: 1030023370}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1030023374 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7459725487056678893, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
-  m_PrefabInstance: {fileID: 1030023370}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1030023375 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3949050355488794452, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
   m_PrefabInstance: {fileID: 1030023370}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1030023376 stripped
