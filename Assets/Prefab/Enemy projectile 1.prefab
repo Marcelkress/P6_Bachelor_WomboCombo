@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1936956495293030463}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.295, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -94,6 +94,7 @@ MonoBehaviour:
   startTimer: 0
   pOneStar: 0
   pTwoStar: 0
+  uiBorderColor: {r: 0, g: 0, b: 0, a: 0}
   content: {fileID: 3582004658680625}
   canvas: {fileID: 7173858605462518587}
   canvasFadeDuration: 0.1
@@ -558,6 +559,7 @@ MonoBehaviour:
   useProjectileLogic: 1
   canvasSettings: {fileID: 11400000, guid: 9dc7451b09e985fcf88b66dbd5f0886b, type: 2}
   borderImage: {fileID: 5806933554279764437}
+  uiBorderColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!225 &8628922181707630039
 CanvasGroup:
   m_ObjectHideFlags: 0

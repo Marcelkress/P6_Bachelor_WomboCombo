@@ -152,7 +152,6 @@ public class Player : MonoBehaviour
     
     }
 
-    private float upwardsOffset = 0.5f; // Adjust this value to control how much the player looks upwards when looking at the boss
 
     [SerializeField] private float lightningCleanupDelay = 1f;
     private List<GameObject> instantiatedMagicSpells = new List<GameObject>();
@@ -177,7 +176,6 @@ public class Player : MonoBehaviour
         int shootingPointIndex = Random.Range(0, shootingPoints.Length);
         
         Vector3 targetPos = target.position;
-        targetPos += Vector3.up * upwardsOffset;
 
         if (currentEpicness >= epicnessThresholdForSpell && !isProjectile) // kan ikke epic boom på projectiles
         {
@@ -207,6 +205,7 @@ public class Player : MonoBehaviour
             instantiatedMagicSpells.Add(lightning);
 
             Vector3 direction = targetPos - lightning.transform.position;
+            
             if (direction.sqrMagnitude > 0.0001f)
             {
                 lightning.transform.rotation = Quaternion.LookRotation(direction.normalized);
