@@ -167,7 +167,7 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
             || (playerTwoInfo.symbOne == comboArray[comboStep] && playerTwoInfo.symbTwo == comboArray[comboStep + 1]))
         {
             //Debug.Log(comboStep);
-
+            /* TODO: Does not work
             if (comboArray[comboStep] == 2) // If the top symbol is star
             {
                 if (playerOneInfo.symbOne == comboArray[comboStep] && id == 1)
@@ -181,7 +181,7 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
                 //Debug.Log("Starting time");
 
                 return;
-            }
+            }*/
 
             // Debug.Log("Shooting from Method");
             playerScript.ShootMagicspell(playerSpellTargetPoint, this.gameObject, true);

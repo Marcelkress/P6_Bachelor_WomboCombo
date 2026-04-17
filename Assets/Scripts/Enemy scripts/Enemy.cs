@@ -317,6 +317,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         {
             Debug.Log(comboStep);
 
+            /* TODO: Does not work
             if (comboArray[comboStep] == 2) // If the top symbol is square
             {
                 if (playerOneInfo.symbOne == comboArray[comboStep] && id == 1)
@@ -330,7 +331,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
                 Debug.Log("returning");
 
                 return;
-            }
+            }*/
 
             Debug.Log("Shooting from Method");
 
