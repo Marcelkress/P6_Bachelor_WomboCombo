@@ -85,8 +85,8 @@ public class Player : MonoBehaviour
 
         if (InputManager.instance != null)
         {
-            InputManager.instance.PlayerOneEvent.AddListener(PlayerOneUpdate);
-            InputManager.instance.PlayerTwoEvent.AddListener(PlayerTwoUpdate);
+           // InputManager.instance.PlayerOneEvent.AddListener(PlayerOneUpdate);
+           // InputManager.instance.PlayerTwoEvent.AddListener(PlayerTwoUpdate);
         }
 
         StartCoroutine(StartWobbleEffect());
