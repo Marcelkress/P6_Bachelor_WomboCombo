@@ -8385,8 +8385,8 @@ MonoBehaviour:
   - enemyManager: {fileID: 1030023371}
     meleeEnemyCount: 3
     projectileEnemyCount: 2
-    minComboLength: 3
-    maxComboLength: 5
+    minComboLength: 2
+    maxComboLength: 4
     respawnPoint: 1
   - enemyManager: {fileID: 385785121}
     meleeEnemyCount: 2
@@ -8403,7 +8403,7 @@ MonoBehaviour:
   - enemyManager: {fileID: 1761839060}
     meleeEnemyCount: 2
     projectileEnemyCount: 2
-    minComboLength: 2
+    minComboLength: 1
     maxComboLength: 4
     respawnPoint: 0
   - enemyManager: {fileID: 2102292839}
