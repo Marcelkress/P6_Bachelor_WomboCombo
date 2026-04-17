@@ -3824,6 +3824,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 276033565}
     - target: {fileID: 6385583692841672266, guid: 98e6c30c76740414f9c65dbbd2a5dd24, type: 3}
+      propertyPath: damageFlashDuration
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6385583692841672266, guid: 98e6c30c76740414f9c65dbbd2a5dd24, type: 3}
+      propertyPath: damageFlashIntensity
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6385583692841672266, guid: 98e6c30c76740414f9c65dbbd2a5dd24, type: 3}
       propertyPath: PlayerDiedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1714762078}
