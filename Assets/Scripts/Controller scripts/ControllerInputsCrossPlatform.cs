@@ -616,7 +616,13 @@ public class ControllerInputCrossPlatform : MonoBehaviour
         lock (_lock) { player1.pushed = false; player2.pushed = false; }
     }
 
-    public ControllerState GetInput(int ID) => ID == 1 ? player1 : player2;
+    public ControllerState GetInput(int ID)
+    {
+        lock (_lock)
+        {
+            return ID == 1 ? player1 : player2;
+        }
+    }
 
     // ─────────────────────────────────────────────────────────────────────
     //  PlayerInputManager wiring

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -15,7 +16,8 @@ public class InputManager : MonoBehaviour
     public bool debug = false;
     
     private PlayerInfoStruct playerOneCurrent, playerTwoCurrent;
-    private bool newInfoPOne, newInfoPTwo;
+    private readonly Queue<PlayerInfoStruct> playerOnePending = new Queue<PlayerInfoStruct>();
+    private readonly Queue<PlayerInfoStruct> playerTwoPending = new Queue<PlayerInfoStruct>();
 
     public UnityEvent PlayerOneEvent, PlayerTwoEvent;
     
@@ -33,10 +35,15 @@ public class InputManager : MonoBehaviour
 
     void Update()
     {
-        if (playerOneCurrent.newData)
+        while (playerOnePending.Count > 0)
         {
-            playerOneCurrent.newData = false;
+            var next = playerOnePending.Dequeue();
+            playerOneCurrent.symbOne = next.symbOne;
+            playerOneCurrent.symbTwo = next.symbTwo;
+            playerOneCurrent.newData = true;
+
             PlayerOneEvent.Invoke();
+            playerOneCurrent.newData = false;
 
             if (debug)
             {
@@ -46,10 +53,15 @@ public class InputManager : MonoBehaviour
             }
         }
 
-        if (playerTwoCurrent.newData)
+        while (playerTwoPending.Count > 0)
         {
-            playerTwoCurrent.newData = false;
+            var next = playerTwoPending.Dequeue();
+            playerTwoCurrent.symbOne = next.symbOne;
+            playerTwoCurrent.symbTwo = next.symbTwo;
+            playerTwoCurrent.newData = true;
+
             PlayerTwoEvent.Invoke();
+            playerTwoCurrent.newData = false;
 
             if (debug)
             {
@@ -71,16 +83,12 @@ public class InputManager : MonoBehaviour
     {
         if (id == 1)
         {
-            playerOneCurrent.newData = true;
-            playerOneCurrent.symbOne = playerInfoStruct.symbOne;
-            playerOneCurrent.symbTwo = playerInfoStruct.symbTwo;
+            playerOnePending.Enqueue(playerInfoStruct);
         }
 
         if (id == 2)
         {
-            playerTwoCurrent.newData = true;
-            playerTwoCurrent.symbOne = playerInfoStruct.symbOne;
-            playerTwoCurrent.symbTwo = playerInfoStruct.symbTwo;
+            playerTwoPending.Enqueue(playerInfoStruct);
         }
     }
 
