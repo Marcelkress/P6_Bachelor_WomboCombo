@@ -299,7 +299,7 @@ public class Player : MonoBehaviour
 
                 return;
             }
-
+/*
             healingComboStarted = true;
             Enemy.globalComboStarted = true;
 
@@ -313,7 +313,7 @@ public class Player : MonoBehaviour
                 // Completed entire combo
                 healingComboStarted = false;
                 Enemy.globalComboStarted = false;
-            }
+            }*/
         }
     }
 
@@ -329,8 +329,13 @@ public class Player : MonoBehaviour
                 if (timer < starSuccessWindow) // only succeed if still within the time window
                 {
                     comboStep += 2;
-                    
+                    healingComboStarted = true;
+                    Enemy.globalComboStarted = true;
+
+                    // Completed one combo step
+                    UpdateUI();
                 }
+
                 else
                 {
                     //Debug.Log("Too slow - resetting");
