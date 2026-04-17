@@ -28,6 +28,7 @@ namespace AK
         static const AkUniqueID PLAY_PLAYERHIT = 514211712U;
         static const AkUniqueID PLAY_SFX_5_FIRE_BOMB_B = 3074092082U;
         static const AkUniqueID PLAY_SFX_BOMBTIMER = 2257001325U;
+        static const AkUniqueID PLAY_TIMESTRESSER = 695506996U;
         static const AkUniqueID PLAY_TRAMP963_WATERFALL_SOUNDS_259625 = 2572739826U;
         static const AkUniqueID PLAY_WINDGRASS_BSZ01_94_1 = 3277248305U;
     } // namespace EVENTS

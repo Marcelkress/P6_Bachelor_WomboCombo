@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "695506996",
+    "Type": "Event",
+    "GUID": "{3C726C15-6522-4EF1-A9D5-9D07C8505C54}",
+    "Language": "SFX",
+    "Hash": "{47FBE9CA-283C-11BC-44B5-E9A59BBA93D9}",
+    "ObjectPath": "Play_TimeStresser",
+    "ShortName": "Play_TimeStresser",
+    "Path": "Event/Play_TimeStresser.bnk",
+    "Media": [
+     {
+      "Id": "340467240",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "TimeStresser.wav",
+      "Path": "Media/340467240.wem",
+      "CachePath": "E9/{E9400A8B-ABA5-012D-A1B9-57258966CCC9}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "695506996",
+      "Name": "Play_TimeStresser",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_TimeStresser",
+      "GUID": "{3C726C15-6522-4EF1-A9D5-9D07C8505C54}",
+      "DurationType": "OneShot",
+      "DurationMin": "83.470604",
+      "DurationMax": "83.470604",
+      "MediaRefs": [
+       {
+        "Id": "340467240"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{51DB999B-714E-4F13-8847-117EB1E49920}"
+ }
+}

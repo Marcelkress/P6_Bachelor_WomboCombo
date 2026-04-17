@@ -191,6 +191,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_TimeStresser" ID="{3C726C15-6522-4EF1-A9D5-9D07C8505C54}">
+					<ChildrenList>
+						<Action Name="" ID="{F0B4C3B3-685D-46AB-BF16-BC9C646FF8EB}" ShortID="801851716">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="TimeStresser" ID="{8956A573-4ADA-42FB-B8F1-77BDC08BB02A}" WorkUnitID="{4F9991F6-C6B0-464E-A79D-228F4B413CED}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

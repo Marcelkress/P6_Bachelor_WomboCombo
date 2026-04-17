@@ -196,6 +196,35 @@
 								<ActiveSource Name="Hollow-16bit" ID="{7E8F8A51-2E8B-4C46-A3DF-491ADB9FFB55}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+						<Sound Name="TimeStresser" ID="{8956A573-4ADA-42FB-B8F1-77BDC08BB02A}" ShortID="434325221">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-22</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AF9EEC83-A8E4-4C08-A3B7-085D894A22A7}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{DC0F5E70-B7C9-40C2-A399-414C27A89E4E}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="TimeStresser" ID="{721CE843-A4D0-4D8F-A54D-C06251D93C9D}">
+									<Language>SFX</Language>
+									<AudioFile>TimeStresser.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="340467240"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="TimeStresser" ID="{721CE843-A4D0-4D8F-A54D-C06251D93C9D}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Environment" ID="{B178AF8B-5D7D-4750-A654-549C92C4E5FF}" ShortID="1033066214">
