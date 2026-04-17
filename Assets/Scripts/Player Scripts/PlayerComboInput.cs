@@ -30,6 +30,9 @@ public class PlayerComboInput : MonoBehaviour
     private PlayerInfoStruct playerInfoStruct;
     private PlayerInput input;
     public bool useBalls;
+    public bool autoSpawnPlayer2;
+    public GameObject player2Prefab;
+
     
     [Header("Symbol values")] public int moon = 1;
     public int star = 2, sun = 3;
@@ -60,6 +63,14 @@ public class PlayerComboInput : MonoBehaviour
         
         if(useBalls)
             controllerInput = FindFirstObjectByType<ControllerInputCrossPlatform>();
+    }
+
+    void Start()
+    {
+        if (autoSpawnPlayer2)
+        {
+            GameObject player2 = Instantiate(player2Prefab, transform.position, transform.rotation);
+        }
     }
 
     

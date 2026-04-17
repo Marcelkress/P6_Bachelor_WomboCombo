@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2160536446892046927}
   - component: {fileID: 3437328400859991661}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -154,8 +154,6 @@ MonoBehaviour:
     max: 26
   playerID: 1
   useBalls: 1
-  autoSpawnPlayer2: 1
-  player2Prefab: {fileID: 6106739392811833873, guid: 565b68ada03f33a849c4d2b99e4bef5e, type: 3}
   moon: 1
   star: 2
   sun: 3
