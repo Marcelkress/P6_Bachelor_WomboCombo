@@ -261,23 +261,20 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
                     comboStep += 2;
                     playerScript.AddEpicness(playerScript.epicnessIncreasePerHit); // Increase epicness on successful combo input
                     playerScript.ShootMagicspell(this.transform, this.gameObject);
-                    globalComboStarted = false;
-                    localComboStarted = false;
+                    globalComboStarted = true;
+                    localComboStarted = true;
                     //Debug.Log("Shooting from update");
                 }
                 else
                 {
-                    //Debug.Log("Too slow - resetting");
-                    globalComboStarted = false;
-                    localComboStarted = false;
+                    //Debug.Log("Too late for square input");
                 }
                 
                 timer = 0;
                 startTimer = false;
                 pOneSquare = false;
                 pTwoSquare = false;
-                globalComboStarted = false;
-                localComboStarted = false;
+
             }
             else if (timer >= squareSuccessWindow)
             {
@@ -286,8 +283,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
                 startTimer = false;
                 pOneSquare = false;
                 pTwoSquare = false;
-                globalComboStarted = false;
-                localComboStarted = false;
+
             }
         }
     }
@@ -330,8 +326,6 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
                     pTwoSquare = true;
 
                 startTimer = true;
-                localComboStarted = true;
-                globalComboStarted = true;
 
                 Debug.Log("returning");
 
