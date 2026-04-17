@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{4DF00548-0438-40DA-8842-DDAA11BB5DFA}",
     "Language": "SFX",
-    "Hash": "{C0D91FED-973A-1FA4-4ED3-661C759742A0}",
+    "Hash": "{EA37D23B-1DB6-AC72-F98A-AF9AA5DBD253}",
     "ObjectPath": "Play_LightningStrike",
     "ShortName": "Play_LightningStrike",
     "Path": "Event/Play_LightningStrike.bnk",
@@ -67,6 +67,6 @@
     ]
    }
   ],
-  "FileHash": "{AE4D0CBD-F379-2EF1-5560-D6243DCD0C28}"
+  "FileHash": "{2C545304-6BE1-9CD7-7F99-00AAEB1D7F4C}"
  }
 }

@@ -450,6 +450,7 @@
 						<RandomSequenceContainer Name="Ravens" ID="{269137F9-6255-421F-AFDF-458C7E0CD201}" ShortID="445037523">
 							<PropertyList>
 								<Property Name="3DSpatialization" Type="int16" Value="2"/>
+								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Attenuation">
@@ -701,6 +702,9 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="Cold Winds" ID="{D3DF0B5B-A5E9-4AFC-B008-1FF199E8A220}" ShortID="305192445">
+							<PropertyList>
+								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Attenuation">
 									<Custom>
@@ -831,6 +835,7 @@
 							<PropertyList>
 								<Property Name="3DSpatialization" Type="int16" Value="1"/>
 								<Property Name="AttenuationDistanceScaling" Type="Real32" Value="0.65"/>
+								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
 										<Value>-8</Value>
@@ -1212,6 +1217,7 @@
 								<RandomSequenceContainer Name="Attack" ID="{E8A6151A-AF3E-4E49-B313-C85FDEE555B0}" ShortID="391291595">
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
 												<Value>-13</Value>
@@ -1376,6 +1382,7 @@
 								<RandomSequenceContainer Name="PlayerHit" ID="{701D4252-3E8F-4655-8F47-07DBCD2615FE}" ShortID="543400403">
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">
@@ -1677,6 +1684,7 @@
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="AttenuationDistanceScaling" Type="Real32" Value="0.65"/>
+										<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
 												<Value>-10</Value>
@@ -1960,6 +1968,7 @@
 								<RandomSequenceContainer Name="Minotauer steps grass" ID="{2DA5B849-15FF-4010-8E56-EEF24E185C7E}" ShortID="898511865">
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
 												<Value>-17</Value>
@@ -2243,6 +2252,7 @@
 								<RandomSequenceContainer Name="Minotauser steps stone" ID="{A7B9FC4D-590B-4A07-9C5C-FA93B5E63EA2}" ShortID="840740075">
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
 												<Value>-13</Value>
@@ -2527,6 +2537,7 @@
 						<Sound Name="Enemy projectile sound" ID="{2DC3C90B-88AB-4349-BAAC-F061D2B63714}" ShortID="476177826">
 							<PropertyList>
 								<Property Name="3DSpatialization" Type="int16" Value="2"/>
+								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Attenuation">
@@ -2652,6 +2663,7 @@
 						</Sound>
 						<Sound Name="Enemy projektile hit" ID="{5D1F113D-41B5-40E7-9233-D59C2CF6A9F6}" ShortID="622022574">
 							<PropertyList>
+								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
 										<Value>-9</Value>
@@ -2682,6 +2694,7 @@
 						<RandomSequenceContainer Name="EnemyProjectile2" ID="{C5AAEE69-0499-44EB-86CB-9B3F887E6211}" ShortID="699482599">
 							<PropertyList>
 								<Property Name="3DSpatialization" Type="int16" Value="2"/>
+								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Attenuation">
@@ -2907,6 +2920,7 @@
 						<RandomSequenceContainer Name="LightningStrike" ID="{FE4952F5-D651-45E8-BAEF-AC2095ABF538}" ShortID="995863572">
 							<PropertyList>
 								<Property Name="3DSpatialization" Type="int16" Value="1"/>
+								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
 										<Value>-7</Value>
@@ -2993,6 +3007,7 @@
 						<Sound Name="SFX 5-Fire Bomb B" ID="{D88508F3-4F0B-4C8A-98C1-C23503BD4E40}" ShortID="631585356">
 							<PropertyList>
 								<Property Name="3DSpatialization" Type="int16" Value="1"/>
+								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Attenuation">
@@ -3119,6 +3134,12 @@
 						<Sound Name="SFX Bombtimer" ID="{ECA0B7ED-5D9C-4013-B63E-BED46088E773}" ShortID="727775919">
 							<PropertyList>
 								<Property Name="3DSpatialization" Type="int16" Value="1"/>
+								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-5</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Attenuation">

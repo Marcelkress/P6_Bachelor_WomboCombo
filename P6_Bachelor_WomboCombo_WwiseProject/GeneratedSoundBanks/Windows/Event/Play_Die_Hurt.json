@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{78F34ECF-17B1-4279-B6AC-780E5656D290}",
     "Language": "SFX",
-    "Hash": "{279FC7D0-0950-6CBF-03E5-1B6D6E048F9E}",
+    "Hash": "{000FF892-97FE-EF16-4537-C3969977A67A}",
     "ObjectPath": "Play_Die_Hurt",
     "ShortName": "Play_Die_Hurt",
     "Path": "Event/Play_Die_Hurt.bnk",
@@ -92,6 +92,6 @@
     ]
    }
   ],
-  "FileHash": "{BD986668-600F-98C5-BD79-BB284AA2F029}"
+  "FileHash": "{D1A7DE13-DDBE-5B91-B540-C41698204071}"
  }
 }

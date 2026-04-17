@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{E63FEFAE-C052-467F-BCAA-4306AA7B59C5}",
     "Language": "SFX",
-    "Hash": "{B9054BB6-0555-144E-BB1B-3193A8E03CF0}",
+    "Hash": "{918FD034-B85B-4480-E9AB-701736CB2062}",
     "ObjectPath": "Play_Minotauer_steps_grass",
     "ShortName": "Play_Minotauer_steps_grass",
     "Path": "Event/Play_Minotauer_steps_grass.bnk",
@@ -104,6 +104,6 @@
     ]
    }
   ],
-  "FileHash": "{2AD86242-3F26-9F88-BCD7-4BBE4FD2409C}"
+  "FileHash": "{236EB565-6FEF-CF06-D957-48E512F4C123}"
  }
 }

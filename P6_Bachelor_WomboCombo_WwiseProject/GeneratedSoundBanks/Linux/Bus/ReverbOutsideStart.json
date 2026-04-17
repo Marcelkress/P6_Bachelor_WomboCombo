@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Linux",
+  "BasePlatform": "Linux",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "404747078",
+    "Type": "Bus",
+    "GUID": "{0DA0FEBD-A98D-4130-8638-350618ADB0D8}",
+    "Language": "SFX",
+    "Hash": "{85EF8DBF-B11E-8110-DD17-0BFB7300FC8A}",
+    "ObjectPath": "ReverbOutsideStart",
+    "ShortName": "ReverbOutsideStart",
+    "Path": "Bus/ReverbOutsideStart.bnk",
+    "Plugins": {
+     "ShareSets": [
+      {
+       "Id": "48620415",
+       "Name": "Have_U_Ever_Been_Outside",
+       "ObjectPath": "\\Effects\\Factory Effects\\RoomVerb\\Exteriors\\Have_U_Ever_Been_Outside",
+       "GUID": "{FE29AE8D-FD86-4652-A95D-68D32F5760EC}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      }
+     ]
+    },
+    "AuxBusses": [
+     {
+      "Id": "404747078",
+      "Name": "ReverbOutsideStart",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\ReverbOutsideStart",
+      "GUID": "{0DA0FEBD-A98D-4130-8638-350618ADB0D8}",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "48620415"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "FileHash": "{C7607B88-A486-1309-2AC3-363708F34291}"
+ }
+}

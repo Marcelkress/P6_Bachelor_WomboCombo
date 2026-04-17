@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{63AB2E89-C1D3-42A1-8DE2-693722C5411D}",
     "Language": "SFX",
-    "Hash": "{79CF8C08-C5DD-7D4B-7966-562A60DBA414}",
+    "Hash": "{87541A41-571C-BBE9-4710-9520B8E73CC9}",
     "ObjectPath": "Play_Cold_Winds",
     "ShortName": "Play_Cold_Winds",
     "Path": "Event/Play_Cold_Winds.bnk",
@@ -44,6 +44,6 @@
     ]
    }
   ],
-  "FileHash": "{555CB9CA-4617-8DE2-B340-18A6B4A313D4}"
+  "FileHash": "{2767B00F-2BCE-F1AE-D74D-12AD2F07620B}"
  }
 }

@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{0A406643-4279-4597-9D2E-D47272AAFC70}",
     "Language": "SFX",
-    "Hash": "{9D2D2F86-C853-3818-7D77-13385BEE7215}",
+    "Hash": "{00665A72-4EF3-0F43-26C4-E8FD09183235}",
     "ObjectPath": "Play_Minotauer_Attack",
     "ShortName": "Play_Minotauer_Attack",
     "Path": "Event/Play_Minotauer_Attack.bnk",
@@ -91,6 +91,6 @@
     ]
    }
   ],
-  "FileHash": "{EC12C697-98FB-790F-C22D-BF263313A788}"
+  "FileHash": "{F836BE32-CA06-EFE4-9FCC-0DFF4D83B576}"
  }
 }

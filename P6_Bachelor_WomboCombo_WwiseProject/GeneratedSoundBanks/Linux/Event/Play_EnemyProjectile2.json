@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{A827DA73-A864-47DF-9B57-7F807CA82D33}",
     "Language": "SFX",
-    "Hash": "{A9EA9836-459F-B589-00DF-6B42A1AEF176}",
+    "Hash": "{04054DC3-10E0-F1DD-2450-172314EEB7F1}",
     "ObjectPath": "Play_EnemyProjectile2",
     "ShortName": "Play_EnemyProjectile2",
     "Path": "Event/Play_EnemyProjectile2.bnk",
@@ -44,6 +44,6 @@
     ]
    }
   ],
-  "FileHash": "{CA2702C9-C3C4-137E-CB81-B935FBF56FAB}"
+  "FileHash": "{B94AB68F-B60E-EC98-A7D0-A622E15D4581}"
  }
 }

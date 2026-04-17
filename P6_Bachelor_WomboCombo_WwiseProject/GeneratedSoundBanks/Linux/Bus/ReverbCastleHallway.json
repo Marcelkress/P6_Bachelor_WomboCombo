@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Linux",
+  "BasePlatform": "Linux",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "865895389",
+    "Type": "Bus",
+    "GUID": "{19CD6672-DBEA-4D17-9D35-D8E5DEA8737A}",
+    "Language": "SFX",
+    "Hash": "{90C05852-6F41-E461-EEE7-D2284ACBC674}",
+    "ObjectPath": "ReverbCastleHallway",
+    "ShortName": "ReverbCastleHallway",
+    "Path": "Bus/ReverbCastleHallway.bnk",
+    "Plugins": {
+     "ShareSets": [
+      {
+       "Id": "1520064353",
+       "Name": "Hall_Medium_Bright",
+       "ObjectPath": "\\Effects\\Factory Effects\\RoomVerb\\Halls\\Hall_Medium_Bright",
+       "GUID": "{3C3845B2-C76E-4634-9108-83FA43A5A7BC}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      }
+     ]
+    },
+    "AuxBusses": [
+     {
+      "Id": "865895389",
+      "Name": "ReverbCastleHallway",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\ReverbCastleHallway",
+      "GUID": "{19CD6672-DBEA-4D17-9D35-D8E5DEA8737A}",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "1520064353"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "FileHash": "{3FC9F139-D22A-B650-7EF5-BDCD5CD68C52}"
+ }
+}

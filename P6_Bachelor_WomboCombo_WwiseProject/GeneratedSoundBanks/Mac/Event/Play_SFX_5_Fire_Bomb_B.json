@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{26EAB187-2101-4244-98EC-440EEF145097}",
     "Language": "SFX",
-    "Hash": "{5EA3E8AF-4CF8-1FB6-334A-5EDF964E97F7}",
+    "Hash": "{9513EDAB-2CBA-DDB4-2E57-87DB3AEC68BE}",
     "ObjectPath": "Play_SFX_5_Fire_Bomb_B",
     "ShortName": "Play_SFX_5_Fire_Bomb_B",
     "Path": "Event/Play_SFX_5_Fire_Bomb_B.bnk",
@@ -44,6 +44,6 @@
     ]
    }
   ],
-  "FileHash": "{CEFB6346-32EF-7A3D-DE15-AB9E4257239A}"
+  "FileHash": "{37CBAADC-3EC4-54E2-F004-7E07D83BCF1D}"
  }
 }

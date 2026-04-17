@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{65B7EB93-421E-4FCB-B605-D2DEAE9B1CCD}",
     "Language": "SFX",
-    "Hash": "{7CD9B8D0-7730-9400-9FC2-9ADF64FBD9A3}",
+    "Hash": "{0B7D4898-D929-D4CA-FF22-12939C9795DD}",
     "ObjectPath": "Play_Enemy_projektile_hit",
     "ShortName": "Play_Enemy_projektile_hit",
     "Path": "Event/Play_Enemy_projektile_hit.bnk",
@@ -43,6 +43,6 @@
     ]
    }
   ],
-  "FileHash": "{1EC19C63-9DA1-F976-F020-3724568DFC2C}"
+  "FileHash": "{918C0658-ACB7-DAFA-985C-B9B020B1EF7A}"
  }
 }

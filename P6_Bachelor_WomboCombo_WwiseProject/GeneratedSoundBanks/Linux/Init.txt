@@ -1,6 +1,16 @@
 Audio Bus	ID	Name			Wwise Object Path	Notes
 	2246998526	Main Audio Bus			\Default Work Unit\Main Audio Bus	
 
+Auxiliary Bus	ID	Name			Wwise Object Path	Notes
+	404747078	ReverbOutsideStart			\Default Work Unit\Main Audio Bus\ReverbOutsideStart	
+	865895389	ReverbCastleHallway			\Default Work Unit\Main Audio Bus\ReverbCastleHallway	
+	3995165952	TownPortReverb			\Default Work Unit\Main Audio Bus\TownPortReverb	
+
+Effect plug-ins	ID	Name	Type				Notes
+	48620415	Have_U_Ever_Been_Outside	Wwise RoomVerb			
+	1520064353	Hall_Medium_Bright	Wwise RoomVerb			
+	3442768367	Hall_Large_Dark	Wwise RoomVerb			
+
 Audio Devices	ID	Name	Type				Notes
 	2317455096	No_Output	No Output			
 	3859886410	System	System			

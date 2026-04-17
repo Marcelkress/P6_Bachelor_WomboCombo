@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "3995165952",
+    "Type": "Bus",
+    "GUID": "{BBC71981-7F5F-490B-8CDB-63698B07E774}",
+    "Language": "SFX",
+    "Hash": "{458B593E-BD26-DCB9-682B-352B5AF889EE}",
+    "ObjectPath": "TownPortReverb",
+    "ShortName": "TownPortReverb",
+    "Path": "Bus/TownPortReverb.bnk",
+    "Plugins": {
+     "ShareSets": [
+      {
+       "Id": "3442768367",
+       "Name": "Hall_Large_Dark",
+       "ObjectPath": "\\Effects\\Factory Effects\\RoomVerb\\Halls\\Hall_Large_Dark",
+       "GUID": "{0F6A7D6D-131C-4650-9561-FC05F5C7A37B}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      }
+     ]
+    },
+    "AuxBusses": [
+     {
+      "Id": "3995165952",
+      "Name": "TownPortReverb",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\TownPortReverb",
+      "GUID": "{BBC71981-7F5F-490B-8CDB-63698B07E774}",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "3442768367"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "FileHash": "{3F3A853C-902F-8EA9-ED33-00F09259DA50}"
+ }
+}

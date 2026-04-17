@@ -57,6 +57,13 @@ namespace AK
         static const AkUniqueID MAIN_AUDIO_BUS = 2246998526U;
     } // namespace BUSSES
 
+    namespace AUX_BUSSES
+    {
+        static const AkUniqueID REVERBCASTLEHALLWAY = 865895389U;
+        static const AkUniqueID REVERBOUTSIDESTART = 404747078U;
+        static const AkUniqueID TOWNPORTREVERB = 3995165952U;
+    } // namespace AUX_BUSSES
+
     namespace AUDIO_DEVICES
     {
         static const AkUniqueID NO_OUTPUT = 2317455096U;

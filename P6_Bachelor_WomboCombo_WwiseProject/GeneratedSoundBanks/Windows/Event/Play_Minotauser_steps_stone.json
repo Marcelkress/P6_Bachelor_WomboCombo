@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{5B9A56BF-7C09-4DFC-A1FE-76C31A61431D}",
     "Language": "SFX",
-    "Hash": "{5048EE9F-6644-571B-7CFC-CC4BF1F4DE8E}",
+    "Hash": "{24F3387B-08DD-CDD8-A2EA-F503C6C18805}",
     "ObjectPath": "Play_Minotauser_steps_stone",
     "ShortName": "Play_Minotauser_steps_stone",
     "Path": "Event/Play_Minotauser_steps_stone.bnk",
@@ -104,6 +104,6 @@
     ]
    }
   ],
-  "FileHash": "{86F38EE9-EC39-70C8-2FDF-7D9D6EADAF9F}"
+  "FileHash": "{18F5ABC2-11C6-28B8-B0D0-02B7C36024BD}"
  }
 }
