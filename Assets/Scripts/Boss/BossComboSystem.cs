@@ -126,11 +126,22 @@ public class BossComboSystem : MonoBehaviour
         
         int[] randArray = new int[length];
         
-        for (int i = 0; i < randArray.Length; i++)
+        for (int i = 0; i < randArray.Length; i += 2)
         {
-            randArray[i] = Random.Range(1, 4);
+            int a = Random.Range(1, 4);
+            int b = Random.Range(1, 4);
+
+            if (a == 2 && b == 1) // cursed shit fr fordi at vi ikke vil have nogen enemies for den her combo
+            {
+                
+                a += 1;
+                b += 1;
+            }
+
+            randArray[i] = a;
+            randArray[i + 1] = b;
         }
-        
+
         return randArray;
     }
 

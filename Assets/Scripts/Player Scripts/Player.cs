@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public Image takeDamageEffect; // Reference to a UI Image that will flash when the player takes damage
     public float damageFlashDuration = 0.2f; // Duration of the damage flash effect
     public float damageFlashIntensity = 0.5f; // Intensity of the damage flash effect (0 to 1)
+    
 
     [Header("Epicness buildup")]
     public float epicnessIncreasePerHit = 0.1f;
@@ -39,6 +40,13 @@ public class Player : MonoBehaviour
     public TMP_Text healthText; // Reference to the health text UI element (optional)
     public GameObject inputUIImage; // reference UI image which should be updated to show the combo array (Should spawn multiple)
     [SerializeField] private Transform content;
+    private Image contentImage;
+    private Color contentOriginalColor;
+    private float contentImageOriginalAlpha;
+    public float contentFadeDuration = 0.5f;
+
+
+
     private Image[] contentSprite;
     public Sprite moonImg, starImg, sunImg; // references to the UI images for each button (Square, Circle, Triangle)
     public float shakeDuration;
@@ -77,6 +85,10 @@ public class Player : MonoBehaviour
     
     void Start()
     {
+        contentImage = content.GetComponent<Image>();
+        contentOriginalColor = contentImage.color;
+        contentImageOriginalAlpha = contentImage.color.a;
+
         takeDamageEffect.DOFade(0f, 0f); // Ensure the damage effect is invisible at the start
         currentHealth = maxHealth; // Initialize current health to the maximum health at the start
         playerInput = GetComponent<PlayerInput>(); // Get the PlayerInput component attached to the player game object
@@ -289,11 +301,13 @@ public class Player : MonoBehaviour
             {
                 if (playerOneInfo.symbOne == healingComboArray[comboStep] && id == 1)
                     pOneStar = true;
+                    
 
                 if(playerTwoInfo.symbOne == healingComboArray[comboStep] && id == 2)
                     pTwoStar = true;
 
                 startTimer = true;
+                succesfullComboDone = false;
 
                 Debug.Log("returning");
 
@@ -319,6 +333,8 @@ public class Player : MonoBehaviour
         }
     }
 
+    private bool succesfullComboDone = false;
+
     void Update()
     {
         if (startTimer)
@@ -328,14 +344,22 @@ public class Player : MonoBehaviour
             if (pOneStar == true && pTwoStar == true) // both players pressed within the window
             {
                 //Debug.Log("Both players pressed star top");
-                if (timer < starSuccessWindow) // only succeed if still within the time window
+                if (timer < starSuccessWindow && !succesfullComboDone) // only succeed if still within the time window
                 {
+                    succesfullComboDone = true;
                     comboStep += 2;
                     healingComboStarted = true;
                     Enemy.globalComboStarted = true;
 
                     // Completed one combo step
                     UpdateUI();
+                    if (comboStep >= healingComboArray.Length)
+                    {
+                        // Completed entire combo
+                        healingComboStarted = false;
+                        Enemy.globalComboStarted = false;
+                        comboStep = 0;
+                    }       
                 }
 
                 else
@@ -377,6 +401,10 @@ public class Player : MonoBehaviour
         {
             return;
         }
+
+        contentImage.DOFade(1, healComboFadeTime);
+        contentImage.color = Color.white;
+
         
         Sequence comboStepSequence = DOTween.Sequence();
         comboStepSequence.Join(
@@ -412,17 +440,13 @@ public class Player : MonoBehaviour
                 uiComboStep = 0;
             }
 
-            currentHealth += 5;
+            currentHealth += healAmount;
             if (currentHealth > maxHealth)
             {
                 currentHealth = maxHealth;
             }
-            
-            healingComboStarted = false;
-            Enemy.globalComboStarted = false;
-            
-            // reset combo step
-            uiComboStep = 0;
+            contentImage.DOFade(contentImageOriginalAlpha, healComboFadeTime);
+            contentImage.color = contentOriginalColor;
 
             AnimateHealthBar();
             healthText.text = currentHealth.ToString();

@@ -347,6 +347,8 @@ public class MagicBall : MonoBehaviour
         Collider targetCollider = target.GetComponentInChildren<Collider>();
         IEnemyDamagable targetDamageable = target.GetComponent<IEnemyDamagable>();
 
+        Debug.Log(targetDamageable != null ? "Target is damageable" : "Target is NOT damageable");
+
         while (attacking)
         {
             if (target == null)

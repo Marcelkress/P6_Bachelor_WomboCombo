@@ -5339,8 +5339,8 @@ MonoBehaviour:
   shouldCharge: 0
   chargeSpeedMultiplier: 2
   baseScale: 1
-  sizePerComboPair: 0.08
-  maxScale: 1.8
+  sizePerComboPair: 0.04
+  maxScale: 1.3
   randomScaleVariance: 0.1
   comboArray: 
   comboStep: 0

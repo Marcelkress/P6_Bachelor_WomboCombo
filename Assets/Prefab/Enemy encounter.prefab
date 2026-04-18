@@ -90,8 +90,6 @@ MonoBehaviour:
     symbTwo: 2
   - symbOne: 2
     symbTwo: 3
-  - symbOne: 2
-    symbTwo: 1
   - symbOne: 1
     symbTwo: 3
   - symbOne: 1
@@ -105,6 +103,8 @@ MonoBehaviour:
   - symbOne: 3
     symbTwo: 3
   Enemies: []
+  enemyAggroDelayVariance: 0.24
+  enemiesShouldCharge: 0
 --- !u!1 &3984906520195313799
 GameObject:
   m_ObjectHideFlags: 0

@@ -464,8 +464,10 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
     private void CheckAttackDist()
     {
         if (player == null || agent == null) return;
+
+        float flatDistance = FlattenDistanceToPlayer();
         
-        if (Vector3.Distance(transform.position, player.transform.position) <= agent.stoppingDistance + 1)
+        if (flatDistance <= agent.stoppingDistance + 1)
         {
             anim.SetBool("Attack", true);
             
@@ -482,6 +484,15 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         }
     }
 
+    // så hvor højt oppe spilleren er ikke gælder
+    private float FlattenDistanceToPlayer()
+    {
+        float flatDistance = Vector2.Distance(
+            new Vector2(transform.position.x, transform.position.z),
+            new Vector2(player.position.x, player.position.z)
+        );
+        return flatDistance;
+    }
     public void DamagePlayer()
     {
         Debug.Log("Player Damaged!"); // Player is damaged

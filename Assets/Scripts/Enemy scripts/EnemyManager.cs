@@ -97,8 +97,9 @@ public class EnemyManager : MonoBehaviour
         }
     }
     
-    private int[] RandomArray(int minLength, int maxLength)
+    public int[] RandomArray(int minLength, int maxLength)
     {
+
         int length = Random.Range(minLength * 2, maxLength * 2); // Ensure the length is even Ganger med 2 for at gøre det mere intuitivt i inspector
         
         if (length % 2 != 0) // Sikrer det er et lige tal
@@ -108,13 +109,25 @@ public class EnemyManager : MonoBehaviour
         
         int[] randArray = new int[length];
         
-        for (int i = 0; i < randArray.Length; i++)
+        for (int i = 0; i < randArray.Length; i += 2)
         {
-            randArray[i] = Random.Range(1, 4); // 1, 2 eller 3 (man skal have 4 selvom vi kun har 3 symboler fordi upper bound er exclusive, som betyder at den ikke kan returnere 4)
+            int a = Random.Range(1, 4);
+            int b = Random.Range(1, 4);
+
+            if (a == 2 && b == 1) // cursed shit fr fordi at vi ikke vil have nogen enemies for den her combo
+            {
+                
+                a += 1;
+                b += 1;
+            }
+
+            randArray[i] = a;
+            randArray[i + 1] = b;
         }
-        
+
         return randArray;
     }
+
 
     public void ClearAllEntities()
     {

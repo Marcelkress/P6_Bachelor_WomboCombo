@@ -71,11 +71,13 @@ public class EncounterManager : MonoBehaviour
             return;
         }
 
+
+        Enemy.globalComboStarted = false;
+
         Encounters[encounterIndex-1].enemyManager.ClearAllEntities();
 
         //playerPathFollower.transform.position = playerPathFollower.destinations[lastRespawnPoint].transform.position;
         encounterIndex = lastRespawnPoint;
-        Encounters[encounterIndex] = Encounters[encounterIndex]; // refresh encounter to reset enemy managers enemy lists and such
         GoToNextEncounter(true);
     }
 
