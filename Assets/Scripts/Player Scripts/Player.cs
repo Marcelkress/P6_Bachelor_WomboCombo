@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     public UnityEvent PlayerDiedEvent, PlayerRespawnEvent;
     public int healAmount = 5;
     public int lives = 3;
+    public UnityEvent livesChangedEvent;
+
     public Image takeDamageEffect; // Reference to a UI Image that will flash when the player takes damage
     public float damageFlashDuration = 0.2f; // Duration of the damage flash effect
     public float damageFlashIntensity = 0.5f; // Intensity of the damage flash effect (0 to 1)
@@ -510,6 +512,7 @@ public class Player : MonoBehaviour
     private void Die()
     {
         lives--;
+        livesChangedEvent.Invoke();
         deathCounterSaveInfo++;
         if (lives <= 0) // real dead FR
         {

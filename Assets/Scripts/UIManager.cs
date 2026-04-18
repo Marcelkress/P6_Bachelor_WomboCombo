@@ -22,11 +22,13 @@ public class UIManager : MonoBehaviour
     public GameObject[] controllerUI;
 
     [SerializeField] private Player player;
+    public Image[] livesUI;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        player.livesChangedEvent.AddListener(RemoveLifeUI);
         if (removeDebugUI)
         {
             debugUI.SetActive(false);
@@ -43,6 +45,22 @@ public class UIManager : MonoBehaviour
         gameOverText.DOFade(0, 0);
         gameOverBackground.DOFade(0, 0);
         restartButton.SetActive(false);
+    }
+
+    private void RemoveLifeUI()
+    {
+        int livesLeft = player.lives;
+        for (int i = 0; i < livesUI.Length; i++)
+        {
+            if (i < livesLeft)
+            {
+                livesUI[i].enabled = true;
+            }
+            else
+            {
+                livesUI[i].enabled = false;
+            }
+        }
     }
 
     // Bare så vi kan starte spillet når vi er klar
