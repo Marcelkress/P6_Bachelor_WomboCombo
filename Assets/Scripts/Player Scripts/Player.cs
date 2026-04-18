@@ -526,4 +526,20 @@ public class Player : MonoBehaviour
         SaveSystem.SaveData(Enemy.wrongComboInput, "Wrong combo Inputs");
         //SaveSystem.SaveData(deathCounterSaveInfo, "deathCounter");
     }
+
+    public void ResetHealingCombo()
+    {
+        comboStep = 0;
+        uiComboStep = 0;
+        healingComboStarted = false;
+        Enemy.globalComboStarted = false;
+
+        foreach (var img in contentSprite)
+        {
+            img.DOFade(1, healComboFadeTime);
+        }
+
+        contentImage.DOFade(contentImageOriginalAlpha, healComboFadeTime);
+        contentImage.color = contentOriginalColor;
+    }
 }

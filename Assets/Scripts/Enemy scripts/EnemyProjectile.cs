@@ -200,7 +200,8 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
         CompareCombo(2);
     }
 
-    private void InitializeCombo()
+    
+     private void InitializeCombo()
     {
         int length = UnityEngine.Random.Range(minLength * 2, maxLength * 2); // Ensure the length is even Ganger med 2 for at gøre det mere intuitivt i inspector
         
@@ -211,12 +212,24 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
         
         int[] randArray = new int[length];
         
-        for (int i = 0; i < randArray.Length; i++)
+        for (int i = 0; i < randArray.Length; i += 2)
         {
-            randArray[i] = UnityEngine.Random.Range(1, 3);
+            int a = UnityEngine.Random.Range(1, 4);
+            int b = UnityEngine.Random.Range(1, 4);
+
+            if (a == 2 && b == 1) // cursed shit fr fordi at vi ikke vil have nogen enemies for den her combo
+            {
+                
+                a += 1;
+                b += 1;
+            }
+
+            randArray[i] = a;
+            randArray[i + 1] = b;
         }
 
         comboArray = randArray;
+
     }
     
     private Image[] contentSprite;

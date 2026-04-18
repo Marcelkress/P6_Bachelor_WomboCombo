@@ -8502,6 +8502,7 @@ MonoBehaviour:
   playerPathFollower: {fileID: 631350399}
   defaultEnemyAggroDelay: 0
   epicBossLogic: {fileID: 0}
+  playerScript: {fileID: 631350411}
   bossBattleStarted: 0
   useDevTools: 0
   startFromEncounter: 0
@@ -43941,6 +43942,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 450746846}
     - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: theFirstUniqueComboStartSteps.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: theFirstUniqueComboStartSteps.Array.data[1].symbOne
       value: 3
       objectReference: {fileID: 0}
@@ -43950,7 +43955,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: theFirstUniqueComboStartSteps.Array.data[2].symbOne
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: theFirstUniqueComboStartSteps.Array.data[2].symbTwo
@@ -43958,31 +43963,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: theFirstUniqueComboStartSteps.Array.data[3].symbOne
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
-      propertyPath: theFirstUniqueComboStartSteps.Array.data[4].symbOne
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
-      propertyPath: theFirstUniqueComboStartSteps.Array.data[4].symbTwo
+      propertyPath: theFirstUniqueComboStartSteps.Array.data[3].symbTwo
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
-      propertyPath: theFirstUniqueComboStartSteps.Array.data[5].symbOne
+      propertyPath: theFirstUniqueComboStartSteps.Array.data[4].symbOne
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: theFirstUniqueComboStartSteps.Array.data[4].symbTwo
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: theFirstUniqueComboStartSteps.Array.data[5].symbOne
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: theFirstUniqueComboStartSteps.Array.data[5].symbTwo
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: theFirstUniqueComboStartSteps.Array.data[6].symbOne
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: theFirstUniqueComboStartSteps.Array.data[6].symbTwo
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: theFirstUniqueComboStartSteps.Array.data[7].symbTwo

@@ -19,6 +19,8 @@ public class EncounterManager : MonoBehaviour
     public float defaultEnemyAggroDelay = 2f;
     public EpicBossLogic epicBossLogic;
 
+    public Player playerScript;
+
     public bool bossBattleStarted = false;
 
     [Header("Dev Tools")]
@@ -73,6 +75,10 @@ public class EncounterManager : MonoBehaviour
 
 
         Enemy.globalComboStarted = false;
+        Player.healingComboStarted = false;
+
+        playerScript.ResetHealingCombo();
+
 
         Encounters[encounterIndex-1].enemyManager.ClearAllEntities();
 
