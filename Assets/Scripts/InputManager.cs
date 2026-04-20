@@ -38,6 +38,7 @@ public class InputManager : MonoBehaviour
         while (playerOnePending.Count > 0)
         {
             var next = playerOnePending.Dequeue();
+            
             playerOneCurrent.symbOne = next.symbOne;
             playerOneCurrent.symbTwo = next.symbTwo;
             playerOneCurrent.newData = true;
