@@ -91,7 +91,7 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0
     - _Cutout: 0.5
-    - _CutoutAlphaMul: 0
+    - _CutoutAlphaMul: 2
     - _CutoutThreshold: 0.043
     - _DetailNormalMapScale: 1
     - _DistortScale: 0.15

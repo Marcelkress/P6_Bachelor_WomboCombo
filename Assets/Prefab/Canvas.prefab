@@ -229,7 +229,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 3.44}
+  m_AnchoredPosition: {x: 0, y: 3.4399414}
   m_SizeDelta: {x: 500, y: 950}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8354769279791247060
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &5839813384339243700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,4 +322,6 @@ MonoBehaviour:
   valueToAdd: 450
   useBossLogic: 0
   useProjectileLogic: 0
-  scalingFactor: 5
+  canvasSettings: {fileID: 0}
+  borderImage: {fileID: 0}
+  uiBorderColor: {r: 0, g: 0, b: 0, a: 0}

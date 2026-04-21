@@ -432,6 +432,7 @@ MonoBehaviour:
   shakeStrength: {x: 25, y: 25, z: 25}
   shakeRandomness: 10
   shakeVibrato: 10
+  isDead: 0
   anim: {fileID: 0}
   manager: {fileID: 0}
   canvasImage: {fileID: 0}

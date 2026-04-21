@@ -29,7 +29,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 18896443867211933}
-  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: -0.999409, z: -0, w: 0.034375902}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.0024999997, y: 0.0019999999, z: 0.0009999999}
   m_ConstrainProportionsScale: 0
@@ -37,7 +37,7 @@ RectTransform:
   - {fileID: 312082041159936929}
   - {fileID: 1687057938005419409}
   m_Father: {fileID: 4414871117303439923}
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -176.06, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 2.49}
@@ -374,7 +374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.49056602, g: 0.488252, b: 0.488252, a: 0.92941177}
+  m_Color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 0.8235294}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4552,6 +4552,7 @@ MonoBehaviour:
   shakeStrength: {x: 25, y: 25, z: 25}
   shakeRandomness: 10
   shakeVibrato: 10
+  isDead: 0
   anim: {fileID: 0}
   manager: {fileID: 0}
   canvasImage: {fileID: 2699446507281911944}
