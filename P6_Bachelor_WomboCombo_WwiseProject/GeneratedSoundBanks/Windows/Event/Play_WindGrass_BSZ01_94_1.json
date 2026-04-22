@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{1D4CABC6-5E7F-453A-9E58-CD7EE1EB8DB2}",
     "Language": "SFX",
-    "Hash": "{A4416BA9-CA0C-7D5A-E63E-E5B1B6DCDD99}",
+    "Hash": "{F8F0830C-87AD-63A1-64DC-00846706F7EB}",
     "ObjectPath": "Play_WindGrass_BSZ01_94_1",
     "ShortName": "Play_WindGrass_BSZ01_94_1",
     "Path": "Event/Play_WindGrass_BSZ01_94_1.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "WindGrass BSZ01_94_1.wav",
       "Path": "Media/509884475.wem",
-      "CachePath": "E1/{E198FDC8-9E33-DAD5-0E75-EAB0432558F0}.wem"
+      "CachePath": "12/{12CED10E-4191-6588-C69A-5310793CCFAC}.wem"
      }
     ],
     "Events": [
@@ -31,9 +31,7 @@
       "Name": "Play_WindGrass_BSZ01_94_1",
       "ObjectPath": "\\Events\\Default Work Unit\\Play_WindGrass_BSZ01_94_1",
       "GUID": "{1D4CABC6-5E7F-453A-9E58-CD7EE1EB8DB2}",
-      "DurationType": "OneShot",
-      "DurationMin": "91.50984",
-      "DurationMax": "91.50984",
+      "DurationType": "Infinite",
       "MediaRefs": [
        {
         "Id": "509884475"
@@ -43,6 +41,6 @@
     ]
    }
   ],
-  "FileHash": "{1AF5B2C0-EFA0-89CF-42D7-996D8D002C47}"
+  "FileHash": "{C98788E6-F0AE-1BBB-9780-758DFCEBEC1F}"
  }
 }
