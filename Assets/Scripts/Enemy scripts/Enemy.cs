@@ -68,7 +68,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
     public float shakeRandomness;
     public int shakeVibrato;
 
-    private bool isDead = false;
+    [HideInInspector] public bool isDead = false;
     public static int wrongComboInput;
 
     [Header("Animation")] public Animator anim;
@@ -99,6 +99,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         agent = GetComponent<NavMeshAgent>();
         comboLength = comboArray.Length / 2;
         UpdateSizeFromComboLength();
+        
         if (shouldCharge)
         {
             agent.speed = agent.speed * chargeSpeedMultiplier;

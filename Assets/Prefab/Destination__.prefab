@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b09746f865050d49991514c2c25670ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PathDestinationObject
-  travelDuration: 2
+  travelSpeed: 10
   moveCurve:
     serializedVersion: 2
     m_Curve:
@@ -187,7 +187,10 @@ MonoBehaviour:
   arrivalShakeDuration: 0.2
   arrivalShakeMagnitude: 0.1
   rotateTowardsPath: 1
+  overwriteSubDestinations: 0
+  subDestinations: []
   controlPoint: {fileID: 5872819024903621212}
+  shouldSettleLook: 1
   lookTarget: {fileID: 3286709361820485133}
   lookSettleDuration: 0.5
   lookBlendStart: 0.7
