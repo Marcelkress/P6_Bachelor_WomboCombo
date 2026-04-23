@@ -60,6 +60,7 @@ namespace AK
 
     namespace AUX_BUSSES
     {
+        static const AkUniqueID DUNGEONREVERB = 3375770417U;
         static const AkUniqueID REVERBCASTLEHALLWAY = 865895389U;
         static const AkUniqueID REVERBOUTSIDESTART = 404747078U;
         static const AkUniqueID TOWNPORTREVERB = 3995165952U;

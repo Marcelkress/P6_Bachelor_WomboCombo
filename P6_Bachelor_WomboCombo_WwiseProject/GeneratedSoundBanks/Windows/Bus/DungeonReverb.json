@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "3375770417",
+    "Type": "Bus",
+    "GUID": "{8F685AD4-2563-4495-B92C-6CCF13899EC9}",
+    "Language": "SFX",
+    "Hash": "{543C217B-4BF1-581B-2784-F533BB43C61A}",
+    "ObjectPath": "DungeonReverb",
+    "ShortName": "DungeonReverb",
+    "Path": "Bus/DungeonReverb.bnk",
+    "Plugins": {
+     "ShareSets": [
+      {
+       "Id": "1159390747",
+       "Name": "Room_Medium_Tiled",
+       "ObjectPath": "\\Effects\\Factory Effects\\RoomVerb\\Rooms\\Room_Medium_Tiled",
+       "GUID": "{0C0A3A92-A571-4FDB-AB40-ACFED04E0217}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      }
+     ]
+    },
+    "AuxBusses": [
+     {
+      "Id": "3375770417",
+      "Name": "DungeonReverb",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\DungeonReverb",
+      "GUID": "{8F685AD4-2563-4495-B92C-6CCF13899EC9}",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "1159390747"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "FileHash": "{DD39C34F-B0E8-5BB1-B4C1-8377C31DC55A}"
+ }
+}

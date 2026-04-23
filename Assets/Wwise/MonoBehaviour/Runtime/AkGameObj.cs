@@ -15,6 +15,7 @@ software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
 Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
+using System;
 using UnityEngine;
 using AK.Wwise.Unity.Logging;
 
@@ -216,7 +217,13 @@ public class AkGameObj : UnityEngine.MonoBehaviour
 		}
 	}
 
-	private void CheckStaticStatus()
+    private void Start()
+    {
+	    GetComponent<AkGameObj>().isEnvironmentAware = true;
+    }
+
+
+    private void CheckStaticStatus()
 	{
 #if UNITY_EDITOR
 		if (AkUtilities.IsMigrating)

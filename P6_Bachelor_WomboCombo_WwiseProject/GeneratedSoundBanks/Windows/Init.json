@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{B579AAD7-ACE6-2E82-2983-FFB051E991AB}",
+    "Hash": "{333125FD-8DD2-7726-73A3-A3BC44B356BA}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -21,6 +21,14 @@
        "Name": "Have_U_Ever_Been_Outside",
        "ObjectPath": "\\Effects\\Factory Effects\\RoomVerb\\Exteriors\\Have_U_Ever_Been_Outside",
        "GUID": "{FE29AE8D-FD86-4652-A95D-68D32F5760EC}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      },
+      {
+       "Id": "1159390747",
+       "Name": "Room_Medium_Tiled",
+       "ObjectPath": "\\Effects\\Factory Effects\\RoomVerb\\Rooms\\Room_Medium_Tiled",
+       "GUID": "{0C0A3A92-A571-4FDB-AB40-ACFED04E0217}",
        "LibName": "Wwise RoomVerb",
        "LibId": "7733251"
       },
@@ -91,6 +99,19 @@
        "ShareSets": [
         {
          "Id": "1520064353"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "3375770417",
+      "Name": "DungeonReverb",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\DungeonReverb",
+      "GUID": "{8F685AD4-2563-4495-B92C-6CCF13899EC9}",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "1159390747"
         }
        ]
       }
@@ -650,6 +671,6 @@
     ]
    }
   ],
-  "FileHash": "{C6885802-2DF1-90B9-541A-56C05812EDF6}"
+  "FileHash": "{D9A1116A-DC38-1192-7119-A98C036475B9}"
  }
 }
