@@ -1036,6 +1036,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179668923}
   m_CullTransparentMesh: 1
+--- !u!1 &186359588
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 186359590}
+  - component: {fileID: 186359589}
+  m_Layer: 0
+  m_Name: AsyncSceneLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &186359589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186359588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fd5de3dc202b96aabd1a2a9fc7859e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AsyncSceneLoader
+  sceneName: scene1
+--- !u!4 &186359590
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186359588}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1409.864, y: 853.78217, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &260782678
 GameObject:
   m_ObjectHideFlags: 0
@@ -1094,6 +1139,7 @@ MonoBehaviour:
   nextUI: {fileID: 1451760190}
   currentUI: {fileID: 1841225574}
   correctColor: {r: 0, g: 1, b: 0, a: 1}
+  incorrectColor: {r: 1, g: 0, b: 0, a: 1}
   moonImg: {fileID: -269033315, guid: 7d84bd30573ee4f53a4a6bff5e75a8d0, type: 3}
   starImg: {fileID: 560802353, guid: 0dfbfea56bf784c539419f890bc00bb3, type: 3}
   sunImg: {fileID: 1848850449, guid: e9a5e41d881c4416b9c7ec36fb20f900, type: 3}
@@ -1127,7 +1173,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -718851729, guid: 57c2c16bbbc044bcd833785db20554eb, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: c71dfc67e295019dd8c470b9f6b7a588, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1251,11 +1297,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 890212598}
-  m_Father: {fileID: 1021921520}
+  m_Father: {fileID: 847397504}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 548.5825, y: -14.134399}
+  m_AnchoredPosition: {x: 3.5925293, y: -231.59442}
   m_SizeDelta: {x: 282, y: 860}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &299764603
@@ -2266,6 +2312,7 @@ MonoBehaviour:
   nextUI: {fileID: 1021921521}
   currentUI: {fileID: 2046144122}
   correctColor: {r: 0, g: 1, b: 0, a: 1}
+  incorrectColor: {r: 1, g: 0, b: 0, a: 1}
   moonImg: {fileID: -269033315, guid: 7d84bd30573ee4f53a4a6bff5e75a8d0, type: 3}
   starImg: {fileID: 560802353, guid: 0dfbfea56bf784c539419f890bc00bb3, type: 3}
   sunImg: {fileID: 1848850449, guid: e9a5e41d881c4416b9c7ec36fb20f900, type: 3}
@@ -2351,6 +2398,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 299764602}
   - {fileID: 1603231780}
   - {fileID: 1567474081}
   - {fileID: 1912484157}
@@ -2358,8 +2406,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 548.58, y: 179}
-  m_SizeDelta: {x: 100, y: 290.0593}
+  m_AnchoredPosition: {x: 544.99, y: 217.46}
+  m_SizeDelta: {x: 274.8188, y: 396.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &847397505
 MonoBehaviour:
@@ -2378,6 +2426,7 @@ MonoBehaviour:
   nextUI: {fileID: 1841225576}
   currentUI: {fileID: 1021921519}
   correctColor: {r: 0, g: 1, b: 0, a: 1}
+  incorrectColor: {r: 1, g: 0, b: 0, a: 1}
   moonImg: {fileID: -269033315, guid: 7d84bd30573ee4f53a4a6bff5e75a8d0, type: 3}
   starImg: {fileID: 560802353, guid: 0dfbfea56bf784c539419f890bc00bb3, type: 3}
   sunImg: {fileID: 1848850449, guid: e9a5e41d881c4416b9c7ec36fb20f900, type: 3}
@@ -2404,15 +2453,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: -2413806693520163455, guid: c71dfc67e295019dd8c470b9f6b7a588, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2420,7 +2469,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 5
 --- !u!222 &847397507
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3098,9 +3147,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Rotate your controller halves to match the symbols shown, then press to
-    confirm.\nEach player has two symbols on the top of their controller \u2014 one
-    is unique to them, and one is shared with the other player:\n\nPlayer 1 \u2014
-    Sun (unique), Star (shared)\nPlayer 2 \u2014 Moon (unique), Star (shared)\n\nAll
+    confirm.\nEach player has two symbols on the top of their controller, one is
+    unique to them, and one is shared with the other player:\n\nPlayer 1 \u2014 Sun
+    (unique), Star (shared)\nPlayer 2 \u2014 Moon (unique), Star (shared)\n\nAll
     bottom symbols are shared between both players."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3349,9 +3398,8 @@ RectTransform:
   m_Children:
   - {fileID: 1134252390}
   - {fileID: 1010049074}
-  - {fileID: 299764602}
-  - {fileID: 27913725}
   - {fileID: 847397504}
+  - {fileID: 27913725}
   m_Father: {fileID: 1837981496}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -4674,6 +4722,7 @@ MonoBehaviour:
   nextUI: {fileID: 1451760190}
   currentUI: {fileID: 1451760188}
   correctColor: {r: 0, g: 1, b: 0, a: 1}
+  incorrectColor: {r: 1, g: 0, b: 0, a: 1}
   moonImg: {fileID: -269033315, guid: 7d84bd30573ee4f53a4a6bff5e75a8d0, type: 3}
   starImg: {fileID: 560802353, guid: 0dfbfea56bf784c539419f890bc00bb3, type: 3}
   sunImg: {fileID: 1848850449, guid: e9a5e41d881c4416b9c7ec36fb20f900, type: 3}
@@ -4707,7 +4756,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -718851729, guid: 57c2c16bbbc044bcd833785db20554eb, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: c71dfc67e295019dd8c470b9f6b7a588, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8489,3 +8538,4 @@ SceneRoots:
   - {fileID: 386723139}
   - {fileID: 4546953696371076557}
   - {fileID: 1568747801}
+  - {fileID: 186359590}

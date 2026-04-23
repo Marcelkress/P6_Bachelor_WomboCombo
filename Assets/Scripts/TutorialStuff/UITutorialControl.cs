@@ -3,6 +3,7 @@ using DG.Tweening;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using Unity.VisualScripting;
 
 public class UITutorialControl : MonoBehaviour, IPointerClickHandler
 {
@@ -16,6 +17,7 @@ public class UITutorialControl : MonoBehaviour, IPointerClickHandler
 
     public Color correctColor = Color.green;
 
+    public Color incorrectColor = Color.red;
     private PlayerInfoStruct playerOneInfo, playerTwoInfo;
 
     public Sprite moonImg, starImg, sunImg; // references to the UI images for each button (Square, Circle, Triangle)
@@ -39,6 +41,8 @@ public class UITutorialControl : MonoBehaviour, IPointerClickHandler
 
     public int currentComboIndex = 0;
     public int UIComboIndex = 0;
+
+    private static bool sceneLoadedAsync = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -228,6 +232,14 @@ public class UITutorialControl : MonoBehaviour, IPointerClickHandler
                
                 
             }
+            else
+            {
+                symbolUIElements[UIComboIndex].GetComponent<Image>().DOColor(incorrectColor, 0.2f);
+                symbolUIElements[UIComboIndex].GetComponent<RectTransform>().DOShakeAnchorPos(0.2f, 10, 20).OnComplete(() =>
+                {
+                    symbolUIElements[UIComboIndex].GetComponent<Image>().DOColor(Color.white, 0.1f);
+                });
+            }
 
             return;
         }
@@ -258,6 +270,14 @@ public class UITutorialControl : MonoBehaviour, IPointerClickHandler
                 return;
             }
             NextUI();
+        }
+        else
+        {
+            this.gameObject.GetComponent<Image>().DOColor(incorrectColor, 0.2f);
+            this.gameObject.GetComponent<RectTransform>().DOShakeAnchorPos(0.2f, 10, 20).OnComplete(() =>
+            {
+                this.gameObject.GetComponent<Image>().DOColor(Color.white, 0.1f);
+            });
         }
     }
 
@@ -296,10 +316,12 @@ public class UITutorialControl : MonoBehaviour, IPointerClickHandler
 
         fadeToBlackImage.DOFade(1, 1f).OnComplete(() =>
         {
-            SceneManager.LoadScene(sceneName);
+            AsyncSceneLoader.instance.StartLoadedScene();   
         });
        
     }
+
+    
 
      private void InitializeUI()
     {
