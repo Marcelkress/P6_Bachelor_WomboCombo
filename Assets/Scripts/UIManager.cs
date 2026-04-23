@@ -22,13 +22,17 @@ public class UIManager : MonoBehaviour
     public GameObject[] controllerUI;
 
     [SerializeField] private Player player;
+    public bool stopTime = false;
     public Image[] livesUI;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player.livesChangedEvent.AddListener(RemoveLifeUI);
+        if (player != null)
+        {
+            player.livesChangedEvent.AddListener(RemoveLifeUI);
+        }
         if (removeDebugUI)
         {
             debugUI.SetActive(false);
@@ -40,8 +44,16 @@ public class UIManager : MonoBehaviour
                 ui.SetActive(false);
             }
         }
-        startScreen.SetActive(true);
-        Time.timeScale = 0f;
+        if (stopTime == true)
+        {
+            startScreen.SetActive(true);
+        }
+
+       
+        if (stopTime)
+        {
+            Time.timeScale = 0f;
+        }
         gameOverText.DOFade(0, 0);
         gameOverBackground.DOFade(0, 0);
         restartButton.SetActive(false);
@@ -101,7 +113,6 @@ public class UIManager : MonoBehaviour
             restartButton.SetActive(true);
         });
     }
-
 
     public void ReloadScene()
     {

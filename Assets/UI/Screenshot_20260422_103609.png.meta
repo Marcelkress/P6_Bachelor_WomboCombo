@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 57c2c16bbbc044bcd833785db20554eb
+guid: 211e1ab40889dbbd294e62eadd85c14c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -93,40 +93,27 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Circle_0
+      name: Screenshot_20260422_103609_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 200
-        height: 200
+        width: 492
+        height: 495
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 94, y: 94, z: 94, w: 94}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 074cc73d36930aba099b210d491a8cd1
-      internalID: -718851729
+      spriteID: 2b028dd0191455c1a9feee0aa6c1122d
+      internalID: 671284203
       vertices: []
       indices: 
       edges: []
@@ -135,7 +122,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 694a74b05e85d6cf7ab9e079445c4b98
+    spriteID: e940952d0e95d0fdabac8720bfdcf604
     internalID: 0
     vertices: []
     indices: 
@@ -145,7 +132,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Circle_0: -718851729
+      Screenshot_20260422_103609_0: 671284203
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
