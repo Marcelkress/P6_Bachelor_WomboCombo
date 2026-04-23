@@ -1760,7 +1760,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Star is shared between both players.\nCombos on an enemy show which symbols
+  m_text: "Star is shared between both players.\nCombos on an enemy shows which symbols
     are needed and who must perform them:\n\nExample combos as seen on the right:\nSun
     + Moon \u2014 Player 1 only\nStar + Sun \u2014 Both players, at the same time\nMoon
     + Star \u2014 Player 2 only\n"
@@ -3404,7 +3404,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1451760188}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -4432,7 +4432,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046144122}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
