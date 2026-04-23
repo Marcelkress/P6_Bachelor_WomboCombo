@@ -6345,7 +6345,7 @@ MonoBehaviour:
       customPreviewImage: {fileID: 0}
     - name: Jug3
       settings:
-        brushRadius: 1
+        brushRadius: 0.01
         brushSpacing: 0.5
         brushOverlapCheckMode: 0
         brushOverlapDistance: 0.5
@@ -6655,7 +6655,7 @@ MonoBehaviour:
       - gameObject: {fileID: 0}
       - gameObject: {fileID: 0}
       selectedSlot: 0
-      selected: 0
+      selected: 1
       colorTag: 0
       customPreviewImage: {fileID: 0}
     - name: Jug3_L1
@@ -7285,7 +7285,7 @@ MonoBehaviour:
       - gameObject: {fileID: 0}
       - gameObject: {fileID: 0}
       selectedSlot: 0
-      selected: 1
+      selected: 0
       colorTag: 0
       customPreviewImage: {fileID: 0}
     - name: Jug4_L1
@@ -8553,7 +8553,7 @@ MonoBehaviour:
     levelsInWhite: 255
     levelsOutBlack: 0
     levelsOutWhite: 255
-  activeTab: 0
+  activeTab: 4
   paintOnSelected: 0
   paintLayers:
     serializedVersion: 2
