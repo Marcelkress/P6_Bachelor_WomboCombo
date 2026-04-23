@@ -703,6 +703,7 @@
 						</RandomSequenceContainer>
 						<Sound Name="WindGrass BSZ01_94_1" ID="{E10B1E17-9212-4E2A-AB35-4E92FEA4226E}" ShortID="615206272">
 							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
 										<Value>-21</Value>
