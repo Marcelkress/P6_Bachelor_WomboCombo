@@ -10515,10 +10515,10 @@ MonoBehaviour:
     respawnPoint: 0
     spawnDelay: 0
   - enemyManager: {fileID: 1307176549}
-    meleeEnemyCount: 3
+    meleeEnemyCount: 2
     projectileEnemyCount: 0
-    minComboLength: 6
-    maxComboLength: 8
+    minComboLength: 3
+    maxComboLength: 5
     respawnPoint: 0
     spawnDelay: 0
   - enemyManager: {fileID: 699083529}
@@ -10532,7 +10532,7 @@ MonoBehaviour:
     meleeEnemyCount: 3
     projectileEnemyCount: 0
     minComboLength: 3
-    maxComboLength: 5
+    maxComboLength: 3
     respawnPoint: 0
     spawnDelay: 0
   - enemyManager: {fileID: 1830227778}
@@ -10543,10 +10543,10 @@ MonoBehaviour:
     respawnPoint: 0
     spawnDelay: 0
   - enemyManager: {fileID: 2022458300}
-    meleeEnemyCount: 2
+    meleeEnemyCount: 1
     projectileEnemyCount: 2
-    minComboLength: 4
-    maxComboLength: 6
+    minComboLength: 3
+    maxComboLength: 4
     respawnPoint: 0
     spawnDelay: 0
   - enemyManager: {fileID: 1279110780}
