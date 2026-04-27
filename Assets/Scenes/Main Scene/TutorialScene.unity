@@ -3607,7 +3607,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 639, y: -746.95874}
+  m_AnchoredPosition: {x: 462.35, y: -742}
   m_SizeDelta: {x: 924.71, y: 410.9154}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &739012543
@@ -4871,7 +4871,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Projectiles
+  m_text: Special Ability
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6626,6 +6626,7 @@ MonoBehaviour:
   _currentTutorialType: 0
   ControllersTutorial: {fileID: 1015994887}
   CustomControllersTutorial: {fileID: 1837981495}
+  ControllerVisuals: {fileID: 1819875340}
 --- !u!4 &1295044308
 Transform:
   m_ObjectHideFlags: 0
@@ -8291,6 +8292,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1741145375}
   m_CullTransparentMesh: 1
+--- !u!1 &1819875339
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1819875341}
+  - component: {fileID: 1819875340}
+  m_Layer: 5
+  m_Name: ControlSymbolVisuals
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!225 &1819875340
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819875339}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!224 &1819875341
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819875339}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 346560363672766914}
+  - {fileID: 2646684670781397069}
+  m_Father: {fileID: 2530093789538623058}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -5, y: -292.58002}
+  m_SizeDelta: {x: 1824.8693, y: 441.8755}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1837981495
 GameObject:
   m_ObjectHideFlags: 0
@@ -9322,7 +9373,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Use left and right Joystick to switch symbols and confirm input by pressing
-    the action trigger\nEach player has two symbols on the top of their controller,
+    the action trigger.\nEach player has two symbols on the top of their controller,
     one is unique to them, and one is shared with the other player:\n\nPlayer 1 \u2014
     Sun (unique), Star (shared)\nPlayer 2 \u2014 Moon (unique), Star (shared)\n\nAll
     bottom symbols are shared between both players."
@@ -9740,7 +9791,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Projectiles
+  m_text: Special Ability
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9973,18 +10024,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3266268479835611411}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7536960602370554642}
   - {fileID: 7835414584699314977}
-  m_Father: {fileID: 2530093789538623058}
+  m_Father: {fileID: 1819875341}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -150, y: 247.42}
+  m_AnchoredPosition: {x: -97.43457, y: 220.93776}
   m_SizeDelta: {x: 194.8693, y: 441.8755}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &675017044821132817
@@ -10317,8 +10368,7 @@ RectTransform:
   m_Children:
   - {fileID: 1969390590999379429}
   - {fileID: 1691419010340404659}
-  - {fileID: 346560363672766914}
-  - {fileID: 2646684670781397069}
+  - {fileID: 1819875341}
   - {fileID: 579132390}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10357,18 +10407,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2791025566221271471}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4236153625175549198}
   - {fileID: 232778288538607377}
-  m_Father: {fileID: 2530093789538623058}
+  m_Father: {fileID: 1819875341}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 140, y: 247.42}
+  m_AnchoredPosition: {x: 97.43463, y: 220.93776}
   m_SizeDelta: {x: 194.8693, y: 441.8755}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &2715936180109229667
