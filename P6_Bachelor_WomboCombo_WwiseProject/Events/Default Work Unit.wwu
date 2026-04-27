@@ -235,6 +235,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_Door" ID="{46896FFA-984E-4F36-88A4-9974E4CBCFE2}">
+					<ChildrenList>
+						<Action Name="" ID="{7ABB8774-8560-412B-BF1B-9FD5089A42F9}" ShortID="932608672">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Door" ID="{188A8735-204F-4275-A560-DBF6FCFFC26B}" WorkUnitID="{4F9991F6-C6B0-464E-A79D-228F4B413CED}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

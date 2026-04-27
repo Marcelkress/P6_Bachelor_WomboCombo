@@ -161,7 +161,7 @@ IR Pre-delay: 20ms </Comment>
 							<Flags>5</Flags>
 						</Point>
 						<Point>
-							<XPos>5.44695833333333</XPos>
+							<XPos>5.44697916666667</XPos>
 							<YPos>13411.60915</YPos>
 							<Flags>37</Flags>
 						</Point>
@@ -180,7 +180,7 @@ IR Pre-delay: 20ms </Comment>
 							<Flags>5</Flags>
 						</Point>
 						<Point>
-							<XPos>5.44695833333333</XPos>
+							<XPos>5.44697916666667</XPos>
 							<YPos>0</YPos>
 							<Flags>37</Flags>
 						</Point>
@@ -4520,7 +4520,7 @@ IR Pre-delay: 8ms
 							<Flags>5</Flags>
 						</Point>
 						<Point>
-							<XPos>0.835104166666667</XPos>
+							<XPos>0.835125</XPos>
 							<YPos>20000</YPos>
 							<Flags>37</Flags>
 						</Point>
@@ -4539,7 +4539,7 @@ IR Pre-delay: 8ms
 							<Flags>5</Flags>
 						</Point>
 						<Point>
-							<XPos>0.835104166666667</XPos>
+							<XPos>0.835125</XPos>
 							<YPos>0</YPos>
 							<Flags>37</Flags>
 						</Point>
@@ -4708,7 +4708,7 @@ IR Pre-delay: 9ms
 							<Flags>5</Flags>
 						</Point>
 						<Point>
-							<XPos>1.6699375</XPos>
+							<XPos>1.66995833333333</XPos>
 							<YPos>20000</YPos>
 							<Flags>37</Flags>
 						</Point>
@@ -4727,7 +4727,7 @@ IR Pre-delay: 9ms
 							<Flags>5</Flags>
 						</Point>
 						<Point>
-							<XPos>1.6699375</XPos>
+							<XPos>1.66995833333333</XPos>
 							<YPos>0</YPos>
 							<Flags>37</Flags>
 						</Point>
@@ -4804,7 +4804,7 @@ IR Pre-delay: 3ms
 							<Flags>5</Flags>
 						</Point>
 						<Point>
-							<XPos>1.12554166666667</XPos>
+							<XPos>1.1255625</XPos>
 							<YPos>20000</YPos>
 							<Flags>37</Flags>
 						</Point>
@@ -4823,7 +4823,7 @@ IR Pre-delay: 3ms
 							<Flags>5</Flags>
 						</Point>
 						<Point>
-							<XPos>1.12554166666667</XPos>
+							<XPos>1.1255625</XPos>
 							<YPos>0</YPos>
 							<Flags>37</Flags>
 						</Point>

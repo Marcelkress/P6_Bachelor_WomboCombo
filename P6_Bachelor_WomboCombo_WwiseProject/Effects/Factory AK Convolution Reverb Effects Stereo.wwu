@@ -4535,12 +4535,15 @@ IR Pre-delay: 8ms
 </Comment>
 							<PropertyList>
 								<Property Name="IRConvolutionStop" Type="Real64" Value="0.830041666666667"/>
+								<Property Name="IRGraphicEQAutomate" Type="bool" Value="True"/>
 								<Property Name="IRLRMix" Type="Real32">
 									<ValueList>
 										<Value>9</Value>
 									</ValueList>
 								</Property>
-								<Property Name="IRLevel" Type="Real32" Value="-27"/>
+								<Property Name="IRLevel" Type="Real32" Value="-26.2"/>
+								<Property Name="IRStretch" Type="Real32" Value="56"/>
+								<Property Name="LFELevel" Type="Real32" Value="-6.3"/>
 								<Property Name="PreDelay" Type="Real32" Value="8"/>
 							</PropertyList>
 							<ChildrenList>
@@ -4554,6 +4557,12 @@ IR Pre-delay: 8ms
 									</MediaIDList>
 								</PluginMediaSource>
 							</ChildrenList>
+							<StateInfo>
+								<StatePropertyList>
+									<Property Name="DryLevel"/>
+									<Property Name="WetLevel"/>
+								</StatePropertyList>
+							</StateInfo>
 							<PluginData>
 	<ConvolutionData>
 		<CurveList Version="1">
@@ -4569,8 +4578,23 @@ IR Pre-delay: 8ms
 							<Flags>5</Flags>
 						</Point>
 						<Point>
-							<XPos>20000</XPos>
+							<XPos>958.485508776974</XPos>
 							<YPos>0</YPos>
+							<Flags>0</Flags>
+						</Point>
+						<Point>
+							<XPos>2064.99343</XPos>
+							<YPos>-26.66081</YPos>
+							<Flags>0</Flags>
+						</Point>
+						<Point>
+							<XPos>7911.3795</XPos>
+							<YPos>-6.40189</YPos>
+							<Flags>0</Flags>
+						</Point>
+						<Point>
+							<XPos>20000</XPos>
+							<YPos>-3.25941</YPos>
 							<Flags>37</Flags>
 						</Point>
 					</PointList>

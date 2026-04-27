@@ -10,84 +10,86 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<AuxBus Name="ReverbOutsideStart" ID="{0DA0FEBD-A98D-4130-8638-350618ADB0D8}">
-							<ObjectLists>
-								<ObjectList Name="Effects">
-									<EffectSlot Name="" ID="{EBC23A1B-B4B7-4430-B680-69B5B6093ABA}" ShortID="697292895">
-										<ReferenceList>
-											<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-												<ObjectRef Name="Have_U_Ever_Been_Outside" ID="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-											</Reference>
-										</ReferenceList>
-									</EffectSlot>
-								</ObjectList>
-							</ObjectLists>
-						</AuxBus>
-						<AuxBus Name="ReverbCastleHallway" ID="{19CD6672-DBEA-4D17-9D35-D8E5DEA8737A}">
-							<ObjectLists>
-								<ObjectList Name="Effects">
-									<EffectSlot Name="" ID="{AA11B7A0-2A15-4C8B-8432-01D7F60F5F9E}" ShortID="167256492">
-										<ReferenceList>
-											<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-												<ObjectRef Name="Hall_Medium_Bright" ID="{3C3845B2-C76E-4634-9108-83FA43A5A7BC}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-											</Reference>
-										</ReferenceList>
-									</EffectSlot>
-								</ObjectList>
-							</ObjectLists>
-						</AuxBus>
-						<AuxBus Name="TownPortReverb" ID="{BBC71981-7F5F-490B-8CDB-63698B07E774}">
-							<ObjectLists>
-								<ObjectList Name="Effects">
-									<EffectSlot Name="" ID="{C0C43FA5-168D-4D08-B6C5-8E6B4A01639D}" ShortID="888613018">
-										<ReferenceList>
-											<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-												<ObjectRef Name="Hall_Large_Dark" ID="{0F6A7D6D-131C-4650-9561-FC05F5C7A37B}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-											</Reference>
-										</ReferenceList>
-									</EffectSlot>
-								</ObjectList>
-							</ObjectLists>
-						</AuxBus>
-						<AuxBus Name="DungeonReverb" ID="{8F685AD4-2563-4495-B92C-6CCF13899EC9}">
-							<PropertyList>
-								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
-							</PropertyList>
-							<ObjectLists>
-								<ObjectList Name="Effects">
-									<EffectSlot Name="" ID="{038E4055-ACCA-4892-A1B8-372AC5383FD4}" ShortID="927767672">
-										<PropertyList>
-											<Property Name="Bypass" Type="bool" Value="True"/>
-										</PropertyList>
-										<ReferenceList>
-											<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-												<ObjectRef Name="Room_Medium_Tiled" ID="{0C0A3A92-A571-4FDB-AB40-ACFED04E0217}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-											</Reference>
-										</ReferenceList>
-									</EffectSlot>
-								</ObjectList>
-							</ObjectLists>
-						</AuxBus>
-						<AuxBus Name="FinalRoomReverb" ID="{BD7F542F-D070-49A3-A300-ECB1ABC1F4F9}">
-							<PropertyList>
-								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
-							</PropertyList>
-							<ObjectLists>
-								<ObjectList Name="Effects">
-									<EffectSlot Name="" ID="{CE966235-114E-4184-846C-AF4BAAE07E47}" ShortID="166379870">
-										<ReferenceList>
-											<Reference Name="Effect" PluginName="Wwise Convolution Reverb" CompanyID="0" PluginID="127" PluginType="3">
-												<ObjectRef Name="Colossal_Cathedral_Ambisonics" ID="{043930FB-4DC4-458D-BC4E-310A6284D72E}" WorkUnitID="{1562D13C-41E8-4FA1-A341-D4CB726E2AEC}"/>
-											</Reference>
-										</ReferenceList>
-									</EffectSlot>
-								</ObjectList>
-							</ObjectLists>
-						</AuxBus>
-						<Bus Name="FinalRoomTest" ID="{5E470A9B-BCDD-4C59-8141-E3840276A938}">
-							<PropertyList>
-								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
-							</PropertyList>
+						<Bus Name="Rooms" ID="{510A8886-9B63-42FE-BB75-948F08430AB5}">
+							<ChildrenList>
+								<AuxBus Name="ReverbOutsideStart" ID="{0DA0FEBD-A98D-4130-8638-350618ADB0D8}">
+									<ObjectLists>
+										<ObjectList Name="Effects">
+											<EffectSlot Name="" ID="{EBC23A1B-B4B7-4430-B680-69B5B6093ABA}" ShortID="697292895">
+												<ReferenceList>
+													<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+														<ObjectRef Name="Have_U_Ever_Been_Outside" ID="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</ObjectList>
+									</ObjectLists>
+								</AuxBus>
+								<AuxBus Name="ReverbCastleHallway" ID="{19CD6672-DBEA-4D17-9D35-D8E5DEA8737A}">
+									<ObjectLists>
+										<ObjectList Name="Effects">
+											<EffectSlot Name="" ID="{AA11B7A0-2A15-4C8B-8432-01D7F60F5F9E}" ShortID="167256492">
+												<ReferenceList>
+													<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+														<ObjectRef Name="Hall_Medium_Bright" ID="{3C3845B2-C76E-4634-9108-83FA43A5A7BC}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</ObjectList>
+									</ObjectLists>
+								</AuxBus>
+								<AuxBus Name="TownPortReverb" ID="{BBC71981-7F5F-490B-8CDB-63698B07E774}">
+									<ObjectLists>
+										<ObjectList Name="Effects">
+											<EffectSlot Name="" ID="{C0C43FA5-168D-4D08-B6C5-8E6B4A01639D}" ShortID="888613018">
+												<ReferenceList>
+													<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+														<ObjectRef Name="Hall_Large_Dark" ID="{0F6A7D6D-131C-4650-9561-FC05F5C7A37B}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</ObjectList>
+									</ObjectLists>
+								</AuxBus>
+								<AuxBus Name="DungeonReverb" ID="{8F685AD4-2563-4495-B92C-6CCF13899EC9}">
+									<PropertyList>
+										<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+									</PropertyList>
+									<ObjectLists>
+										<ObjectList Name="Effects">
+											<EffectSlot Name="" ID="{038E4055-ACCA-4892-A1B8-372AC5383FD4}" ShortID="927767672">
+												<PropertyList>
+													<Property Name="Bypass" Type="bool" Value="True"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+														<ObjectRef Name="Room_Medium_Tiled" ID="{0C0A3A92-A571-4FDB-AB40-ACFED04E0217}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</ObjectList>
+									</ObjectLists>
+								</AuxBus>
+								<AuxBus Name="FinalRoomReverb" ID="{BD7F542F-D070-49A3-A300-ECB1ABC1F4F9}">
+									<PropertyList>
+										<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+									</PropertyList>
+									<ObjectLists>
+										<ObjectList Name="Effects">
+											<EffectSlot Name="" ID="{CE966235-114E-4184-846C-AF4BAAE07E47}" ShortID="166379870">
+												<PropertyList>
+													<Property Name="Bypass" Type="bool" Value="True"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="Effect" PluginName="Wwise Convolution Reverb" CompanyID="0" PluginID="127" PluginType="3">
+														<ObjectRef Name="Colossal_Cathedral_Ambisonics" ID="{043930FB-4DC4-458D-BC4E-310A6284D72E}" WorkUnitID="{1562D13C-41E8-4FA1-A341-D4CB726E2AEC}"/>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</ObjectList>
+									</ObjectLists>
+								</AuxBus>
+							</ChildrenList>
 						</Bus>
 					</ChildrenList>
 				</Bus>

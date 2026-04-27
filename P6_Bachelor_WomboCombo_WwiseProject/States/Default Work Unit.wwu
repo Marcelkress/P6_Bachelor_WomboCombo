@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{ADFEF0EE-9D8E-4E51-B74C-1D322FFA9CD4}" SchemaVersion="133">
 	<States>
-		<WorkUnit Name="Default Work Unit" ID="{ADFEF0EE-9D8E-4E51-B74C-1D322FFA9CD4}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{ADFEF0EE-9D8E-4E51-B74C-1D322FFA9CD4}" PersistMode="Standalone">
+			<ChildrenList>
+				<StateGroup Name="GrassOrNograss" ID="{19EDDDE1-341F-4B21-8096-9732CF9DCC26}">
+					<ChildrenList>
+						<State Name="None" ID="{68F19073-EC1D-4235-AB0E-B7039020608F}"/>
+					</ChildrenList>
+				</StateGroup>
+			</ChildrenList>
+		</WorkUnit>
 	</States>
 </WwiseDocument>

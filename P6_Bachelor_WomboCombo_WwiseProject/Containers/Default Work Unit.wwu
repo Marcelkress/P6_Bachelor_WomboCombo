@@ -755,6 +755,7 @@
 						</Sound>
 						<Sound Name="Cold Winds" ID="{D3DF0B5B-A5E9-4AFC-B008-1FF199E8A220}" ShortID="305192445">
 							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 							</PropertyList>
 							<ReferenceList>
@@ -4492,6 +4493,80 @@
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Door" ID="{188A8735-204F-4275-A560-DBF6FCFFC26B}" ShortID="154571277">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-11</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AF9EEC83-A8E4-4C08-A3B7-085D894A22A7}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{DC0F5E70-B7C9-40C2-A399-414C27A89E4E}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Doow Wood Creaking 3-wooden-door-creaking-30284" ID="{74CC948E-7CB9-4F24-8246-9A08379CF966}" ShortID="75524794">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AF9EEC83-A8E4-4C08-A3B7-085D894A22A7}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{DC0F5E70-B7C9-40C2-A399-414C27A89E4E}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Doow Wood Creaking 3-wooden-door-creaking-30284" ID="{AC2CAB59-7718-4E46-9FF2-73B1E57A746D}">
+											<Language>SFX</Language>
+											<AudioFile>Doow Wood Creaking 3-wooden-door-creaking-30284.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="316177930"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Doow Wood Creaking 3-wooden-door-creaking-30284" ID="{AC2CAB59-7718-4E46-9FF2-73B1E57A746D}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Doow Wood Creaking 7-wooden-door-creaking-30284" ID="{94A6BFC9-07FB-450A-8717-52C34D5956BC}" ShortID="264010840">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AF9EEC83-A8E4-4C08-A3B7-085D894A22A7}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{DC0F5E70-B7C9-40C2-A399-414C27A89E4E}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Doow Wood Creaking 7-wooden-door-creaking-30284" ID="{80A1E46C-2E71-4C03-9C2C-5D957D7E422F}">
+											<Language>SFX</Language>
+											<AudioFile>Doow Wood Creaking 7-wooden-door-creaking-30284.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="437429544"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Doow Wood Creaking 7-wooden-door-creaking-30284" ID="{80A1E46C-2E71-4C03-9C2C-5D957D7E422F}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="Effects">
+									<EffectSlot Name="" ID="{1AC4A34D-3D82-46B2-A60E-44CF8D6C449C}" ShortID="737373451">
+										<ReferenceList>
+											<Reference Name="Effect" PluginName="Wwise Convolution Reverb" CompanyID="0" PluginID="127" PluginType="3">
+												<ObjectRef Name="Hamburg_Stadtpark_01_Org_Stereo" ID="{78CD34E4-8E38-4EC8-959D-2515592CD807}" WorkUnitID="{9D68BE5F-8CA6-43E0-BCE2-C7D59F63E582}"/>
+											</Reference>
+										</ReferenceList>
+									</EffectSlot>
+								</ObjectList>
+							</ObjectLists>
 						</RandomSequenceContainer>
 					</ChildrenList>
 				</Folder>
