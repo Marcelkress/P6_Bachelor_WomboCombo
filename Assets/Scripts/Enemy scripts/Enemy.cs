@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
     public GameObject projectilePrefab;
     public Transform projectileShootPoint;
     public float shootIntervalMax, shootIntervalMin;
+    public bool isBoss = false;
 
     [Header("Movement and Aggro for non-projectile enemies")]
     public bool shouldCharge;
@@ -36,8 +37,9 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
     private BoxCollider playerCollider;
     private Player playerScript; // reference to the Player script to call the TakeDamage method
     private GridLayoutGroup gridLayoutGroup; // reference to the GridLayoutGroup component
-    public Material enemyMaterial; // Reference to the enemy's material for visual feedback (e.g., flashing when hit)  
-    public MeshRenderer enemyMeshRenderer;
+    
+    //public Material enemyMaterial; // Reference to the enemy's material for visual feedback (e.g., flashing when hit)  
+    //public MeshRenderer enemyMeshRenderer;
 
     [Header("Visual Feedback")]
     private Light enemySpotLight; // for visuelt feedback når man targeter enemy
@@ -51,7 +53,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
     public static bool globalComboStarted;
     private bool localComboStarted;
 
-    [Header("Attack")]
+    [Header("Attack (melee only)")]
     public int damageAmount = 1; 
     public float attackCooldown = 1f;
     public float stoppingDistance = 1f;
@@ -118,7 +120,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
             InputManager.instance.PlayerOneEvent.AddListener(PlayerOneUpdate);
             InputManager.instance.PlayerTwoEvent.AddListener(PlayerTwoUpdate);
         }
-        SetRandomColor();
+        //SetRandomColor();
 
     }
 
@@ -131,6 +133,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         }
     }
 
+    /*
     void SetRandomColor()
     {
         // Clone the material so each enemy has its own instance
@@ -145,6 +148,7 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
         uiBorderColor = randomColor;
 
     }
+    */
 
     public void Initialize(float aggroDelay)
     {
@@ -453,7 +457,8 @@ public class Enemy : MonoBehaviour, IEnemyDamagable
     private void CheckComboCompletion(bool instantKill)
     {
         int totalSteps = comboArray.Length;
-        if (uiComboStep >= totalSteps || instantKill == true)
+        
+        if (uiComboStep >= totalSteps || instantKill == true && isBoss == false)
         {
             canvasImage.DOFade(lastCanvasImageAlpha, visualFeedbackFadeDuration);
             enemySpotLight.DOIntensity(0, visualFeedbackFadeDuration);

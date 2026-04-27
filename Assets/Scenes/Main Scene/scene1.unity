@@ -2850,7 +2850,7 @@ MonoBehaviour:
   m_listeners:
     initialListenerList: []
     useDefaultListeners: 1
-  isEnvironmentAware: 0
+  isEnvironmentAware: 1
   isStaticObject: 0
   usePositionOffsetData: 0
   m_positionOffsetData:
@@ -10436,115 +10436,140 @@ MonoBehaviour:
     minComboLength: 2
     maxComboLength: 4
     respawnPoint: 1
+    spawnDelay: 0
   - enemyManager: {fileID: 1990868834}
     meleeEnemyCount: 0
     projectileEnemyCount: 1
     minComboLength: 2
     maxComboLength: 4
     respawnPoint: 0
+    spawnDelay: 0
   - enemyManager: {fileID: 1088628462}
     meleeEnemyCount: 1
     projectileEnemyCount: 0
     minComboLength: 2
     maxComboLength: 4
     respawnPoint: 0
+    spawnDelay: 0
   - enemyManager: {fileID: 1030023371}
     meleeEnemyCount: 2
     projectileEnemyCount: 1
     minComboLength: 2
     maxComboLength: 4
     respawnPoint: 1
+    spawnDelay: 0
   - enemyManager: {fileID: 385785121}
     meleeEnemyCount: 2
     projectileEnemyCount: 0
     minComboLength: 2
     maxComboLength: 4
     respawnPoint: 0
+    spawnDelay: 0
   - enemyManager: {fileID: 1126966903}
     meleeEnemyCount: 2
     projectileEnemyCount: 0
     minComboLength: 2
     maxComboLength: 4
     respawnPoint: 0
+    spawnDelay: 0
   - enemyManager: {fileID: 1761839060}
     meleeEnemyCount: 2
     projectileEnemyCount: 1
     minComboLength: 1
     maxComboLength: 4
     respawnPoint: 0
+    spawnDelay: 0
   - enemyManager: {fileID: 2102292839}
     meleeEnemyCount: 1
     projectileEnemyCount: 1
     minComboLength: 2
     maxComboLength: 4
     respawnPoint: 1
+    spawnDelay: 0
   - enemyManager: {fileID: 486749952}
     meleeEnemyCount: 1
     projectileEnemyCount: 1
     minComboLength: 2
     maxComboLength: 4
     respawnPoint: 0
+    spawnDelay: 0
   - enemyManager: {fileID: 1441776804}
     meleeEnemyCount: 1
     projectileEnemyCount: 0
     minComboLength: 6
     maxComboLength: 8
     respawnPoint: 0
+    spawnDelay: 0
   - enemyManager: {fileID: 918771674}
     meleeEnemyCount: 1
     projectileEnemyCount: 0
     minComboLength: 2
     maxComboLength: 3
     respawnPoint: 0
+    spawnDelay: 0
   - enemyManager: {fileID: 1831252325}
     meleeEnemyCount: 1
     projectileEnemyCount: 1
     minComboLength: 6
     maxComboLength: 8
     respawnPoint: 0
+    spawnDelay: 0
   - enemyManager: {fileID: 1307176549}
     meleeEnemyCount: 3
     projectileEnemyCount: 0
     minComboLength: 6
     maxComboLength: 8
     respawnPoint: 0
+    spawnDelay: 0
   - enemyManager: {fileID: 699083529}
     meleeEnemyCount: 1
     projectileEnemyCount: 0
     minComboLength: 2
     maxComboLength: 3
     respawnPoint: 0
+    spawnDelay: 0
   - enemyManager: {fileID: 1132233565}
     meleeEnemyCount: 3
     projectileEnemyCount: 0
     minComboLength: 3
     maxComboLength: 5
     respawnPoint: 0
+    spawnDelay: 0
   - enemyManager: {fileID: 1830227778}
     meleeEnemyCount: 2
     projectileEnemyCount: 0
     minComboLength: 3
     maxComboLength: 5
     respawnPoint: 0
+    spawnDelay: 0
   - enemyManager: {fileID: 2022458300}
     meleeEnemyCount: 2
     projectileEnemyCount: 2
     minComboLength: 4
     maxComboLength: 6
     respawnPoint: 0
+    spawnDelay: 0
   - enemyManager: {fileID: 1279110780}
     meleeEnemyCount: 2
     projectileEnemyCount: 0
     minComboLength: 2
     maxComboLength: 4
     respawnPoint: 0
+    spawnDelay: 0
+  - enemyManager: {fileID: 1847433612}
+    meleeEnemyCount: 0
+    projectileEnemyCount: 1
+    minComboLength: 15
+    maxComboLength: 15
+    respawnPoint: 0
+    spawnDelay: 10
   playerPathFollower: {fileID: 631350399}
   defaultEnemyAggroDelay: 0
   epicBossLogic: {fileID: 0}
   playerScript: {fileID: 631350411}
   bossBattleStarted: 0
-  useDevTools: 1
-  startFromEncounter: 15
+  useDevTools: 0
+  startFromEncounter: 0
   lastRespawnPoint: 0
 --- !u!4 &309611475
 Transform:
@@ -30227,6 +30252,7 @@ Transform:
   - {fileID: 243278429}
   - {fileID: 2022458296}
   - {fileID: 845520327}
+  - {fileID: 1847433610}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &824023807
@@ -68073,6 +68099,225 @@ Transform:
   m_Children: []
   m_Father: {fileID: 61866507}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1847433609
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 818722427}
+    m_Modifications:
+    - target: {fileID: 642506511973602219, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_Name
+      value: SpawnPosShootingEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011144791251801250, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_Name
+      value: BOSS ENCOUNTER
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115005355421534699, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115005355421534699, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115005355421534699, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2778449696889007046, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 2778449696889007046, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3949050355488794452, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 3949050355488794452, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 3949050355488794452, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: enemiesShouldCharge
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: projectileUnityPrefab
+      value: 
+      objectReference: {fileID: 8499516053759841394, guid: f02a4a8e4f04c4b0bb42f4be5cf607a6, type: 3}
+    - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: enemyAggroDelayVariance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: meleeSpawnPositions.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: 'meleeSpawnPositions.Array.data[0]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: 'meleeSpawnPositions.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1847433611}
+    - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: 'meleeSpawnPositions.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1847433611}
+    - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: 'meleeSpawnPositions.Array.data[3]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: 'meleeSpawnPositions.Array.data[4]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: 'meleeSpawnPositions.Array.data[5]'
+      value: 
+      objectReference: {fileID: 1847433611}
+    - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: projectileSpawnPositions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: 'projectileSpawnPositions.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1847433611}
+    - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: 'projectileSpawnPositions.Array.data[1]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: 'projectileSpawnPositions.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1847433611}
+    - target: {fileID: 5279170095301563804, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_Name
+      value: SpawnPosShootingEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6017696618043871699, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 6017696618043871699, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 15.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 6017696618043871699, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -144.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 6017696618043871699, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6017696618043871699, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6017696618043871699, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6017696618043871699, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6017696618043871699, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6017696618043871699, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6017696618043871699, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7437090161883455330, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7437090161883455330, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 7437090161883455330, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459725487056678893, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459725487056678893, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459725487056678893, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8181313545885335257, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 8181313545885335257, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 8181313545885335257, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 8315905859283554261, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+      propertyPath: m_Name
+      value: SpawnPosShootingEnemy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 3984906520195313799, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+    - {fileID: 7841575140502415690, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+    - {fileID: 4691790872528624265, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+    - {fileID: 8315905859283554261, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+    - {fileID: 5279170095301563804, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+--- !u!4 &1847433610 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6017696618043871699, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+  m_PrefabInstance: {fileID: 1847433609}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1847433611 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8181313545885335257, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+  m_PrefabInstance: {fileID: 1847433609}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1847433612 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4000759478771030554, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
+  m_PrefabInstance: {fileID: 1847433609}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 256fe48069e804f7692c46aa4064cfd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyManager
 --- !u!1001 &1847705292
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -80041,6 +80286,10 @@ PrefabInstance:
       value: InputManager
       objectReference: {fileID: 0}
     - target: {fileID: 4234291619244402696, guid: 161ce07d9fd7340ccbab36ee2b2819af, type: 3}
+      propertyPath: m_JoinBehavior
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4234291619244402696, guid: 161ce07d9fd7340ccbab36ee2b2819af, type: 3}
       propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 307785641}
@@ -80048,6 +80297,10 @@ PrefabInstance:
       propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1038895977}
+    - target: {fileID: 5488213084651132158, guid: 161ce07d9fd7340ccbab36ee2b2819af, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

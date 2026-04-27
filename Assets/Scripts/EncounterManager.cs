@@ -1,3 +1,4 @@
+using System.Collections;
 using PathCreation.Examples;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,6 +10,7 @@ public struct EncounterStruct
     public int meleeEnemyCount, projectileEnemyCount;
     public int minComboLength, maxComboLength;
     public bool respawnPoint;
+    public float spawnDelay;
 }
 public class EncounterManager : MonoBehaviour
 {
@@ -136,6 +138,13 @@ public class EncounterManager : MonoBehaviour
     {
         if (encounterIndex > Encounters.Length - 1)
             return;
+
+        StartCoroutine(StartEncounterDelayed(enemyAggroDelay));
+    }
+
+    private IEnumerator StartEncounterDelayed(float enemyAggroDelay)
+    {
+        yield return new WaitForSeconds(Encounters[encounterIndex].spawnDelay);
         
         int meleeCount = Encounters[encounterIndex].meleeEnemyCount;
         int projecCount = Encounters[encounterIndex].projectileEnemyCount;
