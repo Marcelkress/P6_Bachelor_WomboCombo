@@ -146,7 +146,7 @@ public class EnemyManager : MonoBehaviour
         }
         else if (Enemies.Count <= 0 && EncounterManager.instance.bossBattleStarted)
         {
-            EncounterManager.instance.epicBossLogic.OnMinionsCleared(); 
+            //EncounterManager.instance.epicBossLogic.OnMinionsCleared(); Depricated
         }
     }
 

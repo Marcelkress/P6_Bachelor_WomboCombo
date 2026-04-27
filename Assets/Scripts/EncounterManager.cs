@@ -103,7 +103,7 @@ public class EncounterManager : MonoBehaviour
                 if (epicBossLogic != null)
                 {
                     // Hand over logic to the boss
-                    epicBossLogic.StartBossBattle();
+                    //epicBossLogic.StartBossBattle(); DEPRICATED
                     bossBattleStarted = true;
                 }
                 
