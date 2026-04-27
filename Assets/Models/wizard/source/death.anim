@@ -202364,4 +202364,11 @@ AnimationClip:
     flags: 0
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 1.6333333
+    functionName: BossLaugh
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: 3775954631c564042be636cdf49aca34, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

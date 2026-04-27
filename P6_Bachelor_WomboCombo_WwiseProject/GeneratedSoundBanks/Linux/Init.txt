@@ -1,17 +1,26 @@
+State Group	ID	Name			Wwise Object Path	Notes
+	821485643	GrassOrNograss			\Default Work Unit\GrassOrNograss	
+
+State	ID	Name	State Group			Notes
+	748895195	None	GrassOrNograss			
+
 Audio Bus	ID	Name			Wwise Object Path	Notes
+	1359360203	Rooms			\Default Work Unit\Main Audio Bus\Rooms	
 	2246998526	Main Audio Bus			\Default Work Unit\Main Audio Bus	
 
 Auxiliary Bus	ID	Name			Wwise Object Path	Notes
-	404747078	ReverbOutsideStart			\Default Work Unit\Main Audio Bus\ReverbOutsideStart	
-	865895389	ReverbCastleHallway			\Default Work Unit\Main Audio Bus\ReverbCastleHallway	
-	3375770417	DungeonReverb			\Default Work Unit\Main Audio Bus\DungeonReverb	
-	3995165952	TownPortReverb			\Default Work Unit\Main Audio Bus\TownPortReverb	
+	342899938	FinalRoomReverb			\Default Work Unit\Main Audio Bus\Rooms\FinalRoomReverb	
+	404747078	ReverbOutsideStart			\Default Work Unit\Main Audio Bus\Rooms\ReverbOutsideStart	
+	865895389	ReverbCastleHallway			\Default Work Unit\Main Audio Bus\Rooms\ReverbCastleHallway	
+	3375770417	DungeonReverb			\Default Work Unit\Main Audio Bus\Rooms\DungeonReverb	
+	3995165952	TownPortReverb			\Default Work Unit\Main Audio Bus\Rooms\TownPortReverb	
 
 Effect plug-ins	ID	Name	Type				Notes
 	48620415	Have_U_Ever_Been_Outside	Wwise RoomVerb			
 	1159390747	Room_Medium_Tiled	Wwise RoomVerb			
 	1520064353	Hall_Medium_Bright	Wwise RoomVerb			
 	3442768367	Hall_Large_Dark	Wwise RoomVerb			
+	4161719729	Colossal_Cathedral_Ambisonics	Wwise Convolution Reverb			Impulse response created by Pinguin ing.büro © 2010 Pinguin ing.büro.  All rights reserved. IR Pre-delay: 20ms 
 
 Audio Devices	ID	Name	Type				Notes
 	2317455096	No_Output	No Output			

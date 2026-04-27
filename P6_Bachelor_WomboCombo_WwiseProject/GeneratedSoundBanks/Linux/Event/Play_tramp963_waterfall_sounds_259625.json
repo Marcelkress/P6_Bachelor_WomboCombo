@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{1212C50C-6E82-45BF-AF34-CDEF9E295A47}",
     "Language": "SFX",
-    "Hash": "{9523E58E-6675-6336-6DF6-3B9774EFD7A4}",
+    "Hash": "{3AF9936E-B0E7-B261-4B2E-08E2591268D6}",
     "ObjectPath": "Play_tramp963_waterfall_sounds_259625",
     "ShortName": "Play_tramp963_waterfall_sounds_259625",
     "Path": "Event/Play_tramp963_waterfall_sounds_259625.bnk",
@@ -42,6 +42,6 @@
     ]
    }
   ],
-  "FileHash": "{FEB72854-D9BB-F745-4E81-C143B00F025E}"
+  "FileHash": "{589395F8-B8DF-A5F1-1BC9-0247D4512458}"
  }
 }

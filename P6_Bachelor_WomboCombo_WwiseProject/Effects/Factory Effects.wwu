@@ -707,6 +707,12 @@
 								<Property Name="ReverbTime" Type="Real32" Value="2"/>
 								<Property Name="WetLevel" Type="Real32" Value="-30"/>
 							</PropertyList>
+							<StateInfo>
+								<StatePropertyList>
+									<Property Name="DryLevel"/>
+									<Property Name="WetLevel"/>
+								</StatePropertyList>
+							</StateInfo>
 						</Effect>
 						<Effect Name="PA_Announcement1" ID="{65E0ACE4-B404-4485-87A4-5907277D9858}" PluginName="Wwise Matrix Reverb" CompanyID="0" PluginID="115" PluginType="3">
 							<PropertyList>

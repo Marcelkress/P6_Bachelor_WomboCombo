@@ -4524,6 +4524,7 @@ MonoBehaviour:
   projectileShootPoint: {fileID: 0}
   shootIntervalMax: 0
   shootIntervalMin: 0
+  isBoss: 0
   shouldCharge: 0
   chargeSpeedMultiplier: 3
   baseScale: 1
@@ -4533,8 +4534,6 @@ MonoBehaviour:
   comboArray: 
   comboStep: 0
   comboLength: 0
-  enemyMaterial: {fileID: 2100000, guid: 33c9ee4a234365847b2a66694d208c6e, type: 2}
-  enemyMeshRenderer: {fileID: 3978854120457980880, guid: 178cc0fb6666a3cd8991a4e3707ee07b, type: 3}
   lightFeedbackIntensity: 4
   visualFeedbackFadeDuration: 0.1
   uiBorderColor: {r: 0, g: 0, b: 0, a: 0}
@@ -4634,6 +4633,10 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 55f03d4b1294d41b89598220768fe9cc, type: 2}
+  spellHitsound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 2933c638cfa964a68ba9dd197847029d, type: 2}
   minotauserWalkSound:
     idInternal: 0
     valueGuidInternal: 

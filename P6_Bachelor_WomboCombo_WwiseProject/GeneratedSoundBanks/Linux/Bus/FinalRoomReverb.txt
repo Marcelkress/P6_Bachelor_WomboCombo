@@ -1,0 +1,6 @@
+Auxiliary Bus	ID	Name			Wwise Object Path	Notes
+	342899938	FinalRoomReverb			\Default Work Unit\Main Audio Bus\Rooms\FinalRoomReverb	
+
+Effect plug-ins	ID	Name	Type				Notes
+	4161719729	Colossal_Cathedral_Ambisonics	Wwise Convolution Reverb			Impulse response created by Pinguin ing.büro © 2010 Pinguin ing.büro.  All rights reserved. IR Pre-delay: 20ms 
+

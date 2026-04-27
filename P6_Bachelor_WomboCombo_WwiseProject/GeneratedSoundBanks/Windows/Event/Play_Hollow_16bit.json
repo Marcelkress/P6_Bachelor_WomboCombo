@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{FBCEC0F4-2C87-4E7E-B7A4-42DF95BC94DD}",
     "Language": "SFX",
-    "Hash": "{2BBA988C-F33A-BF0A-3677-6940981107B8}",
+    "Hash": "{33C28C4A-C3A6-7BEF-EE92-1572ABA8AD50}",
     "ObjectPath": "Play_Hollow_16bit",
     "ShortName": "Play_Hollow_16bit",
     "Path": "Event/Play_Hollow_16bit.bnk",
@@ -43,6 +43,6 @@
     ]
    }
   ],
-  "FileHash": "{43D0D070-361F-92A9-4F25-BC472DE81797}"
+  "FileHash": "{DEACE59D-C0E3-E104-32F9-71E6B9FFA0A1}"
  }
 }

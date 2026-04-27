@@ -10,7 +10,7 @@
     "Type": "Bus",
     "GUID": "{0DA0FEBD-A98D-4130-8638-350618ADB0D8}",
     "Language": "SFX",
-    "Hash": "{85EF8DBF-B11E-8110-DD17-0BFB7300FC8A}",
+    "Hash": "{F9E2A2FC-945C-EA62-3694-21F5555D8156}",
     "ObjectPath": "ReverbOutsideStart",
     "ShortName": "ReverbOutsideStart",
     "Path": "Bus/ReverbOutsideStart.bnk",
@@ -30,7 +30,7 @@
      {
       "Id": "404747078",
       "Name": "ReverbOutsideStart",
-      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\ReverbOutsideStart",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Rooms\\ReverbOutsideStart",
       "GUID": "{0DA0FEBD-A98D-4130-8638-350618ADB0D8}",
       "PluginRefs": {
        "ShareSets": [
@@ -43,6 +43,6 @@
     ]
    }
   ],
-  "FileHash": "{C7607B88-A486-1309-2AC3-363708F34291}"
+  "FileHash": "{D49BA4FA-A782-76BE-C95F-2E425CF50555}"
  }
 }

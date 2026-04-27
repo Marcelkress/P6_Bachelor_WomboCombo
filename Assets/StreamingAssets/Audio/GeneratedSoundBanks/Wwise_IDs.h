@@ -13,14 +13,17 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID PLAY_CHAOTIC_DRUMS = 892614759U;
         static const AkUniqueID PLAY_COLD_WINDS = 1884171676U;
         static const AkUniqueID PLAY_DIE_HURT = 2943090728U;
         static const AkUniqueID PLAY_ENEMY_PROJECTILE_SOUND = 3692402696U;
         static const AkUniqueID PLAY_ENEMY_PROJEKTILE_HIT = 4040943786U;
         static const AkUniqueID PLAY_ENEMYPROJECTILE2 = 2457855683U;
         static const AkUniqueID PLAY_FIREBALL = 146533081U;
+        static const AkUniqueID PLAY_FIREBALLHIT = 3910411732U;
         static const AkUniqueID PLAY_FREESOUND_COMMUNITY_RAVEN_MANYMP3_14529 = 649460754U;
         static const AkUniqueID PLAY_HOLLOW_16BIT = 1648528756U;
+        static const AkUniqueID PLAY_LAUGHING_ALL_THE_WAY_TO_THE_BANK__EVIL_EMPIRE_ = 1607176032U;
         static const AkUniqueID PLAY_LIGHTNINGSTRIKE = 889095714U;
         static const AkUniqueID PLAY_MINOTAUER_ATTACK = 2883861275U;
         static const AkUniqueID PLAY_MINOTAUER_STEPS_GRASS = 2684025063U;
@@ -32,6 +35,20 @@ namespace AK
         static const AkUniqueID PLAY_TRAMP963_WATERFALL_SOUNDS_259625 = 2572739826U;
         static const AkUniqueID PLAY_WINDGRASS_BSZ01_94_1 = 3277248305U;
     } // namespace EVENTS
+
+    namespace STATES
+    {
+        namespace GRASSORNOGRASS
+        {
+            static const AkUniqueID GROUP = 821485643U;
+
+            namespace STATE
+            {
+                static const AkUniqueID NONE = 748895195U;
+            } // namespace STATE
+        } // namespace GRASSORNOGRASS
+
+    } // namespace STATES
 
     namespace GAME_PARAMETERS
     {
@@ -56,11 +73,13 @@ namespace AK
     namespace BUSSES
     {
         static const AkUniqueID MAIN_AUDIO_BUS = 2246998526U;
+        static const AkUniqueID ROOMS = 1359360203U;
     } // namespace BUSSES
 
     namespace AUX_BUSSES
     {
         static const AkUniqueID DUNGEONREVERB = 3375770417U;
+        static const AkUniqueID FINALROOMREVERB = 342899938U;
         static const AkUniqueID REVERBCASTLEHALLWAY = 865895389U;
         static const AkUniqueID REVERBOUTSIDESTART = 404747078U;
         static const AkUniqueID TOWNPORTREVERB = 3995165952U;

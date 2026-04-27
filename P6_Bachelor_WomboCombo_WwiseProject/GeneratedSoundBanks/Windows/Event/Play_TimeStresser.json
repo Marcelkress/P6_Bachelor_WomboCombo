@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{3C726C15-6522-4EF1-A9D5-9D07C8505C54}",
     "Language": "SFX",
-    "Hash": "{47FBE9CA-283C-11BC-44B5-E9A59BBA93D9}",
+    "Hash": "{CDF88BC4-9A2F-0AB4-94C7-89BF3D70B673}",
     "ObjectPath": "Play_TimeStresser",
     "ShortName": "Play_TimeStresser",
     "Path": "Event/Play_TimeStresser.bnk",
@@ -43,6 +43,6 @@
     ]
    }
   ],
-  "FileHash": "{80A00CD5-FFDF-B1E6-BA3E-B73846676631}"
+  "FileHash": "{8DC59ADE-9D0B-0D26-B831-EB51F2C18A7B}"
  }
 }

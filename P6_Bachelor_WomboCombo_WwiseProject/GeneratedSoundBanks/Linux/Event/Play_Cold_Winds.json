@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{63AB2E89-C1D3-42A1-8DE2-693722C5411D}",
     "Language": "SFX",
-    "Hash": "{87541A41-571C-BBE9-4710-9520B8E73CC9}",
+    "Hash": "{FB4875F9-7304-B6BE-FC39-F952E594C384}",
     "ObjectPath": "Play_Cold_Winds",
     "ShortName": "Play_Cold_Winds",
     "Path": "Event/Play_Cold_Winds.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "Cold Winds.wav",
       "Path": "Media/399486198.wem",
-      "CachePath": "71/{71D24C8F-DC94-B736-9C5C-A85824EB7136}.wem"
+      "CachePath": "3F/{3F4EDB57-F939-BE23-CA98-00466A68227F}.wem"
      }
     ],
     "Events": [
@@ -32,9 +32,7 @@
       "ObjectPath": "\\Events\\Default Work Unit\\Play_Cold_Winds",
       "GUID": "{63AB2E89-C1D3-42A1-8DE2-693722C5411D}",
       "MaxAttenuation": "50",
-      "DurationType": "OneShot",
-      "DurationMin": "214",
-      "DurationMax": "214",
+      "DurationType": "Infinite",
       "MediaRefs": [
        {
         "Id": "399486198"
@@ -44,6 +42,6 @@
     ]
    }
   ],
-  "FileHash": "{0FDAB4EC-6701-7A34-2266-658A0E9B0957}"
+  "FileHash": "{CD16BB3E-F7DC-34F8-6750-501CDE8CDA27}"
  }
 }

@@ -10,7 +10,7 @@
     "Type": "Bus",
     "GUID": "{8F685AD4-2563-4495-B92C-6CCF13899EC9}",
     "Language": "SFX",
-    "Hash": "{543C217B-4BF1-581B-2784-F533BB43C61A}",
+    "Hash": "{D6F6EC5B-F564-2808-6940-9B5777B382F4}",
     "ObjectPath": "DungeonReverb",
     "ShortName": "DungeonReverb",
     "Path": "Bus/DungeonReverb.bnk",
@@ -30,7 +30,7 @@
      {
       "Id": "3375770417",
       "Name": "DungeonReverb",
-      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\DungeonReverb",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Rooms\\DungeonReverb",
       "GUID": "{8F685AD4-2563-4495-B92C-6CCF13899EC9}",
       "PluginRefs": {
        "ShareSets": [
@@ -43,6 +43,6 @@
     ]
    }
   ],
-  "FileHash": "{DD39C34F-B0E8-5BB1-B4C1-8377C31DC55A}"
+  "FileHash": "{C113E7FA-08FE-FBD0-26E3-5EC18A34BC66}"
  }
 }

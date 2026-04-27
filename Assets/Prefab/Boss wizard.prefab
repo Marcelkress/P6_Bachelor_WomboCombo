@@ -3027,7 +3027,7 @@ GameObject:
   - component: {fileID: 7975560494826732868}
   - component: {fileID: 464303548009039995}
   - component: {fileID: 8552073335327371759}
-  - component: {fileID: 427912314577089463}
+  - component: {fileID: -1980664804601777138}
   m_Layer: 6
   m_Name: Boss wizard
   m_TagString: Untagged
@@ -3205,7 +3205,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &427912314577089463
+--- !u!114 &-1980664804601777138
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3214,25 +3214,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 8499516053759841394}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3775954631c564042be636cdf49aca34, type: 3}
+  m_Script: {fileID: 11500000, guid: f0dd45e66f83343edbbbf31469a42895, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MonsterAudio
-  attackSoundEvent:
+  m_EditorClassIdentifier: Assembly-CSharp::BossSound
+  bossLaugh:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
-  playerDamageSoundEvent:
+    WwiseObjectReference: {fileID: 11400000, guid: 6d9b1aeb121ba477fbce957f75cc84b4, type: 2}
+  bossAttack:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
-  enemyDamageSound:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 55f03d4b1294d41b89598220768fe9cc, type: 2}
-  minotauserWalkSound:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
+    WwiseObjectReference: {fileID: 11400000, guid: 13edb10b376994894b66d0b7995e0830, type: 2}
 --- !u!1 &8771743723845969259
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,10 +10,21 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{AED522A2-D030-3D17-D1A5-44E38D56E46A}",
+    "Hash": "{62892C85-5E98-F6DD-E452-12DB48A5DB27}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
+    "Media": [
+     {
+      "Id": "841364558",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "AK_Factory_IR_Amb\\Churches\\AK Amb St-Katharinen.wav",
+      "Path": "Media/841364558.wem",
+      "CachePath": "B6/{B6BDBEB7-01C5-C20B-1164-12276C3559D0}.wem"
+     }
+    ],
     "Plugins": {
      "ShareSets": [
       {
@@ -47,6 +58,19 @@
        "GUID": "{0F6A7D6D-131C-4650-9561-FC05F5C7A37B}",
        "LibName": "Wwise RoomVerb",
        "LibId": "7733251"
+      },
+      {
+       "Id": "4161719729",
+       "Name": "Colossal_Cathedral_Ambisonics",
+       "ObjectPath": "\\Effects\\Factory AK Convolution Reverb Effects Ambisonics\\Cathedrals and Churches\\Colossal_Cathedral_Ambisonics",
+       "GUID": "{043930FB-4DC4-458D-BC4E-310A6284D72E}",
+       "LibName": "Wwise Convolution Reverb",
+       "LibId": "8323075",
+       "MediaRefs": [
+        {
+         "Id": "841364558"
+        }
+       ]
       }
      ],
      "AudioDevices": [
@@ -70,6 +94,12 @@
     },
     "Busses": [
      {
+      "Id": "1359360203",
+      "Name": "Rooms",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Rooms",
+      "GUID": "{510A8886-9B63-42FE-BB75-948F08430AB5}"
+     },
+     {
       "Id": "2246998526",
       "Name": "Main Audio Bus",
       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus",
@@ -78,9 +108,22 @@
     ],
     "AuxBusses": [
      {
+      "Id": "342899938",
+      "Name": "FinalRoomReverb",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Rooms\\FinalRoomReverb",
+      "GUID": "{BD7F542F-D070-49A3-A300-ECB1ABC1F4F9}",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "4161719729"
+        }
+       ]
+      }
+     },
+     {
       "Id": "404747078",
       "Name": "ReverbOutsideStart",
-      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\ReverbOutsideStart",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Rooms\\ReverbOutsideStart",
       "GUID": "{0DA0FEBD-A98D-4130-8638-350618ADB0D8}",
       "PluginRefs": {
        "ShareSets": [
@@ -93,7 +136,7 @@
      {
       "Id": "865895389",
       "Name": "ReverbCastleHallway",
-      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\ReverbCastleHallway",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Rooms\\ReverbCastleHallway",
       "GUID": "{19CD6672-DBEA-4D17-9D35-D8E5DEA8737A}",
       "PluginRefs": {
        "ShareSets": [
@@ -106,7 +149,7 @@
      {
       "Id": "3375770417",
       "Name": "DungeonReverb",
-      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\DungeonReverb",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Rooms\\DungeonReverb",
       "GUID": "{8F685AD4-2563-4495-B92C-6CCF13899EC9}",
       "PluginRefs": {
        "ShareSets": [
@@ -119,7 +162,7 @@
      {
       "Id": "3995165952",
       "Name": "TownPortReverb",
-      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\TownPortReverb",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Rooms\\TownPortReverb",
       "GUID": "{BBC71981-7F5F-490B-8CDB-63698B07E774}",
       "PluginRefs": {
        "ShareSets": [
@@ -190,6 +233,22 @@
       "Name": "SS_Air_Turbulence",
       "ObjectPath": "\\Game Parameters\\Factory Soundseed Air Game Syncs\\SS_Air_Turbulence",
       "GUID": "{EDA87B19-73AA-40A0-9F19-2073606DB710}"
+     }
+    ],
+    "StateGroups": [
+     {
+      "Id": "821485643",
+      "Name": "GrassOrNograss",
+      "ObjectPath": "\\States\\Default Work Unit\\GrassOrNograss",
+      "GUID": "{19EDDDE1-341F-4B21-8096-9732CF9DCC26}",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\GrassOrNograss\\None",
+        "GUID": "{68F19073-EC1D-4235-AB0E-B7039020608F}"
+       }
+      ]
      }
     ],
     "AcousticTextures": [
@@ -671,6 +730,6 @@
     ]
    }
   ],
-  "FileHash": "{2117AE0B-46D6-0A44-33BB-0B44A4DBF769}"
+  "FileHash": "{75EEACFE-CF1F-0A0C-E3A9-3A6E4C709726}"
  }
 }

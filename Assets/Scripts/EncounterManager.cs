@@ -12,6 +12,7 @@ public struct EncounterStruct
     public bool respawnPoint;
     public float spawnDelay;
     public bool isBoss;
+    
 }
 public class EncounterManager : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class EncounterManager : MonoBehaviour
     public PathFollower playerPathFollower;
     public float defaultEnemyAggroDelay = 2f;
     public EpicBossLogic epicBossLogic;
+    
 
 
     public GameObject bossSpawnVFX;
@@ -164,7 +166,7 @@ public class EncounterManager : MonoBehaviour
         int minLegnth = Encounters[encounterIndex].minComboLength;
         int maxLength = Encounters[encounterIndex].maxComboLength;
         Encounters[encounterIndex].enemyManager.InitializeEncounter(meleeCount, projecCount, minLegnth, maxLength, enemyAggroDelay);
-        
+       
         encounterIndex++;
     }
 

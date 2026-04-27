@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{EACD3C50-ACF5-40EB-9D15-B310B106F008}",
     "Language": "SFX",
-    "Hash": "{68F96D2A-1756-A393-6CFF-33C095E5E991}",
+    "Hash": "{2CD5EF79-376D-A978-1213-2AD7B6F069D9}",
     "ObjectPath": "Play_Enemy_projectile_sound",
     "ShortName": "Play_Enemy_projectile_sound",
     "Path": "Event/Play_Enemy_projectile_sound.bnk",
@@ -44,6 +44,6 @@
     ]
    }
   ],
-  "FileHash": "{448A0D49-784F-DCC1-8E3F-FC2EFE18DBB7}"
+  "FileHash": "{2EA436A0-E82C-4F25-58B1-12A7520CD306}"
  }
 }

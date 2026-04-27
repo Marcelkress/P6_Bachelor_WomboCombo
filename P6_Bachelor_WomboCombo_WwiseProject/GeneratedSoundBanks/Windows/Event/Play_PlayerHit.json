@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{BFC77D08-BC66-4A2D-B11C-BD6CB548BB30}",
     "Language": "SFX",
-    "Hash": "{13D404D0-8CAB-E8DE-1445-1880244C15BB}",
+    "Hash": "{5D75E140-A3BC-4E18-DE46-22AAC5343DCE}",
     "ObjectPath": "Play_PlayerHit",
     "ShortName": "Play_PlayerHit",
     "Path": "Event/Play_PlayerHit.bnk",
@@ -92,6 +92,6 @@
     ]
    }
   ],
-  "FileHash": "{66A7FBC1-5B36-6462-1B0A-75BB78B44089}"
+  "FileHash": "{A61B6562-DE2C-9E7A-89DF-05022B134FAA}"
  }
 }

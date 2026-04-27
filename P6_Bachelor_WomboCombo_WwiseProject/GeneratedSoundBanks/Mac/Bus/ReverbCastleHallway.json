@@ -10,7 +10,7 @@
     "Type": "Bus",
     "GUID": "{19CD6672-DBEA-4D17-9D35-D8E5DEA8737A}",
     "Language": "SFX",
-    "Hash": "{90C05852-6F41-E461-EEE7-D2284ACBC674}",
+    "Hash": "{B6002C5E-6D2F-561A-7998-35ECE35EED27}",
     "ObjectPath": "ReverbCastleHallway",
     "ShortName": "ReverbCastleHallway",
     "Path": "Bus/ReverbCastleHallway.bnk",
@@ -30,7 +30,7 @@
      {
       "Id": "865895389",
       "Name": "ReverbCastleHallway",
-      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\ReverbCastleHallway",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Rooms\\ReverbCastleHallway",
       "GUID": "{19CD6672-DBEA-4D17-9D35-D8E5DEA8737A}",
       "PluginRefs": {
        "ShareSets": [
@@ -43,6 +43,6 @@
     ]
    }
   ],
-  "FileHash": "{1636628F-EB74-E0F3-D54B-0A32409ED588}"
+  "FileHash": "{98D98017-1018-E453-9C50-D8A409CDC3E9}"
  }
 }

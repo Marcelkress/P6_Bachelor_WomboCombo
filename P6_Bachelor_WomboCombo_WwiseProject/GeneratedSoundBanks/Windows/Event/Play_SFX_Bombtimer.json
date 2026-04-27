@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{7DA0C645-E254-4251-AC9C-932F2DD1A520}",
     "Language": "SFX",
-    "Hash": "{CF047D3F-A447-AF30-2053-EDBD28E37498}",
+    "Hash": "{0202295C-9FEA-E93D-E8FE-5136CBDB13D2}",
     "ObjectPath": "Play_SFX_Bombtimer",
     "ShortName": "Play_SFX_Bombtimer",
     "Path": "Event/Play_SFX_Bombtimer.bnk",
@@ -44,6 +44,6 @@
     ]
    }
   ],
-  "FileHash": "{C3EDCD00-9FD7-0322-8979-EE5DB02E5849}"
+  "FileHash": "{80CD5543-F10B-C42C-AABD-C0FBF7B2098D}"
  }
 }

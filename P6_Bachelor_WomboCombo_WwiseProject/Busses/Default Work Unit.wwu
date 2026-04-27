@@ -50,6 +50,9 @@
 							</ObjectLists>
 						</AuxBus>
 						<AuxBus Name="DungeonReverb" ID="{8F685AD4-2563-4495-B92C-6CCF13899EC9}">
+							<PropertyList>
+								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+							</PropertyList>
 							<ObjectLists>
 								<ObjectList Name="Effects">
 									<EffectSlot Name="" ID="{038E4055-ACCA-4892-A1B8-372AC5383FD4}" ShortID="927767672">
@@ -65,6 +68,27 @@
 								</ObjectList>
 							</ObjectLists>
 						</AuxBus>
+						<AuxBus Name="FinalRoomReverb" ID="{BD7F542F-D070-49A3-A300-ECB1ABC1F4F9}">
+							<PropertyList>
+								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+							</PropertyList>
+							<ObjectLists>
+								<ObjectList Name="Effects">
+									<EffectSlot Name="" ID="{CE966235-114E-4184-846C-AF4BAAE07E47}" ShortID="166379870">
+										<ReferenceList>
+											<Reference Name="Effect" PluginName="Wwise Convolution Reverb" CompanyID="0" PluginID="127" PluginType="3">
+												<ObjectRef Name="Colossal_Cathedral_Ambisonics" ID="{043930FB-4DC4-458D-BC4E-310A6284D72E}" WorkUnitID="{1562D13C-41E8-4FA1-A341-D4CB726E2AEC}"/>
+											</Reference>
+										</ReferenceList>
+									</EffectSlot>
+								</ObjectList>
+							</ObjectLists>
+						</AuxBus>
+						<Bus Name="FinalRoomTest" ID="{5E470A9B-BCDD-4C59-8141-E3840276A938}">
+							<PropertyList>
+								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+							</PropertyList>
+						</Bus>
 					</ChildrenList>
 				</Bus>
 			</ChildrenList>

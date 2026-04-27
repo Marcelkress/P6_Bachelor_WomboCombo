@@ -10,12 +10,103 @@
     "Type": "User",
     "GUID": "{0557C4E8-AEB6-4D55-9D93-4BDBB7037CD6}",
     "Language": "SFX",
-    "Hash": "{71F9CEB8-45DE-23D7-AC26-882EA609EB7A}",
+    "Hash": "{AD722F83-BB50-EBE1-53F3-2A6ABD52C3F1}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Main",
     "ShortName": "Main",
-    "Path": "Main.bnk"
+    "Path": "Main.bnk",
+    "Media": [
+     {
+      "Id": "413403320",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Chaotic Drums.wav",
+      "CachePath": "41/{41C83282-3217-44A8-B8E7-40BFF570938B}.wem"
+     },
+     {
+      "Id": "456490647",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ExplosionHugeFast SDT025201.wav",
+      "CachePath": "5A/{5A46E646-7DF9-EF7F-770B-0F59C11540C8}.wem"
+     },
+     {
+      "Id": "982581381",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Laughing All The Way To The Bank (Evil Empire).wav",
+      "CachePath": "62/{629209B0-191A-DFA0-0339-C62ED7E67F9C}.wem"
+     }
+    ],
+    "Plugins": {
+     "ShareSets": [
+      {
+       "Id": "3216246379",
+       "Name": "Space_Dreaming",
+       "ObjectPath": "\\Effects\\Factory Effects\\RoomVerb\\Huge Spaces\\Space_Dreaming",
+       "GUID": "{4FF7C4B2-37B0-4DFF-8E8A-1420102AE2DD}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      }
+     ]
+    },
+    "Events": [
+     {
+      "Id": "892614759",
+      "Name": "Play_Chaotic_Drums",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Chaotic_Drums",
+      "GUID": "{CB03C185-DBD0-47E5-BF44-B4EC770A60F1}",
+      "DurationType": "OneShot",
+      "DurationMin": "117",
+      "DurationMax": "117",
+      "MediaRefs": [
+       {
+        "Id": "413403320"
+       }
+      ]
+     },
+     {
+      "Id": "3910411732",
+      "Name": "Play_FireballHit",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_FireballHit",
+      "GUID": "{15E26053-2D90-4B28-92DF-68ADCA7C49E4}",
+      "MaxAttenuation": "40",
+      "DurationType": "OneShot",
+      "DurationMin": "5.2821245",
+      "DurationMax": "6.693612",
+      "MediaRefs": [
+       {
+        "Id": "456490647"
+       }
+      ]
+     },
+     {
+      "Id": "1607176032",
+      "Name": "Play_Laughing_All_The_Way_To_The_Bank__Evil_Empire_",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Laughing_All_The_Way_To_The_Bank__Evil_Empire_",
+      "GUID": "{0CE88BA7-B673-45C8-BB1B-173993D986F9}",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "2.5161254",
+      "DurationMax": "2.5161254",
+      "MediaRefs": [
+       {
+        "Id": "982581381"
+       }
+      ],
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "3216246379"
+        }
+       ]
+      }
+     }
+    ]
    }
   ],
-  "FileHash": "{858EE9B1-BEA5-6E06-EA98-94699B2520DF}"
+  "FileHash": "{EFF38BA7-D863-89EB-D286-B7D073C8781C}"
  }
 }

@@ -202,6 +202,39 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_FireballHit" ID="{15E26053-2D90-4B28-92DF-68ADCA7C49E4}">
+					<ChildrenList>
+						<Action Name="" ID="{C6DC5EE0-B85D-4625-9346-E36BC494171B}" ShortID="992210615">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FireballHit" ID="{9E91B287-2F19-43AA-A632-561F4C13C5A7}" WorkUnitID="{4F9991F6-C6B0-464E-A79D-228F4B413CED}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Chaotic_Drums" ID="{CB03C185-DBD0-47E5-BF44-B4EC770A60F1}">
+					<ChildrenList>
+						<Action Name="" ID="{6A6B05BE-91E6-4B23-8C7A-DEF7808E53C2}" ShortID="812187372">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Chaotic Drums" ID="{0DDC3069-E3D0-47AE-B5CC-9B48C7220ACC}" WorkUnitID="{4F9991F6-C6B0-464E-A79D-228F4B413CED}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Laughing_All_The_Way_To_The_Bank__Evil_Empire_" ID="{0CE88BA7-B673-45C8-BB1B-173993D986F9}">
+					<ChildrenList>
+						<Action Name="" ID="{86BC94C1-2429-44A0-8692-351CE7280F80}" ShortID="748502698">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Laughing All The Way To The Bank (Evil Empire)" ID="{94FCE9D6-38F4-4061-B691-4F7A1519CEA8}" WorkUnitID="{4F9991F6-C6B0-464E-A79D-228F4B413CED}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

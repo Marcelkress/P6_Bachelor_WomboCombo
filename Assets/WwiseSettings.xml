@@ -15,10 +15,10 @@
   <WwiseInstallationPathWindows />
   <WwiseProjectPath>../P6_Bachelor_WomboCombo_WwiseProject/P6_Bachelor_WomboCombo_WwiseProject.wproj</WwiseProjectPath>
   <UseWaapi>true</UseWaapi>
-  <WaapiPort>8080</WaapiPort>
+  <WaapiPort>8081</WaapiPort>
   <WaapiIP>127.0.0.1</WaapiIP>
   <AutoSyncWaapi>true</AutoSyncWaapi>
-  <WaapiChangePending>false</WaapiChangePending>
+  <WaapiChangePending>true</WaapiChangePending>
   <InstallationWasRequested>false</InstallationWasRequested>
   <UseGitRepository>true</UseGitRepository>
   <PackageSource />

@@ -10,7 +10,7 @@
     "Type": "Bus",
     "GUID": "{BBC71981-7F5F-490B-8CDB-63698B07E774}",
     "Language": "SFX",
-    "Hash": "{458B593E-BD26-DCB9-682B-352B5AF889EE}",
+    "Hash": "{3E8CA7EF-BE18-2F56-F0F2-DA11559F45C5}",
     "ObjectPath": "TownPortReverb",
     "ShortName": "TownPortReverb",
     "Path": "Bus/TownPortReverb.bnk",
@@ -30,7 +30,7 @@
      {
       "Id": "3995165952",
       "Name": "TownPortReverb",
-      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\TownPortReverb",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Rooms\\TownPortReverb",
       "GUID": "{BBC71981-7F5F-490B-8CDB-63698B07E774}",
       "PluginRefs": {
        "ShareSets": [
@@ -43,6 +43,6 @@
     ]
    }
   ],
-  "FileHash": "{231C7593-A210-4785-5C28-34601F5227F8}"
+  "FileHash": "{0F6EE939-3FFE-4DCD-D63F-066D0336036C}"
  }
 }

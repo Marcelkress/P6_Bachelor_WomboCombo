@@ -11,6 +11,13 @@
     "StaticLib": "AkRoomVerbFX"
    },
    {
+    "LibName": "Wwise Convolution Reverb",
+    "LibId": "8323075",
+    "Type": "Effect",
+    "DLL": "AkConvolutionReverb",
+    "StaticLib": "AkConvolutionReverbFX"
+   },
+   {
     "LibName": "System",
     "LibId": "11403271",
     "Type": "AudioDevice"
@@ -21,6 +28,6 @@
     "Type": "AudioDevice"
    }
   ],
-  "FileHash": "{334567A0-52AA-12F8-D2A6-80FD5B8E4FF5}"
+  "FileHash": "{86D93347-8B2A-7EB3-1745-829EFEE95CBF}"
  }
 }

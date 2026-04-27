@@ -1,5 +1,5 @@
 Auxiliary Bus	ID	Name			Wwise Object Path	Notes
-	3995165952	TownPortReverb			\Default Work Unit\Main Audio Bus\TownPortReverb	
+	3995165952	TownPortReverb			\Default Work Unit\Main Audio Bus\Rooms\TownPortReverb	
 
 Effect plug-ins	ID	Name	Type				Notes
 	3442768367	Hall_Large_Dark	Wwise RoomVerb			

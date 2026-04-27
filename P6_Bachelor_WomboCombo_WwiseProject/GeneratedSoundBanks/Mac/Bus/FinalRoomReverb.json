@@ -1,0 +1,64 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "342899938",
+    "Type": "Bus",
+    "GUID": "{BD7F542F-D070-49A3-A300-ECB1ABC1F4F9}",
+    "Language": "SFX",
+    "Hash": "{5550CFEB-39B2-C095-BCCF-DB8D6CBF5388}",
+    "ObjectPath": "FinalRoomReverb",
+    "ShortName": "FinalRoomReverb",
+    "Path": "Bus/FinalRoomReverb.bnk",
+    "Media": [
+     {
+      "Id": "841364558",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "AK_Factory_IR_Amb\\Churches\\AK Amb St-Katharinen.wav",
+      "Path": "Media/841364558.wem",
+      "CachePath": "24/{24DADF58-5F1F-98A9-A455-5BF055112EFA}.wem"
+     }
+    ],
+    "Plugins": {
+     "ShareSets": [
+      {
+       "Id": "4161719729",
+       "Name": "Colossal_Cathedral_Ambisonics",
+       "ObjectPath": "\\Effects\\Factory AK Convolution Reverb Effects Ambisonics\\Cathedrals and Churches\\Colossal_Cathedral_Ambisonics",
+       "GUID": "{043930FB-4DC4-458D-BC4E-310A6284D72E}",
+       "LibName": "Wwise Convolution Reverb",
+       "LibId": "8323075",
+       "MediaRefs": [
+        {
+         "Id": "841364558"
+        }
+       ]
+      }
+     ]
+    },
+    "AuxBusses": [
+     {
+      "Id": "342899938",
+      "Name": "FinalRoomReverb",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Rooms\\FinalRoomReverb",
+      "GUID": "{BD7F542F-D070-49A3-A300-ECB1ABC1F4F9}",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "4161719729"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "FileHash": "{AA6BE86C-90EB-166F-177D-D09C22B9BAEE}"
+ }
+}
