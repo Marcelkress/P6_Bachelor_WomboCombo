@@ -9372,10 +9372,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Use left and right Joystick to switch symbols and confirm input by pressing
-    the action trigger.\nEach player has two symbols on the top of their controller,
-    one is unique to them, and one is shared with the other player:\n\nPlayer 1 \u2014
-    Sun (unique), Star (shared)\nPlayer 2 \u2014 Moon (unique), Star (shared)\n\nAll
+  m_text: "Use left and right Joystick to switch between symbols and confirm input
+    by pressing the action trigger.\nEach player has two symbols on the top of their
+    controller, one is unique to them, and one is shared with the other player:\n\nPlayer
+    1 \u2014 Sun (unique), Star (shared)\nPlayer 2 \u2014 Moon (unique), Star (shared)\n\nAll
     bottom symbols are shared between both players."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
