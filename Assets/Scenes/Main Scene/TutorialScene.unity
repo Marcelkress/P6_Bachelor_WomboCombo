@@ -6605,7 +6605,7 @@ GameObject:
   - component: {fileID: 1295044308}
   - component: {fileID: 1295044307}
   m_Layer: 0
-  m_Name: Switch Tutorial type (controller and custom controller)
+  m_Name: Switch Tutorial type (normal controller and custom controller)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
