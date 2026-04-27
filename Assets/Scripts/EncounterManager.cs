@@ -22,6 +22,10 @@ public class EncounterManager : MonoBehaviour
     public float defaultEnemyAggroDelay = 2f;
     public EpicBossLogic epicBossLogic;
 
+
+    public GameObject bossSpawnVFX;
+    public Transform bossSpawnVFXTarget;
+
     public Player playerScript;
 
     public bool bossBattleStarted = false;
@@ -142,7 +146,7 @@ public class EncounterManager : MonoBehaviour
 
         if (Encounters[encounterIndex].isBoss)
         {
-            // jacob lav noget sejt
+            StartCoroutine(SpawnBossVFX(playerPathFollower.GetCurrentTripDuration())); // Spawn boss VFX shortly before boss appears
         }
            
 
@@ -162,5 +166,14 @@ public class EncounterManager : MonoBehaviour
         Encounters[encounterIndex].enemyManager.InitializeEncounter(meleeCount, projecCount, minLegnth, maxLength, enemyAggroDelay);
         
         encounterIndex++;
+    }
+
+
+    private IEnumerator SpawnBossVFX(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Instantiate(bossSpawnVFX, bossSpawnVFXTarget.position, Quaternion.identity);
+
+        
     }
 }

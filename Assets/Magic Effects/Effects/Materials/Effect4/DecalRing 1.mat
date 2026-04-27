@@ -15,6 +15,7 @@ Material:
   - USE_ALPHA_POW
   - USE_CUTOUT
   - USE_CUTOUT_TEX
+  - USE_QUAD_DECAL
   - _BLENDMODE_BLEND
   m_InvalidKeywords:
   - _USENEARCAMERAFIX_ON
@@ -130,7 +131,7 @@ Material:
     - _UseSoftInverted: 0
     - _UseVertexStreamRandom: 0
     - _UseWorldSpaceUV: 0
-    - _ZTest1: 5
+    - _ZTest1: 4
     - _ZTestMode: 0
     - _ZWrite: 1
     - _ZWriteMode: 0

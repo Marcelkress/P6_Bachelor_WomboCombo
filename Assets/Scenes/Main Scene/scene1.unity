@@ -9061,7 +9061,7 @@ Transform:
   m_GameObject: {fileID: 274787770}
   serializedVersion: 2
   m_LocalRotation: {x: 0.49431136, y: -0.5029675, z: 0.5075835, w: 0.49501425}
-  m_LocalPosition: {x: -0.77, y: 1.66, z: -0.04}
+  m_LocalPosition: {x: -0.77, y: 2.91, z: -0.04}
   m_LocalScale: {x: 1.3058648, y: 0.95009935, z: 1.1533622}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10437,6 +10437,7 @@ MonoBehaviour:
     maxComboLength: 4
     respawnPoint: 1
     spawnDelay: 0
+    isBoss: 0
   - enemyManager: {fileID: 1990868834}
     meleeEnemyCount: 0
     projectileEnemyCount: 1
@@ -10444,6 +10445,7 @@ MonoBehaviour:
     maxComboLength: 4
     respawnPoint: 0
     spawnDelay: 0
+    isBoss: 0
   - enemyManager: {fileID: 1088628462}
     meleeEnemyCount: 1
     projectileEnemyCount: 0
@@ -10451,6 +10453,7 @@ MonoBehaviour:
     maxComboLength: 4
     respawnPoint: 0
     spawnDelay: 0
+    isBoss: 0
   - enemyManager: {fileID: 1030023371}
     meleeEnemyCount: 2
     projectileEnemyCount: 1
@@ -10458,6 +10461,7 @@ MonoBehaviour:
     maxComboLength: 4
     respawnPoint: 1
     spawnDelay: 0
+    isBoss: 0
   - enemyManager: {fileID: 385785121}
     meleeEnemyCount: 2
     projectileEnemyCount: 0
@@ -10465,6 +10469,7 @@ MonoBehaviour:
     maxComboLength: 4
     respawnPoint: 0
     spawnDelay: 0
+    isBoss: 0
   - enemyManager: {fileID: 1126966903}
     meleeEnemyCount: 2
     projectileEnemyCount: 0
@@ -10472,6 +10477,7 @@ MonoBehaviour:
     maxComboLength: 4
     respawnPoint: 0
     spawnDelay: 0
+    isBoss: 0
   - enemyManager: {fileID: 1761839060}
     meleeEnemyCount: 2
     projectileEnemyCount: 1
@@ -10479,6 +10485,7 @@ MonoBehaviour:
     maxComboLength: 4
     respawnPoint: 0
     spawnDelay: 0
+    isBoss: 0
   - enemyManager: {fileID: 2102292839}
     meleeEnemyCount: 1
     projectileEnemyCount: 1
@@ -10486,6 +10493,7 @@ MonoBehaviour:
     maxComboLength: 4
     respawnPoint: 1
     spawnDelay: 0
+    isBoss: 0
   - enemyManager: {fileID: 486749952}
     meleeEnemyCount: 1
     projectileEnemyCount: 1
@@ -10493,6 +10501,7 @@ MonoBehaviour:
     maxComboLength: 4
     respawnPoint: 0
     spawnDelay: 0
+    isBoss: 0
   - enemyManager: {fileID: 1441776804}
     meleeEnemyCount: 1
     projectileEnemyCount: 0
@@ -10500,6 +10509,7 @@ MonoBehaviour:
     maxComboLength: 8
     respawnPoint: 0
     spawnDelay: 0
+    isBoss: 0
   - enemyManager: {fileID: 918771674}
     meleeEnemyCount: 1
     projectileEnemyCount: 0
@@ -10507,6 +10517,7 @@ MonoBehaviour:
     maxComboLength: 3
     respawnPoint: 0
     spawnDelay: 0
+    isBoss: 0
   - enemyManager: {fileID: 1831252325}
     meleeEnemyCount: 1
     projectileEnemyCount: 1
@@ -10514,6 +10525,7 @@ MonoBehaviour:
     maxComboLength: 8
     respawnPoint: 0
     spawnDelay: 0
+    isBoss: 0
   - enemyManager: {fileID: 1307176549}
     meleeEnemyCount: 2
     projectileEnemyCount: 0
@@ -10521,6 +10533,7 @@ MonoBehaviour:
     maxComboLength: 5
     respawnPoint: 0
     spawnDelay: 0
+    isBoss: 0
   - enemyManager: {fileID: 699083529}
     meleeEnemyCount: 1
     projectileEnemyCount: 0
@@ -10528,6 +10541,7 @@ MonoBehaviour:
     maxComboLength: 3
     respawnPoint: 0
     spawnDelay: 0
+    isBoss: 0
   - enemyManager: {fileID: 1132233565}
     meleeEnemyCount: 3
     projectileEnemyCount: 0
@@ -10535,6 +10549,7 @@ MonoBehaviour:
     maxComboLength: 3
     respawnPoint: 0
     spawnDelay: 0
+    isBoss: 0
   - enemyManager: {fileID: 1830227778}
     meleeEnemyCount: 2
     projectileEnemyCount: 0
@@ -10542,6 +10557,7 @@ MonoBehaviour:
     maxComboLength: 5
     respawnPoint: 0
     spawnDelay: 0
+    isBoss: 0
   - enemyManager: {fileID: 2022458300}
     meleeEnemyCount: 1
     projectileEnemyCount: 2
@@ -10549,6 +10565,7 @@ MonoBehaviour:
     maxComboLength: 4
     respawnPoint: 0
     spawnDelay: 0
+    isBoss: 0
   - enemyManager: {fileID: 1279110780}
     meleeEnemyCount: 2
     projectileEnemyCount: 0
@@ -10556,20 +10573,24 @@ MonoBehaviour:
     maxComboLength: 4
     respawnPoint: 0
     spawnDelay: 0
+    isBoss: 0
   - enemyManager: {fileID: 1847433612}
     meleeEnemyCount: 0
     projectileEnemyCount: 1
     minComboLength: 15
     maxComboLength: 15
     respawnPoint: 0
-    spawnDelay: 10
+    spawnDelay: 16
+    isBoss: 1
   playerPathFollower: {fileID: 631350399}
   defaultEnemyAggroDelay: 0
   epicBossLogic: {fileID: 0}
+  bossSpawnVFX: {fileID: 8658389575754930288, guid: f3cb1d8ef950e2e27b8fa2f2cd4a8292, type: 3}
+  bossSpawnVFXTarget: {fileID: 595710433}
   playerScript: {fileID: 631350411}
   bossBattleStarted: 0
-  useDevTools: 0
-  startFromEncounter: 0
+  useDevTools: 1
+  startFromEncounter: 17
   lastRespawnPoint: 0
 --- !u!4 &309611475
 Transform:
@@ -12718,7 +12739,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9eb87b9a2424dbf4eab17eff8f831793, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 16.682304
+      value: 19.303246
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9eb87b9a2424dbf4eab17eff8f831793, type: 3}
       propertyPath: m_LocalPosition.z
@@ -22117,6 +22138,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ab71fe40f4b301438e2dd2e8af50a27, type: 3}
+--- !u!1 &595710432
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 595710433}
+  m_Layer: 0
+  m_Name: BossVFXPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &595710433
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595710432}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 169.7, y: 81.64, z: 65.39}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &596253411
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38487,7 +38539,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9eb87b9a2424dbf4eab17eff8f831793, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 16.682304
+      value: 19.303246
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9eb87b9a2424dbf4eab17eff8f831793, type: 3}
       propertyPath: m_LocalPosition.z
@@ -68209,15 +68261,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6017696618043871699, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.83
+      value: -6.2
       objectReference: {fileID: 0}
     - target: {fileID: 6017696618043871699, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.41
+      value: 11.63
       objectReference: {fileID: 0}
     - target: {fileID: 6017696618043871699, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -144.54
+      value: -132.87
       objectReference: {fileID: 0}
     - target: {fileID: 6017696618043871699, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -68273,15 +68325,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8181313545885335257, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.37
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8181313545885335257, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.77
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8181313545885335257, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.58
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8315905859283554261, guid: 3aadbc70c1cdd4011b6cc7cd2aa59b6a, type: 3}
       propertyPath: m_Name
@@ -78088,6 +78140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cded085d155cde949b60f67a11dbc3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.ProbeVolume
+  version: 2
+  globalVolume: 0
   mode: 1
   size: {x: 403.01, y: 167.9733, z: 403.01}
   overrideRendererFilters: 0
@@ -78118,8 +78172,6 @@ MonoBehaviour:
     e33: 1
   cachedHashCode: 1346806664
   fillEmptySpaces: 0
-  version: 2
-  globalVolume: 0
 --- !u!4 &2100707613
 Transform:
   m_ObjectHideFlags: 0
@@ -80455,3 +80507,4 @@ SceneRoots:
   - {fileID: 2047980169}
   - {fileID: 1028081774}
   - {fileID: 796090913}
+  - {fileID: 595710433}
