@@ -46,7 +46,7 @@ public class CanvasSizer : MonoBehaviour
         if (useBossLogic)
         {
             bossComboSystem = GetComponentInParent<BossComboSystem>();
-            comboSize = bossComboSystem.bossComboArray.Length / 2;
+            //comboSize = bossComboSystem.bossComboArray.Length / 2;
         }
         else if (useProjectileLogic)
         {
