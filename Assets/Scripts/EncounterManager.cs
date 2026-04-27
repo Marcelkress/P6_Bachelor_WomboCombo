@@ -11,6 +11,7 @@ public struct EncounterStruct
     public int minComboLength, maxComboLength;
     public bool respawnPoint;
     public float spawnDelay;
+    public bool isBoss;
 }
 public class EncounterManager : MonoBehaviour
 {
@@ -139,7 +140,15 @@ public class EncounterManager : MonoBehaviour
         if (encounterIndex > Encounters.Length - 1)
             return;
 
+        if (Encounters[encounterIndex].isBoss)
+        {
+            // jacob lav noget sejt
+        }
+           
+
         StartCoroutine(StartEncounterDelayed(enemyAggroDelay));
+        
+        
     }
 
     private IEnumerator StartEncounterDelayed(float enemyAggroDelay)
