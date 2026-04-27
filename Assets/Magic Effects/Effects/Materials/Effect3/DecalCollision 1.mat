@@ -13,6 +13,7 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - USE_FRAME_BLENDING
+  - USE_QUAD_DECAL
   - _BLENDMODE_ADD
   m_InvalidKeywords:
   - USE_SCRIPT_FRAMEBLENDING
@@ -115,7 +116,7 @@ Material:
     - _UseFrameBlending: 1
     - _UseNoiseDistortion: 0
     - _UseWorldSpaceUV: 0
-    - _ZTest1: 5
+    - _ZTest1: 4
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
