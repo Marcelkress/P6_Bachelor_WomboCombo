@@ -220,8 +220,8 @@ public class EnemyProjectile : MonoBehaviour, IEnemyDamagable
             if (a == 2 && b == 1) // cursed shit fr fordi at vi ikke vil have nogen enemies for den her combo
             {
                 
-                a += 1;
-                b += 1;
+                a = UnityEngine.Random.Range(1, 4);
+                b = UnityEngine.Random.Range(1, 4);
             }
 
             randArray[i] = a;

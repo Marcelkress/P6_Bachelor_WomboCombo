@@ -114,11 +114,11 @@ public class EnemyManager : MonoBehaviour
             int a = Random.Range(1, 4);
             int b = Random.Range(1, 4);
 
-            if (a == 2 && b == 1) // cursed shit fr fordi at vi ikke vil have nogen enemies for den her combo
+            while (a == 2 && b == 1) // cursed shit fr fordi at vi ikke vil have nogen enemies for den her combo
             {
                 
-                a += 1;
-                b += 1;
+                a = Random.Range(1, 4);
+                b = Random.Range(1, 4);
             }
 
             randArray[i] = a;
