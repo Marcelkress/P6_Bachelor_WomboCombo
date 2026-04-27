@@ -1,13 +1,20 @@
 Event	ID	Name			Wwise Object Path	Notes
 	892614759	Play_Chaotic_Drums			\Default Work Unit\Play_Chaotic_Drums	
 	1607176032	Play_Laughing_All_The_Way_To_The_Bank__Evil_Empire_			\Default Work Unit\Play_Laughing_All_The_Way_To_The_Bank__Evil_Empire_	
+	2547633870	Play_Door			\Default Work Unit\Play_Door	
 	3910411732	Play_FireballHit			\Default Work Unit\Play_FireballHit	
 
 Effect plug-ins	ID	Name	Type				Notes
+	943866016	Hamburg_Stadtpark_01_Org_Stereo	Wwise Convolution Reverb			Impulse response created by Pinguin ing.büro © 2010 Pinguin ing.büro.  All rights reserved. IR Pre-delay: 8ms  
 	3216246379	Space_Dreaming	Wwise RoomVerb			
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	316177930	Doow Wood Creaking 3-wooden-door-creaking-30284	.cache\9C\{9C0684E9-D8B0-1301-984F-E2FC3C8C4031}.wem		\Containers\Default Work Unit\SFX\Door\Doow Wood Creaking 3-wooden-door-creaking-30284		131392
 	413403320	Chaotic Drums	.cache\41\{41C83282-3217-44A8-B8E7-40BFF570938B}.wem		\Containers\Default Work Unit\Music\Chaotic Drums		20638896
+	437429544	Doow Wood Creaking 7-wooden-door-creaking-30284	.cache\2A\{2A55D772-D50C-A510-DEB5-EB0FE17F88B1}.wem		\Containers\Default Work Unit\SFX\Door\Doow Wood Creaking 7-wooden-door-creaking-30284		131392
 	456490647	FireballHit_03	.cache\5A\{5A46E646-7DF9-EF7F-770B-0F59C11540C8}.wem		\Containers\Default Work Unit\SFX\FireballHit\FireballHit_03		1064252
 	982581381	Laughing All The Way To The Bank (Evil Empire)	.cache\62\{629209B0-191A-DFA0-0339-C62ED7E67F9C}.wem		\Containers\Default Work Unit\SFX\FinalBoss\Laughing All The Way To The Bank (Evil Empire)		348376
+
+Plug-in Media	ID	Name	Source file	Type	Wwise Object Path	Notes	Data Size
+	584321412	Hamburg_Stadtpark_01_Org_Stereo	.cache\E0\{E05CD98A-A454-27EB-E45E-55FA1068D5F4}.wem	Wwise Convolution Reverb (Shared)	\Effects\Factory AK Convolution Reverb Effects Stereo\Exteriors\Hamburg_Stadtpark_01_Org_Stereo	Impulse response created by Pinguin ing.büro © 2010 Pinguin ing.büro.  All rights reserved. IR Pre-delay: 8ms  	124304
 

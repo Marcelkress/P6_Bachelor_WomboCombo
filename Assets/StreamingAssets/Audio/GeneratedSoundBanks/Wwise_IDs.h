@@ -16,6 +16,7 @@ namespace AK
         static const AkUniqueID PLAY_CHAOTIC_DRUMS = 892614759U;
         static const AkUniqueID PLAY_COLD_WINDS = 1884171676U;
         static const AkUniqueID PLAY_DIE_HURT = 2943090728U;
+        static const AkUniqueID PLAY_DOOR = 2547633870U;
         static const AkUniqueID PLAY_ENEMY_PROJECTILE_SOUND = 3692402696U;
         static const AkUniqueID PLAY_ENEMY_PROJEKTILE_HIT = 4040943786U;
         static const AkUniqueID PLAY_ENEMYPROJECTILE2 = 2457855683U;

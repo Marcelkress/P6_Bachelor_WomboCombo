@@ -8,6 +8,7 @@ public class CastleDoorTrigger : MonoBehaviour
     [SerializeField] private Vector3 openRotation = new Vector3(0, 90, 0);
     public CanvasGroup EndOfGameCanvasGroup;
     public bool endGameWhenTriggered = false;
+    [SerializeField] private AK.Wwise.Event doorSound;
     void Start()
     {
 
@@ -30,5 +31,6 @@ public class CastleDoorTrigger : MonoBehaviour
     {
 
         doorTransformPivot.DORotate(openRotation, speed);
+        doorSound.Post(gameObject);
     }
 }

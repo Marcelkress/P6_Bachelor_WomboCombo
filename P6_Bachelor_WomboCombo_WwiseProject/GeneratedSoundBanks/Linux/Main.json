@@ -10,11 +10,19 @@
     "Type": "User",
     "GUID": "{0557C4E8-AEB6-4D55-9D93-4BDBB7037CD6}",
     "Language": "SFX",
-    "Hash": "{AD722F83-BB50-EBE1-53F3-2A6ABD52C3F1}",
+    "Hash": "{2CA41820-403C-5F1C-1781-3ACA481E10F6}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Main",
     "ShortName": "Main",
     "Path": "Main.bnk",
     "Media": [
+     {
+      "Id": "316177930",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Doow Wood Creaking 3-wooden-door-creaking-30284.wav",
+      "CachePath": "9C/{9C0684E9-D8B0-1301-984F-E2FC3C8C4031}.wem"
+     },
      {
       "Id": "413403320",
       "Language": "SFX",
@@ -24,12 +32,28 @@
       "CachePath": "41/{41C83282-3217-44A8-B8E7-40BFF570938B}.wem"
      },
      {
+      "Id": "437429544",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Doow Wood Creaking 7-wooden-door-creaking-30284.wav",
+      "CachePath": "2A/{2A55D772-D50C-A510-DEB5-EB0FE17F88B1}.wem"
+     },
+     {
       "Id": "456490647",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "ExplosionHugeFast SDT025201.wav",
       "CachePath": "5A/{5A46E646-7DF9-EF7F-770B-0F59C11540C8}.wem"
+     },
+     {
+      "Id": "584321412",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AK_Factory_IR\\Exteriors\\AK Hamburg Stadtpark 01.wav",
+      "CachePath": "E0/{E05CD98A-A454-27EB-E45E-55FA1068D5F4}.wem"
      },
      {
       "Id": "982581381",
@@ -42,6 +66,19 @@
     ],
     "Plugins": {
      "ShareSets": [
+      {
+       "Id": "943866016",
+       "Name": "Hamburg_Stadtpark_01_Org_Stereo",
+       "ObjectPath": "\\Effects\\Factory AK Convolution Reverb Effects Stereo\\Exteriors\\Hamburg_Stadtpark_01_Org_Stereo",
+       "GUID": "{78CD34E4-8E38-4EC8-959D-2515592CD807}",
+       "LibName": "Wwise Convolution Reverb",
+       "LibId": "8323075",
+       "MediaRefs": [
+        {
+         "Id": "584321412"
+        }
+       ]
+      },
       {
        "Id": "3216246379",
        "Name": "Space_Dreaming",
@@ -66,6 +103,30 @@
         "Id": "413403320"
        }
       ]
+     },
+     {
+      "Id": "2547633870",
+      "Name": "Play_Door",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Door",
+      "GUID": "{46896FFA-984E-4F36-88A4-9974E4CBCFE2}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.3676667",
+      "DurationMax": "1.3676667",
+      "MediaRefs": [
+       {
+        "Id": "316177930"
+       },
+       {
+        "Id": "437429544"
+       }
+      ],
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "943866016"
+        }
+       ]
+      }
      },
      {
       "Id": "3910411732",
@@ -107,6 +168,6 @@
     ]
    }
   ],
-  "FileHash": "{EFF38BA7-D863-89EB-D286-B7D073C8781C}"
+  "FileHash": "{590A56BD-DE22-404B-9488-1880C8491254}"
  }
 }
