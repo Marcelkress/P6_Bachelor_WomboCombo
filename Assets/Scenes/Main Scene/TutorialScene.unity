@@ -6623,7 +6623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac52143c1740ccf7d872bda0a7aeed99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TutorialSwticher
-  _currentTutorialType: 1
+  _currentTutorialType: 0
   ControllersTutorial: {fileID: 1015994887}
   CustomControllersTutorial: {fileID: 1837981495}
 --- !u!4 &1295044308

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public enum TutorialType
 {
-    Controllers,
+    NormalControllers,
     CustomControllers
 }
 public class TutorialSwitcher : MonoBehaviour
@@ -16,7 +16,7 @@ public class TutorialSwitcher : MonoBehaviour
     {
         switch (_currentTutorialType)
         {
-            case TutorialType.Controllers:
+            case TutorialType.NormalControllers:
                 ControllersTutorial.gameObject.SetActive(true);
                 CustomControllersTutorial.gameObject.SetActive(false);
                 break;
