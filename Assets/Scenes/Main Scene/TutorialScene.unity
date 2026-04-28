@@ -1641,8 +1641,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9945b70f5be4de1e28e15baf27266e63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIControl
-  topSymbol: 2
-  bottomSymbol: 2
+  topSymbol: 1
+  bottomSymbol: 1
   nextUI: {fileID: 1451760190}
   currentUI: {fileID: 1841225574}
   correctColor: {r: 0, g: 1, b: 0, a: 1}
@@ -4240,7 +4240,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &872316147
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5027,8 +5027,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9945b70f5be4de1e28e15baf27266e63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIControl
-  topSymbol: 2
-  bottomSymbol: 2
+  topSymbol: 1
+  bottomSymbol: 1
   nextUI: {fileID: 623326673}
   currentUI: {fileID: 2135101725}
   correctColor: {r: 0, g: 1, b: 0, a: 1}
@@ -5640,7 +5640,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1021921520
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10564,6 +10564,10 @@ PrefabInstance:
       value: InputManager
       objectReference: {fileID: 0}
     - target: {fileID: 4234291619244402696, guid: 161ce07d9fd7340ccbab36ee2b2819af, type: 3}
+      propertyPath: m_JoinBehavior
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4234291619244402696, guid: 161ce07d9fd7340ccbab36ee2b2819af, type: 3}
       propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1173807928427025820}
@@ -10573,7 +10577,7 @@ PrefabInstance:
       objectReference: {fileID: 1830174967161264999}
     - target: {fileID: 5488213084651132158, guid: 161ce07d9fd7340ccbab36ee2b2819af, type: 3}
       propertyPath: portName
-      value: /dev/cu.usbmodem101
+      value: /dev/ttyACM0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

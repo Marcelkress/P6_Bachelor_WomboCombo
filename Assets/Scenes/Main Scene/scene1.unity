@@ -10645,8 +10645,8 @@ MonoBehaviour:
   bossSpawnVFXTarget: {fileID: 595710433}
   playerScript: {fileID: 631350411}
   bossBattleStarted: 0
-  useDevTools: 1
-  startFromEncounter: 17
+  useDevTools: 0
+  startFromEncounter: 0
   lastRespawnPoint: 0
 --- !u!4 &309611475
 Transform:
@@ -78887,6 +78887,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cded085d155cde949b60f67a11dbc3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.ProbeVolume
+  version: 2
+  globalVolume: 0
   mode: 1
   size: {x: 403.01, y: 167.9733, z: 403.01}
   overrideRendererFilters: 0
@@ -78917,8 +78919,6 @@ MonoBehaviour:
     e33: 1
   cachedHashCode: 1346806664
   fillEmptySpaces: 0
-  version: 2
-  globalVolume: 0
 --- !u!4 &2100707613
 Transform:
   m_ObjectHideFlags: 0
@@ -81086,7 +81086,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4234291619244402696, guid: 161ce07d9fd7340ccbab36ee2b2819af, type: 3}
       propertyPath: m_JoinBehavior
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4234291619244402696, guid: 161ce07d9fd7340ccbab36ee2b2819af, type: 3}
       propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -81096,6 +81096,10 @@ PrefabInstance:
       propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1038895977}
+    - target: {fileID: 5488213084651132158, guid: 161ce07d9fd7340ccbab36ee2b2819af, type: 3}
+      propertyPath: portName
+      value: /dev/ttyACM0
+      objectReference: {fileID: 0}
     - target: {fileID: 5488213084651132158, guid: 161ce07d9fd7340ccbab36ee2b2819af, type: 3}
       propertyPath: m_Enabled
       value: 1

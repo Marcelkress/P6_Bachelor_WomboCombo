@@ -42,6 +42,7 @@ public class PlayerComboInput : MonoBehaviour
     
     private void Awake()
     {
+        
         input = GetComponent<PlayerInput>();
         
         if (playerOneTaken)
@@ -207,7 +208,17 @@ public class PlayerComboInput : MonoBehaviour
             bottomCanChange = true;
         }
     }
+
+    private void OnDestroy()
+    {
+        if (playerID == Player.Player1)
+        {
+            playerOneTaken = false;
+        }
+    }
 }
+
+
 
 [Serializable]
 public struct ControllerState
