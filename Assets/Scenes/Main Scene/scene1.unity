@@ -10636,7 +10636,7 @@ MonoBehaviour:
     minComboLength: 15
     maxComboLength: 15
     respawnPoint: 0
-    spawnDelay: 16
+    spawnDelay: 24.5
     isBoss: 1
   playerPathFollower: {fileID: 631350399}
   defaultEnemyAggroDelay: 0
@@ -10645,8 +10645,8 @@ MonoBehaviour:
   bossSpawnVFXTarget: {fileID: 595710433}
   playerScript: {fileID: 631350411}
   bossBattleStarted: 0
-  useDevTools: 0
-  startFromEncounter: 0
+  useDevTools: 1
+  startFromEncounter: 17
   lastRespawnPoint: 0
 --- !u!4 &309611475
 Transform:
