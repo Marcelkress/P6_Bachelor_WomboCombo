@@ -10645,8 +10645,8 @@ MonoBehaviour:
   bossSpawnVFXTarget: {fileID: 595710433}
   playerScript: {fileID: 631350411}
   bossBattleStarted: 0
-  useDevTools: 1
-  startFromEncounter: 17
+  useDevTools: 0
+  startFromEncounter: 0
   lastRespawnPoint: 0
 --- !u!4 &309611475
 Transform:
