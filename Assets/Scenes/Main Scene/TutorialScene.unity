@@ -10577,7 +10577,7 @@ PrefabInstance:
       objectReference: {fileID: 1830174967161264999}
     - target: {fileID: 5488213084651132158, guid: 161ce07d9fd7340ccbab36ee2b2819af, type: 3}
       propertyPath: portName
-      value: /dev/ttyACM0
+      value: /dev/cu.usbmodem101
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
