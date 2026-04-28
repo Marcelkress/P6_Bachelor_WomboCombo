@@ -6496,7 +6496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac52143c1740ccf7d872bda0a7aeed99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TutorialSwticher
-  _currentTutorialType: 0
+  _currentTutorialType: 1
   ControllersTutorial: {fileID: 1015994887}
   CustomControllersTutorial: {fileID: 1837981495}
   ControllerVisuals: {fileID: 1819875340}
@@ -10573,7 +10573,7 @@ PrefabInstance:
       objectReference: {fileID: 1830174967161264999}
     - target: {fileID: 5488213084651132158, guid: 161ce07d9fd7340ccbab36ee2b2819af, type: 3}
       propertyPath: portName
-      value: /dev/ttyACM0
+      value: /dev/cu.usbmodem101
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
