@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ValidationCache Version="1" SchemaVersion="133">
-	<ValidationCacheItem File="Y:\Library\Application Support\Audiokinetic\MediaPool\2\MediaPoolQuery.wsettings" DateLow="1777319781" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Library\Application Support\Audiokinetic\MediaPool\2\MediaPoolQuery.wsettings" DateLow="1777355673" DateHigh="0"/>
 	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Attenuations\Default Work Unit.wwu" DateLow="1776071756" DateHigh="0"/>
 	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Attenuations\Factory Attenuations.wwu" DateLow="1776071756" DateHigh="0"/>
-	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Busses\Default Work Unit.wwu" DateLow="1776948795" DateHigh="0"/>
-	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Containers\Default Work Unit.wwu" DateLow="1777295185" DateHigh="0"/>
+	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Busses\Default Work Unit.wwu" DateLow="1777331284" DateHigh="0"/>
+	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Containers\Default Work Unit.wwu" DateLow="1777331284" DateHigh="0"/>
 	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Containers\Factory Soundseed Air Objects.wwu" DateLow="1770808208" DateHigh="0"/>
 	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Containers\Factory Synth One.wwu" DateLow="1770808016" DateHigh="0"/>
 	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Control Surface Sessions\Default Work Unit.wwu" DateLow="1776071756" DateHigh="0"/>
@@ -13,20 +13,20 @@
 	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Devices\Default Work Unit.wwu" DateLow="1777316735" DateHigh="0"/>
 	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Dynamic Dialogue\Default Work Unit.wwu" DateLow="1776071756" DateHigh="0"/>
 	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Effects\Default Work Unit.wwu" DateLow="1776071756" DateHigh="0"/>
-	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Effects\Factory AK Convolution Reverb Effects Ambisonics.wwu" DateLow="1773826291" DateHigh="0"/>
-	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Effects\Factory AK Convolution Reverb Effects Stereo.wwu" DateLow="1776948795" DateHigh="0"/>
+	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Effects\Factory AK Convolution Reverb Effects Ambisonics.wwu" DateLow="1777331284" DateHigh="0"/>
+	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Effects\Factory AK Convolution Reverb Effects Stereo.wwu" DateLow="1777331284" DateHigh="0"/>
 	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Effects\Factory Auro Headphone.wwu" DateLow="1770808210" DateHigh="0"/>
-	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Effects\Factory Effects.wwu" DateLow="1776948795" DateHigh="0"/>
+	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Effects\Factory Effects.wwu" DateLow="1777323184" DateHigh="0"/>
 	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Effects\Factory Mastering Suite.wwu" DateLow="1770808204" DateHigh="0"/>
 	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Effects\Factory Reflect Physically-Based.wwu" DateLow="1770808206" DateHigh="0"/>
 	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Effects\Factory Reflect.wwu" DateLow="1770808206" DateHigh="0"/>
-	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Events\Default Work Unit.wwu" DateLow="1777295185" DateHigh="0"/>
+	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Events\Default Work Unit.wwu" DateLow="1777331284" DateHigh="0"/>
 	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Game Parameters\Default Work Unit.wwu" DateLow="1776071756" DateHigh="0"/>
 	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Game Parameters\Factory Soundseed Air Game Syncs.wwu" DateLow="1770808208" DateHigh="0"/>
 	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Metadata\Default Work Unit.wwu" DateLow="1776071756" DateHigh="0"/>
 	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Mixing Sessions\Default Work Unit.wwu" DateLow="1776071756" DateHigh="0"/>
 	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Modulators\Default Work Unit.wwu" DateLow="1776071756" DateHigh="0"/>
-	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\P6_Bachelor_WomboCombo_WwiseProject.crossover.wsettings" DateLow="1777319781" DateHigh="0"/>
+	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\P6_Bachelor_WomboCombo_WwiseProject.crossover.wsettings" DateLow="1777355673" DateHigh="0"/>
 	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\P6_Bachelor_WomboCombo_WwiseProject.wproj" DateLow="1777318071" DateHigh="0"/>
 	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Presets\Default Work Unit.wwu" DateLow="1776071756" DateHigh="0"/>
 	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Presets\Factory Reflect Physically-Based.wwu" DateLow="1770808206" DateHigh="0"/>
@@ -35,9 +35,9 @@
 	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Queries\Default Work Unit.wwu" DateLow="1776071756" DateHigh="0"/>
 	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Queries\Factory Queries.wwu" DateLow="1776071756" DateHigh="0"/>
 	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Sidechain Mixes\Default Work Unit.wwu" DateLow="1776071756" DateHigh="0"/>
-	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\SoundBanks\Default Work Unit.wwu" DateLow="1777295185" DateHigh="0"/>
+	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\SoundBanks\Default Work Unit.wwu" DateLow="1777331284" DateHigh="0"/>
 	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Soundcaster Sessions\Default Work Unit.wwu" DateLow="1776071756" DateHigh="0"/>
-	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\States\Default Work Unit.wwu" DateLow="1776071756" DateHigh="0"/>
+	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\States\Default Work Unit.wwu" DateLow="1777331284" DateHigh="0"/>
 	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Switches\Default Work Unit.wwu" DateLow="1776071756" DateHigh="0"/>
 	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Triggers\Default Work Unit.wwu" DateLow="1776071756" DateHigh="0"/>
 	<ValidationCacheItem File="Z:\Volumes\Mathias J SSD\Unity Projects\Bachelor Project\P6_Bachelor_WomboCombo\P6_Bachelor_WomboCombo_WwiseProject\Virtual Acoustics\Default Work Unit.wwu" DateLow="1776125653" DateHigh="0"/>

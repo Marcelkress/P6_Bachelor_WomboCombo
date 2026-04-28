@@ -3348,12 +3348,12 @@
 										<Property Name="3DSpatialization" Type="int16" Value="1"/>
 										<Property Name="Lowpass" Type="int16">
 											<ValueList>
-												<Value>31</Value>
+												<Value>30</Value>
 											</ValueList>
 										</Property>
 										<Property Name="Pitch" Type="int32">
 											<ValueList>
-												<Value>-420</Value>
+												<Value>-430</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -3481,6 +3481,9 @@
 									<ObjectLists>
 										<ObjectList Name="Effects">
 											<EffectSlot Name="" ID="{6A9ACAB4-F100-496B-AE45-74C344672921}" ShortID="392921016">
+												<PropertyList>
+													<Property Name="Bypass" Type="bool" Value="True"/>
+												</PropertyList>
 												<ReferenceList>
 													<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
 														<ObjectRef Name="Space_Dreaming" ID="{4FF7C4B2-37B0-4DFF-8E8A-1420102AE2DD}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
@@ -3491,6 +3494,28 @@
 									</ObjectLists>
 									<ActiveSourceList>
 										<ActiveSource Name="Laughing All The Way To The Bank (Evil Empire)" ID="{B47723CB-A64E-430C-BFFF-2D78112BDBB9}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="BossMusic" ID="{8869DCDE-2D56-4EB7-93B8-1A97380C0E24}" ShortID="10632219">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AF9EEC83-A8E4-4C08-A3B7-085D894A22A7}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{DC0F5E70-B7C9-40C2-A399-414C27A89E4E}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="BossMusic" ID="{D6A4FB2F-DAD5-45ED-B671-13047635D1DD}">
+											<Language>SFX</Language>
+											<AudioFile>BossMusic.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="566946350"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="BossMusic" ID="{D6A4FB2F-DAD5-45ED-B671-13047635D1DD}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
@@ -4498,7 +4523,7 @@
 							<PropertyList>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-11</Value>
+										<Value>-5</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
