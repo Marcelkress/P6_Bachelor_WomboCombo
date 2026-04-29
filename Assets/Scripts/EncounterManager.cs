@@ -94,6 +94,8 @@ public class EncounterManager : MonoBehaviour
         //playerPathFollower.transform.position = playerPathFollower.destinations[lastRespawnPoint].transform.position;
         encounterIndex = lastRespawnPoint;
         GoToNextEncounter(true);
+        playerScript.currentHealth = playerScript.maxHealth;
+        playerScript.TakeDamage(0);
     }
 
     public void GoToNextEncounter(bool isRespawning = false)
@@ -119,6 +121,7 @@ public class EncounterManager : MonoBehaviour
 
         // Trigger player camera trip
         playerPathFollower.MoveTo(encounterIndex, isRespawning);
+        Enemy.globalComboStarted = false;
         if (isRespawning)
         {
             StartEncounter(0); // Start encounter immediately if respawning, since player is already at the correct position
