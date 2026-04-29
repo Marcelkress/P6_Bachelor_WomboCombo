@@ -10698,7 +10698,7 @@ MonoBehaviour:
     projectileEnemyCount: 2
     minComboLength: 3
     maxComboLength: 4
-    respawnPoint: 0
+    respawnPoint: 1
     spawnDelay: 0
     isBoss: 0
   - enemyManager: {fileID: 1279110780}
