@@ -3846,7 +3846,7 @@ MonoBehaviour:
     replenish your health.
 
 
-    Ones the healing spell is started you have to finish
+    Once the healing spell is started you have to finish
     it in order to target enemies again.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10301,7 +10301,7 @@ MonoBehaviour:
     replenish your health.
 
 
-    Ones the healing spell is started you have to finish
+    Once the healing spell is started you have to finish
     it in order to target enemies again.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
