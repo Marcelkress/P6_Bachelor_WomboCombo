@@ -80956,7 +80956,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4234291619244402696, guid: 161ce07d9fd7340ccbab36ee2b2819af, type: 3}
       propertyPath: m_JoinBehavior
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4234291619244402696, guid: 161ce07d9fd7340ccbab36ee2b2819af, type: 3}
       propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -80968,7 +80968,7 @@ PrefabInstance:
       objectReference: {fileID: 1038895977}
     - target: {fileID: 5488213084651132158, guid: 161ce07d9fd7340ccbab36ee2b2819af, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
