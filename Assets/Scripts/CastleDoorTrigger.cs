@@ -9,8 +9,11 @@ public class CastleDoorTrigger : MonoBehaviour
     public CanvasGroup EndOfGameCanvasGroup;
     public bool endGameWhenTriggered = false;
     [SerializeField] private AK.Wwise.Event doorSound;
+
+    private Quaternion initialRotation;
     void Start()
-    {
+    {   
+        initialRotation = doorTransformPivot.rotation;
 
         EndOfGameCanvasGroup.alpha = 0;
         
@@ -27,10 +30,24 @@ public class CastleDoorTrigger : MonoBehaviour
             Invoke(nameof(OpenDoor), 0.6f);
         }
     }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Invoke(nameof(CloseDoor), 2f);
+        }
+    }
+
     private void OpenDoor()
     {
 
         doorTransformPivot.DORotate(openRotation, speed);
         doorSound.Post(gameObject);
+    }
+
+    private void CloseDoor()
+    {
+        doorTransformPivot.DORotateQuaternion(initialRotation, speed);
     }
 }

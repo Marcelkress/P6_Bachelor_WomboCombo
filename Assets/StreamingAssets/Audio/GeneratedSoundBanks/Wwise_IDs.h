@@ -13,6 +13,7 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID PLAY_BOSSMUSIC = 3463024606U;
         static const AkUniqueID PLAY_CHAOTIC_DRUMS = 892614759U;
         static const AkUniqueID PLAY_COLD_WINDS = 1884171676U;
         static const AkUniqueID PLAY_DIE_HURT = 2943090728U;
