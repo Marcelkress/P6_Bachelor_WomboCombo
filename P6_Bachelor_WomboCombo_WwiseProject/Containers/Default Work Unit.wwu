@@ -70,6 +70,7 @@
 						<Sound Name="Hollow-16bit" ID="{0D5BD3FF-9550-49C9-9D63-36B377ABD2E4}" ShortID="496994726">
 							<PropertyList>
 								<Property Name="3DSpatialization" Type="int16" Value="2"/>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 								<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
