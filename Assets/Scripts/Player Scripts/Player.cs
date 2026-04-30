@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 {
     [Header("Health")]
     public int maxHealth = 3; // Example health value for the player
-    [HideInInspector] public int currentHealth;  
+    private int currentHealth;  
     public UnityEvent PlayerDiedEvent, PlayerRespawnEvent;
     public int healAmount = 5;
     public int lives = 3;
