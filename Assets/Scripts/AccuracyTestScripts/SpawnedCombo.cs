@@ -9,13 +9,10 @@ namespace AccuracyTestScripts
     {
         public int[] comboArray;
 
-        private int comboStep = 0;
         private bool comboSolved;
-        private bool isAnimatingStep;
         private float localStartTime;
 
         public bool debug = false;
-
 
         [SerializeField] private Transform content;
         public Sprite moonImg, starImg, sunImg; // references to the UI images for each button (Square, Circle, Triangle)
@@ -32,27 +29,22 @@ namespace AccuracyTestScripts
         private Image[] contentSprite;
         private Sequence comboStepSequence;
 
-        public event Action<SpawnedCombo, float> Solved;
+        public event Action<SpawnedCombo, float> Solved; // Sender ref til sig selv og en float på tid som ComboInitializer bruger i HandleComboSolved
         public event Action<SpawnedCombo> VisualFinished;
-        public event Action<SpawnedCombo> Completed;
-
-        private PlayerInfoStruct playerOneInfo;
 
         public void Initialize(int[] combo)
         {
             comboArray = combo;
-            comboStep = 0;
             comboSolved = false;
-            isAnimatingStep = false;
             localStartTime = Time.realtimeSinceStartup;
         }
 
         void Start()
         {
-            if (!IsValidCombo())
+            if (comboArray == null || comboArray.Length != 2)
             {
-                Debug.LogError("SpawnedCombo needs a combo array with an even amount of values.", this);
-                CompleteVisuals();
+                Debug.LogError("SpawnedCombo needs a combo array with exactly two values.", this);
+                VisualFinished?.Invoke(this); // ComboInitializer er subscribed til dette event
                 return;
             }
 
@@ -74,100 +66,92 @@ namespace AccuracyTestScripts
             }
         }
 
-
         public void PlayerOneUpdate()
         {
-            playerOneInfo = InputManager.instance.GetPlayerSymbols(1);
-            CompareCombo();
+            PlayerInfoStruct playerOneInfo = InputManager.instance.GetPlayerSymbols(1);
+            CompareCombo(playerOneInfo);
         }
 
-        private void CompareCombo()
+        private void CompareCombo(PlayerInfoStruct playerOneInfo)
         {
-            if (comboSolved || comboStep >= comboArray.Length)
+            if (comboSolved)
             {
                 return;
             }
 
             if (debug)
             {
-                Debug.Log("ComboStep: " + comboStep);
-                Debug.Log("Array symb one: " + comboArray[comboStep]);
-                Debug.Log("Array symb two: " + comboArray[comboStep + 1]);
+                Debug.Log("Array symb one: " + comboArray[0]);
+                Debug.Log("Array symb two: " + comboArray[1]);
             }
 
-            if (playerOneInfo.symbOne == comboArray[comboStep] && playerOneInfo.symbTwo == comboArray[comboStep + 1])
+            if (playerOneInfo.symbOne == comboArray[0] && playerOneInfo.symbTwo == comboArray[1])
             {
-                CompleteCurrentComboStep();
-            }
-            else
-            {
-
+                SolveAndAnimate();
             }
         }
 
         public void CheatComboStep()
         {
-            CompleteCurrentComboStep();
-        }
-
-        private void CompleteCurrentComboStep()
-        {
-            if (comboSolved || isAnimatingStep || comboStep >= comboArray.Length)
+            if (comboSolved)
             {
                 return;
             }
+            SolveAndAnimate();
+        }
 
-            int top = comboStep;
-            int bottom = comboStep + 1;
+        private void SolveAndAnimate()
+        {
+            // local timer stops immediately when the correct combo is input.
+            comboSolved = true;
 
-            comboStep += 2;
+            // realtimeSinceStartup skulle være mere accurate end Time.time
+            // realTimeSinceStartup er tiden siden spillet startede
 
-            // Requirement: local timer stops immediately when the correct combo is input.
-            if (comboStep >= comboArray.Length)
-            {
-                SolveCombo();
-            }
+            // så hvis der er gået 5.3 seconds siden spillet startede, og vi startede timeren ved 5.0 seconds, 
+            // så vil localSolveTime være 0.3 seconds
+            float localSolveTime = Time.realtimeSinceStartup - localStartTime; 
+            Solved?.Invoke(this, localSolveTime); // ComboInitalizer er subscribed til dette event, 
 
-            AnimateCompletedComboStep(top, bottom);
+            AnimateCompletedComboStep();
         }
 
         private void InitializeUI()
         {
-            contentSprite = new Image[comboArray.Length];
+            contentSprite = new Image[2];
 
-            for (int i = 0; i < comboArray.Length; i++)
+            for (int i = 0; i < 2; i++)
             {
                 GameObject uiImage = Instantiate(inputUIImage, content);
+                Image img = uiImage.GetComponent<Image>();
 
                 switch (comboArray[i])
                 {
                     case 1:
-                        uiImage.GetComponent<Image>().sprite = moonImg;
+                        img.sprite = moonImg;
                         break;
                     case 2:
-                        uiImage.GetComponent<Image>().sprite = starImg;
+                        img.sprite = starImg;
                         break;
                     case 3:
-                        uiImage.GetComponent<Image>().sprite = sunImg;
+                        img.sprite = sunImg;
                         break;
                 }
 
-                contentSprite[i] = uiImage.GetComponent<Image>();
+                contentSprite[i] = img;
             }
         }
 
-        private void AnimateCompletedComboStep(int top, int bottom)
+        private void AnimateCompletedComboStep()
         {
-            if (!CanAnimateComboStep(top, bottom))
+            if (contentSprite == null || contentSprite.Length < 2 || contentSprite[0] == null || contentSprite[1] == null)
             {
-                CheckComboCompletion();
+                VisualFinished?.Invoke(this); // ComboInitializer er subscribed til dette event
                 return;
             }
 
-            isAnimatingStep = true;
-
-            Image topImage = contentSprite[top];
-            Image bottomImage = contentSprite[bottom];
+            Image topImage = contentSprite[0];
+            Image bottomImage = contentSprite[1];
 
             comboStepSequence?.Kill();
             comboStepSequence = DOTween.Sequence();
@@ -189,51 +173,10 @@ namespace AccuracyTestScripts
             {
                 topImage.gameObject.SetActive(false);
                 bottomImage.gameObject.SetActive(false);
-                isAnimatingStep = false;
-                CheckComboCompletion();
+                VisualFinished?.Invoke(this); // ComboInitializer er subscribed til dette event
             });
         }
 
-        private bool CanAnimateComboStep(int top, int bottom)
-        {
-            return contentSprite != null
-                   && top >= 0
-                   && bottom >= 0
-                   && top < contentSprite.Length
-                   && bottom < contentSprite.Length
-                   && contentSprite[top] != null
-                   && contentSprite[bottom] != null;
-        }
-
-        private void CheckComboCompletion()
-        {
-            if (comboStep >= comboArray.Length)
-            {
-                CompleteVisuals();
-            }
-        }
-
-        private bool IsValidCombo()
-        {
-            return comboArray != null && comboArray.Length > 0 && comboArray.Length % 2 == 0;
-        }
-
-        private void SolveCombo()
-        {
-            if (comboSolved)
-            {
-                return;
-            }
-
-            comboSolved = true;
-            float localSolveTime = Time.realtimeSinceStartup - localStartTime;
-            Solved?.Invoke(this, localSolveTime);
-        }
-
-        private void CompleteVisuals()
-        {
-            VisualFinished?.Invoke(this);
-            Completed?.Invoke(this);
-        }
+       
     }
 }

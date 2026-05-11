@@ -67,11 +67,11 @@ namespace AccuracyTestScripts
             new ComboSequence { name = "Combo 20", comboValues = new[] { 1, 2 } }
         };
 
-        // Requirement: global timer starts after startCombo and stops on the final measured input.
-        [SerializeField] private float totalRunTime;
+        // global timer starts after startCombo and stops on the final measured input.
+        [SerializeField] private float totalRunTime; // er med animations tider fra du laver stat combo til du laver sidste combo
 
-        // Requirement: each SpawnedCombo reports its own instant solve time.
-        [SerializeField] private List<float> comboSolveTimes = new List<float>();
+        // each SpawnedCombo reports its own instant solve time.
+        [SerializeField] private List<float> comboSolveTimes = new List<float>(); // er ikke med animations tider, kun tiden fra spawn til korrekt input
 
         private int currentComboIndex;
         private SpawnedCombo activeCombo;
@@ -98,16 +98,27 @@ namespace AccuracyTestScripts
 
         private void SpawnStartCombo()
         {
-            if (!IsValidStartCombo(startCombo))
-            {
-                Debug.LogError("Start Combo needs exactly two values, and should be { 2, 2 }.", this);
-                return;
-            }
-
             SpawnCombo(startCombo, true);
         }
 
-        private void SpawnNextMeasuredCombo()
+        private void IncrementAndSpawnCombo(bool finishedStartCombo)
+        {
+
+            if (finishedStartCombo) // så den første combo ikke tæller med ellers starter vi test på nummer 2 combo, og så er der kun 19 combos der tæller med i stedet for 20
+            {
+                SpawnNextCombo();
+                return;
+            }
+
+            currentComboIndex++;
+
+            if (currentComboIndex < combos.Count)
+            {
+                SpawnNextCombo();
+            }
+        }
+
+        private void SpawnNextCombo()
         {
             if (spawnedComboPrefab == null)
             {
@@ -115,19 +126,13 @@ namespace AccuracyTestScripts
                 return;
             }
 
-            if (combos.Count == 0)
+            if (combos.Count == 0 || currentComboIndex >= combos.Count)
             {
                 Debug.LogWarning("ComboInitializer has no combos to spawn.", this);
                 return;
             }
 
-            ComboSequence nextCombo = GetNextValidMeasuredCombo();
-
-            if (nextCombo == null)
-            {
-                Debug.LogWarning("ComboInitializer has no valid combos to spawn.", this);
-                return;
-            }
+            ComboSequence nextCombo = combos[currentComboIndex];
 
             SpawnCombo(nextCombo, false);
         }
@@ -144,8 +149,8 @@ namespace AccuracyTestScripts
             activeCombo = Instantiate(spawnedComboPrefab, parent);
             activeComboIsStartCombo = isStartCombo;
             activeCombo.Initialize(combo.comboValues);
-            activeCombo.Solved += HandleComboSolved;
-            activeCombo.VisualFinished += HandleComboVisualFinished;
+            activeCombo.Solved += HandleComboSolved; // subscriber til Solved event i SpawnedCombo, så vi kan få tiden når en combo er løst
+            activeCombo.VisualFinished += HandleComboVisualFinished; // subscriber til VisualFinished event i SpawnedCombo, så vi kan spawne næste combo når den visuelle animation er færdig
         }
 
         private void HandleComboSolved(SpawnedCombo solvedCombo, float localSolveTime)
@@ -155,20 +160,20 @@ namespace AccuracyTestScripts
                 return;
             }
 
-            if (activeComboIsStartCombo)
+            if (activeComboIsStartCombo) // hvis det er start combo start vi testen
             {
                 initialStartText.DOFade(0f, 0.5f);
-                // Requirement: completing startCombo starts the global timer.
+                // completing startCombo starts the global timer.
                 testRunning = true;
                 globalStartTime = Time.realtimeSinceStartup;
                 Debug.Log("Accuracy test started.");
                 return;
             }
 
-            comboSolveTimes.Add(localSolveTime);
+            comboSolveTimes.Add(localSolveTime); // adder hvor lang tid det tog i en liste så vi kan skrive det i filen til sidst
             Debug.Log($"Combo {currentComboIndex + 1} solved in {localSolveTime:0.000}s");
 
-            // Requirement: final measured combo stops the global timer immediately.
+            // completed correct combo stops the global timer immediately.
             if (testRunning && currentComboIndex >= combos.Count - 1)
             {
                 finishedTestText.DOFade(1f, 0.5f);
@@ -189,56 +194,14 @@ namespace AccuracyTestScripts
             finishedCombo.Solved -= HandleComboSolved;
             finishedCombo.VisualFinished -= HandleComboVisualFinished;
 
-            bool finishedStartCombo = activeComboIsStartCombo;
+            bool finishedStartCombo = activeComboIsStartCombo; // bliver false efter første combo
             Destroy(finishedCombo.gameObject);
             activeCombo = null;
 
-            StartCoroutine(SpawnAfterDelay(finishedStartCombo));
+            IncrementAndSpawnCombo(finishedStartCombo); 
         }
 
-        private IEnumerator SpawnAfterDelay(bool finishedStartCombo)
-        {
-            yield return new WaitForSeconds(delayBetweenCombos);
-
-            if (finishedStartCombo)
-            {
-                SpawnNextMeasuredCombo();
-                yield break;
-            }
-
-            currentComboIndex++;
-
-            if (currentComboIndex < combos.Count)
-            {
-                SpawnNextMeasuredCombo();
-            }
-        }
-
-        private ComboSequence GetNextValidMeasuredCombo()
-        {
-            while (currentComboIndex < combos.Count)
-            {
-                ComboSequence combo = combos[currentComboIndex];
-
-                if (IsValidCombo(combo))
-                {
-                    return combo;
-                }
-
-                string comboName = combo != null ? combo.name : "Missing Combo";
-                Debug.LogError($"Combo '{comboName}' needs exactly two values.", this);
-                currentComboIndex++;
-            }
-
-            return null;
-        }
-
-        private static bool IsValidStartCombo(ComboSequence combo)
-        {
-            return IsValidCombo(combo)
-                   && combo.comboValues[0] == 2
-                   && combo.comboValues[1] == 2;
-        }
+        
 
         private void WriteResultsFile()
         {
@@ -247,9 +210,11 @@ namespace AccuracyTestScripts
 
             string timestamp = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
 
+
+            // Ser hvilken slags controller man har brugt og laver et filnavn ud fra det, mere clean at finde efter
             string filePrefix = _currentTutorialType == TutorialType.NormalControllers
-                ? "normal-controllers"
-                : "custom-controllers";
+                ? "normal-controllers" // hvis normal controllers er valgt, så er det "normal-controllers"
+                : "custom-controllers"; // ellers er det "custom-controllers" hvis custom controllers er valgt
 
             string filePath = Path.Combine(folderPath, $"{filePrefix}-accuracy-test-{timestamp}.txt");
 
@@ -277,7 +242,7 @@ namespace AccuracyTestScripts
             writer.WriteLine("Measured Combo Times");
             writer.WriteLine("----------------------------------------");
 
-            for (int i = 0; i < comboSolveTimes.Count; i++)
+            for (int i = 0; i < comboSolveTimes.Count; i++) // looper over comboSolveTimes og skriver en linje med deres tider osv
             {
                 ComboSequence combo = i < combos.Count ? combos[i] : null;
                 string comboName = combo != null ? combo.name : $"Combo {i + 1}";
@@ -289,18 +254,13 @@ namespace AccuracyTestScripts
             Debug.Log($"Accuracy test results saved to: {filePath}");
         }
 
-        private static string FormatComboValues(ComboSequence combo)
+
+        // Den laver comboValues int (som fx 1,2) om til en string "1, 2"
+        private static string FormatComboValues(ComboSequence combo) 
         {
             return combo == null || combo.comboValues == null
                 ? "Missing Combo"
                 : string.Join(", ", combo.comboValues);
-        }
-
-        private static bool IsValidCombo(ComboSequence combo)
-        {
-            return combo != null
-                   && combo.comboValues != null
-                   && combo.comboValues.Length == 2;
         }
     }
 }
