@@ -155,7 +155,7 @@ public class PlayerComboInput : MonoBehaviour
             topCanChange = false;
             playerInfoStruct.symbOne += (int)val.x;
 
-            if (playerID == Player.Player2)
+            if (playerID == Player.Player1)
             {
                 if (playerInfoStruct.symbOne > 3)
                 {
@@ -166,7 +166,7 @@ public class PlayerComboInput : MonoBehaviour
                     playerInfoStruct.symbOne = 3;
                 }
             }
-            else if (playerID == Player.Player1)
+            else if (playerID == Player.Player2)
             {
                 if (playerInfoStruct.symbOne > 2)
                 {

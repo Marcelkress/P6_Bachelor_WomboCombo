@@ -28,9 +28,9 @@ namespace AccuracyTestScripts
 
         [SerializeField] private SpawnedCombo spawnedComboPrefab;
         [SerializeField] private Transform spawnParent;
-        [SerializeField] private float delayBetweenCombos = 1f;
         [SerializeField] private CanvasGroup initialStartText;
         [SerializeField] private CanvasGroup finishedTestText;
+        [SerializeField] private CanvasGroup controllerUI;
 
         // Requirement: startCombo is the ready check and is not counted as a measured combo.
         [SerializeField]
@@ -45,26 +45,26 @@ namespace AccuracyTestScripts
         [SerializeField]
         private List<ComboSequence> combos = new List<ComboSequence>
         {
-            new ComboSequence { name = "Combo 1", comboValues = new[] { 1, 2 } },
+            new ComboSequence { name = "Combo 1", comboValues = new[] { 3, 2 } },
             new ComboSequence { name = "Combo 2", comboValues = new[] { 2, 1 } },
-            new ComboSequence { name = "Combo 3", comboValues = new[] { 1, 1 } },
-            new ComboSequence { name = "Combo 4", comboValues = new[] { 1, 3 } },
+            new ComboSequence { name = "Combo 3", comboValues = new[] { 3, 1 } },
+            new ComboSequence { name = "Combo 4", comboValues = new[] { 3, 3 } },
             new ComboSequence { name = "Combo 5", comboValues = new[] { 2, 2 } },
             new ComboSequence { name = "Combo 6", comboValues = new[] { 2, 3 } },
-            new ComboSequence { name = "Combo 7", comboValues = new[] { 1, 1 } },
-            new ComboSequence { name = "Combo 8", comboValues = new[] { 1, 3 } },
-            new ComboSequence { name = "Combo 9", comboValues = new[] { 1, 2 } },
+            new ComboSequence { name = "Combo 7", comboValues = new[] { 3, 1 } },
+            new ComboSequence { name = "Combo 8", comboValues = new[] { 3, 3 } },
+            new ComboSequence { name = "Combo 9", comboValues = new[] { 3, 2 } },
             new ComboSequence { name = "Combo 10", comboValues = new[] { 2, 3 } },
             new ComboSequence { name = "Combo 11", comboValues = new[] { 2, 1 } },
-            new ComboSequence { name = "Combo 12", comboValues = new[] { 1, 3 } },
+            new ComboSequence { name = "Combo 12", comboValues = new[] { 3, 3 } },
             new ComboSequence { name = "Combo 13", comboValues = new[] { 2, 1 } },
-            new ComboSequence { name = "Combo 14", comboValues = new[] { 1, 2 } },
-            new ComboSequence { name = "Combo 15", comboValues = new[] { 1, 1 } },
+            new ComboSequence { name = "Combo 14", comboValues = new[] { 3, 2 } },
+            new ComboSequence { name = "Combo 15", comboValues = new[] { 3, 1 } },
             new ComboSequence { name = "Combo 16", comboValues = new[] { 2, 2 } },
             new ComboSequence { name = "Combo 17", comboValues = new[] { 2, 3 } },
-            new ComboSequence { name = "Combo 18", comboValues = new[] { 1, 2 } },
+            new ComboSequence { name = "Combo 18", comboValues = new[] { 3, 2 } },
             new ComboSequence { name = "Combo 19", comboValues = new[] { 2, 1 } },
-            new ComboSequence { name = "Combo 20", comboValues = new[] { 1, 2 } }
+            new ComboSequence { name = "Combo 20", comboValues = new[] { 3, 2 } }
         };
 
         // global timer starts after startCombo and stops on the final measured input.
@@ -81,6 +81,14 @@ namespace AccuracyTestScripts
 
         void Start()
         {
+            if (TutorialType.NormalControllers == _currentTutorialType)
+            {
+                controllerUI.alpha = 1f;
+            }
+            else
+            {
+                controllerUI.alpha = 0f;
+            }
             finishedTestText.alpha = 0f;
             initialStartText.alpha = 1f;
             InitializeTest();
