@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{FBCEC0F4-2C87-4E7E-B7A4-42DF95BC94DD}",
     "Language": "SFX",
-    "Hash": "{33C28C4A-C3A6-7BEF-EE92-1572ABA8AD50}",
+    "Hash": "{D268A665-3E2F-A58C-3E7D-86055D3F6485}",
     "ObjectPath": "Play_Hollow_16bit",
     "ShortName": "Play_Hollow_16bit",
     "Path": "Event/Play_Hollow_16bit.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "Hollow-16bit.wav",
       "Path": "Media/847279914.wem",
-      "CachePath": "5C/{5CDE0EE9-BE4C-3C10-0985-85E780FF33DE}.wem"
+      "CachePath": "5C/{5CC94B67-FA81-1BDC-0BDD-F182A95EE8E7}.wem"
      }
     ],
     "Events": [
@@ -31,9 +31,7 @@
       "Name": "Play_Hollow_16bit",
       "ObjectPath": "\\Events\\Default Work Unit\\Play_Hollow_16bit",
       "GUID": "{FBCEC0F4-2C87-4E7E-B7A4-42DF95BC94DD}",
-      "DurationType": "OneShot",
-      "DurationMin": "253",
-      "DurationMax": "253",
+      "DurationType": "Infinite",
       "MediaRefs": [
        {
         "Id": "847279914"
@@ -43,6 +41,6 @@
     ]
    }
   ],
-  "FileHash": "{6FE17016-D264-212B-8469-D6B1E309E05C}"
+  "FileHash": "{A80E739E-6AAA-A0C2-9AE7-008E6F9B112F}"
  }
 }

@@ -159,7 +159,7 @@ RectTransform:
   m_GameObject: {fileID: 1704938870362402555}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0.017999649}
-  m_LocalScale: {x: 0.001, y: 0.00080000015, z: 0.00040000008}
+  m_LocalScale: {x: 0.0015, y: 0.0012000002, z: 0.0006000001}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6243419871524062153}
@@ -336,7 +336,7 @@ MonoBehaviour:
   comboStep: 0
   comboLength: 0
   minLength: 1
-  maxLength: 2
+  maxLength: 1
   squareSuccessWindow: 0.5
   startTimer: 0
   pOneStar: 0

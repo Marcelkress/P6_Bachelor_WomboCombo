@@ -17,8 +17,6 @@ using UnityEngine.InputSystem;
 /// so there is no polling latency. Parsing uses a fixed buffer and avoids
 /// per-packet allocations to keep the GC quiet.
 /// </summary>
-/// 
-
 public class ControllerInputCrossPlatform : MonoBehaviour
 {
     public static ControllerInputCrossPlatform Instance { get; private set; }
