@@ -1,3 +1,6 @@
+// AI DISCLAIMER
+// This sketch has been made with help from AI 
+
 #include <M5Unified.h>
 #include <WiFi.h>
 #include <esp_now.h>

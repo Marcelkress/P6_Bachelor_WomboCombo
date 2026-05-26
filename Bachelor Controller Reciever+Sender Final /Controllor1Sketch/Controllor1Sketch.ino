@@ -1,3 +1,6 @@
+// AI DISCLAIMER
+// This sketch has been made with help from AI 
+
 #include <FastLED.h>
 #include <ESP32Encoder.h>
 #include <Wire.h>

@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{0557C4E8-AEB6-4D55-9D93-4BDBB7037CD6}",
     "Language": "SFX",
-    "Hash": "{E01491D9-8669-D46B-9A15-19C4614ED1CC}",
+    "Hash": "{9A14608B-240A-44B9-0E66-A195E4A04789}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Main",
     "ShortName": "Main",
     "Path": "Main.bnk",
@@ -56,6 +56,14 @@
       "CachePath": "40/{40C0DD4B-6DC5-A6D8-599F-024C27D58472}.wem"
      },
      {
+      "Id": "829885908",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "BossMusic.wav",
+      "CachePath": "49/{49C6CCF4-576E-CE71-B164-00F8DF0D497B}.wem"
+     },
+     {
       "Id": "982581381",
       "Language": "SFX",
       "Streaming": "false",
@@ -90,6 +98,20 @@
      ]
     },
     "Events": [
+     {
+      "Id": "3463024606",
+      "Name": "Play_BossMusic",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_BossMusic",
+      "GUID": "{4E58E6F5-F600-41D8-AE72-6C9D3943E465}",
+      "DurationType": "OneShot",
+      "DurationMin": "114.154625",
+      "DurationMax": "114.154625",
+      "MediaRefs": [
+       {
+        "Id": "829885908"
+       }
+      ]
+     },
      {
       "Id": "892614759",
       "Name": "Play_Chaotic_Drums",
@@ -168,6 +190,6 @@
     ]
    }
   ],
-  "FileHash": "{2AF044CD-219B-9216-EEBE-AA09D6E95E22}"
+  "FileHash": "{57A73B92-D3ED-5866-07FC-C5B314F8A9ED}"
  }
 }

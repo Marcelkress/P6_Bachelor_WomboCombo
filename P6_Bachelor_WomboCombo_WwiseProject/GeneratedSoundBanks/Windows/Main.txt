@@ -2,6 +2,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	892614759	Play_Chaotic_Drums			\Default Work Unit\Play_Chaotic_Drums	
 	1607176032	Play_Laughing_All_The_Way_To_The_Bank__Evil_Empire_			\Default Work Unit\Play_Laughing_All_The_Way_To_The_Bank__Evil_Empire_	
 	2547633870	Play_Door			\Default Work Unit\Play_Door	
+	3463024606	Play_BossMusic			\Default Work Unit\Play_BossMusic	
 	3910411732	Play_FireballHit			\Default Work Unit\Play_FireballHit	
 
 Effect plug-ins	ID	Name	Type				Notes
@@ -13,6 +14,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	413403320	Chaotic Drums	.cache\41\{41C83282-3217-44A8-B8E7-40BFF570938B}.wem		\Containers\Default Work Unit\Music\Chaotic Drums		20638896
 	437429544	Doow Wood Creaking 7-wooden-door-creaking-30284	.cache\2A\{2A55D772-D50C-A510-DEB5-EB0FE17F88B1}.wem		\Containers\Default Work Unit\SFX\Door\Doow Wood Creaking 7-wooden-door-creaking-30284		131392
 	456490647	FireballHit_03	.cache\5A\{5A46E646-7DF9-EF7F-770B-0F59C11540C8}.wem		\Containers\Default Work Unit\SFX\FireballHit\FireballHit_03		1064252
+	829885908	BossMusic	.cache\49\{49C6CCF4-576E-CE71-B164-00F8DF0D497B}.wem		\Containers\Default Work Unit\Music\BossMusic		21917784
 	982581381	Laughing All The Way To The Bank (Evil Empire)	.cache\62\{629209B0-191A-DFA0-0339-C62ED7E67F9C}.wem		\Containers\Default Work Unit\SFX\FinalBoss\Laughing All The Way To The Bank (Evil Empire)		348376
 
 Plug-in Media	ID	Name	Source file	Type	Wwise Object Path	Notes	Data Size

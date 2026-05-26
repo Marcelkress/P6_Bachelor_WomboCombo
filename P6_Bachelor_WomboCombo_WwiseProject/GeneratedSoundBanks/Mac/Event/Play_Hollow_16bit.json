@@ -10,18 +10,18 @@
     "Type": "Event",
     "GUID": "{FBCEC0F4-2C87-4E7E-B7A4-42DF95BC94DD}",
     "Language": "SFX",
-    "Hash": "{D268A665-3E2F-A58C-3E7D-86055D3F6485}",
+    "Hash": "{872DE6C3-730D-8AAA-9736-73C616DD4457}",
     "ObjectPath": "Play_Hollow_16bit",
     "ShortName": "Play_Hollow_16bit",
     "Path": "Event/Play_Hollow_16bit.bnk",
     "Media": [
      {
-      "Id": "847279914",
+      "Id": "876511761",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Loose",
       "ShortName": "Hollow-16bit.wav",
-      "Path": "Media/847279914.wem",
+      "Path": "Media/876511761.wem",
       "CachePath": "5C/{5CC94B67-FA81-1BDC-0BDD-F182A95EE8E7}.wem"
      }
     ],
@@ -34,13 +34,13 @@
       "DurationType": "Infinite",
       "MediaRefs": [
        {
-        "Id": "847279914"
+        "Id": "876511761"
        }
       ]
      }
     ]
    }
   ],
-  "FileHash": "{8999F6D6-0A18-2C54-7E82-79E755EE47A1}"
+  "FileHash": "{D48187FA-2932-922D-D49D-A75BBEAB0753}"
  }
 }
