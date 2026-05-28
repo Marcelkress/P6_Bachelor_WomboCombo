@@ -153,7 +153,7 @@ MonoBehaviour:
     min: 23
     max: 26
   playerID: 2
-  useBalls: 0
+  useBalls: 1
   autoSpawnPlayer2: 0
   player2Prefab: {fileID: 0}
   moon: 1

@@ -10575,6 +10575,10 @@ PrefabInstance:
       propertyPath: portName
       value: /dev/cu.usbmodem101
       objectReference: {fileID: 0}
+    - target: {fileID: 5488213084651132158, guid: 161ce07d9fd7340ccbab36ee2b2819af, type: 3}
+      propertyPath: player1.connected
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
